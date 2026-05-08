@@ -138,11 +138,21 @@ button {
 }
 
 .subjects {
+  width: min(100%, 700px);
+  text-align: center;
+}
+
+.subjects ul {
   display: grid;
   justify-items: center;
-  width: min(100%, 700px);
   gap: 34px;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.subjects li {
+  width: 100%;
 }
 
 .subject-link {
@@ -290,7 +300,7 @@ button {
     padding: 104px 20px 112px;
   }
 
-  .subjects {
+  .subjects ul {
     gap: 28px;
   }
 

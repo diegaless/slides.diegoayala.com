@@ -13,6 +13,7 @@ function setTheme(theme) {
       "aria-label",
       isDark ? "Activar modo claro" : "Activar modo oscuro",
     );
+    themeToggle.setAttribute("aria-pressed", String(isDark));
   }
 }
 
