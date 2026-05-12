@@ -4,6 +4,11 @@ Página estática sencilla para que el alumnado encuentre las diapositivas por a
 
 Diseño minimalista centrado con modo claro/nocturno y preferencia guardada en el navegador.
 
+## Páginas
+
+- `index.html`: diapositivas DAM / DAW.
+- `sef/index.html`: diapositivas de cursos SEF.
+
 ## Editar enlaces
 
 Abre `index.html` y sustituye cada `href="#"` por la URL publicada de Google Slides.
