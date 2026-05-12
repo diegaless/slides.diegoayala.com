@@ -89,6 +89,33 @@ button {
   color: var(--ink);
 }
 
+.section-nav {
+  position: absolute;
+  left: 50%;
+  display: flex;
+  gap: 18px;
+  color: var(--footer);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+}
+
+.section-nav a {
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.section-nav a:hover,
+.section-nav a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
 .theme-toggle {
   display: grid;
   width: 34px;
@@ -295,9 +322,15 @@ button {
     padding: 22px 24px;
   }
 
+  .section-nav {
+    top: 64px;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+  }
+
   .page-main {
     min-height: 100svh;
-    padding: 104px 20px 112px;
+    padding: 126px 20px 112px;
   }
 
   .subjects ul {
