@@ -277,23 +277,6 @@ button {
   display: none;
 }
 
-.certificate summary span {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 10px;
-}
-
-.certificate summary span::after {
-  color: var(--accent);
-  content: "+";
-  font-size: 0.78em;
-  font-weight: 650;
-}
-
-.certificate[open] summary span::after {
-  content: "-";
-}
-
 .certificate summary::after {
   display: block;
   width: min(100%, 260px);
