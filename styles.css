@@ -70,9 +70,10 @@ button {
   right: 0;
   left: 0;
   z-index: 10;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
+  gap: 24px;
   padding: 34px 40px;
 }
 
@@ -90,30 +91,40 @@ button {
 }
 
 .section-nav {
-  position: absolute;
-  left: 50%;
   display: flex;
-  gap: 18px;
+  justify-self: center;
+  gap: 3px;
+  padding: 4px;
+  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
+  border-radius: 999px;
   color: var(--footer);
-  font-size: 0.72rem;
+  background: color-mix(in srgb, var(--bg) 76%, transparent);
+  box-shadow: 0 14px 34px color-mix(in srgb, #000000 18%, transparent);
+  font-size: 0.68rem;
   font-weight: 750;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
-  transform: translateX(-50%);
+  backdrop-filter: blur(14px);
 }
 
 .section-nav a {
-  padding: 4px 0;
-  border-bottom: 1px solid transparent;
+  min-width: 88px;
+  padding: 9px 13px;
+  border-radius: 999px;
+  text-align: center;
   transition:
-    border-color 160ms ease,
+    background 160ms ease,
     color 160ms ease;
 }
 
 .section-nav a:hover,
 .section-nav a[aria-current="page"] {
   color: var(--ink);
-  border-bottom-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.theme-toggle {
+  justify-self: end;
 }
 
 .theme-toggle {
@@ -319,18 +330,28 @@ button {
   }
 
   .site-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px 16px;
     padding: 22px 24px;
   }
 
   .section-nav {
-    top: 64px;
-    font-size: 0.66rem;
-    letter-spacing: 0.14em;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: min(100%, 250px);
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+  }
+
+  .section-nav a {
+    flex: 1;
+    min-width: 0;
+    padding: 9px 10px;
   }
 
   .page-main {
     min-height: 100svh;
-    padding: 126px 20px 112px;
+    padding: 144px 20px 112px;
   }
 
   .subjects ul {
