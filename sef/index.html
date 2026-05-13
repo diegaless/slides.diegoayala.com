@@ -16,7 +16,7 @@
     <script src="../script.js" defer></script>
     <link rel="stylesheet" href="../styles.css">
   </head>
-  <body>
+  <body class="sef-page">
     <header class="site-header">
       <a class="site-name" href="../" aria-label="Volver a DAM y DAW">Diego Ayala</a>
       <nav class="section-nav" aria-label="Secciones de diapositivas">
@@ -49,47 +49,60 @@
     </header>
 
     <main class="page-main" aria-labelledby="page-title">
-      <h1 id="page-title" class="sr-only">Cursos SEF</h1>
+      <h1 id="page-title" class="sr-only">Certificados SEF</h1>
 
-      <nav class="subjects" aria-label="Diapositivas de cursos SEF">
-        <ul>
-          <li>
-            <a
-              class="subject-link"
-              href="#"
-              data-pending
-              aria-label="Curso SEF 1 pendiente de enlazar"
-            >
-              <span>Curso SEF 1</span>
-              <i aria-hidden="true"></i>
-            </a>
-          </li>
+      <section class="certificates" aria-label="Certificados SEF y módulos">
+        <details class="certificate">
+          <summary>
+            <span>Certificado SEF 1</span>
+          </summary>
+          <ul class="module-list">
+            <li>
+              <a href="#" data-pending>Módulo 1</a>
+            </li>
+            <li>
+              <a href="#" data-pending>Módulo 2</a>
+            </li>
+            <li>
+              <a href="#" data-pending>Módulo 3</a>
+            </li>
+          </ul>
+        </details>
 
-          <li>
-            <a
-              class="subject-link"
-              href="#"
-              data-pending
-              aria-label="Curso SEF 2 pendiente de enlazar"
-            >
-              <span>Curso SEF 2</span>
-              <i aria-hidden="true"></i>
-            </a>
-          </li>
+        <details class="certificate">
+          <summary>
+            <span>Certificado SEF 2</span>
+          </summary>
+          <ul class="module-list">
+            <li>
+              <a href="#" data-pending>Módulo 1</a>
+            </li>
+            <li>
+              <a href="#" data-pending>Módulo 2</a>
+            </li>
+            <li>
+              <a href="#" data-pending>Módulo 3</a>
+            </li>
+          </ul>
+        </details>
 
-          <li>
-            <a
-              class="subject-link"
-              href="#"
-              data-pending
-              aria-label="Curso SEF 3 pendiente de enlazar"
-            >
-              <span>Curso SEF 3</span>
-              <i aria-hidden="true"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
+        <details class="certificate">
+          <summary>
+            <span>Certificado SEF 3</span>
+          </summary>
+          <ul class="module-list">
+            <li>
+              <a href="#" data-pending>Módulo 1</a>
+            </li>
+            <li>
+              <a href="#" data-pending>Módulo 2</a>
+            </li>
+            <li>
+              <a href="#" data-pending>Módulo 3</a>
+            </li>
+          </ul>
+        </details>
+      </section>
     </main>
 
     <footer class="site-footer">

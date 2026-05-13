@@ -51,6 +51,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.sef-page {
+  overflow: auto;
+}
+
 a,
 button {
   color: inherit;
@@ -244,6 +248,105 @@ button {
   width: min(100%, 340px);
 }
 
+.certificates {
+  display: grid;
+  width: min(100%, 720px);
+  gap: 26px;
+}
+
+.certificate {
+  text-align: center;
+}
+
+.certificate summary {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  font-weight: 300;
+  line-height: 1.12;
+  list-style: none;
+  transition:
+    color 180ms ease,
+    text-shadow 180ms ease;
+}
+
+.certificate summary::-webkit-details-marker {
+  display: none;
+}
+
+.certificate summary span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.certificate summary span::after {
+  color: var(--accent);
+  content: "+";
+  font-size: 0.78em;
+  font-weight: 650;
+}
+
+.certificate[open] summary span::after {
+  content: "-";
+}
+
+.certificate summary::after {
+  display: block;
+  width: min(100%, 260px);
+  height: 1px;
+  content: "";
+  background:
+    linear-gradient(90deg, var(--accent), var(--accent-2)) left / 0 100% no-repeat,
+    var(--line);
+  box-shadow: 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+  transition:
+    background-size 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.certificate summary:hover,
+.certificate[open] summary {
+  color: var(--ink);
+  font-weight: 650;
+  text-shadow: 0 0 22px color-mix(in srgb, var(--accent) 42%, transparent);
+}
+
+.certificate summary:hover::after,
+.certificate[open] summary::after {
+  background-size: 100% 100%;
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+.module-list {
+  display: grid;
+  gap: 12px;
+  width: min(100%, 340px);
+  margin: 18px auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.module-list a {
+  display: block;
+  color: var(--footer);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.25;
+  padding: 8px 0;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.module-list a:hover {
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
 .site-footer {
   position: fixed;
   right: 0;
@@ -358,6 +461,22 @@ button {
 
   .subject-link.is-active {
     font-size: 1.85rem;
+  }
+
+  .certificates {
+    gap: 24px;
+  }
+
+  .certificate summary {
+    font-size: 1.3rem;
+  }
+
+  .certificate[open] summary {
+    font-size: 1.55rem;
+  }
+
+  .module-list {
+    margin-top: 14px;
   }
 
   .site-footer {

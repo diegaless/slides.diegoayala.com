@@ -7,7 +7,7 @@ Diseño minimalista centrado con modo claro/nocturno y preferencia guardada en e
 ## Páginas
 
 - `index.html`: diapositivas DAM / DAW.
-- `sef/index.html`: diapositivas de cursos SEF.
+- `sef/index.html`: certificados SEF con módulos desplegables.
 
 ## Editar enlaces
 
