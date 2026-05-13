@@ -331,7 +331,7 @@ button {
   .section-nav {
     grid-column: 1 / -1;
     grid-row: 2;
-    justify-self: start;
+    justify-self: center;
     gap: 16px;
     width: auto;
     font-size: 0.64rem;
