@@ -93,34 +93,27 @@ button {
 .section-nav {
   display: flex;
   justify-self: center;
-  gap: 3px;
-  padding: 4px;
-  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
-  border-radius: 999px;
+  gap: 18px;
   color: var(--footer);
-  background: color-mix(in srgb, var(--bg) 76%, transparent);
-  box-shadow: 0 14px 34px color-mix(in srgb, #000000 18%, transparent);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 750;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  backdrop-filter: blur(14px);
 }
 
 .section-nav a {
-  min-width: 88px;
-  padding: 9px 13px;
-  border-radius: 999px;
+  padding: 4px 0 5px;
+  border-bottom: 1px solid transparent;
   text-align: center;
   transition:
-    background 160ms ease,
+    border-color 160ms ease,
     color 160ms ease;
 }
 
 .section-nav a:hover,
 .section-nav a[aria-current="page"] {
   color: var(--ink);
-  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border-bottom-color: var(--accent);
 }
 
 .theme-toggle {
@@ -338,20 +331,21 @@ button {
   .section-nav {
     grid-column: 1 / -1;
     grid-row: 2;
-    width: min(100%, 250px);
+    justify-self: start;
+    gap: 16px;
+    width: auto;
     font-size: 0.64rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
   }
 
   .section-nav a {
-    flex: 1;
     min-width: 0;
-    padding: 9px 10px;
+    padding: 3px 0 5px;
   }
 
   .page-main {
     min-height: 100svh;
-    padding: 144px 20px 112px;
+    padding: 132px 20px 112px;
   }
 
   .subjects ul {
