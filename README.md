@@ -8,6 +8,20 @@ Diseño minimalista centrado con modo claro/nocturno y preferencia guardada en e
 
 - `index.html`: diapositivas DAM / DAW.
 - `sef/index.html`: certificados SEF con módulos desplegables.
+- `go/index.html`: puente estable a una diapositiva por su identificador interno.
+
+## Enlaces estables a una diapositiva
+
+Los números de página cambian cuando se insertan diapositivas. Los enlaces desde
+DevTrack usan el identificador interno de Google Slides, que se conserva al
+reordenar o insertar páginas:
+
+`https://slides.diegoayala.com/go/?deck=lm&slide=g3b42695220fc7acd_67`
+
+El parámetro `deck` admite `lm` y `ssii`. `slide` debe contener el identificador
+de página sin el prefijo `id.`. La página puente solo permite las presentaciones
+publicadas declaradas en `go/go.mjs`, por lo que no funciona como redirección
+abierta.
 
 ## Editar enlaces
 
