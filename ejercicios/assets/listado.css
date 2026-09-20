@@ -1,0 +1,54 @@
+/* Estilos exclusivos del índice. Las páginas de cada tarea conservan aula.css. */
+.index-page .header-inner { min-height: 64px; }
+.index-page .brand-mark { width: 36px; height: 36px; border-radius: 9px; }
+.index-page .header-note { display: none; }
+.list-intro { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 20px 0 16px; }
+.list-intro h1 { font-size: 25px; letter-spacing: -.5px; margin: 0; }
+.list-intro p { margin: 0; color: var(--muted); font-size: 14px; }
+.index-page .toolbar { padding: 14px 16px; gap: 16px; border-radius: 10px; box-shadow: none; }
+.index-page .field label { margin-bottom: 4px; }
+.index-page .field input, .index-page .field select { min-height: 40px; padding-block: 7px; font-size: 14px; }
+.index-page .search-input svg { top: 10px; }
+.index-page .results-heading { padding: 16px 0 10px; }
+.index-page .results-heading h2 { font-size: 16px; }
+.index-page .draft-note { padding: 9px 12px; margin-bottom: 10px; }
+.table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: white; }
+.task-table { width: 100%; min-width: 850px; border-collapse: collapse; text-align: left; }
+.task-table thead { background: #edf1f8; }
+.task-table th, .task-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.task-table thead th { font-size: 14px; font-weight: 600; color: #43536b; white-space: nowrap; }
+.task-table tbody th { width: 100%; font-size: 16px; line-height: 1.4; font-weight: 600; }
+.task-table td { font-size: 14px; }
+.task-table tbody tr:last-child > * { border-bottom: 0; }
+.task-table tbody tr:hover, .task-table tbody tr:focus-within { background: #f3f6fd; }
+.task-table .date-cell { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.task-table .number-cell { text-align: center; font-variant-numeric: tabular-nums; }
+.task-table .task-link { color: var(--blue-dark); display: inline-block; }
+.task-table .task-link::after { content: none; }
+.task-table .task-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.task-table .task-link:focus-visible { outline: 3px solid #4772e8; outline-offset: 3px; }
+.task-table .published-label { color: #43536b; }
+.task-table .draft-label { padding: 2px 7px; font-size: 14px; }
+.index-page .help { margin-top: 14px; padding: 12px 0; }
+.index-page .footer { margin-top: 0; padding-top: 12px; padding-bottom: 20px; }
+@media (min-width: 781px) {
+  .index-page .toolbar { grid-template-columns: minmax(200px, 1fr) 245px 175px; }
+  .index-page .field-search { grid-column: auto; }
+}
+@media (max-width: 780px) {
+  .index-page .toolbar { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px; }
+  .index-page .field-search { grid-column: 1 / -1; }
+  .list-intro { flex-wrap: wrap; gap: 5px 16px; }
+  .index-page .results-heading { flex-direction: row; align-items: baseline; }
+}
+@media print { .task-table { min-width: 0; } .table-scroll { overflow: visible; } .task-row { break-inside: avoid; } }
+.pdf-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.pdf-toolbar .button { min-height: 38px; padding: 8px 12px; font-size: 13px; cursor: pointer; }
+.pdf-toolbar button:disabled { opacity: .5; cursor: default; }
+.pdf-toolbar p { flex-basis: 100%; margin: 0; font-size: 12px; color: var(--muted); }
+.pdf-clear { background: none; border: 0; color: var(--blue-dark); text-decoration: underline; cursor: pointer; }
+.task-table .select-cell { width: 34px; padding: 8px; text-align: center; }
+.select-cell input { width: 17px; height: 17px; cursor: pointer; accent-color: #284bd4; }
+.task-table .delivery-cell { white-space: nowrap; font-size: 13px; }
+.delivery-link { color: var(--blue-dark); text-decoration: underline; text-underline-offset: 3px; }
+@media print { .pdf-toolbar, .select-cell, .delivery-cell { display: none; } }

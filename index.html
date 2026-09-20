@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Diapositivas de clase de Diego Ayala para alumnado de DAM y DAW."
+      content="Diapositivas y ejercicios de clase de Diego Ayala para alumnado de DAM y DAW."
     >
-    <title>Diapositivas de clase | Diego Ayala</title>
+    <title>Material de clase | Diego Ayala</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <script>
       const savedTheme = localStorage.getItem("theme");
@@ -16,10 +16,10 @@
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
+  <body class="subjects-page">
     <header class="site-header">
       <a class="site-name" href="./" aria-label="Inicio">Diego Ayala</a>
-      <nav class="section-nav" aria-label="Secciones de diapositivas">
+      <nav class="section-nav" aria-label="Secciones de material de clase">
         <a href="./" aria-current="page">DAM / DAW</a>
         <a href="sef/">SEF</a>
       </nav>
@@ -49,13 +49,14 @@
     </header>
 
     <main class="page-main" aria-labelledby="page-title">
-      <h1 id="page-title" class="sr-only">Diapositivas de clase</h1>
+      <h1 id="page-title" class="sr-only">Diapositivas y ejercicios de clase</h1>
 
-      <nav class="subjects" aria-label="Diapositivas por asignatura">
+      <nav class="subjects" aria-label="Material de clase por asignatura" data-subject-resources>
         <ul>
           <li>
             <a
               class="subject-link"
+              data-exercises-url=""
               href="https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000"
               target="_blank"
               rel="noreferrer"
@@ -69,6 +70,7 @@
           <li>
             <a
               class="subject-link"
+              data-exercises-url="ejercicios/di-2025-2026/INDICE.html"
               href="https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000"
               target="_blank"
               rel="noreferrer"
@@ -82,6 +84,7 @@
           <li>
             <a
               class="subject-link"
+              data-exercises-url="ejercicios/dapw-2025-2026/INDICE.html"
               href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000"
               target="_blank"
               rel="noreferrer"
@@ -95,6 +98,7 @@
           <li>
             <a
               class="subject-link"
+              data-exercises-url="ejercicios/pi-2025-2026/INDICE.html"
               href="#"
               data-pending
               aria-label="Proyecto Intermodular pendiente de enlazar"
@@ -107,6 +111,7 @@
           <li>
             <a
               class="subject-link"
+              data-exercises-url=""
               href="https://docs.google.com/presentation/d/e/2PACX-1vTy-2l8gaIE_m2Quaj3XHRUcQLzRRi8jaHFZxL2f_XVjv-zWayJ4MlSqIS89milRA/pub?start=false&loop=false&delayms=3000"
               target="_blank"
               rel="noreferrer"
@@ -119,6 +124,40 @@
         </ul>
       </nav>
     </main>
+
+    <template id="subject-resources-template">
+      <div class="subject-resources" hidden>
+        <div class="resource-tabs" role="tablist">
+          <button class="resource-tab" type="button" role="tab" aria-selected="true" data-resource="slides">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="13" rx="2"></rect>
+              <path d="M12 17v4M8 21h8M7 8h10M7 12h6"></path>
+            </svg>
+            Diapositivas
+          </button>
+          <button class="resource-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-resource="exercises">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-14-2 18"></path>
+            </svg>
+            Ejercicios
+          </button>
+        </div>
+        <div class="resource-panel" role="tabpanel" data-panel="slides">
+          <p class="resource-description" data-description>Todo el material de clase, en un solo lugar.</p>
+          <a class="resource-action" target="_blank" rel="noreferrer" data-open>
+            Abrir diapositivas <span aria-hidden="true">↗</span>
+          </a>
+          <span class="resource-status" data-unavailable hidden>Próximamente</span>
+        </div>
+        <div class="resource-panel" role="tabpanel" data-panel="exercises" hidden>
+          <p class="resource-description" data-description>Pon en práctica lo aprendido en clase.</p>
+          <a class="resource-action" target="_blank" rel="noreferrer" data-open>
+            Abrir ejercicios <span aria-hidden="true">↗</span>
+          </a>
+          <span class="resource-status" data-unavailable hidden>Próximamente</span>
+        </div>
+      </div>
+    </template>
 
     <footer class="site-footer">
       <a href="https://github.com/diegaless" target="_blank" rel="noreferrer">GitHub</a>

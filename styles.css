@@ -55,6 +55,29 @@ body {
   overflow: auto;
 }
 
+.subjects-page {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.subjects-page .site-header,
+.subjects-page .site-footer {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.subjects-page .page-main {
+  min-height: 0;
+  flex: 1;
+  padding: 48px 24px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
 a,
 button {
   color: inherit;
@@ -237,7 +260,11 @@ button {
   justify-items: center;
   gap: 12px;
   width: 100%;
+  padding: 0;
+  border: 0;
   color: var(--muted);
+  background: transparent;
+  cursor: pointer;
   font-size: clamp(1.35rem, 2.4vw, 2rem);
   font-weight: 300;
   line-height: 1.12;
@@ -282,12 +309,127 @@ button {
 }
 
 .subject-link.is-active {
-  font-size: clamp(1.95rem, 3.2vw, 2.55rem);
+  font-size: clamp(1.55rem, 2.4vw, 2rem);
   font-weight: 650;
 }
 
 .subject-link.is-active i {
   width: min(100%, 340px);
+}
+
+.subject-resources {
+  width: min(100%, 430px);
+  margin: 22px auto 0;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line-soft));
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--accent) 4%, var(--bg));
+  box-shadow: 0 16px 48px color-mix(in srgb, var(--accent) 5%, transparent);
+}
+
+.resource-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--bg);
+}
+
+.resource-tab {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.resource-tab:hover {
+  color: var(--ink);
+}
+
+.resource-tab[aria-selected="true"] {
+  border-color: color-mix(in srgb, var(--accent) 26%, transparent);
+  color: var(--ink);
+  background: color-mix(in srgb, var(--accent) 18%, var(--bg));
+}
+
+.resource-tab svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.resource-tab[aria-selected="true"] svg {
+  color: var(--accent);
+}
+
+.resource-panel {
+  display: grid;
+  min-height: 123px;
+  align-content: start;
+  justify-items: center;
+  gap: 18px;
+  padding: 22px 0 4px;
+}
+
+.resource-description {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.resource-action,
+.resource-status {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 0.83rem;
+  font-weight: 650;
+}
+
+.resource-action {
+  border-color: color-mix(in srgb, var(--accent) 32%, transparent);
+  color: var(--ink);
+  background: color-mix(in srgb, var(--accent) 20%, var(--bg));
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.resource-action:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 30%, var(--bg));
+}
+
+.resource-action span {
+  color: var(--accent);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.resource-status {
+  color: var(--muted);
+  background: color-mix(in srgb, var(--ink) 4%, transparent);
 }
 
 .certificates {
@@ -480,12 +622,27 @@ button {
     gap: 28px;
   }
 
+  .subjects-page .page-main {
+    padding: 32px 20px;
+  }
+
+  .subject-resources {
+    margin-top: 18px;
+    padding: 12px;
+  }
+
+  .resource-tab {
+    gap: 6px;
+    padding: 10px 6px;
+    font-size: 0.8rem;
+  }
+
   .subject-link {
     font-size: 1.3rem;
   }
 
   .subject-link.is-active {
-    font-size: 1.85rem;
+    font-size: 1.55rem;
   }
 
   .certificates {

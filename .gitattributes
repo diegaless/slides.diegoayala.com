@@ -1,0 +1,2 @@
+# Los adjuntos son materiales originales: conservar sus bytes y sus finales CRLF.
+ejercicios/**/Adjuntos/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
