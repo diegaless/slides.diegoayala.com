@@ -35,6 +35,13 @@ EXCLUDED_IDS = {
     "783587d4-0e83-4442-9dff-48ef6b6777c6",
     "cc04bf3e-ca9d-4b7e-8255-8253a4afe803",
     "d0135e33-6a41-412e-b907-05518aac35cd",
+    # Exámenes de LM: excluir de la web y conservar los originales del backup.
+    "49797c2a-c1d5-4da0-bf2a-d759a1dae0e0",
+    "8ac7fe8d-1713-4498-9e2d-24abf55de7b4",
+    "834c2929-68a2-4cbb-b40d-eaaddc450ef5",
+    # DI: tareas retiradas del material base.
+    "50d9c285-26eb-472b-86e1-9f694db8e7c8",
+    "d69ee668-d2cb-48d2-9301-ddd04073867a",
 }
 
 
