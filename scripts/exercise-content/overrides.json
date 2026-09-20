@@ -158,5 +158,189 @@
   },
   "dapw/DEFENSA FINAL": {
     "instructions": "dapw/defensa-final.html"
+  },
+  "lm/XML 1": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g38082674dc8_0_4",
+        "label": "Enunciado · diap. 35"
+      }
+    ]
+  },
+  "lm/XML2": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g38082674dc8_0_39",
+        "label": "Enunciado · diap. 36"
+      }
+    ]
+  },
+  "lm/XML 3": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g38082674dc8_0_59",
+        "label": "Teoría: XML bien formado · diap. 37–38"
+      }
+    ]
+  },
+  "lm/XML 4": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g33d4b376fa7_0_611",
+        "label": "Teoría: estructura XML · diap. 26–27"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g38082674dc8_0_12",
+        "label": "Teoría: atributos · diap. 32–33"
+      }
+    ]
+  },
+  "lm/XML 5": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g33d4b376fa7_0_611",
+        "label": "Teoría: estructura XML · diap. 26–27"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g38082674dc8_0_12",
+        "label": "Teoría: atributos · diap. 32–33"
+      }
+    ]
+  },
+  "lm/XML-6": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g38265c2f9c7_0_39",
+        "label": "Teoría: espacios de nombres · diap. 42–44"
+      }
+    ]
+  },
+  "lm/xml 7": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g38265c2f9c7_0_39",
+        "label": "Teoría: espacios de nombres · diap. 42–44"
+      }
+    ]
+  },
+  "lm/xml - 8": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g33d4b376fa7_0_611",
+        "label": "Teoría: estructura XML · diap. 26–27"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g38265c2f9c7_0_39",
+        "label": "Teoría: espacios de nombres · diap. 42–44"
+      }
+    ]
+  },
+  "lm/HTML 1..4": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g3b42695220fc7acd_67",
+        "label": "HTML 1–4 · diap. 66–69"
+      }
+    ]
+  },
+  "lm/LM 5..8": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g307a9002e7a_0_227",
+        "label": "HTML 5–8 · diap. 80–83"
+      }
+    ]
+  },
+  "lm/HTML 9..17": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g307a9002e7a_0_336",
+        "label": "HTML 9–13 · diap. 86–94"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g30cd05b6658_0_2",
+        "label": "HTML 14–16 · diap. 95–101"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g2d43939f7f3_0_28",
+        "label": "HTML 17 · diap. 122"
+      }
+    ]
+  },
+  "lm/HTML 17..24": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g2d43939f7f3_0_28",
+        "label": "HTML 17 · diap. 122"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g30cd05b6658_0_109",
+        "label": "HTML 18–22 · diap. 135–143"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g31143d97533_0_139",
+        "label": "HTML 23–24: vídeo y audio · diap. 152–154"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g31143d97533_0_307",
+        "label": "HTML 24: incrustación · diap. 161"
+      }
+    ]
+  },
+  "lm/RA2 -PRACTICA FINAL HTML --DEFENSA": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g3116dd7d8bc_0_0",
+        "label": "Práctica HTML RA2 · diap. 162–166"
+      }
+    ]
+  },
+  "lm/EJERCICIOS HTML": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g3b42695220fc7acd_67",
+        "label": "Ejercicios de HTML · desde diap. 66"
+      }
+    ]
+  },
+  "lm/RA2-FINAL CSS (50%)": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g345f169c4ef_0_1",
+        "label": "Práctica final CSS · diap. 241"
+      }
+    ]
+  },
+  "lm/RA3- JS DOM": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g34627c68983_0_0",
+        "label": "Ejercicios DOM 5–9 · diap. 292–296"
+      }
+    ]
+  },
+  "lm/RA4-Validadores, JSON, JSON SCHEMA": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g33d4b376fa7_0_0",
+        "label": "Práctica final JSON · diap. 367"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g35ee66cfdd2_0_29",
+        "label": "Teoría: XML Schema · diap. 325–342"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g3616edbea6f_0_0",
+        "label": "Teoría: JSON y JSON Schema · diap. 343–366"
+      }
+    ]
+  },
+  "lm/RA5,6- JSON TO CSV, SQLITE": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g33d4b376fa7_0_0",
+        "label": "Práctica JSON, CSV y SQLite · diap. 367"
+      }
+    ]
   }
 }

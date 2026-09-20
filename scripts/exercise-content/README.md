@@ -140,3 +140,39 @@ servicios y rutas deben adaptarse al proyecto del alumno; no se adjunta el ZIP
 de Laura. Se conserva la obligación original de entregar el repositorio y un ZIP
 con la práctica final aunque ya se haya realizado la defensa. La tarea sigue
 sin enlace a una diapositiva específica.
+
+## Referencias de Lenguaje de Marcas
+
+Las 18 tareas públicas de LM 1DAW enlazan desde la cabecera a la
+[presentación publicada de Lenguaje de Marcas](https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub),
+consultada el 21 de septiembre de 2026 (394 diapositivas). Se añaden únicamente
+referencias `slides` en `overrides.json`, conservando los enunciados y materiales.
+Los enlaces usan el identificador estable `slide=id.…`; los rangos abren su
+primera diapositiva y permiten continuar por las siguientes en la presentación.
+
+| Tarea | Diapositivas de referencia | Correspondencia |
+| --- | --- | --- |
+| XML 1 | 35 | Enunciado de recetas: la captura coincide con la de la tarea. |
+| XML2 | 36 | Enunciado de historia de la informática: la tabla coincide con la de la tarea. |
+| XML 3 | 37–38 | Teoría de XML bien formado para corregir el archivo de planetas adjunto. |
+| XML 4 | 26–27; 32–33 | Teoría de estructura y atributos para el XML de una universidad. |
+| XML 5 | 26–27; 32–33 | Teoría de estructura y atributos para el XML del almacén. |
+| XML-6 | 42–44 | Teoría de namespaces para productos y expositores; contrastada con el PDF adjunto. |
+| xml 7 | 42–44 | Teoría de namespaces para productos y clientes. |
+| xml - 8 | 26–27; 42–44 | Teoría de estructura XML y namespaces para Liga Fantasy y la feria de libros. |
+| HTML 1..4 | 66–69 | Ejercicios HTML 1–4. |
+| LM 5..8 | 80–83 | Ejercicios HTML 5–8, continuación del grupo anterior. |
+| HTML 9..17 | 86–94; 95–101; 122 | Accesos a los grupos 9–13, 14–16 (incluido 14.2) y al ejercicio 17. |
+| HTML 17..24 | 122; 135–143; 152–154; 161 | Ejercicio 17, grupo 18–22, vídeo/audio e incrustación. |
+| RA2 -PRACTICA FINAL HTML --DEFENSA | 162–166 | Práctica HTML-RA2 (25), con sus capturas de referencia. |
+| EJERCICIOS HTML | Desde 66 | Acceso al primer ejercicio de HTML; la tarea solo indica «ADJUNTAD ZIP» y no concreta un rango. |
+| RA2-FINAL CSS (50%) | 241 | La práctica de Flexbox, imágenes redondeadas y hover coincide con el enunciado. |
+| RA3- JS DOM | 292–296 | Ejercicios DOM 5–9; el ejercicio 5 de la diapositiva 279 trata de números primos y pertenece a otro bloque. |
+| RA4-Validadores, JSON, JSON SCHEMA | 367; 325–342; 343–366 | Práctica final de JSON y teoría de XML Schema, JSON y JSON Schema. |
+| RA5,6- JSON TO CSV, SQLITE | 367 | La diapositiva enlaza al mismo documento de la tarea, con las partes de CSV y SQLite. |
+
+Las referencias de apoyo de XML se rotulan como «Teoría»: no se ha localizado
+en la presentación un enunciado específico de esas seis tareas. La numeración
+24 de HTML aparece tanto en audio (154) como en incrustación (161); se conservan
+ambos destinos. Los 28 enlaces se incluyen también en los PDF regenerados y
+en las descargas completas y por selección de LM.
