@@ -8,6 +8,8 @@ Los listados muestran directamente las descargas y la tabla con selección de PD
 
 En cada tarea, el lateral contiene únicamente el botón «Descargar PDF». Se eliminan el panel de información con fechas, estado y puntuación, y la nota bajo el botón.
 
+El panel «Sobre esta tarea» también se elimina de los PDF descargables. El importador los regenera desde los HTML públicos antes de preparar los ZIP completos y las descargas de seleccionados, manteniendo enunciados, imágenes y materiales.
+
 Lenguaje de Marcas abre 18 tareas publicadas seleccionadas de `LM 1DAW` del último curso disponible, 2025–2026. Desarrollo de Interfaces contiene 8 tareas. Los exámenes ocultos y las tareas retiradas se excluyen de la carpeta pública, incluidos sus PDF, adjuntos y descargas en ZIP. Los originales se conservan en el backup.
 
 ## Concepto con imagegen

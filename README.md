@@ -57,7 +57,7 @@ de las bibliotecas y los nombres de los ZIP de selección no incluyen el año.
 Lenguaje de Marcas utiliza únicamente el grupo `LM 1DAW` de 2025–2026,
 con 18 tareas publicadas seleccionadas. El grupo DAM y los cursos anteriores no se incluyen.
 
-Los enunciados, imágenes, PDF y adjuntos se conservan. `aula.css`, `listado.css`
+Los enunciados, imágenes y adjuntos se conservan. `aula.css`, `listado.css`
 y `pdf.css` son copias literales del backup. Se comparten entre asignaturas.
 `pdf-lotes.js` mantiene la descarga de seleccionados y ajusta la ruta de sus datos
 a cada biblioteca. La tabla se genera en orden cronológico y funciona sin JavaScript.
@@ -74,6 +74,12 @@ El lateral de cada tarea muestra únicamente el botón «Descargar PDF», con lo
 ajustes de `tarea-web.css`. Se eliminan el panel «Sobre esta tarea» —fechas,
 estado y puntuación— y la nota sobre el contenido del PDF.
 
+Los PDF descargables se generan desde estos HTML con los mismos estilos de
+impresión, sin el panel «Sobre esta tarea». Conservan los enunciados, imágenes,
+lista de materiales y numeración de páginas. Los PDF adjuntos se copian sin
+modificarlos. Tanto el ZIP completo como la descarga de seleccionados utilizan
+los PDF recién generados.
+
 La copia incluye tareas publicadas. Excluye borradores, accesos a entregas,
 listados de alumnos, tareas individualizadas, los exámenes marcados como ocultos
 y las tareas retiradas del material base. Se retiran sus páginas, PDF y adjuntos
@@ -82,15 +88,19 @@ Los ZIP y los datos de descarga se reconstruyen con la misma selección.
 El backup no se modifica.
 
 Para volver a generar la copia, revisa la selección `SUBJECTS` y `EXCLUDED_IDS` de
-`scripts/import-exercises.py` y ejecuta:
+`scripts/import-exercises.py`. La exportación necesita Node.js, Playwright y su
+Chromium local. Reutiliza el runtime existente; si Node no resuelve Playwright,
+indica su carpeta de módulo con `PLAYWRIGHT_MODULE`:
 
 ```bash
-docpython scripts/import-exercises.py /ruta/a/teams-backup/web
+PLAYWRIGHT_MODULE=/ruta/al/modulo/playwright docpython scripts/import-exercises.py /ruta/a/teams-backup/web
 ```
 
-Si `docpython` no está disponible, puede usarse `python3`; el importador solo
-necesita la biblioteca estándar. Sustituye exclusivamente las carpetas de salida
-de las asignaturas definidas en `SUBJECTS`.
+Si `docpython` no está disponible, puede usarse `python3`; la parte Python solo
+necesita la biblioteca estándar. El importador comprueba que Chromium funciona,
+sustituye exclusivamente las carpetas de salida de las asignaturas definidas en
+`SUBJECTS` y llama a `scripts/render-exercise-pdfs.cjs` antes de reconstruir los ZIP.
+La exportación usa archivos locales y no realiza peticiones a Internet.
 
 Sistemas informáticos conserva su acceso a diapositivas; sus ejercicios todavía
 no están incluidos en esta selección.

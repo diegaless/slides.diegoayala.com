@@ -1,13 +1,15 @@
 """Copia la biblioteca HTML existente, con una selección para la web pública.
 
 Uso: python3 scripts/import-exercises.py /ruta/a/teams-backup/web
-No modifica el backup. Solo usa la biblioteca estándar de Python.
+No modifica el backup. Usa la biblioteca estándar de Python y regenera los PDF
+con Node.js, Playwright y Chromium locales.
 """
 
 import base64
 import json
 import re
 import shutil
+import subprocess
 import sys
 import zipfile
 import zlib
@@ -114,7 +116,10 @@ def copy_task(source, destination):
             raise ValueError(f"Recurso local inválido: {source.name}/{filename}")
         target = destination / filename
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(original, target)
+        # El PDF del enunciado se genera desde el HTML público; los adjuntos
+        # mantienen sus bytes originales, incluidos los que también son PDF.
+        if filename != links.pdf:
+            shutil.copyfile(original, target)
     (destination / "TAREA.html").write_text(html, encoding="utf-8")
     if not links.pdf:
         raise ValueError(f"Falta el enlace PDF: {source.name}")
@@ -178,6 +183,9 @@ def pdf_bundle(destination, tasks, pdfs):
 
 
 def main(source):
+    renderer = Path(__file__).with_name("render-exercise-pdfs.cjs")
+    # Comprobar el navegador antes de sustituir las carpetas de salida.
+    subprocess.run(["node", str(renderer), "--check"], check=True)
     shared = DESTINATION / "assets"
     shared.mkdir(parents=True, exist_ok=True)
     # Los ajustes visuales de la web se mantienen separados del CSS original.
@@ -188,6 +196,8 @@ def main(source):
     batch_js = batch_js.replace("Todos los PDF incluye los borradores. ", "")
     (shared / "pdf-lotes.js").write_text(batch_js, encoding="utf-8")
     report = []
+    pdf_jobs = []
+    bundles = []
     for source_name, slug in SUBJECTS:
         origin = source / source_name
         target = DESTINATION / slug
@@ -201,8 +211,15 @@ def main(source):
         target.mkdir(parents=True)
         pdfs = [copy_task(origin / task["Carpeta"], target / task["Carpeta"]) for task in tasks]
         copy_index(origin, target, tasks)
-        pdf_bundle(target, tasks, pdfs)
+        pdf_jobs.extend({"html": str(target / task["Carpeta"] / "TAREA.html"),
+                         "pdf": str(target / task["Carpeta"] / filename)}
+                        for task, filename in zip(tasks, pdfs))
+        bundles.append((target, tasks, pdfs))
         report.append({"subject": slug, "tasks": len(tasks), "attachments": sum(t["Adjuntos"] for t in tasks)})
+    subprocess.run(["node", str(renderer)], input=json.dumps(pdf_jobs), text=True, check=True)
+    # Tanto el ZIP completo como la selección usan los PDF recién generados.
+    for target, tasks, pdfs in bundles:
+        pdf_bundle(target, tasks, pdfs)
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
 
