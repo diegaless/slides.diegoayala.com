@@ -4,7 +4,7 @@ Propuesta: desplegar las pestañas «Diapositivas» y «Ejercicios» bajo la asi
 
 La cabecera de los ejercicios comparte la marca DA de la web y muestra solo la asignatura. Se retiran el subtítulo «Biblioteca de tareas» y el bloque «Sobre las fechas y esta copia».
 
-Los listados muestran la selección de PDF, «Tarea» y «Adjuntos», con búsqueda y ordenación. Se retiran las columnas de creación, entrega prevista, imágenes y estado, el filtro «Mostrar» y el texto del pie sobre disponibilidad sin conexión.
+Los listados muestran directamente las descargas y la tabla con selección de PDF, «Tarea» y «Adjuntos». Se retiran el bloque introductorio, el buscador y los controles de ordenación y filtrado, las columnas de creación, entrega prevista, imágenes y estado, y el pie de todas las páginas de ejercicios. Las tareas aparecen en orden cronológico sin necesitar JavaScript.
 
 Lenguaje de Marcas abre las 24 tareas publicadas de `LM 1DAW` del último curso disponible, 2025–2026. Se usa solo ese grupo, sin mostrar el curso en la web.
 

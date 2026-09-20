@@ -8,8 +8,8 @@ Diseño minimalista centrado con modo claro/nocturno y preferencia guardada en e
 
 - `index.html`: selector de diapositivas y ejercicios DAM / DAW. Al abrir una
   asignatura se selecciona siempre «Diapositivas». Solo hay una asignatura desplegada.
-- `ejercicios/`: biblioteca de ejercicios por asignatura, con los HTML, CSS, buscador,
-  ordenación y descargas de la biblioteca existente en el backup de Teams.
+- `ejercicios/`: biblioteca de ejercicios por asignatura, con los HTML, CSS y
+  descargas de la biblioteca existente en el backup de Teams.
 - `sef/index.html`: certificados SEF con módulos desplegables.
 - `go/index.html`: puente estable a una diapositiva por su identificador interno.
 
@@ -59,16 +59,16 @@ con sus 24 tareas publicadas. El grupo DAM y los cursos anteriores no se incluye
 
 Los enunciados, imágenes, PDF y adjuntos se conservan. `aula.css`, `listado.css`
 y `pdf.css` son copias literales del backup. Se comparten entre asignaturas.
-`aula.js` conserva la búsqueda y ordenación, adaptadas para funcionar sin el filtro
-«Mostrar». `pdf-lotes.js` mantiene la descarga de seleccionados y ajusta la ruta
-de sus datos a cada biblioteca.
+`pdf-lotes.js` mantiene la descarga de seleccionados y ajusta la ruta de sus datos
+a cada biblioteca. La tabla se genera en orden cronológico y funciona sin JavaScript.
 
 La cabecera usa la marca DA de la web mediante `marca.css`, sin el subtítulo
-«Biblioteca de tareas». Los índices omiten el bloque «Sobre las fechas y esta
-copia» y el pie ya no incluye el texto sobre disponibilidad sin conexión.
-La tabla muestra la selección de PDF, la tarea y sus adjuntos. `listado-web.css`
-ajusta su ancho y la barra de búsqueda y ordenación. El importador conserva estas
-adaptaciones al regenerar los HTML.
+«Biblioteca de tareas». Los listados abren directamente con las descargas y la tabla,
+sin el bloque introductorio, el buscador ni los controles de ordenación y filtrado.
+También se retiran el bloque «Sobre las fechas y esta copia» y el pie de todas las
+páginas de ejercicios. La tabla muestra la selección de PDF, la tarea y sus adjuntos.
+`listado-web.css` ajusta su ancho y el título del listado. El importador conserva
+estas adaptaciones al regenerar los HTML.
 
 La copia incluye tareas publicadas. Excluye borradores, accesos a entregas,
 listados de alumnos y tres tareas con referencias nominales. Los ZIP y los datos
@@ -97,7 +97,7 @@ El concepto generado con imagegen y las capturas de la implementación están en
 
 Puedes abrir `index.html` directamente en el navegador. No requiere servidor ni dependencias.
 Sin JavaScript, los enlaces originales a las diapositivas siguen funcionando y
-las bibliotecas permiten abrir tareas y descargar PDF. El selector, la búsqueda,
-la ordenación y la descarga de seleccionados usan JavaScript.
+las bibliotecas permiten abrir tareas y descargar PDF. El selector de material y
+la descarga de seleccionados usan JavaScript.
 
 Para una vista previa HTTP local: `python3 -m http.server 4173`.

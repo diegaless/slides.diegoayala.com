@@ -1,10 +1,10 @@
 /* Ajustes para la tabla pública: selección de PDF, tarea y adjuntos. */
-.index-page .toolbar {
-  grid-template-columns: minmax(0, 1fr) 245px;
-}
-
-.index-page .field-search {
-  grid-column: auto;
+.index-page .results-heading h1 {
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -.25px;
+  line-height: 1.55;
+  margin: 0;
 }
 
 .index-page .task-table {
@@ -18,10 +18,4 @@
 
 .index-page .task-link {
   overflow-wrap: anywhere;
-}
-
-@media (max-width: 680px) {
-  .index-page .toolbar {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
