@@ -30,8 +30,12 @@ abierta.
 
 En `index.html`, el `href` de cada `.subject-link` contiene la URL de Google Slides;
 `data-exercises-url` contiene la ruta a su biblioteca de ejercicios. Para enlazar
-las diapositivas de Proyecto Intermodular, sustituye `href="#"` y retira `data-pending`.
+las diapositivas de Proyecto Intermodular o Programación de Servicios y Procesos,
+sustituye `href="#"` y retira `data-pending`.
 Una URL de ejercicios vacía muestra «Próximamente» sin crear un enlace inválido.
+Programación de Servicios y Procesos está incluida en el menú; sus diapositivas
+y ejercicios quedan pendientes de enlazar.
+Los enlaces de contacto de DAM/DAW y SEF utilizan `diego.ayala@colegiomiralmonte.es`.
 Para evitar que Google pida cuenta en móvil, usa el enlace de `Archivo -> Compartir -> Publicar en la web`, con formato:
 `https://docs.google.com/presentation/d/e/ID_PUBLICADO/pub?start=false&loop=false&delayms=3000`
 
@@ -63,8 +67,9 @@ y `pdf.css` son copias literales del backup. Se comparten entre asignaturas.
 a cada biblioteca. La tabla se genera en orden cronológico y funciona sin JavaScript.
 
 La cabecera usa la marca DA de la web mediante `marca.css`, sin el subtítulo
-«Biblioteca de tareas». Los listados abren directamente con las descargas y la tabla,
-sin el bloque introductorio, el buscador ni los controles de ordenación y filtrado.
+«Biblioteca de tareas». Los listados abren directamente con la tabla; los controles
+de descarga y «Quitar selección» aparecen debajo de ella.
+No incluyen el bloque introductorio, el buscador ni los controles de ordenación y filtrado.
 También se retiran el bloque «Sobre las fechas y esta copia» y el pie de todas las
 páginas de ejercicios. La tabla muestra la selección de PDF, la tarea y sus adjuntos.
 `listado-web.css` ajusta su ancho y el título del listado. El importador conserva

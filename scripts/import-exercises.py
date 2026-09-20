@@ -158,6 +158,11 @@ def copy_index(source, destination, tasks):
     html = re.sub(r'Descargar todos los PDF \(\d+\)', f"Descargar todos los PDF ({count})", html)
     html = html.replace("Todos los PDF incluye los borradores. ", "")
     html = re.sub(r'(<p class="results-count"[^>]*>)\d+ tareas', lambda m: m[1] + f"{count} tareas", html)
+    downloads = re.search(r'<section class="pdf-toolbar"[^>]*>.*?</section>', html, flags=re.S)
+    if not downloads:
+        raise ValueError(f"Faltan los controles de descarga: {source.name}")
+    html = html[:downloads.start()] + html[downloads.end():]
+    html = html.replace('</main>', downloads[0] + '</main>', 1)
     (destination / "INDICE.html").write_text(html, encoding="utf-8")
 
 

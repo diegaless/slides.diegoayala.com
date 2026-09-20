@@ -4,7 +4,9 @@ Propuesta: desplegar las pestañas «Diapositivas» y «Ejercicios» bajo la asi
 
 La cabecera de los ejercicios comparte la marca DA de la web y muestra solo la asignatura. Se retiran el subtítulo «Biblioteca de tareas» y el bloque «Sobre las fechas y esta copia».
 
-Los listados muestran directamente las descargas y la tabla con selección de PDF, «Tarea» y «Adjuntos». Se retiran el bloque introductorio, el buscador y los controles de ordenación y filtrado, las columnas de creación, entrega prevista, imágenes y estado, y el pie de todas las páginas de ejercicios. Las tareas aparecen en orden cronológico sin necesitar JavaScript.
+Los listados muestran directamente la tabla con selección de PDF, «Tarea» y «Adjuntos». Los botones de descarga y «Quitar selección» aparecen debajo de la tabla. Se retiran el bloque introductorio, el buscador y los controles de ordenación y filtrado, las columnas de creación, entrega prevista, imágenes y estado, y el pie de todas las páginas de ejercicios. Las tareas aparecen en orden cronológico sin necesitar JavaScript.
+
+El menú incluye Programación de Servicios y Procesos, con sus materiales pendientes de enlazar. Los enlaces de contacto de DAM/DAW y SEF apuntan a `diego.ayala@colegiomiralmonte.es`.
 
 En cada tarea, el lateral contiene únicamente el botón «Descargar PDF». Se eliminan el panel de información con fechas, estado y puntuación, y la nota bajo el botón.
 
