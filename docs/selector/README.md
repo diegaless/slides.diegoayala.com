@@ -1,6 +1,6 @@
 # Selector de material por asignatura
 
-Propuesta: desplegar las pestañas «Diapositivas» y «Ejercicios» bajo la asignatura seleccionada. Cada apertura empieza en «Diapositivas». Los ejercicios se abren en la biblioteca HTML existente, conservando su diseño y sus descargas.
+Propuesta: desplegar las pestañas «Diapositivas» y «Ejercicios» bajo la asignatura seleccionada. Cada apertura empieza en «Diapositivas». Los ejercicios se abren en la biblioteca HTML existente, conservando su diseño y sus descargas. Se toma únicamente el último curso disponible de cada asignatura como base, sin mostrar etiquetas ni un selector de curso.
 
 ## Concepto con imagegen
 

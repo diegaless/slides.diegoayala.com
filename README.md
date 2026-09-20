@@ -43,22 +43,26 @@ Si alguna vez quieres forzar descarga como PDF, usa:
 
 ## Biblioteca de ejercicios de segundo
 
-| Asignatura | Cursos | Tareas |
+Cada asignatura utiliza únicamente el último curso disponible del backup como
+material base. La web no muestra etiquetas ni un selector de curso, y las rutas
+de las bibliotecas y los nombres de los ZIP de selección no incluyen el año.
+
+| Asignatura | Ruta | Tareas |
 | --- | --- | ---: |
-| Desarrollo de Interfaces | 2025–2026, 2024–2025 y 2023–2024 | 49 |
-| Despliegue de aplicaciones Web | 2025–2026 | 13 |
-| Proyecto Intermodular | 2025–2026 | 2 |
+| Desarrollo de Interfaces | `ejercicios/di/INDICE.html` | 10 |
+| Despliegue de aplicaciones Web | `ejercicios/dapw/INDICE.html` | 13 |
+| Proyecto Intermodular | `ejercicios/pi/INDICE.html` | 2 |
 
 Los enunciados, imágenes, PDF y adjuntos se conservan. `aula.css`, `listado.css`,
-`pdf.css` y `aula.js` son copias literales del backup. Se comparten entre cursos;
-`web.css` añade únicamente la navegación entre años. `pdf-lotes.js` mantiene la
-descarga de seleccionados y ajusta la ruta de sus datos a cada curso.
+`pdf.css` y `aula.js` son copias literales del backup. Se comparten entre
+asignaturas. `pdf-lotes.js` mantiene la descarga de seleccionados y ajusta la ruta
+de sus datos a cada biblioteca.
 
 La copia incluye tareas publicadas. Excluye borradores, accesos a entregas,
-listados de alumnos y cinco tareas con referencias nominales. Los ZIP y los datos
+listados de alumnos y tres tareas con referencias nominales. Los ZIP y los datos
 de descarga se reconstruyen con la misma selección. El backup no se modifica.
 
-Para volver a generar la copia, revisa la selección `COURSES` y `EXCLUDED_IDS` de
+Para volver a generar la copia, revisa la selección `SUBJECTS` y `EXCLUDED_IDS` de
 `scripts/import-exercises.py` y ejecuta:
 
 ```bash
@@ -67,7 +71,7 @@ docpython scripts/import-exercises.py /ruta/a/teams-backup/web
 
 Si `docpython` no está disponible, puede usarse `python3`; el importador solo
 necesita la biblioteca estándar. Sustituye exclusivamente las carpetas de salida
-de los cursos definidos en `COURSES`.
+de las asignaturas definidas en `SUBJECTS`.
 
 Lenguaje de Marcas y Sistemas informáticos conservan su acceso a diapositivas;
 sus ejercicios de primero no están incluidos en esta selección.
