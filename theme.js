@@ -1,14 +1,17 @@
 (() => {
   const root = document.documentElement;
+  const defaultTheme = "dark";
+  // La nueva preferencia empieza en oscuro y recuerda los cambios posteriores.
+  const preferenceKey = "diego-ayala.theme";
   let savedTheme;
   try {
-    savedTheme = localStorage.getItem("theme");
+    savedTheme = localStorage.getItem(preferenceKey);
   } catch {
     // El tema sigue funcionando si el navegador no permite guardar preferencias.
   }
 
   function applyTheme(theme) {
-    root.dataset.theme = theme === "light" ? "light" : "dark";
+    root.dataset.theme = theme === "light" ? "light" : defaultTheme;
     const isDark = root.dataset.theme === "dark";
     const toggle = document.querySelector("[data-theme-toggle]");
     toggle?.setAttribute("aria-label", isDark ? "Activar modo claro" : "Activar modo oscuro");
@@ -24,7 +27,7 @@
     document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
       applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
       try {
-        localStorage.setItem("theme", root.dataset.theme);
+        localStorage.setItem(preferenceKey, root.dataset.theme);
       } catch {
         // La preferencia se mantiene en esta página aunque no pueda persistirse.
       }
@@ -32,6 +35,6 @@
   });
 
   window.addEventListener("storage", (event) => {
-    if (event.key === "theme") applyTheme(event.newValue);
+    if (event.key === preferenceKey) applyTheme(event.newValue);
   });
 })();

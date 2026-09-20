@@ -3,6 +3,9 @@
 Página estática sencilla para que el alumnado encuentre diapositivas y ejercicios por asignatura.
 
 Diseño minimalista centrado con modo claro/nocturno y preferencia guardada en el navegador.
+El modo inicial es oscuro, independientemente del tema del sistema. Una nueva
+preferencia de la web sustituye la antigua; los cambios posteriores a claro u
+oscuro se recuerdan al navegar y volver a abrirla.
 La portada, los listados y los ejercicios comparten la cabecera, los colores,
 la tipografía y el selector de tema mediante `styles.css` y `theme.js`.
 

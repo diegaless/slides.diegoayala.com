@@ -1,19 +1,4 @@
 :root {
-  color-scheme: light;
-  --bg: #f8fafc;
-  --ink: #111827;
-  --muted: #6b7280;
-  --line: #d8dee8;
-  --line-soft: #e8edf4;
-  --accent: #6366f1;
-  --accent-2: #a855f7;
-  --footer: #6b7280;
-  --toast-bg: rgba(17, 24, 39, 0.95);
-  --toast-fg: #ffffff;
-  --halo-opacity: 0.16;
-}
-
-:root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #030405;
   --ink: #f8fafc;
@@ -26,6 +11,21 @@
   --toast-bg: rgba(248, 250, 252, 0.94);
   --toast-fg: #030405;
   --halo-opacity: 0.2;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f8fafc;
+  --ink: #111827;
+  --muted: #6b7280;
+  --line: #d8dee8;
+  --line-soft: #e8edf4;
+  --accent: #6366f1;
+  --accent-2: #a855f7;
+  --footer: #6b7280;
+  --toast-bg: rgba(17, 24, 39, 0.95);
+  --toast-fg: #ffffff;
+  --halo-opacity: 0.16;
 }
 
 * {
@@ -177,12 +177,12 @@ button {
   stroke-width: 2;
 }
 
-.theme-icon-sun,
-:root[data-theme="dark"] .theme-icon-moon {
+.theme-icon-moon,
+:root[data-theme="light"] .theme-icon-sun {
   display: none;
 }
 
-:root[data-theme="dark"] .theme-icon-sun {
+:root[data-theme="light"] .theme-icon-moon {
   display: block;
 }
 
