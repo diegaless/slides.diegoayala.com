@@ -40,6 +40,56 @@
 <div class="task-layout"><article class="task-main"><p class="eyebrow">DAPW · Tarea</p><h1>COMPOSE 2 Y 3 --SOLO ALUMNOS AUSENTES</h1>
 <nav class="task-slide-links" aria-label="Diapositivas de esta tarea"><a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g3a0e417b5f2_0_27" target="_blank" rel="noopener noreferrer"><span>Diapositiva 98</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a><a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g3a0e417b5f2_0_36" target="_blank" rel="noopener noreferrer"><span>Diapositiva 102</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></nav>
 
-<h2>Instrucciones</h2><div class="instructions"><div><div>Adjuntad github</div></div></div>
-<h2>Materiales de la tarea</h2><p class="subtle">No hay archivos adjuntos en esta tarea.</p></article>
+<h2>Instrucciones</h2><div class="instructions authored-instructions">
+<p>Realiza las dos prácticas de Docker Compose indicadas a continuación. En cada una debes poder construir y arrancar la aplicación mediante Compose y documentar cómo comprobar su funcionamiento.</p>
+
+<section class="exercise-block exercise-block--long" aria-labelledby="compose-2-title">
+  <header class="exercise-block-header">
+    <p class="exercise-kicker">Ejercicio 2</p>
+    <h3 id="compose-2-title">Flask Cat App con Compose</h3>
+    <a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g3a0e417b5f2_0_27" target="_blank" rel="noopener noreferrer">Ver diapositiva 98</a>
+  </header>
+  <p><strong>Dockeriza con Compose Flask Cat App</strong>, la aplicación de Python y Flask que muestra un GIF aleatorio de un gato al recargar la página.</p>
+  <p>Parte del <a href="https://docs.google.com/document/d/1E-U95T-MHzXg8tQ0FOPDXZLWHzogp60Mqh5U7icc-wY/edit?tab=t.0" target="_blank" rel="noopener noreferrer">ejercicio original de Flask Cat App</a> y del archivo <code>templates.zip</code> enlazado en los materiales. Si ya has realizado la práctica, utiliza tu proyecto como base.</p>
+  <h4>Preparar la aplicación</h4>
+  <ul>
+    <li>Lee <code>app.py</code> y la plantilla para deducir la carpeta donde deben colocarse los archivos <code>.gif</code>. Añade al menos seis GIFs de gatos en la ubicación correcta.</li>
+    <li>Prepara un Dockerfile con una imagen de Python 3 sobre Alpine, instalación de <code>requirements.txt</code> sin caché y copia del código y los recursos.</li>
+    <li>La aplicación debe ejecutarse con un usuario que no sea root, exponer el puerto <code>5000</code> y arrancar con <code>python app.py</code>.</li>
+  </ul>
+  <h4>Integrar Docker Compose</h4>
+  <ul>
+    <li>Define el servicio de la aplicación y su construcción a partir del Dockerfile. Conserva el nombre de imagen del ejercicio original: <code>flask-cat-app:alumnoXX</code>, sustituyendo <code>XX</code> por tu identificador.</li>
+    <li>Configura el acceso desde el puerto <code>8888</code> del equipo al puerto <code>5000</code> del contenedor.</li>
+    <li>Construye y arranca la aplicación con Compose. Abre <code>http://localhost:8888/</code> y recarga varias veces para comprobar la selección aleatoria de los GIFs.</li>
+  </ul>
+  <p>Documenta los comandos de Compose, incluye una captura de la aplicación funcionando y explica cómo dedujiste la ubicación de los GIFs.</p>
+</section>
+
+<section class="exercise-block exercise-block--long" aria-labelledby="compose-3-title">
+  <header class="exercise-block-header">
+    <p class="exercise-kicker">Ejercicio 3</p>
+    <h3 id="compose-3-title">Dice App con Compose y variables de entorno</h3>
+    <a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g3a0e417b5f2_0_36" target="_blank" rel="noopener noreferrer">Ver diapositiva 102</a>
+  </header>
+  <p><strong>Dockeriza con Compose Dice App.</strong> Utiliza el proyecto disponible en el enlace de Google Drive de los materiales de esta tarea.</p>
+  <ul>
+    <li>Prepara los archivos necesarios para construir y arrancar la aplicación con Docker Compose.</li>
+    <li>Utiliza un archivo <code>.env</code> para poder cambiar el número de caras de los dados. Asegúrate de que la configuración llega a la aplicación.</li>
+    <li>Si el archivo <code>.env</code> no existe o está vacío, la aplicación debe arrancar y utilizar <strong>seis caras por defecto</strong>.</li>
+  </ul>
+  <h4>Comprobaciones</h4>
+  <ol>
+    <li><strong>Sin archivo <code>.env</code>:</strong> los dados tienen seis caras.</li>
+    <li><strong>Con <code>.env</code> vacío:</strong> se mantiene el valor predeterminado de seis caras.</li>
+    <li><strong>Con un número de caras configurado:</strong> la aplicación utiliza ese valor.</li>
+  </ol>
+  <p>Incluye los pasos y las capturas que demuestren el funcionamiento en los tres casos.</p>
+</section>
+
+<h3>Entrega de las dos prácticas</h3>
+<p>Adjunta el enlace o los enlaces a los repositorios de GitHub. Identifica claramente cada ejercicio e incluye su código, sus archivos de Docker y Compose y un <code>README.md</code> con los comandos de construcción, arranque y parada, las comprobaciones solicitadas y sus capturas.</p>
+</div>
+<h2>Materiales de la tarea</h2><ul class="attachments"><li><a class="attachment-link" href="../Flask%20Cat%20App%20%E2%80%93%20Evaluable/Adjuntos/templates.zip" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H5v18h14V8Z"/><path d="M14 3v5h5M8 12h8M8 16h5"/></svg><span><strong>templates.zip · Flask Cat App</strong><small>Material del ejercicio 2 · mismo archivo que la tarea original</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg></a></li>
+<li><a class="attachment-link" href="https://drive.google.com/file/d/1TvVzBtT5Vftvd6HBDbNAEBcfS4wQ-O-4/view?usp=sharing" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H5v18h14V8Z"/><path d="M14 3v5h5M8 12h8M8 16h5"/></svg><span><strong>Material de Dice App en Google Drive</strong><small>Proyecto del ejercicio 3 · abrir en Google Drive</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></li></ul></article>
 <aside class="task-aside task-download" aria-label="Descarga de la tarea"><a id="task-pdf-download" class="button task-pdf" href="COMPOSE%202%20Y%203%20--SOLO%20ALUMNOS%20AUSENTES.pdf" download="COMPOSE 2 Y 3 --SOLO ALUMNOS AUSENTES.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg> Descargar PDF</a></aside></div></main></body></html>

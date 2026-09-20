@@ -40,6 +40,37 @@
 <div class="task-layout"><article class="task-main"><p class="eyebrow">DAPW · Tarea</p><h1>COMPOSE 1</h1>
 <nav class="task-slide-links" aria-label="Diapositivas de esta tarea"><a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g3a063833045_0_119" target="_blank" rel="noopener noreferrer"><span>Diapositiva 97</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></nav>
 
-<h2>Instrucciones</h2><div class="instructions"><div><div>ADJUNTAD GITHUB</div></div></div>
-<h2>Materiales de la tarea</h2><p class="subtle">No hay archivos adjuntos en esta tarea.</p></article>
+<h2>Instrucciones</h2><div class="instructions authored-instructions">
+<p><strong>Completa un proyecto de Docker Compose para conectar Apache con PostgreSQL.</strong> Parte de <code>compose-01.zip</code>, disponible en los materiales de esta tarea y enlazado desde la diapositiva 97.</p>
+<p>El proyecto incluye la configuración del servicio <code>web</code>, su Dockerfile, una página HTML, un script CGI, los scripts de inicialización de la base de datos y los archivos de secretos. El archivo <code>compose.yml</code> hace referencia a un servicio <code>db</code> que todavía tienes que definir.</p>
+
+<h3>1. Revisar el proyecto</h3>
+<ul>
+  <li>Localiza la configuración de Apache en <code>apache/</code>, la página en <code>www/</code> y el script <code>cgi-bin/db-mensajes.sh</code>.</li>
+  <li>Lee <code>db-init/001-create-mensajes.sql</code> para identificar la tabla y el registro que se crean al inicializar PostgreSQL.</li>
+  <li>Comprueba cómo están declarados <code>configs</code> y <code>secrets</code> en <code>compose.yml</code>. Conserva la configuración proporcionada para el servicio <code>web</code>.</li>
+</ul>
+
+<h3>2. Añadir PostgreSQL a Compose</h3>
+<p>Modifica <code>compose.yml</code> e incorpora un servicio llamado <code>db</code> basado en la imagen <code>postgres:16</code>.</p>
+<ul>
+  <li>Configura mediante <code>environment</code> el nombre de la base de datos, el usuario y la ruta al archivo que contiene la contraseña.</li>
+  <li>Utiliza la base de datos <code>ejemplo</code> y el usuario <code>usuario</code>, que son los valores que espera el script CGI suministrado.</li>
+  <li>Asigna al servicio el secreto <code>pg_pass</code>, ya declarado en el proyecto. Indica su ruta mediante <code>POSTGRES_PASSWORD_FILE</code>: <code>/run/secrets/pg_pass</code>.</li>
+  <li>Monta <code>./db-init</code> en <code>/docker-entrypoint-initdb.d</code> en modo de solo lectura para que PostgreSQL ejecute los scripts SQL al inicializar una base de datos vacía.</li>
+</ul>
+<p>La conexión del script debe resolver el nombre <code>db</code> dentro de la red de Compose. La contraseña se toma del secreto; no tienes que escribir su valor en <code>compose.yml</code>.</p>
+
+<h3>3. Arrancar y comprobar</h3>
+<ul>
+  <li>Valida la configuración con <code>docker compose config</code> y construye y arranca el proyecto con Compose.</li>
+  <li>Comprueba que los servicios <code>web</code> y <code>db</code> están en ejecución y revisa sus logs si se produce un error.</li>
+  <li>Abre <code>http://localhost:8080/</code>. La página debe mostrar los mensajes leídos desde PostgreSQL, incluido el registro inicial proporcionado por el script SQL.</li>
+  <li>Comprueba que la consulta a <code>/cgi-bin/db-mensajes.sh</code> funciona a través de Apache.</li>
+</ul>
+
+<h3>Entrega</h3>
+<p>Adjunta el enlace al repositorio de GitHub con el proyecto y el <code>compose.yml</code> completado. Incluye un <code>README.md</code> con los comandos para construir, arrancar y detener los servicios, una captura de la página mostrando los datos y una explicación breve de cómo se conectan Apache y PostgreSQL y cómo utilizan el secreto de contraseña.</p>
+</div>
+<h2>Materiales de la tarea</h2><ul class="attachments"><li><a class="attachment-link" href="../../assets/dapw/compose-01.zip" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H5v18h14V8Z"/><path d="M14 3v5h5M8 12h8M8 16h5"/></svg><span><strong>compose-01.zip</strong><small>Proyecto original de Apache y PostgreSQL · material de la diapositiva 97</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg></a></li></ul></article>
 <aside class="task-aside task-download" aria-label="Descarga de la tarea"><a id="task-pdf-download" class="button task-pdf" href="COMPOSE%201.pdf" download="COMPOSE 1.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg> Descargar PDF</a></aside></div></main></body></html>

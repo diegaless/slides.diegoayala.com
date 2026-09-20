@@ -183,6 +183,19 @@
     break-inside: avoid;
   }
 
+  /* Los enunciados extensos deben aprovechar la página desde su cabecera. */
+  .authored-instructions .exercise-block.exercise-block--long {
+    break-inside: auto;
+  }
+
+  .authored-instructions .exercise-block--long h4 {
+    break-after: avoid;
+  }
+
+  .authored-instructions .exercise-assessment {
+    break-inside: avoid;
+  }
+
   .exercise-reference .slide-caption-link {
     display: inline;
     margin-top: 0;

@@ -92,3 +92,40 @@ Documentación contrastada al redactar las indicaciones:
 - [Servicios y volúmenes de Docker Compose](https://docs.docker.com/reference/compose-file/services/).
 - [Proxy HTTP de Nginx](https://nginx.org/en/docs/http/ngx_http_proxy_module.html).
 - [Integración de django-browser-reload](https://github.com/adamchainz/django-browser-reload).
+
+## Enunciados de Viaje de Estudios y Compose 1–4
+
+Los cuatro enunciados se recuperaron el 20 de septiembre de 2026 a partir de los
+materiales del profesor. Se mantienen los nombres públicos de las tareas, las
+entregas en GitHub y las rúbricas cuando figuran en el original.
+
+| Fragmento | Fuente y alcance |
+| --- | --- |
+| `dapw/viaje-estudios.html` | `README.md` de `6-Viaje-estudios-votacion.zip`, publicado en DAPW como «practica viaje» el 30 de octubre de 2025. Construcción y ejecución mediante comandos: Flask/Gunicorn, red `webnet` y Nginx. |
+| `dapw/compose-1.html` | `README.md` y código de [compose-01.zip, enlazado en la diapositiva 97](https://drive.google.com/file/d/1I9znLac-E7TxhHEAtZE3bZedqWWGcCJf/view?usp=sharing). Completar el servicio PostgreSQL del proyecto de Apache. Los nombres `ejemplo`, `usuario` y `pg_pass` se contrastan con el CGI y el Compose originales. |
+| `dapw/compose-2-3.html` | Diapositivas 98 y 102: Flask Cat App y Dice App con Compose, en dos bloques separados. Se incorporan los requisitos de la aplicación del [documento original de Flask Cat App](https://docs.google.com/document/d/1E-U95T-MHzXg8tQ0FOPDXZLWHzogp60Mqh5U7icc-wY/edit?tab=t.0), adaptando la construcción y el arranque a Compose. Dice App conserva las tres comprobaciones de `.env` de la diapositiva 102. |
+| `dapw/compose-4.html` | `README.md` y código del adjunto original `4-Viaje-estudios-votacion.zip`. Crear `docker-compose.yaml` con `fiesta_app` y `fiesta_nginx` en la red predeterminada de Compose; el Dockerfile y la configuración de Nginx ya se proporcionan. |
+
+La publicación «bug tarea viaje-estudios», del 31 de octubre de 2025, corrige
+la ubicación de `templates`, que debe ir dentro de `app`. El ZIP contiene además
+una ruta explícita `template_folder="../templates"` en `app.py`; el enunciado
+aclara que hay que cambiarla por la ubicación predeterminada de Flask y
+reconstruir la imagen. No se modifica el ZIP original ni se entrega una solución.
+El ajuste se contrasta con la [API de Flask](https://flask.palletsprojects.com/en/stable/api/#flask.Flask).
+El montaje de secretos de Compose 1 se contrasta con la
+[documentación de Docker Compose](https://docs.docker.com/compose/how-tos/use-secrets/).
+
+Se incorporan dos copias exactas de los materiales originales en
+`ejercicios/assets/dapw/`:
+
+- `6-Viaje-estudios-votacion.zip`: SHA-256 `6a81b3e612b5ae5fb4f029ff5dc55a1d2afd23bf8a4aa9538de836122c48c420`.
+- `compose-01.zip`: SHA-256 `06c378d449f37c4ad88be6960904bbbae976583b3e4833b87cb69208d42a092a`.
+
+En los PDF, `exercise-block--long` permite que los enunciados extensos continúen
+en la página siguiente sin desplazar el bloque entero. `exercise-assessment`
+mantiene unida la rúbrica y su ampliación opcional.
+
+Compose 2 reutiliza el `templates.zip` ya publicado en Flask Cat App y Compose 3
+enlaza al material de Dice App en Drive. Compose 4 conserva su adjunto original.
+Viaje de Estudios y Compose 4 siguen sin enlace a una diapositiva concreta, por
+indicación del profesor. No se incorporan entregas ni información del alumnado.

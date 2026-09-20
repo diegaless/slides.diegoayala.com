@@ -39,6 +39,56 @@
 <main class="wrap" id="contenido"><a class="back-link" href="../INDICE.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg> Volver a las tareas</a>
 <div class="task-layout"><article class="task-main"><p class="eyebrow">DAPW · Tarea</p><h1>COMPOSE 4</h1>
 
-<h2>Instrucciones</h2><div class="instructions"><div><div>Adjuntad github</div></div></div>
+<h2>Instrucciones</h2><div class="instructions authored-instructions">
+<p><strong>Levanta la aplicación del viaje de estudios con Docker Compose.</strong> En esta etapa debes crear el archivo <code>docker-compose.yaml</code> que conecte Flask y Gunicorn con Nginx y permita acceder a la aplicación desde <code>http://localhost:8080/</code>.</p>
+<p>Utiliza <code>4-Viaje-estudios-votacion.zip</code>, disponible en los materiales. Esta versión ya incluye el código de la aplicación, el Dockerfile y <code>nginx/default.conf</code>. La tarea consiste en integrar esas piezas mediante Compose.</p>
+
+<h3>1. Revisar los archivos proporcionados</h3>
+<ul>
+  <li>En <code>app/</code> encontrarás Flask, sus dependencias, las plantillas y el Dockerfile que arranca Gunicorn en el puerto <code>8000</code>.</li>
+  <li>La configuración de Nginx ya reenvía las peticiones a <code>http://fiesta_app:8000</code>. El nombre del servicio de la aplicación debe coincidir con ese destino.</li>
+  <li>Crea <code>docker-compose.yaml</code> en la raíz del proyecto, junto a las carpetas <code>app/</code> y <code>nginx/</code>.</li>
+</ul>
+
+<h3>2. Definir el servicio fiesta_app</h3>
+<ul>
+  <li>Configura la construcción de la imagen a partir del Dockerfile incluido en <code>app/</code>.</li>
+  <li>Mantén el arranque con Gunicorn en el puerto interno <code>8000</code>.</li>
+  <li>El puerto de la aplicación debe quedar accesible para Nginx dentro de la red de Compose, sin publicarlo en el equipo anfitrión.</li>
+</ul>
+
+<h3>3. Definir el servicio fiesta_nginx</h3>
+<ul>
+  <li>Utiliza la imagen <code>nginx:1.27-alpine</code>.</li>
+  <li>Configura la dependencia para que Compose arranque primero <code>fiesta_app</code> y después Nginx.</li>
+  <li>Monta <code>./nginx/default.conf</code> en <code>/etc/nginx/conf.d/default.conf</code> en modo de solo lectura.</li>
+  <li>Publica el puerto <code>8080</code> del equipo hacia el puerto <code>80</code> del contenedor.</li>
+</ul>
+<p>Los dos servicios deben comunicarse mediante <strong>la red predeterminada que crea Docker Compose</strong>. En esta práctica Compose se encarga de crear la red y arrancar los contenedores.</p>
+
+<h3>4. Arrancar y comprobar el conjunto</h3>
+<ul>
+  <li>Valida el archivo de Compose, construye la imagen y arranca ambos servicios.</li>
+  <li>Abre <code>http://localhost:8080/</code> y comprueba que la aplicación de votación funciona a través de Nginx.</li>
+  <li>Revisa el estado y los logs de los servicios si la aplicación no responde.</li>
+  <li>Comprueba que puedes detener el conjunto mediante Compose y documenta los comandos utilizados.</li>
+</ul>
+
+<h3>Entrega</h3>
+<p>Adjunta el enlace al repositorio de GitHub con el proyecto y el archivo <code>docker-compose.yaml</code> funcionando. Incluye un <code>README.md</code> con:</p>
+<ul>
+  <li>Los comandos de construcción, arranque y parada.</li>
+  <li>Una captura o evidencia de la web funcionando en <code>http://localhost:8080/</code>.</li>
+  <li>Una explicación de entre tres y cinco líneas sobre el papel de Nginx delante de Flask y Gunicorn.</li>
+</ul>
+
+<h3>Evaluación</h3>
+<ul>
+  <li>Archivo Compose con los dos servicios y la arquitectura solicitada: <strong>4 puntos</strong>.</li>
+  <li>Nginx conectado a la aplicación y acceso por el puerto 8080: <strong>3 puntos</strong>.</li>
+  <li>README con capturas y comandos: <strong>2 puntos</strong>.</li>
+  <li>Buenas prácticas adicionales, como política de reinicio, variables o cabeceras de seguridad: <strong>1 punto</strong>.</li>
+</ul>
+</div>
 <h2>Materiales de la tarea</h2><ul class="attachments"><li><a class="attachment-link" href="Adjuntos/4-Viaje-estudios-votacion.zip" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H5v18h14V8Z"/><path d="M14 3v5h5M8 12h8M8 16h5"/></svg><span><strong>4-Viaje-estudios-votacion.zip</strong><small>ZIP · 6,9 KB</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg></a></li></ul></article>
 <aside class="task-aside task-download" aria-label="Descarga de la tarea"><a id="task-pdf-download" class="button task-pdf" href="COMPOSE%204.pdf" download="COMPOSE 4.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg> Descargar PDF</a></aside></div></main></body></html>
