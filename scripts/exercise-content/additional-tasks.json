@@ -1,0 +1,11 @@
+{
+  "dapw": [
+    {
+      "id": "6733ef3f-c9b6-534d-aa6e-0941761295fb",
+      "folder": "Despliegue remoto",
+      "title": "Despliegue remoto — Ampliación de Prod Stage 2",
+      "after": "COMPOSE -- PROD STAGE 2",
+      "pdf": "materials/dapw/Ampliacion_Prod_2_DAPW_Alumnado_Memoria_Investigacion.pdf"
+    }
+  ]
+}

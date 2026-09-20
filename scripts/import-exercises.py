@@ -16,7 +16,7 @@ import zlib
 from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import unquote, urlsplit
+from urllib.parse import quote, unquote, urlsplit
 
 
 DESTINATION = Path(__file__).resolve().parents[1] / "ejercicios"
@@ -81,6 +81,28 @@ class Links(HTMLParser):
 
 def read(path):
     return path.read_text(encoding="utf-8-sig")
+
+
+def select_tasks(source, slug):
+    manifest = json.loads(read(source / "manifest_web.json"))
+    tasks = [task for task in manifest["Tareas"]
+             if task["Estado"] == "PUBLICADA" and task["Id"] not in EXCLUDED_IDS]
+    tasks.sort(key=lambda task: task.get("FechaCreacion") or "")
+    for extra in json.loads(read(CONTENT / "additional-tasks.json")).get(slug, []):
+        folder = extra["folder"]
+        if not folder or folder in (".", "..") or "/" in folder or "\\" in folder:
+            raise ValueError(f"Carpeta de tarea adicional inválida: {folder}")
+        if any(task["Id"] == extra["id"] or task["Carpeta"].casefold() == folder.casefold() for task in tasks):
+            raise ValueError(f"Tarea adicional duplicada: {slug}/{folder}")
+        pdf = (CONTENT / extra["pdf"]).resolve()
+        if not pdf.is_relative_to(CONTENT.resolve()) or not pdf.is_file() or pdf.suffix.lower() != ".pdf":
+            raise ValueError(f"PDF original inválido: {slug}/{folder}")
+        previous = next((i for i, task in enumerate(tasks) if task["Carpeta"] == extra["after"]), None)
+        if previous is None:
+            raise ValueError(f"Falta la tarea anterior a {slug}/{folder}: {extra['after']}")
+        tasks.insert(previous + 1, {"Id": extra["id"], "Carpeta": folder,
+                                  "Titulo": extra["title"], "PdfOriginal": extra["pdf"]})
+    return tasks
 
 
 def without_deliveries(html):
@@ -199,6 +221,21 @@ def copy_task(source, destination, content_key=None):
     return links.pdf
 
 
+def copy_additional_task(task, destination, slug):
+    original = CONTENT / task["PdfOriginal"]
+    html = read(CONTENT / "task-template.html").format(
+        title=escape(task["Titulo"]), subject=escape(slug.upper()),
+        pdf_href=quote(original.name, safe=""), pdf_name=escape(original.name, quote=True))
+    html = adapt_header(html, "../../../index.html", "../../assets/")
+    html = apply_task_content(html, f'{slug}/{task["Carpeta"]}')
+    destination.mkdir(parents=True, exist_ok=True)
+    (destination / "TAREA.html").write_text(html, encoding="utf-8")
+    # El documento proporcionado es el enunciado completo. No regenerarlo
+    # a partir del resumen HTML, ni en la descarga individual ni en los ZIP.
+    shutil.copyfile(original, destination / original.name)
+    return original.name
+
+
 def copy_index(source, destination, tasks):
     html = without_deliveries(read(source / "INDICE.html"))
     html = html.replace('href="assets/', 'href="../assets/').replace('src="assets/', 'src="../assets/')
@@ -219,7 +256,13 @@ def copy_index(source, destination, tasks):
 
     rows = {re.search(r'data-id="([^"]+)"', match[0])[1]: match[0]
             for match in re.finditer(r'<tr class="task-row"[^>]*>.*?</tr>', html, flags=re.S)}
-    # El orden del manifiesto ya está normalizado por fecha de creación.
+    for task in tasks:
+        if task.get("PdfOriginal"):
+            title = escape(task["Titulo"], quote=True)
+            rows[task["Id"]] = (f'<input type="checkbox" class="pdf-select" value="{escape(task["Id"], quote=True)}" '
+                                f'aria-label="Seleccionar PDF: {title}">'
+                                f'<a class="task-link" href="{quote(task["Carpeta"], safe="")}/TAREA.html">{title}</a>')
+    # El manifiesto está ordenado por fecha; las ampliaciones siguen a su tarea base.
     # La lista funciona sin JavaScript. Los adjuntos permanecen dentro de la tarea.
     items = '\n'.join(prepare_item(rows[task['Id']]) for task in tasks)
     count = len(tasks)
@@ -289,25 +332,24 @@ def main(source):
     for source_name, slug in SUBJECTS:
         origin = source / source_name
         target = DESTINATION / slug
-        manifest = json.loads(read(origin / "manifest_web.json"))
-        tasks = [task for task in manifest["Tareas"] if task["Estado"] == "PUBLICADA" and task["Id"] not in EXCLUDED_IDS]
-        tasks.sort(key=lambda task: task.get("FechaCreacion") or "")
+        tasks = select_tasks(origin, slug)
         # Eliminar únicamente salidas anteriores de este importador evita conservar
         # material retirado del manifiesto al regenerar la copia pública.
         if target.exists():
             shutil.rmtree(target)
         target.mkdir(parents=True)
-        pdfs = [copy_task(origin / task["Carpeta"], target / task["Carpeta"], f'{slug}/{task["Carpeta"]}')
+        pdfs = [copy_additional_task(task, target / task["Carpeta"], slug) if task.get("PdfOriginal")
+                else copy_task(origin / task["Carpeta"], target / task["Carpeta"], f'{slug}/{task["Carpeta"]}')
                 for task in tasks]
         copy_index(origin, target, tasks)
         pdf_jobs.extend({"html": str(target / task["Carpeta"] / "TAREA.html"),
                          "pdf": str(target / task["Carpeta"] / filename)}
-                        for task, filename in zip(tasks, pdfs))
+                        for task, filename in zip(tasks, pdfs) if not task.get("PdfOriginal"))
         bundles.append((target, tasks, pdfs))
         report.append({"subject": slug, "tasks": len(tasks), "attachments": sum(
             read(target / task["Carpeta"] / "TAREA.html").count('class="attachment-link"') for task in tasks)})
     subprocess.run(["node", str(renderer)], input=json.dumps(pdf_jobs), text=True, check=True)
-    # Tanto el ZIP completo como la selección usan los PDF recién generados.
+    # Los ZIP reúnen los PDF generados y los originales de las tareas adicionales.
     for target, tasks, pdfs in bundles:
         pdf_bundle(target, tasks, pdfs)
     print(json.dumps(report, ensure_ascii=False, indent=2))

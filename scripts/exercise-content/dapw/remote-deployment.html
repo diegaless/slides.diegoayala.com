@@ -1,0 +1,22 @@
+<p>Amplía tu entrega de <a href="../COMPOSE%20--%20PROD%20STAGE%202/TAREA.html">Compose — Prod Stage 2</a> en el mismo repositorio. Desplegarás la aplicación con Docker Compose en el <strong>servidor remoto contratado por Miralmonte</strong>, manteniendo Django, Gunicorn, Nginx, los archivos estáticos y multimedia y el almacenamiento persistente.</p>
+<p>Este es un resumen de la ampliación. <strong>Descarga el PDF para consultar el enunciado completo de siete páginas</strong>, sus requisitos, evidencias y recursos oficiales.</p>
+
+<h3>Qué tienes que implementar</h3>
+<ol>
+  <li><strong>Despliegue remoto.</strong> Prepara Compose para producción y ejecuta los contenedores en el servidor mediante SSH, dentro del espacio y los puertos asignados. Comprueba el acceso desde otro equipo con los contenedores de tu portátil detenidos y demuestra la persistencia al recrear tus contenedores sin borrar los volúmenes.</li>
+  <li><strong>HTTPS en tu Nginx.</strong> Configura el subdominio autorizado y un certificado de Let’s Encrypt con Certbot, bajo supervisión. Verifica la redirección desde HTTP, los recursos y los formularios; documenta la renovación.</li>
+  <li><strong>Documentación generada.</strong> Compara dos herramientas y justifica la elegida; se propone Sphinx con autodoc. Organiza la memoria en <code>docs/</code>, genera HTML y documenta automáticamente al menos dos componentes reales del código. Otra herramienta requiere aprobación del profesor.</li>
+  <li><strong>Control de versiones.</strong> Conserva el historial de la ampliación y una modificación de documentación realizada en una rama, con una pull request revisada por un compañero o el profesor.</li>
+  <li><strong>Integración continua.</strong> Configura GitHub Actions para construir la imagen, ejecutar al menos dos pruebas relevantes y generar la documentación como artefacto. Aporta una ejecución con un fallo controlado y otra correcta tras resolverlo. No se pide despliegue automático.</li>
+</ol>
+
+<h3>Memoria e investigación obligatorias</h3>
+<p>Entrega por escrito los <strong>12 apartados A–L</strong> del PDF, integrados en la misma memoria:</p>
+<ul>
+  <li><strong>A–F · Documentación del despliegue:</strong> servidor y comparación con la nube, evolución de la arquitectura, recorrido HTTP/HTTPS, direcciones y puertos, diagnóstico del error 502 y mantenimiento.</li>
+  <li><strong>G–L · Investigación:</strong> módulos y gzip, varios sitios en un servidor, autenticación, gestión de logs, diseño de una prueba de rendimiento y diagnóstico de lentitud. Son propuestas escritas: no se exige implementarlas ni ejecutar pruebas de carga.</li>
+</ul>
+<p>Aplica las explicaciones a tu proyecto, cita las fuentes y distingue las comprobaciones realizadas de las propuestas.</p>
+
+<h3>Entrega y defensa</h3>
+<p>Entrega el repositorio actualizado con una etiqueta identificable, un ZIP depurado, las fuentes y el HTML de la memoria, las evidencias y la investigación. Excluye secretos y datos personales. En la <a href="../DEFENSA%20FINAL/TAREA.html">defensa final</a> aplicarás esta ampliación a tu propia aplicación y mostrarás el despliegue remoto, HTTPS, el funcionamiento y la persistencia.</p>

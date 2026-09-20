@@ -12,6 +12,27 @@ Los recursos compartidos de estas ampliaciones se mantienen en
 Se reutiliza una única copia del ZIP original de Laura en las tres etapas de Compose.
 El backup y el ZIP de origen no se modifican.
 
+## Tareas adicionales con PDF original
+
+`additional-tasks.json` incorpora tareas que no están en el backup. Cada entrada
+indica un identificador estable, carpeta, título, carpeta de la tarea anterior
+(`after`) y ruta del PDF original dentro de este directorio. El resumen HTML se
+asocia en `overrides.json` y utiliza `task-template.html` con el estilo común.
+
+«Despliegue remoto — Ampliación de Prod Stage 2» aparece después de Prod Stage 2.
+Su fuente es `Ampliacion_Prod_2_DAPW_Alumnado_Memoria_Investigacion.pdf`, facilitado
+por el profesor el 21 de septiembre de 2026. El PDF de siete páginas se conserva
+en `materials/dapw/` y se copia sin cambios a la tarea pública: SHA-256
+`ecf12fad5e7818a4c3332bd959e143a11119991f5d29c8893fdb4af1a14fc93f`.
+La descarga individual y ambos ZIP usan ese original; el importador lo excluye
+de la regeneración de PDF para no sustituirlo por el resumen de la web.
+
+El resumen distingue los requisitos prácticos de la investigación escrita G–L.
+El nombre «Despliegue remoto» refleja el servidor contratado por Miralmonte que
+describe el documento; no presupone un proveedor cloud ni un alojamiento nuevo.
+
+## Enunciados y materiales de Docker y Compose
+
 `dapw/docker-1-10.html` desarrolla la tarea «Docker 1..10» desde la
 [presentación publicada de DAPW](https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub),
 consultada el 20 de septiembre de 2026. Se conserva la entrega original en PDF

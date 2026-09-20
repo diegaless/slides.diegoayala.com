@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="theme-color" content="#030405"><script src="../../../theme.js"></script><title>Despliegue remoto — Ampliación de Prod Stage 2 · DAPW</title>
+<link rel="stylesheet" href="../../assets/aula.css"><link rel="stylesheet" href="../../assets/pdf.css"><link rel="stylesheet" href="../../assets/tarea-web.css"><link rel="stylesheet" href="../../../styles.css" media="screen"><link rel="stylesheet" href="../../assets/web.css" media="screen"><link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"></head><body class="exercises-page">
+<a class="skip-link" href="#contenido">Ir al contenido</a>
+<header class="site-header">
+      <a class="site-name" href="../../../index.html" aria-label="Inicio">Diego Ayala</a>
+      <nav class="section-nav" aria-label="Secciones de material de clase">
+        <a href="../../../index.html" aria-current="page">DAM / DAW</a>
+        <a href="../../../sef/">SEF</a>
+      </nav>
+      <button
+        class="theme-toggle"
+        type="button"
+        data-theme-toggle
+        aria-label="Activar modo claro"
+        aria-pressed="true"
+        title="Cambiar tema"
+      >
+        <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M20.4 15.8A8.5 8.5 0 0 1 8.2 3.6 8.5 8.5 0 1 0 20.4 15.8z"></path>
+        </svg>
+        <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="M4.93 4.93 6.34 6.34"></path>
+          <path d="M17.66 17.66 19.07 19.07"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="M6.34 17.66 4.93 19.07"></path>
+          <path d="M19.07 4.93 17.66 6.34"></path>
+        </svg>
+      </button>
+    </header>
+<main class="wrap" id="contenido">
+<a class="back-link" href="../INDICE.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Volver a las tareas</a>
+<div class="task-layout"><article class="task-main"><p class="eyebrow">DAPW · Tarea</p><h1>Despliegue remoto — Ampliación de Prod Stage 2</h1>
+<h2>Instrucciones</h2><div class="instructions authored-instructions">
+<p>Amplía tu entrega de <a href="../COMPOSE%20--%20PROD%20STAGE%202/TAREA.html">Compose — Prod Stage 2</a> en el mismo repositorio. Desplegarás la aplicación con Docker Compose en el <strong>servidor remoto contratado por Miralmonte</strong>, manteniendo Django, Gunicorn, Nginx, los archivos estáticos y multimedia y el almacenamiento persistente.</p>
+<p>Este es un resumen de la ampliación. <strong>Descarga el PDF para consultar el enunciado completo de siete páginas</strong>, sus requisitos, evidencias y recursos oficiales.</p>
+
+<h3>Qué tienes que implementar</h3>
+<ol>
+  <li><strong>Despliegue remoto.</strong> Prepara Compose para producción y ejecuta los contenedores en el servidor mediante SSH, dentro del espacio y los puertos asignados. Comprueba el acceso desde otro equipo con los contenedores de tu portátil detenidos y demuestra la persistencia al recrear tus contenedores sin borrar los volúmenes.</li>
+  <li><strong>HTTPS en tu Nginx.</strong> Configura el subdominio autorizado y un certificado de Let’s Encrypt con Certbot, bajo supervisión. Verifica la redirección desde HTTP, los recursos y los formularios; documenta la renovación.</li>
+  <li><strong>Documentación generada.</strong> Compara dos herramientas y justifica la elegida; se propone Sphinx con autodoc. Organiza la memoria en <code>docs/</code>, genera HTML y documenta automáticamente al menos dos componentes reales del código. Otra herramienta requiere aprobación del profesor.</li>
+  <li><strong>Control de versiones.</strong> Conserva el historial de la ampliación y una modificación de documentación realizada en una rama, con una pull request revisada por un compañero o el profesor.</li>
+  <li><strong>Integración continua.</strong> Configura GitHub Actions para construir la imagen, ejecutar al menos dos pruebas relevantes y generar la documentación como artefacto. Aporta una ejecución con un fallo controlado y otra correcta tras resolverlo. No se pide despliegue automático.</li>
+</ol>
+
+<h3>Memoria e investigación obligatorias</h3>
+<p>Entrega por escrito los <strong>12 apartados A–L</strong> del PDF, integrados en la misma memoria:</p>
+<ul>
+  <li><strong>A–F · Documentación del despliegue:</strong> servidor y comparación con la nube, evolución de la arquitectura, recorrido HTTP/HTTPS, direcciones y puertos, diagnóstico del error 502 y mantenimiento.</li>
+  <li><strong>G–L · Investigación:</strong> módulos y gzip, varios sitios en un servidor, autenticación, gestión de logs, diseño de una prueba de rendimiento y diagnóstico de lentitud. Son propuestas escritas: no se exige implementarlas ni ejecutar pruebas de carga.</li>
+</ul>
+<p>Aplica las explicaciones a tu proyecto, cita las fuentes y distingue las comprobaciones realizadas de las propuestas.</p>
+
+<h3>Entrega y defensa</h3>
+<p>Entrega el repositorio actualizado con una etiqueta identificable, un ZIP depurado, las fuentes y el HTML de la memoria, las evidencias y la investigación. Excluye secretos y datos personales. En la <a href="../DEFENSA%20FINAL/TAREA.html">defensa final</a> aplicarás esta ampliación a tu propia aplicación y mostrarás el despliegue remoto, HTTPS, el funcionamiento y la persistencia.</p>
+</div>
+<h2>Materiales de la tarea</h2><p class="subtle">El PDF descargable contiene el enunciado completo y los recursos de consulta.</p>
+</article><aside class="task-aside task-download" aria-label="Descarga de la tarea"><a id="task-pdf-download" class="button task-pdf" href="Ampliacion_Prod_2_DAPW_Alumnado_Memoria_Investigacion.pdf" download="Ampliacion_Prod_2_DAPW_Alumnado_Memoria_Investigacion.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>Descargar PDF</a></aside></div>
+</main></body></html>

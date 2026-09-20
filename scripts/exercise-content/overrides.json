@@ -159,6 +159,9 @@
   "dapw/DEFENSA FINAL": {
     "instructions": "dapw/defensa-final.html"
   },
+  "dapw/Despliegue remoto": {
+    "instructions": "dapw/remote-deployment.html"
+  },
   "lm/XML 1": {
     "slides": [
       {
