@@ -100,6 +100,11 @@ Flask Cat App y Dice App, con su enlace de Drive, y las tres etapas del blog de 
 desarrollo, Gunicorn y Nginx. Las capturas y un único ZIP compartido del proyecto
 están en `ejercicios/assets/dapw/`; las tres etapas enlazan al mismo archivo.
 La tarea «DOCKER COMPOSE APP LAURA» se retira de la selección pública.
+Los diez ejercicios de Docker se presentan en bloques separados, con sus capturas
+originales ampliables y enlaces a las diapositivas correspondientes. Las demás
+tareas de DAPW con una diapositiva identificada también enlazan directamente a ella;
+COMPOSE 4, VIAJE-ESTUDIOS_EVALUABLE y DEFENSA FINAL se mantienen sin enlace.
+Estas referencias se conservan al regenerar los HTML, los PDF y los ZIP.
 
 Los PDF descargables se generan desde estos HTML con los mismos estilos de
 impresión, sin el panel «Sobre esta tarea». Conservan los enunciados, imágenes,

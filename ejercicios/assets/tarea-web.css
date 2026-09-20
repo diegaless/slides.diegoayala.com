@@ -32,6 +32,91 @@
   line-height: 1.5;
 }
 
+.task-slide-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -10px 0 28px;
+}
+
+.slide-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--accent, var(--blue));
+  font-size: .8rem;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.slide-link:hover {
+  border-color: currentColor;
+}
+
+.slide-link svg {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.authored-instructions .exercise-block {
+  margin: 44px 0;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface, white);
+  break-inside: avoid;
+}
+
+.exercise-block-header {
+  margin-bottom: 24px;
+  break-inside: avoid;
+  break-after: avoid;
+}
+
+.authored-instructions .exercise-kicker {
+  margin: 0 0 10px;
+  color: var(--accent, var(--blue));
+  font-size: .72rem;
+  font-weight: 650;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.authored-instructions .exercise-block h3 {
+  margin: 0 0 18px;
+  font-size: clamp(1.18rem, 3vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -.02em;
+}
+
+.authored-instructions .exercise-block > :last-child {
+  margin-bottom: 0;
+}
+
+.authored-instructions .exercise-block--pending {
+  margin: 24px 0;
+  border-style: dashed;
+  background: transparent;
+}
+
+.exercise-reference .slide-caption-link {
+  display: inline-block;
+  margin-top: 6px;
+}
+
+@media screen and (max-width: 600px) {
+  .authored-instructions .exercise-block {
+    margin: 32px 0;
+    padding: 20px 16px;
+  }
+}
+
 @media print {
   .authored-instructions h3 {
     margin: 5mm 0 3mm;
@@ -47,6 +132,64 @@
   }
 
   .authored-instructions .screen-only {
+    display: none;
+  }
+
+  .task-slide-links {
+    margin: -4mm 0 5mm;
+    gap: 2mm;
+  }
+
+  .task-main:has(.slide-caption-link) > .task-slide-links {
+    display: none;
+  }
+
+  .slide-link {
+    padding: 1.5mm 2mm;
+    font-size: 9pt;
+  }
+
+  .authored-instructions .exercise-block {
+    margin: 5mm 0;
+    padding: 4mm 0 0;
+    border: 0;
+    border-top: 1pt solid var(--line);
+    border-radius: 0;
+    background: white;
+    break-inside: auto;
+  }
+
+  .exercise-block-header {
+    margin-bottom: 4mm;
+  }
+
+  .authored-instructions .exercise-kicker {
+    margin-bottom: 2mm;
+    font-size: 9pt;
+  }
+
+  .authored-instructions .exercise-block h3 {
+    margin-bottom: 3mm;
+    font-size: 15pt;
+  }
+
+  .authored-instructions .exercise-block--pending {
+    margin: 4mm 0;
+    padding-top: 3mm;
+    break-inside: avoid;
+  }
+
+  .authored-instructions .exercise-block:not(:has(.exercise-reference)) {
+    break-inside: avoid;
+  }
+
+  .exercise-reference .slide-caption-link {
+    display: inline;
+    margin-top: 0;
+    margin-left: .35em;
+  }
+
+  .exercise-reference figcaption br {
     display: none;
   }
 

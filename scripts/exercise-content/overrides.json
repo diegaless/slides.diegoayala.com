@@ -10,7 +10,13 @@
     ]
   },
   "dapw/Flask Cat App – Evaluable": {
-    "instructions": "dapw/flask-cat-app.html"
+    "instructions": "dapw/flask-cat-app.html",
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3a0e417b5f2_0_27",
+        "label": "Diapositiva 98"
+      }
+    ]
   },
   "dapw/DICE-APP_EVALUABLE": {
     "instructions": "dapw/dice-app.html",
@@ -19,6 +25,12 @@
         "href": "https://drive.google.com/file/d/1TvVzBtT5Vftvd6HBDbNAEBcfS4wQ-O-4/view?usp=sharing",
         "label": "Material de Dice App en Google Drive",
         "detail": "Abrir en Google Drive · nueva pestaña"
+      }
+    ],
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3a0e417b5f2_0_36",
+        "label": "Diapositiva 102"
       }
     ]
   },
@@ -30,6 +42,12 @@
         "label": "laura-personal_blog-main.zip",
         "detail": "Blog personal de Laura · proyecto base para las tres etapas · ZIP, 2,6 MB"
       }
+    ],
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3aa2083d3bb_0_0",
+        "label": "Diapositiva 115"
+      }
     ]
   },
   "dapw/COMPOSE - PROD STAGE 1": {
@@ -40,6 +58,16 @@
         "label": "laura-personal_blog-main.zip",
         "detail": "Proyecto original de referencia · continúa sobre tu entrega de Dev Stage · ZIP, 2,6 MB"
       }
+    ],
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3aa2083d3bb_0_12",
+        "label": "Diapositiva 116"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3aa2083d3bb_0_22",
+        "label": "Diapositiva 117"
+      }
     ]
   },
   "dapw/COMPOSE -- PROD STAGE 2": {
@@ -49,6 +77,48 @@
         "href": "../../assets/dapw/laura-personal_blog-main.zip",
         "label": "laura-personal_blog-main.zip",
         "detail": "Proyecto original de referencia · continúa sobre tu entrega de Prod Stage 1 · ZIP, 2,6 MB"
+      }
+    ],
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3aa2083d3bb_0_34",
+        "label": "Diapositiva 118"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3aa2083d3bb_0_46",
+        "label": "Diapositiva 119"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3aa711bcff2_0_0",
+        "label": "Diapositiva 120"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3aa2083d3bb_0_71",
+        "label": "Diapositiva 121"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3ad665943a1_0_0",
+        "label": "Diapositiva 122"
+      }
+    ]
+  },
+  "dapw/COMPOSE 1": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3a063833045_0_119",
+        "label": "Diapositiva 97"
+      }
+    ]
+  },
+  "dapw/COMPOSE 2 Y 3 --SOLO ALUMNOS AUSENTES": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3a0e417b5f2_0_27",
+        "label": "Diapositiva 98"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3a0e417b5f2_0_36",
+        "label": "Diapositiva 102"
       }
     ]
   }

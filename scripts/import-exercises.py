@@ -117,13 +117,27 @@ def apply_task_content(html, key):
     override = overrides.get(key)
     if not override:
         return html
-    instructions = read(CONTENT / override["instructions"]).strip()
-    html, count = re.subn(
-        r'<h2>Instrucciones</h2>.*?(?=<h2>Materiales de la tarea</h2>)',
-        lambda m: '<h2>Instrucciones</h2><div class="instructions authored-instructions">\n' + instructions + '\n</div>\n',
-        html, count=1, flags=re.S)
-    if count != 1:
-        raise ValueError(f"Falta el bloque de instrucciones: {key}")
+    if override.get("instructions"):
+        instructions = read(CONTENT / override["instructions"]).strip()
+        html, count = re.subn(
+            r'<h2>Instrucciones</h2>.*?(?=<h2>Materiales de la tarea</h2>)',
+            lambda m: '<h2>Instrucciones</h2><div class="instructions authored-instructions">\n' + instructions + '\n</div>\n',
+            html, count=1, flags=re.S)
+        if count != 1:
+            raise ValueError(f"Falta el bloque de instrucciones: {key}")
+    slides = override.get("slides", [])
+    if slides:
+        links = ''.join(
+            '<a class="slide-link" href="' + escape(slide["href"], quote=True)
+            + '" target="_blank" rel="noopener noreferrer"><span>' + escape(slide["label"])
+            + '</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" '
+            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>'
+            for slide in slides)
+        html, count = re.subn(
+            r'</h1>', lambda m: m[0] + '\n<nav class="task-slide-links" aria-label="Diapositivas de esta tarea">'
+            + links + '</nav>', html, count=1)
+        if count != 1:
+            raise ValueError(f"Falta el título de la tarea: {key}")
     materials = override.get("materials", [])
     if materials:
         items = []

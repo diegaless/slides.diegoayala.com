@@ -40,48 +40,134 @@
 <div class="task-layout"><article class="task-main"><p class="eyebrow">DAPW · Tarea</p><h1>Docker 1..10</h1>
 
 <h2>Instrucciones</h2><div class="instructions authored-instructions">
-<p>Realiza los ejercicios de Docker del 1 al 10 siguiendo los apartados de esta tarea. Los ejercicios <strong>7 y 8 están pendientes de enunciado</strong>.</p>
+<p>Resuelve los ejercicios de Docker que se presentan a continuación. Los ejercicios <strong>7 y 8 están pendientes de enunciado</strong>.</p>
 <p><strong>Entrega un único PDF con capturas</strong>, organizado por número de ejercicio. Incluye los cambios realizados, los comandos utilizados y el resultado de las comprobaciones que se indican en cada apartado.</p>
 
 <h3>Preparación</h3>
 <p>Para los ejercicios 1 a 5, utiliza la aplicación de lista de tareas <a href="https://github.com/docker/getting-started-todo-app" target="_blank" rel="noopener noreferrer">getting-started-todo-app</a> trabajada en clase. Arráncala con Docker Compose y activa la sincronización de cambios con <code>docker compose watch</code> o <code>docker compose up --watch</code>. Comprueba que puedes abrir la aplicación en el navegador antes de modificarla.</p>
 
-<h3 id="ejercicio-1">1. Mostrar saludos aleatorios</h3>
+
+<section class="exercise-block" aria-labelledby="ejercicio-1">
+<header class="exercise-block-header">
+  <p class="exercise-kicker">Ejercicio 01</p>
+  <h3 id="ejercicio-1">Mostrar saludos aleatorios</h3>
+  <a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g385b3c8d33d_0_97" target="_blank" rel="noopener noreferrer"><span>Ver diapositiva 16</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+</header>
 <p>En <code>backend/src/routes/getGreeting.js</code>, sustituye el saludo fijo por un array llamado <code>greetings</code> con varios mensajes. Selecciona un saludo de forma aleatoria en cada petición utilizando <code>Math.floor()</code> y <code>Math.random()</code>.</p>
 <p><strong>Comprobación:</strong> recarga la aplicación varias veces y documenta que puede mostrar distintos saludos. Incluye una captura del código modificado y capturas del resultado en el navegador.</p>
+<figure class="exercise-reference">
+  <a href="../../assets/dapw/docker-todo-app.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura: Ejemplo de la aplicación con el saludo personalizado."><img src="../../assets/dapw/docker-todo-app.png" width="688" height="223" alt="Aplicación de tareas con un saludo en la parte superior, un campo para añadir elementos y fondo azul."></a>
+  <figcaption>Ejemplo de la aplicación con el saludo personalizado. <span class="screen-only">Pulsa la imagen para ampliarla.</span><br><a class="slide-caption-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g385b3c8d33d_0_97" target="_blank" rel="noopener noreferrer">Ver diapositiva 16 ↗</a></figcaption>
+</figure>
+</section>
 
-<h3 id="ejercicio-2">2. Cambiar el texto del formulario</h3>
+<section class="exercise-block" aria-labelledby="ejercicio-2">
+<header class="exercise-block-header">
+  <p class="exercise-kicker">Ejercicio 02</p>
+  <h3 id="ejercicio-2">Cambiar el texto del formulario</h3>
+  <a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g385b3c8d33d_0_111" target="_blank" rel="noopener noreferrer"><span>Ver diapositiva 17</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+</header>
 <p>Abre <code>client/src/components/AddNewItemForm.jsx</code> y cambia el atributo <code>placeholder</code> del campo donde se escribe una nueva tarea por el texto <strong>«Que necesitas zangano?»</strong>.</p>
 <p><strong>Comprobación:</strong> muestra el formulario con el campo vacío para que se vea el nuevo texto. Incluye una captura del cambio en el archivo y otra de la aplicación.</p>
+<figure class="exercise-reference">
+  <a href="../../assets/dapw/docker-todo-app.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura: Referencia del nuevo texto del formulario."><img src="../../assets/dapw/docker-todo-app.png" width="688" height="223" alt="Campo de nueva tarea con el placeholder Que necesitas zangano y el botón Add Item."></a>
+  <figcaption>Referencia del nuevo texto del formulario. <span class="screen-only">Pulsa la imagen para ampliarla.</span><br><a class="slide-caption-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g385b3c8d33d_0_111" target="_blank" rel="noopener noreferrer">Ver diapositiva 17 ↗</a></figcaption>
+</figure>
+</section>
 
-<h3 id="ejercicio-3">3. Personalizar el color de fondo</h3>
+<section class="exercise-block" aria-labelledby="ejercicio-3">
+<header class="exercise-block-header">
+  <p class="exercise-kicker">Ejercicio 03</p>
+  <h3 id="ejercicio-3">Personalizar el color de fondo</h3>
+  <a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g385b3c8d33d_0_122" target="_blank" rel="noopener noreferrer"><span>Ver diapositiva 18</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+</header>
 <p>En <code>client/src/index.scss</code>, modifica la propiedad <code>background-color</code> para utilizar un color de tu elección.</p>
 <p><strong>Comprobación:</strong> muestra el valor elegido en el archivo y el nuevo fondo de la aplicación en el navegador.</p>
+<figure class="exercise-reference">
+  <a href="../../assets/dapw/docker-todo-app.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura: Ejemplo de personalización del fondo."><img src="../../assets/dapw/docker-todo-app.png" width="688" height="223" alt="Aplicación de lista de tareas con el color de fondo personalizado en azul."></a>
+  <figcaption>Ejemplo de personalización del fondo. <span class="screen-only">Pulsa la imagen para ampliarla.</span><br><a class="slide-caption-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g385b3c8d33d_0_122" target="_blank" rel="noopener noreferrer">Ver diapositiva 18 ↗</a></figcaption>
+</figure>
+</section>
 
-<h3 id="ejercicio-4">4. Publicar una imagen desde la terminal</h3>
+<section class="exercise-block" aria-labelledby="ejercicio-4">
+<header class="exercise-block-header">
+  <p class="exercise-kicker">Ejercicio 04</p>
+  <h3 id="ejercicio-4">Publicar una imagen desde la terminal</h3>
+  <a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g385b3c8d33d_0_230" target="_blank" rel="noopener noreferrer"><span>Ver diapositiva 26</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+</header>
 <p>Construye una imagen de la aplicación modificada y publícala en tu cuenta de Docker Hub utilizando comandos. El repositorio de la imagen debe llamarse <code>ejercicio4</code>, con el formato <code>tu_usuario/ejercicio4</code>.</p>
 <p><strong>Comprobación:</strong> adjunta capturas del proceso de construcción, de la imagen disponible en tu equipo, de su subida y del resultado en Docker Hub. Identifica los comandos que has utilizado.</p>
+<figure class="exercise-reference">
+  <a href="../../assets/dapw/docker-image-list.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura: Referencia de la lista de imágenes disponibles en el equipo."><img src="../../assets/dapw/docker-image-list.png" width="887" height="236" alt="Terminal con docker image ls y las columnas REPOSITORY, TAG, IMAGE ID, CREATED y SIZE."></a>
+  <figcaption>Referencia de la lista de imágenes disponibles en el equipo. <span class="screen-only">Pulsa la imagen para ampliarla.</span><br><a class="slide-caption-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g385b3c8d33d_0_205" target="_blank" rel="noopener noreferrer">Ver diapositiva 24 ↗</a></figcaption>
+</figure>
+</section>
 
-<h3 id="ejercicio-5">5. Publicar una imagen desde VS Code</h3>
+<section class="exercise-block" aria-labelledby="ejercicio-5">
+<header class="exercise-block-header">
+  <p class="exercise-kicker">Ejercicio 05</p>
+  <h3 id="ejercicio-5">Publicar una imagen desde VS Code</h3>
+  <a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g385b3c8d33d_0_240" target="_blank" rel="noopener noreferrer"><span>Ver diapositiva 27</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+</header>
 <p>Publica la imagen de la aplicación en Docker Hub utilizando las herramientas de contenedores de Visual Studio Code. Realiza la subida desde la interfaz de VS Code.</p>
 <p><strong>Comprobación:</strong> adjunta el resultado final de la publicación e identifica el nombre y la etiqueta de la imagen. Incluye una captura de la operación en VS Code y otra de la imagen publicada en Docker Hub.</p>
+<figure class="exercise-reference">
+  <a href="../../assets/dapw/docker-vscode-editor.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura: Conexión a Docker Hub desde VS Code."><img src="../../assets/dapw/docker-vscode-editor.png" width="1920" height="1080" alt="VS Code muestra la opción Connect Registry y Docker Hub como proveedor de registro."></a>
+  <figcaption>Conexión a Docker Hub desde VS Code. <span class="screen-only">Pulsa la imagen para ampliarla.</span><br><a class="slide-caption-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g385b3c8d33d_0_176" target="_blank" rel="noopener noreferrer">Ver diapositiva 22 ↗</a></figcaption>
+</figure>
+<figure class="exercise-reference">
+  <a href="../../assets/dapw/docker-vscode-images.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura: La opción Push permite publicar la imagen desde VS Code."><img src="../../assets/dapw/docker-vscode-images.png" width="532" height="403" alt="Menú contextual de una imagen en VS Code con las opciones Pull, Push y Tag."></a>
+  <figcaption>La opción Push permite publicar la imagen desde VS Code. <span class="screen-only">Pulsa la imagen para ampliarla.</span><br><a class="slide-caption-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g385b3c8d33d_0_176" target="_blank" rel="noopener noreferrer">Ver diapositiva 22 ↗</a></figcaption>
+</figure>
+</section>
 
-<h3 id="ejercicio-6">6. Mantener activo un contenedor Alpine</h3>
+<section class="exercise-block" aria-labelledby="ejercicio-6">
+<header class="exercise-block-header">
+  <p class="exercise-kicker">Ejercicio 06</p>
+  <h3 id="ejercicio-6">Mantener activo un contenedor Alpine</h3>
+  <a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g36ca059bd8e_0_121" target="_blank" rel="noopener noreferrer"><span>Ver diapositiva 52</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+</header>
 <p>Partiendo de la imagen <code>alpine</code>, pasa de un contenedor que ejecuta una tarea puntual y termina (<em>one-off</em>) a uno que permanezca activo y en el que puedas ejecutar comandos.</p>
 <p><strong>Comprobación:</strong> muestra cómo lo arrancas, ejecuta varios comandos dentro del contenedor y comprueba su estado desde otra terminal. Explica brevemente qué mantiene el contenedor en ejecución.</p>
 
-<h3 id="ejercicio-7">7. Pendiente</h3>
+</section>
+
+<section class="exercise-block exercise-block--pending" aria-labelledby="ejercicio-7">
+<header class="exercise-block-header">
+  <p class="exercise-kicker">Ejercicio 07</p>
+  <h3 id="ejercicio-7">Pendiente</h3>
+</header>
 <p>Enunciado pendiente de publicar.</p>
 
-<h3 id="ejercicio-8">8. Pendiente</h3>
+</section>
+
+<section class="exercise-block exercise-block--pending" aria-labelledby="ejercicio-8">
+<header class="exercise-block-header">
+  <p class="exercise-kicker">Ejercicio 08</p>
+  <h3 id="ejercicio-8">Pendiente</h3>
+</header>
 <p>Enunciado pendiente de publicar.</p>
 
-<h3 id="ejercicio-9">9. Explorar imágenes de Java</h3>
+</section>
+
+<section class="exercise-block" aria-labelledby="ejercicio-9">
+<header class="exercise-block-header">
+  <p class="exercise-kicker">Ejercicio 09</p>
+  <h3 id="ejercicio-9">Explorar imágenes de Java</h3>
+  <a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g36ca059bd8e_0_142" target="_blank" rel="noopener noreferrer"><span>Ver diapositiva 54</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+</header>
 <p>Busca en Docker Hub una imagen que permita trabajar con Java. Ejecuta un contenedor y comprueba la versión instalada con <code>java -version</code>.</p>
 <p>Después, localiza una imagen más pequeña que incluya únicamente el entorno de ejecución JRE. Identifica ambas imágenes y sus etiquetas, compara sus tamaños y explica la diferencia entre disponer de un JDK y de un JRE.</p>
 <p><strong>Comprobación:</strong> incluye las referencias de Docker Hub, una captura de la versión de Java dentro del contenedor y otra que permita comparar el tamaño de las imágenes descargadas.</p>
 
-<h3 id="ejercicio-10">10. Sumar dos números en Java con Docker</h3>
+</section>
+
+<section class="exercise-block" aria-labelledby="ejercicio-10">
+<header class="exercise-block-header">
+  <p class="exercise-kicker">Ejercicio 10</p>
+  <h3 id="ejercicio-10">Sumar dos números en Java con Docker</h3>
+  <a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g36ca059bd8e_0_165" target="_blank" rel="noopener noreferrer"><span>Ver diapositiva 55</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+</header>
 <p>Crea un programa <code>Suma.java</code> que pida dos números por teclado, calcule su suma y muestre el resultado por pantalla.</p>
 <ol>
   <li><strong>Prueba en local.</strong> Compila el archivo con <code>javac Suma.java</code> y ejecútalo con <code>java Suma</code>. Comprueba que solicita los dos números y muestra la suma correcta.</li>
@@ -91,6 +177,8 @@
 </ol>
 <p><strong>Comprobación:</strong> incluye el código de <code>Suma.java</code>, el contenido del <code>Dockerfile</code> y capturas de la compilación y ejecución local, de la construcción de la imagen y de la suma realizada dentro del contenedor.</p>
 <p><a href="https://docs.google.com/document/d/1bCh8zcwTmcTxv4XaGONjjTVBlV9puPRXs5FxbZXmDaw/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Consultar el documento original del ejercicio 10</a>.</p>
+
+</section>
 </div>
 <h2>Materiales de la tarea</h2><ul class="attachments"><li><a class="attachment-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g385b3c8d33d_0_97" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H5v18h14V8Z"/><path d="M14 3v5h5M8 12h8M8 16h5"/></svg><span><strong>Diapositivas de Docker · DAPW</strong><small>Presentación de clase · abrir desde el ejercicio 1</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></li></ul></article>
 <aside class="task-aside task-download" aria-label="Descarga de la tarea"><a id="task-pdf-download" class="button task-pdf" href="Docker%201..10.pdf" download="Docker 1..10.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg> Descargar PDF</a></aside></div></main></body></html>

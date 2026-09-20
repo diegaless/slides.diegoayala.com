@@ -1,9 +1,11 @@
 # Ampliaciones de los enunciados
 
-`overrides.json` relaciona la ruta pública de cada tarea con un fragmento HTML de
-instrucciones y, opcionalmente, materiales adicionales. El importador sustituye
-el bloque de instrucciones, conserva los materiales originales y añade los nuevos.
-Los fragmentos no deben incluir el contenedor `.instructions` ni la cabecera.
+`overrides.json` relaciona la ruta pública de cada tarea con instrucciones,
+materiales adicionales y enlaces `slides` a diapositivas concretas. Todos estos
+campos son opcionales: una entrada con solo `slides` conserva el enunciado original.
+El importador sustituye las instrucciones cuando se proporciona un fragmento,
+conserva los materiales originales y añade los nuevos. Los fragmentos no deben
+incluir el contenedor `.instructions` ni la cabecera del sitio.
 
 Los recursos compartidos de estas ampliaciones se mantienen en
 `ejercicios/assets/dapw/`, fuera de las carpetas que se reconstruyen por asignatura.
@@ -26,6 +28,42 @@ con capturas. Se aclaran las comprobaciones y los archivos, sin incluir solucion
 | 7 y 8 | No aparecen en la presentación publicada. | Pendientes, por indicación expresa del profesor; no se inventan ejercicios. |
 | 9 | 54 · `g36ca059bd8e_0_142` | Imagen Java, `java -version` y búsqueda de una imagen JRE más pequeña. |
 | 10 | 55 · `g36ca059bd8e_0_165` | Enlace al [documento de Suma.java](https://docs.google.com/document/d/1bCh8zcwTmcTxv4XaGONjjTVBlV9puPRXs5FxbZXmDaw/edit?usp=sharing): entrada por teclado, prueba local, Dockerfile, compilación y ejecución en Docker. |
+
+Cada ejercicio de Docker tiene un bloque independiente con número, título y
+enlace a su diapositiva mediante `slide=id.…`. Los ejercicios 7 y 8 siguen
+pendientes, sin enlaces inventados. Los bloques usan los estilos compartidos
+de `tarea-web.css` y conservan su separación en el PDF.
+
+Se han extraído las capturas originales de la presentación, sin recrearlas:
+
+| Recurso local en `ejercicios/assets/dapw/` | Procedencia y uso |
+| --- | --- |
+| `docker-todo-app.png` | Misma captura en las diapositivas 16, 17 y 18; se reutiliza en los ejercicios 1, 2 y 3. |
+| `docker-image-list.png` | Diapositiva 24: referencia de `docker image ls` para el ejercicio 4. |
+| `docker-vscode-editor.png` | Diapositiva 22: conectar Docker Hub desde VS Code, como apoyo al ejercicio 5. |
+| `docker-vscode-images.png` | Diapositiva 22: menú de imágenes con Push, como apoyo al ejercicio 5. |
+
+Las seis apariciones de estas cuatro imágenes tienen texto alternativo, enlace
+para ampliar el original y enlace a la diapositiva de procedencia. Los enlaces
+principales de los ejercicios 4 y 5 apuntan a sus enunciados (26 y 27), mientras
+que sus pies de imagen apuntan al material de apoyo (24 y 22).
+
+El resto de tareas de DAPW enlaza desde la cabecera del enunciado:
+
+| Tarea | Diapositivas e identificadores |
+| --- | --- |
+| COMPOSE 1 | 97 · `g3a063833045_0_119` |
+| COMPOSE 2 Y 3 --SOLO ALUMNOS AUSENTES | 98 · `g3a0e417b5f2_0_27`; 102 · `g3a0e417b5f2_0_36` |
+| Flask Cat App – Evaluable | 98 · `g3a0e417b5f2_0_27` |
+| DICE-APP_EVALUABLE | 102 · `g3a0e417b5f2_0_36` |
+| COMPOSE -- DEV STAGE | 115 · `g3aa2083d3bb_0_0` |
+| COMPOSE - PROD STAGE 1 | 116 · `g3aa2083d3bb_0_12`; 117 · `g3aa2083d3bb_0_22` |
+| COMPOSE -- PROD STAGE 2 | 118 · `g3aa2083d3bb_0_34`; 119 · `g3aa2083d3bb_0_46`; 120 · `g3aa711bcff2_0_0`; 121 · `g3aa2083d3bb_0_71`; 122 · `g3ad665943a1_0_0` |
+
+Las ocho capturas de las tres etapas de Compose enlazan también desde su pie a
+la diapositiva concreta. COMPOSE 4, VIAJE-ESTUDIOS_EVALUABLE y DEFENSA FINAL quedan
+sin enlace por indicación expresa del profesor: no se ha localizado una
+diapositiva específica de esas tareas en la presentación publicada.
 
 La aplicación inicial se ha identificado por el nombre y las rutas de las
 diapositivas y contrastado con el repositorio oficial
