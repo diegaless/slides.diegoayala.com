@@ -76,6 +76,7 @@ def adapt_header(html, home, assets):
     html = html.replace('<title>Biblioteca de tareas · ', '<title>Ejercicios · ')
     html = re.sub(r'(<footer class="wrap footer">.*?) · Biblioteca de tareas',
                   r'\1', html, count=1, flags=re.S)
+    html = html.replace('<span>Enunciados y materiales disponibles sin conexión</span>', '')
     html = html.replace('</head>',
                         f'<link rel="stylesheet" href="{assets}marca.css">'
                         f'<link rel="icon" type="image/svg+xml" href="{logo}"></head>')
@@ -105,20 +106,28 @@ def copy_index(source, destination, tasks):
     html = without_deliveries(read(source / "INDICE.html"))
     html = html.replace('href="assets/', 'href="../assets/').replace('src="assets/', 'src="../assets/')
     html = adapt_header(html, "../../index.html", "../assets/")
+    html = html.replace('</head>', '<link rel="stylesheet" href="../assets/listado-web.css"></head>')
     html = re.sub(r'<details class="help">.*?</details>', '', html, flags=re.S)
+    html = re.sub(r'<div class="field"><label for="task-status">.*?</select></div>', '', html, count=1, flags=re.S)
+    html = re.sub(r'<p class="draft-note"[^>]*>.*?</p>', '', html, flags=re.S)
+    html = re.sub(r'<th scope="col"(?: class="[^"]+")?>(?:Creación|Entrega prevista|Imágenes|Estado)</th>', '', html)
+    html = html.replace('Prueba con otras palabras o cambia el filtro de publicación.', 'Prueba con otras palabras.')
     ids = {task["Id"] for task in tasks}
 
-    def keep_row(match):
+    def prepare_row(match):
         task_id = re.search(r'data-id="([^"]+)"', match[0])[1]
-        return match[0] if task_id in ids else ""
+        if task_id not in ids:
+            return ""
+        row = re.sub(r'<td class="date-cell">.*?</td>', '', match[0], flags=re.S)
+        # El primer contador corresponde a imágenes; el segundo, a adjuntos.
+        row = re.sub(r'<td class="number-cell(?: subtle)?">.*?</td>', '', row, count=1, flags=re.S)
+        return re.sub(r'<td><span class="(?:published-label|draft-label)">.*?</span></td>', '', row, flags=re.S)
 
-    html = re.sub(r'<tr class="task-row"[^>]*>.*?</tr>', keep_row, html, flags=re.S)
+    html = re.sub(r'<tr class="task-row"[^>]*>.*?</tr>', prepare_row, html, flags=re.S)
     count = len(tasks)
     attachments = sum(task["Adjuntos"] for task in tasks)
     html = re.sub(r'(<div class="list-intro">.*?<p>).*?(</p>)',
                   lambda m: m[1] + f"{count} tareas · {attachments} adjuntos" + m[2], html, count=1, flags=re.S)
-    html = re.sub(r'(<select id="task-status"[^>]*>).*?(</select>)',
-                  lambda m: m[1] + f'<option value="PUBLICADA">Publicadas ({count})</option>' + m[2], html, count=1, flags=re.S)
     html = re.sub(r'Descargar todos los PDF \(\d+\)', f"Descargar todos los PDF ({count})", html)
     html = html.replace("Todos los PDF incluye los borradores. ", "")
     html = html.replace("Aquí puedes abrir todas las tareas y los borradores.", "Aquí puedes abrir todas las tareas.")
@@ -150,7 +159,8 @@ def pdf_bundle(destination, tasks, pdfs):
 def main(source):
     shared = DESTINATION / "assets"
     shared.mkdir(parents=True, exist_ok=True)
-    for name in ("aula.css", "listado.css", "pdf.css", "aula.js"):
+    # aula.js y los ajustes visuales se mantienen en la web al adaptar los filtros.
+    for name in ("aula.css", "listado.css", "pdf.css"):
         shutil.copyfile(source / "interfaz" / name, shared / name)
     batch_js = read(source / "interfaz/pdf-lotes.js")
     batch_js = re.sub(r'const pdfDataURL = .*?;', "const pdfDataURL = new URL('assets/pdf-datos.js', location.href).href;", batch_js, count=1, flags=re.S)

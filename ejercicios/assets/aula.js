@@ -4,11 +4,8 @@
   const rows = document.querySelector('#task-rows');
   const search = document.querySelector('#task-search');
   const order = document.querySelector('#task-order');
-  const status = document.querySelector('#task-status');
   const count = document.querySelector('#results-count');
-  const heading = document.querySelector('#results-title');
   const empty = document.querySelector('#empty-state');
-  const draftNote = document.querySelector('#draft-note');
   const tableRows = [...rows.querySelectorAll('.task-row')];
   const collator = new Intl.Collator('es', { numeric: true, sensitivity: 'base' });
   const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es').trim();
@@ -17,7 +14,6 @@
     row,
     id: row.dataset.id,
     title: row.dataset.title,
-    state: row.dataset.state,
     created: Date.parse(row.dataset.created),
     searchable: normalize(row.dataset.search)
   }));
@@ -27,7 +23,6 @@
     if (saved) {
       search.value = typeof saved.search === 'string' ? saved.search : '';
       if (saved.defaultOrder === 'created-asc' && [...order.options].some(o => o.value === saved.order)) order.value = saved.order;
-      if ([...status.options].some(o => o.value === saved.status)) status.value = saved.status;
     }
   } catch { /* La biblioteca también funciona cuando el navegador bloquea almacenamiento local. */ }
 
@@ -45,27 +40,23 @@
     const sorted = [...items].sort(compare);
     let visible = 0;
     for (const item of sorted) {
-      const matches = (status.value === 'all' || item.state === status.value) && terms.every(term => item.searchable.includes(term));
+      const matches = terms.every(term => item.searchable.includes(term));
       item.row.hidden = !matches;
       if (matches) visible++;
       rows.append(item.row);
     }
-    const total = items.filter(item => status.value === 'all' || item.state === status.value).length;
+    const total = items.length;
     count.textContent = terms.length ? `${visible} de ${total} tareas` : `${visible} ${visible === 1 ? 'tarea' : 'tareas'}`;
-    heading.textContent = status.value === 'BORRADOR' ? 'Borradores' : status.value === 'all' ? 'Todas las tareas' : 'Tareas publicadas';
     empty.hidden = visible !== 0;
     list.hidden = visible === 0;
-    draftNote.hidden = status.value === 'PUBLICADA';
-    try { sessionStorage.setItem(storageKey, JSON.stringify({ search: search.value, order: order.value, status: status.value, defaultOrder: 'created-asc' })); } catch {}
+    try { sessionStorage.setItem(storageKey, JSON.stringify({ search: search.value, order: order.value, defaultOrder: 'created-asc' })); } catch {}
   }
 
   search.addEventListener('input', update);
   order.addEventListener('change', update);
-  status.addEventListener('change', update);
   document.querySelector('#reset-filters').addEventListener('click', () => {
     search.value = '';
     order.value = 'created-asc';
-    status.value = 'PUBLICADA';
     update();
     search.focus();
   });

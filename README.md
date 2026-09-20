@@ -53,14 +53,18 @@ de las bibliotecas y los nombres de los ZIP de selección no incluyen el año.
 | Despliegue de aplicaciones Web | `ejercicios/dapw/INDICE.html` | 13 |
 | Proyecto Intermodular | `ejercicios/pi/INDICE.html` | 2 |
 
-Los enunciados, imágenes, PDF y adjuntos se conservan. `aula.css`, `listado.css`,
-`pdf.css` y `aula.js` son copias literales del backup. Se comparten entre
-asignaturas. `pdf-lotes.js` mantiene la descarga de seleccionados y ajusta la ruta
+Los enunciados, imágenes, PDF y adjuntos se conservan. `aula.css`, `listado.css`
+y `pdf.css` son copias literales del backup. Se comparten entre asignaturas.
+`aula.js` conserva la búsqueda y ordenación, adaptadas para funcionar sin el filtro
+«Mostrar». `pdf-lotes.js` mantiene la descarga de seleccionados y ajusta la ruta
 de sus datos a cada biblioteca.
 
 La cabecera usa la marca DA de la web mediante `marca.css`, sin el subtítulo
 «Biblioteca de tareas». Los índices omiten el bloque «Sobre las fechas y esta
-copia». El importador conserva estas adaptaciones al regenerar los HTML.
+copia» y el pie ya no incluye el texto sobre disponibilidad sin conexión.
+La tabla muestra la selección de PDF, la tarea y sus adjuntos. `listado-web.css`
+ajusta su ancho y la barra de búsqueda y ordenación. El importador conserva estas
+adaptaciones al regenerar los HTML.
 
 La copia incluye tareas publicadas. Excluye borradores, accesos a entregas,
 listados de alumnos y tres tareas con referencias nominales. Los ZIP y los datos

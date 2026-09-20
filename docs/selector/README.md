@@ -4,6 +4,8 @@ Propuesta: desplegar las pestañas «Diapositivas» y «Ejercicios» bajo la asi
 
 La cabecera de los ejercicios comparte la marca DA de la web y muestra solo la asignatura. Se retiran el subtítulo «Biblioteca de tareas» y el bloque «Sobre las fechas y esta copia».
 
+Los listados muestran la selección de PDF, «Tarea» y «Adjuntos», con búsqueda y ordenación. Se retiran las columnas de creación, entrega prevista, imágenes y estado, el filtro «Mostrar» y el texto del pie sobre disponibilidad sin conexión.
+
 ## Concepto con imagegen
 
 Generado con la herramienta integrada de imagegen a partir de una captura de la web original.

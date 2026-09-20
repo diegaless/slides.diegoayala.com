@@ -1,0 +1,27 @@
+/* Ajustes para la tabla pública: selección de PDF, tarea y adjuntos. */
+.index-page .toolbar {
+  grid-template-columns: minmax(0, 1fr) 245px;
+}
+
+.index-page .field-search {
+  grid-column: auto;
+}
+
+.index-page .task-table {
+  min-width: 0;
+  table-layout: fixed;
+}
+
+.index-page .task-table .number-cell {
+  width: 88px;
+}
+
+.index-page .task-link {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 680px) {
+  .index-page .toolbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

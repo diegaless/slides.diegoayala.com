@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="theme-color" content="#16243d"><title>Ejercicios · 2DAM DI</title>
 <link rel="stylesheet" href="../assets/aula.css">
-<link rel="stylesheet" href="../assets/listado.css"><script src="../assets/aula.js" defer></script><script src="../assets/pdf-lotes.js" defer></script><link rel="stylesheet" href="../assets/marca.css"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"></head><body class="index-page">
+<link rel="stylesheet" href="../assets/listado.css"><script src="../assets/aula.js" defer></script><script src="../assets/pdf-lotes.js" defer></script><link rel="stylesheet" href="../assets/marca.css"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="stylesheet" href="../assets/listado-web.css"></head><body class="index-page">
 <a class="skip-link" href="#contenido">Ir al contenido</a>
 <header class="site-header"><div class="wrap header-inner">
 <a class="brand" href="../../index.html" title="Volver a las asignaturas" aria-label="Volver a las asignaturas"><span class="brand-mark"><img src="../../assets/favicon.svg" alt="" width="64" height="64"></span><span class="brand-text"><strong>2DAM DI</strong></span></a>
@@ -14,68 +14,68 @@
 <div class="field field-search"><label for="task-search">Buscar tareas</label><div class="search-input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><input id="task-search" type="search" placeholder="Título o palabras del enunciado" autocomplete="off" aria-controls="task-table"></div></div>
 <div class="field"><label for="task-order">Ordenar por</label><select id="task-order" aria-controls="task-table">
 <option value="created-asc">Creación: más antiguas</option><option value="created-desc">Creación: más recientes</option><option value="title-asc">Título: A → Z</option><option value="title-desc">Título: Z → A</option></select></div>
-<div class="field"><label for="task-status">Mostrar</label><select id="task-status" aria-controls="task-table"><option value="PUBLICADA">Publicadas (10)</option></select></div></section>
+</section>
 <section class="pdf-toolbar" aria-label="Descargar PDF de la clase">
 <a class="button" id="pdf-all" href="PDF_TAREAS.zip" download="2DAM DI - Todas las tareas.zip">Descargar todos los PDF (10)</a>
 <button class="button" id="pdf-selected" type="button" disabled>Descargar seleccionados (0)</button>
 <button class="pdf-clear" id="pdf-clear" type="button" disabled>Quitar selección</button>
 <p id="pdf-selection-status" role="status" aria-live="polite">Selecciona tareas en la tabla. Descarga en ZIP.</p>
 </section><div class="results-heading"><h2 id="results-title">Tareas publicadas</h2><p class="results-count" id="results-count" role="status" aria-live="polite" aria-atomic="true">10 tareas</p></div>
-<p class="draft-note" id="draft-note" hidden>Los borradores se conservan como referencia de la copia y no están publicados en Teams.</p>
+
 <noscript><style>.task-row[hidden]{display:table-row!important}.toolbar,.results-count{display:none}</style><p>Activa JavaScript para buscar y ordenar. Aquí puedes abrir todas las tareas.</p></noscript>
 <div class="table-scroll" id="task-list" role="region" aria-labelledby="results-title" tabindex="0"><table class="task-table" id="task-table" aria-labelledby="results-title">
-<thead><tr><th scope="col" class="select-cell"><input type="checkbox" id="pdf-select-visible" aria-label="Seleccionar las tareas visibles"></th><th scope="col">Tarea</th><th scope="col">Creación</th><th scope="col">Entrega prevista</th><th scope="col" class="number-cell">Imágenes</th><th scope="col" class="number-cell">Adjuntos</th><th scope="col">Estado</th></tr></thead>
+<thead><tr><th scope="col" class="select-cell"><input type="checkbox" id="pdf-select-visible" aria-label="Seleccionar las tareas visibles"></th><th scope="col">Tarea</th><th scope="col" class="number-cell">Adjuntos</th></tr></thead>
 <tbody id="task-rows"><tr class="task-row" data-id="208e7f69-7681-486d-b511-e6af9d4b5921" data-title="PYSIDE 1-2" data-state="PUBLICADA" data-created="2025-09-22T16:59:04.8724564Z" data-search="PYSIDE 1-2 "><td class="select-cell"><input type="checkbox" class="pdf-select" value="208e7f69-7681-486d-b511-e6af9d4b5921" aria-label="Seleccionar PDF: PYSIDE 1-2"></td>
 <th scope="row"><a class="task-link" href="PYSIDE%201-2/TAREA.html">PYSIDE 1-2</a></th>
-<td class="date-cell"><time datetime="2025-09-22T16:59:04.8724564Z" title="22 sep 2025 · 18:59 (Madrid)">22 sep 2025</time></td><td class="date-cell"><time datetime="2025-09-23T21:59:00Z" title="23 sep 2025 · 23:59 (Madrid)">23 sep 2025</time></td>
-<td class="number-cell">2</td><td class="number-cell subtle">0</td>
-<td><span class="published-label">Publicada</span></td></tr>
+
+<td class="number-cell subtle">0</td>
+</tr>
 <tr class="task-row" data-id="d82d336d-4d1a-4ac0-9c1d-a7354fa3dd7e" data-title="QT 3 FORM" data-state="PUBLICADA" data-created="2025-10-03T11:46:04.5670584Z" data-search="QT 3 FORM "><td class="select-cell"><input type="checkbox" class="pdf-select" value="d82d336d-4d1a-4ac0-9c1d-a7354fa3dd7e" aria-label="Seleccionar PDF: QT 3 FORM"></td>
 <th scope="row"><a class="task-link" href="QT%203%20FORM/TAREA.html">QT 3 FORM</a></th>
-<td class="date-cell"><time datetime="2025-10-03T11:46:04.5670584Z" title="3 oct 2025 · 13:46 (Madrid)">3 oct 2025</time></td><td class="date-cell"><time datetime="2025-10-04T21:59:00Z" title="4 oct 2025 · 23:59 (Madrid)">4 oct 2025</time></td>
-<td class="number-cell">1</td><td class="number-cell subtle">0</td>
-<td><span class="published-label">Publicada</span></td></tr>
+
+<td class="number-cell subtle">0</td>
+</tr>
 <tr class="task-row" data-id="d69ee668-d2cb-48d2-9301-ddd04073867a" data-title="CV" data-state="PUBLICADA" data-created="2025-10-16T09:48:03.7071491Z" data-search="CV Adjuntad pdf"><td class="select-cell"><input type="checkbox" class="pdf-select" value="d69ee668-d2cb-48d2-9301-ddd04073867a" aria-label="Seleccionar PDF: CV"></td>
 <th scope="row"><a class="task-link" href="CV/TAREA.html">CV</a></th>
-<td class="date-cell"><time datetime="2025-10-16T09:48:03.7071491Z" title="16 oct 2025 · 11:48 (Madrid)">16 oct 2025</time></td><td class="date-cell"><time datetime="2025-10-17T21:59:00Z" title="17 oct 2025 · 23:59 (Madrid)">17 oct 2025</time></td>
-<td class="number-cell subtle">0</td><td class="number-cell subtle">0</td>
-<td><span class="published-label">Publicada</span></td></tr>
+
+<td class="number-cell subtle">0</td>
+</tr>
 <tr class="task-row" data-id="176a91aa-2d0d-4591-81e0-2bdb50b1b02a" data-title="QT6 - 8" data-state="PUBLICADA" data-created="2025-10-17T10:31:22.0850489Z" data-search="QT6 - 8 Crea un componente tipo dock con un QTextEdit a la aplicación y un componente principal. Por defecto, el dock se situará en la parte superior de la ventana. Añadimos una acción «Imprimir en dock» que imprima en un dock «Acción Pulsada». Su atajo será Ctrl + P y, además, aparecerá en una barra de herramientas y en un menú. Su texto de ayuda será el siguiente: «Al ejecutar esta acción, se añadirá el texto &quot;Acción pulsada&quot; en el dock. Se puede lanzar por Menú &gt; Imprimir en dock, con Ctrl + P o haciendo clic en el botón correspondiente de la barra de herramientas». Añadimos un botón ¿Qué es esto? a la aplicación con el comportamiento habitual."><td class="select-cell"><input type="checkbox" class="pdf-select" value="176a91aa-2d0d-4591-81e0-2bdb50b1b02a" aria-label="Seleccionar PDF: QT6 - 8"></td>
 <th scope="row"><a class="task-link" href="QT6%20-%208/TAREA.html">QT6 - 8</a></th>
-<td class="date-cell"><time datetime="2025-10-17T10:31:22.0850489Z" title="17 oct 2025 · 12:31 (Madrid)">17 oct 2025</time></td><td class="date-cell"><time datetime="2025-10-18T21:59:00Z" title="18 oct 2025 · 23:59 (Madrid)">18 oct 2025</time></td>
-<td class="number-cell">2</td><td class="number-cell subtle">0</td>
-<td><span class="published-label">Publicada</span></td></tr>
+
+<td class="number-cell subtle">0</td>
+</tr>
 <tr class="task-row" data-id="80741e59-fb10-496b-9174-97bc63722b6f" data-title="QT6 - 9 Mini office -Practica final - alfa" data-state="PUBLICADA" data-created="2025-10-17T10:39:07.1156155Z" data-search="QT6 - 9 Mini office -Practica final - alfa MiniOffice Ventana Principal: La aplicación debe tener una ventana principal con un título “Mini Word”. Área de Texto: Debe haber un área de texto (QTextEdit) que ocupe la mayor parte de la ventana, donde los usuarios puedan escribir y editar sus notas. Barra de Menú: Archivo: Debe tener un menú &quot;Archivo&quot; que incluya las acciones de &quot;Nuevo&quot;, &quot;Abrir&quot;, &quot;Guardar&quot; y &quot;Salir&quot;. Editar: Un menú &quot;Editar&quot; con acciones para &quot;Deshacer&quot;, &quot;Rehacer&quot;, &quot;Copiar&quot;, &quot;Cortar&quot; y &quot;Pegar&quot;. Las acciones deben tener atajos de teclado apropiados y deben estar conectadas a sus funcionalidades correspondientes. Barra de Herramientas: Debe haber una barra de herramientas con botones para las acciones más importantes. Nuevo: Para abrir un nuevo documento en blanco. Abrir: Para abrir un documento existente. Guardar: Para guardar el documento actual. Deshacer: Para deshacer la última acción realizada. Rehacer: Para rehacer la última acción deshecha. Cortar: Para cortar la selección actual y copiarla al portapapeles. Copiar: Para copiar la selección actual al portapapeles. Pegar: Para pegar el contenido del portapapeles en la posición actual del cursor. Buscar: Para buscar texto dentro del documento. Reemplazar: Para buscar y reemplazar texto dentro del documento. Estado de la Aplicación: La ventana debe tener una barra de estado que muestre mensajes informativos dependiendo de la acción realizada (por ejemplo, &quot;Archivo guardado con éxito&quot; después de guardar). Función de Nuevo: La acción &quot;Nuevo&quot; debe limpiar el área de texto para permitir al usuario comenzar a escribir una nueva nota. Personalización de la Aplicación: Agregar opciones para cambiar el color de fondo del área de texto o el tipo de letra. Contador de Palabras: Incluir una etiqueta en la barra de estado que muestre la cantidad de palabras en el área de texto."><td class="select-cell"><input type="checkbox" class="pdf-select" value="80741e59-fb10-496b-9174-97bc63722b6f" aria-label="Seleccionar PDF: QT6 - 9 Mini office -Practica final - alfa"></td>
 <th scope="row"><a class="task-link" href="QT6%20-%209%20Mini%20office%20-Practica%20final%20-%20alfa/TAREA.html">QT6 - 9 Mini office -Practica final - alfa</a></th>
-<td class="date-cell"><time datetime="2025-10-17T10:39:07.1156155Z" title="17 oct 2025 · 12:39 (Madrid)">17 oct 2025</time></td><td class="date-cell"><time datetime="2025-10-18T21:59:00Z" title="18 oct 2025 · 23:59 (Madrid)">18 oct 2025</time></td>
-<td class="number-cell">1</td><td class="number-cell subtle">0</td>
-<td><span class="published-label">Publicada</span></td></tr>
+
+<td class="number-cell subtle">0</td>
+</tr>
 <tr class="task-row" data-id="8708f31f-f21a-41dd-8dbf-376b3d94dcf1" data-title="RA1, RA4, RA6-QT MINI OFFICE -- PRACTICA FINAL" data-state="PUBLICADA" data-created="2025-10-31T14:18:05.2832059Z" data-search="RA1, RA4, RA6-QT MINI OFFICE -- PRACTICA FINAL Modificad la alfa para añadir la siguiente funcionalidad: A la hora de buscar/remplazar que se habla un qwidget a la derecha del qtextedit que nos permita seleccionar/modificar el comportamiento. Buscar todas/busqueda hacia delante/atras/remplazar todas... Implementar alguna funcionalidad extra. Subir la documentacion a git con el readme.md añadiendo las principales funcionalidades"><td class="select-cell"><input type="checkbox" class="pdf-select" value="8708f31f-f21a-41dd-8dbf-376b3d94dcf1" aria-label="Seleccionar PDF: RA1, RA4, RA6-QT MINI OFFICE -- PRACTICA FINAL"></td>
 <th scope="row"><a class="task-link" href="RA1%2C%20RA4%2C%20RA6-QT%20MINI%20OFFICE%20--%20PRACTICA%20FINAL/TAREA.html">RA1, RA4, RA6-QT MINI OFFICE -- PRACTICA FINAL</a></th>
-<td class="date-cell"><time datetime="2025-10-31T14:18:05.2832059Z" title="31 oct 2025 · 15:18 (Madrid)">31 oct 2025</time></td><td class="date-cell"><time datetime="2025-11-01T22:59:00Z" title="1 nov 2025 · 23:59 (Madrid)">1 nov 2025</time></td>
-<td class="number-cell subtle">0</td><td class="number-cell subtle">0</td>
-<td><span class="published-label">Publicada</span></td></tr>
+
+<td class="number-cell subtle">0</td>
+</tr>
 <tr class="task-row" data-id="26f7fcf1-0f15-4237-8e6e-8820b021a565" data-title="RA2,RA7 -Generar ejecutable. exe" data-state="PUBLICADA" data-created="2025-11-21T15:01:13.7759627Z" data-search="RA2,RA7 -Generar ejecutable. exe Adjuntad memoria el readme. adjuntad tambien el .exe. subidlo todo a git"><td class="select-cell"><input type="checkbox" class="pdf-select" value="26f7fcf1-0f15-4237-8e6e-8820b021a565" aria-label="Seleccionar PDF: RA2,RA7 -Generar ejecutable. exe"></td>
 <th scope="row"><a class="task-link" href="RA2%2CRA7%20-Generar%20ejecutable.%20exe/TAREA.html">RA2,RA7 -Generar ejecutable. exe</a></th>
-<td class="date-cell"><time datetime="2025-11-21T15:01:13.7759627Z" title="21 nov 2025 · 16:01 (Madrid)">21 nov 2025</time></td><td class="date-cell"><time datetime="2025-11-22T22:59:00Z" title="22 nov 2025 · 23:59 (Madrid)">22 nov 2025</time></td>
-<td class="number-cell subtle">0</td><td class="number-cell subtle">0</td>
-<td><span class="published-label">Publicada</span></td></tr>
+
+<td class="number-cell subtle">0</td>
+</tr>
 
 <tr class="task-row" data-id="50d9c285-26eb-472b-86e1-9f694db8e7c8" data-title="TAREA DIA DE LA CHARLA MIERCOLES" data-state="PUBLICADA" data-created="2026-01-19T19:52:18.5618688Z" data-search="TAREA DIA DE LA CHARLA MIERCOLES SOLO HASTA LAS 15. Para los que no vengan el miercoles por la tarde. a las 15 se os pasara lista :)"><td class="select-cell"><input type="checkbox" class="pdf-select" value="50d9c285-26eb-472b-86e1-9f694db8e7c8" aria-label="Seleccionar PDF: TAREA DIA DE LA CHARLA MIERCOLES"></td>
 <th scope="row"><a class="task-link" href="TAREA%20DIA%20DE%20LA%20CHARLA%20MIERCOLES/TAREA.html">TAREA DIA DE LA CHARLA MIERCOLES</a></th>
-<td class="date-cell"><time datetime="2026-01-19T19:52:18.5618688Z" title="19 ene 2026 · 20:52 (Madrid)">19 ene 2026</time></td><td class="date-cell"><time datetime="2026-01-20T22:59:00Z" title="20 ene 2026 · 23:59 (Madrid)">20 ene 2026</time></td>
-<td class="number-cell subtle">0</td><td class="number-cell">1</td>
-<td><span class="published-label">Publicada</span></td></tr>
+
+<td class="number-cell">1</td>
+</tr>
 <tr class="task-row" data-id="389676b0-ef39-443f-b8c3-db05f9ded7e6" data-title="RA5 PYJINJA2+FASTAPI" data-state="PUBLICADA" data-created="2026-01-23T16:03:15.3661019Z" data-search="RA5 PYJINJA2+FASTAPI "><td class="select-cell"><input type="checkbox" class="pdf-select" value="389676b0-ef39-443f-b8c3-db05f9ded7e6" aria-label="Seleccionar PDF: RA5 PYJINJA2+FASTAPI"></td>
 <th scope="row"><a class="task-link" href="RA5%20PYJINJA2%2BFASTAPI/TAREA.html">RA5 PYJINJA2+FASTAPI</a></th>
-<td class="date-cell"><time datetime="2026-01-23T16:03:15.3661019Z" title="23 ene 2026 · 17:03 (Madrid)">23 ene 2026</time></td><td class="date-cell"><time datetime="2026-01-24T22:59:00Z" title="24 ene 2026 · 23:59 (Madrid)">24 ene 2026</time></td>
-<td class="number-cell subtle">0</td><td class="number-cell subtle">0</td>
-<td><span class="published-label">Publicada</span></td></tr>
+
+<td class="number-cell subtle">0</td>
+</tr>
 <tr class="task-row" data-id="d80f5bc3-bd61-4524-943e-96ec5c0847ab" data-title="RA3- SEÑALES, COMPONENTES REUTILIZABLES" data-state="PUBLICADA" data-created="2026-02-02T17:58:11.9792489Z" data-search="RA3- SEÑALES, COMPONENTES REUTILIZABLES Genera el readme con toda la documentación de las señales. Invoca el componente en tu código, en vez de la funcionalidad nativa de caracteres y palabras."><td class="select-cell"><input type="checkbox" class="pdf-select" value="d80f5bc3-bd61-4524-943e-96ec5c0847ab" aria-label="Seleccionar PDF: RA3- SEÑALES, COMPONENTES REUTILIZABLES"></td>
 <th scope="row"><a class="task-link" href="RA3-%20SE%C3%91ALES%2C%20COMPONENTES%20REUTILIZABLES/TAREA.html">RA3- SEÑALES, COMPONENTES REUTILIZABLES</a></th>
-<td class="date-cell"><time datetime="2026-02-02T17:58:11.9792489Z" title="2 feb 2026 · 18:58 (Madrid)">2 feb 2026</time></td><td class="date-cell"><time datetime="2026-02-03T22:59:00Z" title="3 feb 2026 · 23:59 (Madrid)">3 feb 2026</time></td>
-<td class="number-cell subtle">0</td><td class="number-cell">1</td>
-<td><span class="published-label">Publicada</span></td></tr></tbody></table></div>
-<section class="empty-state" id="empty-state" aria-label="Sin resultados" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><h3>No encontramos ninguna tarea</h3><p>Prueba con otras palabras o cambia el filtro de publicación.</p><button class="button" id="reset-filters" type="button">Restablecer filtros</button></section>
 
-</main><footer class="wrap footer"><span>2DAM DI</span><span>Enunciados y materiales disponibles sin conexión</span></footer></body></html>
+<td class="number-cell">1</td>
+</tr></tbody></table></div>
+<section class="empty-state" id="empty-state" aria-label="Sin resultados" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><h3>No encontramos ninguna tarea</h3><p>Prueba con otras palabras.</p><button class="button" id="reset-filters" type="button">Restablecer filtros</button></section>
+
+</main><footer class="wrap footer"><span>2DAM DI</span></footer></body></html>
