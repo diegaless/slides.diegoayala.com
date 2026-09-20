@@ -1,8 +1,8 @@
 # Selector de material por asignatura
 
-Propuesta: desplegar las pestañas «Diapositivas» y «Ejercicios» bajo la asignatura seleccionada. Cada apertura empieza en «Diapositivas». Los ejercicios se abren en la biblioteca HTML existente, conservando su diseño y sus descargas. Se toma únicamente el último curso disponible de cada asignatura como base, sin mostrar etiquetas ni un selector de curso.
+Propuesta: desplegar las pestañas «Diapositivas» y «Ejercicios» bajo la asignatura seleccionada. Cada apertura empieza en «Diapositivas». Los ejercicios reutilizan los HTML y las descargas existentes con el estilo de la portada. Se toma únicamente el último curso disponible de cada asignatura como base, sin mostrar etiquetas ni un selector de curso.
 
-La cabecera de los ejercicios comparte la marca DA de la web y muestra solo la asignatura. Se retiran el subtítulo «Biblioteca de tareas» y el bloque «Sobre las fechas y esta copia».
+Los cuatro listados y las 41 tareas comparten con la portada la cabecera «Diego Ayala», la navegación DAM/DAW y SEF, la tipografía, los acentos violeta y el selector de tema. El modo claro u oscuro se conserva al navegar. Las tablas, los botones y los adjuntos siguen el mismo estilo. La impresión mantiene el fondo blanco y los estilos originales.
 
 Los listados muestran directamente la tabla con selección de PDF, «Tarea» y «Adjuntos». Los botones de descarga y «Quitar selección» aparecen debajo de la tabla. Se retiran el bloque introductorio, el buscador y los controles de ordenación y filtrado, las columnas de creación, entrega prevista, imágenes y estado, y el pie de todas las páginas de ejercicios. Las tareas aparecen en orden cronológico sin necesitar JavaScript.
 
@@ -24,11 +24,15 @@ Generado con la herramienta integrada de imagegen a partir de una captura de la 
 
 ![Selector en la web](selector.png)
 
-![Biblioteca HTML reutilizada](biblioteca.png)
+![Ejercicios con el estilo de la portada](biblioteca.png)
 
 ![Ejercicios de Lenguaje de Marcas](lenguaje-de-marcas.png)
 
 ![Tarea con el botón de descarga](tarea.png)
+
+![Listado en modo claro](biblioteca-clara.png)
+
+![Enunciado en modo claro](tarea-clara.png)
 
 ## Prompt utilizado
 

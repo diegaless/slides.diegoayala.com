@@ -27,6 +27,12 @@ SUBJECTS = [
     ("DAPW", "dapw"),
     ("PI", "pi"),
 ]
+SUBJECT_LABELS = {
+    "LM 1DAW": "Lenguaje de Marcas",
+    "2DAM DI": "Desarrollo de Interfaces",
+    "DAPW": "Despliegue de aplicaciones Web",
+    "PI": "Proyecto Intermodular",
+}
 # Tareas individualizadas o retiradas de la selección pública.
 # Los identificadores permiten excluirlas sin reproducir los nombres del alumnado.
 EXCLUDED_IDS = {
@@ -80,25 +86,29 @@ def without_deliveries(html):
 
 
 def adapt_header(html, home, assets):
-    html = re.sub(r'(<a class="brand" href=")[^"]+(" title=")[^"]+(" aria-label=")[^"]+',
-                  lambda m: m[1] + home + m[2] + "Volver a las asignaturas" + m[3] + "Volver a las asignaturas", html)
-    logo = home.removesuffix("index.html") + "assets/favicon.svg"
-    html = re.sub(r'<span class="brand-mark">.*?</span>',
-                  lambda m: f'<span class="brand-mark"><img src="{logo}" alt="" width="64" height="64"></span>',
-                  html, count=1, flags=re.S)
-    html = html.replace('<span>Biblioteca de tareas</span>', '')
+    site = home.removesuffix("index.html")
+    header = re.search(r'<header class="site-header">.*?</header>',
+                       read(DESTINATION.parent / "index.html"), flags=re.S)[0]
+    header = header.replace('href="./"', f'href="{home}"')
+    header = header.replace('href="sef/"', f'href="{site}sef/"')
+    html = re.sub(r'<header class="site-header">.*?</header>', lambda m: header, html, count=1, flags=re.S)
+    html = html.replace('<html lang="es">', '<html lang="es" data-theme="dark">', 1)
+    html = re.sub(r'<body(?: class="([^"]*)")?>',
+                  lambda m: '<body class="exercises-page' + (' ' + m[1] if m[1] else '') + '">', html, count=1)
     html = html.replace('<title>Biblioteca de tareas · ', '<title>Ejercicios · ')
     html = re.sub(r'<footer class="wrap footer">.*?</footer>', '', html, flags=re.S)
+    html = html.replace('<meta name="theme-color" content="#16243d">',
+                        f'<meta name="theme-color" content="#030405"><script src="{site}theme.js"></script>')
     html = html.replace('</head>',
-                        f'<link rel="stylesheet" href="{assets}marca.css">'
-                        f'<link rel="icon" type="image/svg+xml" href="{logo}"></head>')
+                        f'<link rel="stylesheet" href="{site}styles.css" media="screen">'
+                        f'<link rel="stylesheet" href="{assets}web.css" media="screen">'
+                        f'<link rel="icon" type="image/svg+xml" href="{site}assets/favicon.svg"></head>')
     return html
 
 
 def copy_task(source, destination):
     html = without_deliveries(read(source / "TAREA.html"))
     html = html.replace('href="../assets/', 'href="../../assets/')
-    html = adapt_header(html, "../../../index.html", "../../assets/")
     sidebar = re.search(r'<aside class="task-aside"[^>]*>.*?</aside>', html, flags=re.S)
     download = re.search(r'<a\b[^>]*\bid="task-pdf-download"[^>]*>.*?</a>',
                          sidebar[0] if sidebar else '', flags=re.S)
@@ -108,6 +118,7 @@ def copy_task(source, destination):
             + '<aside class="task-aside task-download" aria-label="Descarga de la tarea">'
             + download[0] + '</aside>' + html[sidebar.end():])
     html = html.replace('</head>', '<link rel="stylesheet" href="../../assets/tarea-web.css"></head>')
+    html = adapt_header(html, "../../../index.html", "../../assets/")
     links = Links(html)
     destination.mkdir(parents=True, exist_ok=True)
     for filename in links.files:
@@ -129,7 +140,6 @@ def copy_task(source, destination):
 def copy_index(source, destination, tasks):
     html = without_deliveries(read(source / "INDICE.html"))
     html = html.replace('href="assets/', 'href="../assets/').replace('src="assets/', 'src="../assets/')
-    html = adapt_header(html, "../../index.html", "../assets/")
     html = html.replace('</head>', '<link rel="stylesheet" href="../assets/listado-web.css"></head>')
     html = html.replace('<script src="../assets/aula.js" defer></script>', '')
     html = re.sub(r'<div class="list-intro">.*?</div>', '', html, count=1, flags=re.S)
@@ -140,6 +150,14 @@ def copy_index(source, destination, tasks):
     html = re.sub(r'<p class="draft-note"[^>]*>.*?</p>', '', html, flags=re.S)
     html = re.sub(r'<th scope="col"(?: class="[^"]+")?>(?:Creación|Entrega prevista|Imágenes|Estado)</th>', '', html)
     html = re.sub(r'<h2 id="results-title">(.*?)</h2>', r'<h1 id="results-title">\1</h1>', html, count=1, flags=re.S)
+    html = html.replace('<h1 id="results-title">Tareas publicadas</h1>',
+                        f'<h1 id="results-title">{SUBJECT_LABELS[source.name]}</h1>')
+    html = html.replace('<main class="wrap" id="contenido">',
+                        '<main class="wrap" id="contenido">'
+                        '<a class="back-link" href="../../index.html">'
+                        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" '
+                        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+                        '<path d="M19 12H5m6-6-6 6 6 6"/></svg>Volver a las asignaturas</a>')
 
     def prepare_row(row):
         row = re.sub(r'<td class="date-cell">.*?</td>', '', row, flags=re.S)
@@ -163,6 +181,7 @@ def copy_index(source, destination, tasks):
         raise ValueError(f"Faltan los controles de descarga: {source.name}")
     html = html[:downloads.start()] + html[downloads.end():]
     html = html.replace('</main>', downloads[0] + '</main>', 1)
+    html = adapt_header(html, "../../index.html", "../assets/")
     (destination / "INDICE.html").write_text(html, encoding="utf-8")
 
 

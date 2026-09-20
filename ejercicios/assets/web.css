@@ -1,0 +1,331 @@
+/* La interfaz comparte styles.css con la portada; la impresión usa el CSS original. */
+:root {
+  --blue: var(--accent);
+  --blue-dark: var(--accent);
+  --canvas: var(--bg);
+  --surface: color-mix(in srgb, var(--ink) 2%, var(--bg));
+  background: var(--bg);
+}
+
+.exercises-page {
+  overflow: auto;
+  background-attachment: fixed;
+}
+
+.exercises-page .site-header {
+  position: relative;
+  background: transparent;
+  border: 0;
+  line-height: normal;
+}
+
+.exercises-page #contenido {
+  width: min(980px, calc(100% - 64px));
+  margin-inline: auto;
+  padding: 12px 0 64px;
+}
+
+.exercises-page .skip-link {
+  z-index: 20;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.exercises-page .back-link {
+  margin: 12px 0 32px;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 450;
+}
+
+.exercises-page .back-link:hover {
+  color: var(--ink);
+}
+
+.exercises-page.index-page .results-heading {
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  padding: 0 0 26px;
+}
+
+.exercises-page.index-page .results-heading h1 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 450;
+  letter-spacing: -.04em;
+  line-height: 1.25;
+}
+
+.exercises-page .results-count {
+  margin-left: auto;
+  font-size: .78rem;
+  white-space: nowrap;
+}
+
+.exercises-page .table-scroll {
+  border-color: var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.exercises-page .task-table thead {
+  background: color-mix(in srgb, var(--accent) 4%, var(--bg));
+}
+
+.exercises-page .task-table th,
+.exercises-page .task-table td {
+  padding: 17px 20px;
+  border-color: var(--line);
+}
+
+.exercises-page .task-table thead th {
+  color: var(--muted);
+  font-size: .64rem;
+  font-weight: 650;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.exercises-page .task-table tbody th {
+  font-size: .94rem;
+  font-weight: 450;
+  line-height: 1.5;
+}
+
+.exercises-page .task-table .task-link {
+  color: var(--ink);
+}
+
+.exercises-page .task-table .task-link:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.exercises-page .task-table .task-link:focus-visible {
+  outline-color: var(--accent);
+}
+
+.exercises-page .task-table tbody tr:hover,
+.exercises-page .task-table tbody tr:focus-within,
+.exercises-page .task-table tbody tr:has(.pdf-select:checked) {
+  background: color-mix(in srgb, var(--accent) 7%, var(--bg));
+}
+
+.exercises-page .task-table .select-cell {
+  width: 52px;
+  padding: 14px 16px;
+}
+
+.exercises-page .select-cell input {
+  margin: 0;
+  accent-color: var(--accent);
+  vertical-align: middle;
+}
+
+.exercises-page .task-table .number-cell {
+  width: 112px;
+  color: var(--muted);
+}
+
+.exercises-page .task-table tbody .number-cell {
+  font-size: .8rem;
+}
+
+.exercises-page .pdf-toolbar {
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.exercises-page .button {
+  min-height: 44px;
+  padding: 10px 18px;
+  border-color: color-mix(in srgb, var(--accent) 32%, transparent);
+  border-radius: 8px;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--accent) 20%, var(--bg));
+  font-size: .8rem;
+  font-weight: 650;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.exercises-page .button:not(:disabled):hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 30%, var(--bg));
+}
+
+.exercises-page .button:disabled,
+.exercises-page .pdf-clear:disabled {
+  opacity: .4;
+  cursor: default;
+}
+
+.exercises-page .pdf-clear {
+  min-height: 44px;
+  color: var(--muted);
+  font-size: .78rem;
+  text-underline-offset: 4px;
+}
+
+.exercises-page .pdf-clear:not(:disabled):hover {
+  color: var(--ink);
+}
+
+.exercises-page .pdf-toolbar p {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: .72rem;
+}
+
+.exercises-page .task-layout {
+  grid-template-columns: minmax(0, 1fr) 210px;
+  gap: 52px;
+}
+
+.exercises-page .task-main {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.exercises-page .task-main .eyebrow {
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-size: .66rem;
+  font-weight: 650;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.exercises-page .task-main h1 {
+  margin-bottom: 30px;
+  color: var(--ink);
+  font-size: clamp(1.7rem, 3.2vw, 2.35rem);
+  font-weight: 450;
+  letter-spacing: -.04em;
+  line-height: 1.25;
+}
+
+.exercises-page .task-main h2 {
+  margin: 28px 0 20px;
+  padding-top: 22px;
+  border-color: var(--line);
+  color: var(--muted);
+  font-size: .68rem;
+  font-weight: 650;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.exercises-page .instructions {
+  color: var(--ink);
+  font-size: .96rem;
+  line-height: 1.85;
+}
+
+.exercises-page .instructions a {
+  color: var(--accent);
+  text-underline-offset: 4px;
+}
+
+.exercises-page .instructions img {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+}
+
+.exercises-page .instructions pre {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.exercises-page .instructions td,
+.exercises-page .instructions th {
+  border-color: var(--line);
+}
+
+.exercises-page .task-download {
+  position: sticky;
+  top: 32px;
+}
+
+.exercises-page .attachment-link {
+  border-color: var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  background: var(--surface);
+}
+
+.exercises-page .attachment-link:hover {
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
+  background: color-mix(in srgb, var(--accent) 7%, var(--bg));
+}
+
+.exercises-page .attachment-link > svg {
+  color: var(--accent);
+}
+
+.exercises-page .attachment-link strong {
+  font-weight: 500;
+}
+
+.exercises-page .task-main > .subtle {
+  font-size: .82rem;
+}
+
+@media (max-width: 800px) {
+  .exercises-page .task-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .exercises-page .task-download {
+    position: static;
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .exercises-page #contenido {
+    width: calc(100% - 40px);
+    padding: 8px 0 40px;
+  }
+
+  .exercises-page .back-link {
+    margin: 8px 0 28px;
+  }
+
+  .exercises-page .task-table th,
+  .exercises-page .task-table td {
+    padding: 14px 10px;
+  }
+
+  .exercises-page .task-table .select-cell {
+    width: 40px;
+    padding: 12px 10px;
+  }
+
+  .exercises-page .task-table .number-cell {
+    width: 76px;
+  }
+
+  .exercises-page .task-table thead th {
+    font-size: .6rem;
+    letter-spacing: .08em;
+  }
+
+  .exercises-page .task-table tbody th {
+    font-size: .85rem;
+  }
+
+  .exercises-page .pdf-toolbar .button {
+    width: 100%;
+  }
+}

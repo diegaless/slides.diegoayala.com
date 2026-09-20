@@ -1,20 +1,5 @@
 const toast = document.querySelector("[data-toast]");
-const themeToggle = document.querySelector("[data-theme-toggle]");
 let toastTimer;
-
-function setTheme(theme) {
-  document.documentElement.dataset.theme = theme;
-  localStorage.setItem("theme", theme);
-
-  const isDark = theme === "dark";
-  if (themeToggle) {
-    themeToggle.setAttribute(
-      "aria-label",
-      isDark ? "Activar modo claro" : "Activar modo oscuro",
-    );
-    themeToggle.setAttribute("aria-pressed", String(isDark));
-  }
-}
 
 function showToast(message) {
   if (!toast) return;
@@ -25,13 +10,6 @@ function showToast(message) {
     toast.classList.remove("is-visible");
   }, 2400);
 }
-
-setTheme(document.documentElement.dataset.theme || "light");
-
-themeToggle?.addEventListener("click", () => {
-  const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-  setTheme(nextTheme);
-});
 
 document.querySelectorAll("[data-pending]").forEach((link) => {
   link.addEventListener("click", (event) => {

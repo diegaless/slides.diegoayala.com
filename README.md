@@ -3,6 +3,8 @@
 Página estática sencilla para que el alumnado encuentre diapositivas y ejercicios por asignatura.
 
 Diseño minimalista centrado con modo claro/nocturno y preferencia guardada en el navegador.
+La portada, los listados y los ejercicios comparten la cabecera, los colores,
+la tipografía y el selector de tema mediante `styles.css` y `theme.js`.
 
 ## Páginas
 
@@ -66,14 +68,17 @@ y `pdf.css` son copias literales del backup. Se comparten entre asignaturas.
 `pdf-lotes.js` mantiene la descarga de seleccionados y ajusta la ruta de sus datos
 a cada biblioteca. La tabla se genera en orden cronológico y funciona sin JavaScript.
 
-La cabecera usa la marca DA de la web mediante `marca.css`, sin el subtítulo
-«Biblioteca de tareas». Los listados abren directamente con la tabla; los controles
+La cabecera se reutiliza desde `index.html`, con la firma «Diego Ayala», la
+navegación DAM/DAW y SEF y el selector de tema. `ejercicios/assets/web.css` adapta
+las tablas, enunciados, botones y adjuntos a los mismos colores y tipografía de
+la portada. El tema se aplica antes de mostrar la página y se conserva al navegar.
+Los listados muestran el nombre de la asignatura y la tabla; los controles
 de descarga y «Quitar selección» aparecen debajo de ella.
 No incluyen el bloque introductorio, el buscador ni los controles de ordenación y filtrado.
 También se retiran el bloque «Sobre las fechas y esta copia» y el pie de todas las
 páginas de ejercicios. La tabla muestra la selección de PDF, la tarea y sus adjuntos.
-`listado-web.css` ajusta su ancho y el título del listado. El importador conserva
-estas adaptaciones al regenerar los HTML.
+`listado-web.css` mantiene la estructura de las tablas. El importador conserva
+la cabecera y estas adaptaciones al regenerar los HTML.
 
 El lateral de cada tarea muestra únicamente el botón «Descargar PDF», con los
 ajustes de `tarea-web.css`. Se eliminan el panel «Sobre esta tarea» —fechas,
@@ -84,6 +89,8 @@ impresión, sin el panel «Sobre esta tarea». Conservan los enunciados, imágen
 lista de materiales y numeración de páginas. Los PDF adjuntos se copian sin
 modificarlos. Tanto el ZIP completo como la descarga de seleccionados utilizan
 los PDF recién generados.
+Los estilos compartidos de la portada y `web.css` se aplican solo en pantalla;
+la impresión conserva el fondo blanco, los estilos originales y los enunciados.
 
 La copia incluye tareas publicadas. Excluye borradores, accesos a entregas,
 listados de alumnos, tareas individualizadas, los exámenes marcados como ocultos
@@ -93,7 +100,8 @@ Los ZIP y los datos de descarga se reconstruyen con la misma selección.
 El backup no se modifica.
 
 Para volver a generar la copia, revisa la selección `SUBJECTS` y `EXCLUDED_IDS` de
-`scripts/import-exercises.py`. La exportación necesita Node.js, Playwright y su
+`scripts/import-exercises.py` y los nombres de `SUBJECT_LABELS`.
+La exportación necesita Node.js, Playwright y su
 Chromium local. Reutiliza el runtime existente; si Node no resuelve Playwright,
 indica su carpeta de módulo con `PLAYWRIGHT_MODULE`:
 
