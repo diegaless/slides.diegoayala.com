@@ -2,37 +2,33 @@
   'use strict';
   const boxes = [...document.querySelectorAll('.pdf-select')];
   const selected = document.querySelector('#pdf-selected');
-  const toggle = document.querySelector('#pdf-select-visible');
+  const toggle = document.querySelector('#pdf-select-all');
   const clear = document.querySelector('#pdf-clear');
   const status = document.querySelector('#pdf-selection-status');
   if (!selected || !toggle) return;
   let busy = false;
   let payloadPromise;
   const pdfDataURL = new URL('assets/pdf-datos.js', location.href).href;
-  const visibleBoxes = () => boxes.filter(b => !b.closest('tr').hidden);
   function refresh() {
     const chosen = boxes.filter(b => b.checked);
-    const visible = visibleBoxes();
     selected.disabled = busy || chosen.length === 0;
     selected.textContent = busy ? 'Preparando ZIP…' : `Descargar seleccionados (${chosen.length})`;
     clear.disabled = busy || chosen.length === 0;
-    toggle.disabled = busy || visible.length === 0;
-    toggle.checked = visible.length > 0 && visible.every(b => b.checked);
-    toggle.indeterminate = visible.some(b => b.checked) && !toggle.checked;
+    toggle.disabled = busy || boxes.length === 0;
+    toggle.checked = boxes.length > 0 && chosen.length === boxes.length;
+    toggle.indeterminate = chosen.length > 0 && !toggle.checked;
     if (!busy) {
-      const hidden = chosen.filter(b => b.closest('tr').hidden).length;
       status.textContent = chosen.length
-        ? `${chosen.length} seleccionadas${hidden ? ` (${hidden} fuera del filtro actual)` : ''}. Se descargarán juntas en un ZIP.`
-        : 'Selecciona tareas en la tabla. Descarga en ZIP.';
+        ? `${chosen.length} ${chosen.length === 1 ? 'ejercicio seleccionado' : 'ejercicios seleccionados'}. Descarga en ZIP.`
+        : 'Marca los ejercicios que quieras descargar. Descarga en ZIP.';
     }
   }
   toggle.addEventListener('change', () => {
-    visibleBoxes().forEach(b => { b.checked = toggle.checked; });
+    boxes.forEach(b => { b.checked = toggle.checked; });
     refresh();
   });
   boxes.forEach(b => b.addEventListener('change', refresh));
   clear.addEventListener('click', () => { boxes.forEach(b => { b.checked = false; }); refresh(); });
-  new MutationObserver(refresh).observe(document.querySelector('#task-rows'), {subtree:true, attributes:true, attributeFilter:['hidden']});
   function loadPDFs() {
     if (window.bibliotecaPDF) return Promise.resolve(window.bibliotecaPDF);
     if (!payloadPromise) payloadPromise = new Promise((resolve, reject) => {
@@ -92,5 +88,6 @@
       status.textContent = `${error.message}. Conserva juntas las carpetas de esta biblioteca e inténtalo de nuevo.`;
     }
   });
+  document.querySelectorAll('[data-pdf-control]').forEach(control => { control.hidden = false; });
   refresh();
 })();

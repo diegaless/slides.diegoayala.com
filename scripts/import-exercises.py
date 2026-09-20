@@ -142,45 +142,49 @@ def copy_index(source, destination, tasks):
     html = html.replace('href="assets/', 'href="../assets/').replace('src="assets/', 'src="../assets/')
     html = html.replace('</head>', '<link rel="stylesheet" href="../assets/listado-web.css"></head>')
     html = html.replace('<script src="../assets/aula.js" defer></script>', '')
-    html = re.sub(r'<div class="list-intro">.*?</div>', '', html, count=1, flags=re.S)
-    html = re.sub(r'<section class="toolbar"[^>]*>.*?</section>', '', html, flags=re.S)
-    html = re.sub(r'<details class="help">.*?</details>', '', html, flags=re.S)
-    html = re.sub(r'<section class="empty-state"[^>]*>.*?</section>', '', html, flags=re.S)
-    html = re.sub(r'<noscript>.*?</noscript>', '', html, flags=re.S)
-    html = re.sub(r'<p class="draft-note"[^>]*>.*?</p>', '', html, flags=re.S)
-    html = re.sub(r'<th scope="col"(?: class="[^"]+")?>(?:Creación|Entrega prevista|Imágenes|Estado)</th>', '', html)
-    html = re.sub(r'<h2 id="results-title">(.*?)</h2>', r'<h1 id="results-title">\1</h1>', html, count=1, flags=re.S)
-    html = html.replace('<h1 id="results-title">Tareas publicadas</h1>',
-                        f'<h1 id="results-title">{SUBJECT_LABELS[source.name]}</h1>')
-    html = html.replace('<main class="wrap" id="contenido">',
-                        '<main class="wrap" id="contenido">'
-                        '<a class="back-link" href="../../index.html">'
-                        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" '
-                        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
-                        '<path d="M19 12H5m6-6-6 6 6 6"/></svg>Volver a las asignaturas</a>')
 
-    def prepare_row(row):
-        row = re.sub(r'<td class="date-cell">.*?</td>', '', row, flags=re.S)
-        # El primer contador corresponde a imágenes; el segundo, a adjuntos.
-        row = re.sub(r'<td class="number-cell(?: subtle)?">.*?</td>', '', row, count=1, flags=re.S)
-        return re.sub(r'<td><span class="(?:published-label|draft-label)">.*?</span></td>', '', row, flags=re.S)
+    def prepare_item(row):
+        checkbox = re.search(r'<input\b[^>]*class="pdf-select"[^>]*>', row)
+        link = re.search(r'(<a class="task-link"[^>]*>)(.*?)</a>', row, flags=re.S)
+        if not checkbox or not link:
+            raise ValueError(f"Falta el enlace o la selección de PDF: {source.name}")
+        return ('<li class="exercise-item">'
+                '<label class="exercise-select" data-pdf-control hidden>' + checkbox[0] + '</label>'
+                + link[1] + '<span class="task-title">' + link[2] + '</span>'
+                '<svg class="task-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+                'stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+                '<path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></li>')
 
     rows = {re.search(r'data-id="([^"]+)"', match[0])[1]: match[0]
             for match in re.finditer(r'<tr class="task-row"[^>]*>.*?</tr>', html, flags=re.S)}
     # El orden del manifiesto ya está normalizado por fecha de creación.
-    # La tabla funciona sin JavaScript ni preferencias de filtros guardadas.
-    ordered_rows = '\n'.join(prepare_row(rows[task['Id']]) for task in tasks)
-    html = re.sub(r'(<tbody id="task-rows">).*?(</tbody>)',
-                  lambda m: m[1] + ordered_rows + m[2], html, count=1, flags=re.S)
+    # La lista funciona sin JavaScript. Los adjuntos permanecen dentro de la tarea.
+    items = '\n'.join(prepare_item(rows[task['Id']]) for task in tasks)
     count = len(tasks)
-    html = re.sub(r'Descargar todos los PDF \(\d+\)', f"Descargar todos los PDF ({count})", html)
-    html = html.replace("Todos los PDF incluye los borradores. ", "")
-    html = re.sub(r'(<p class="results-count"[^>]*>)\d+ tareas', lambda m: m[1] + f"{count} tareas", html)
-    downloads = re.search(r'<section class="pdf-toolbar"[^>]*>.*?</section>', html, flags=re.S)
-    if not downloads:
-        raise ValueError(f"Faltan los controles de descarga: {source.name}")
-    html = html[:downloads.start()] + html[downloads.end():]
-    html = html.replace('</main>', downloads[0] + '</main>', 1)
+    download_all = re.search(r'<a\b[^>]*id="pdf-all"[^>]*>.*?</a>', html, flags=re.S)
+    if not download_all:
+        raise ValueError(f"Falta la descarga de todos los PDF: {source.name}")
+    download_all = re.sub(r'Descargar todos los PDF \(\d+\)',
+                          f"Descargar todos los PDF ({count})", download_all[0])
+    main = f'''<main class="wrap" id="contenido">
+<a class="back-link" href="../../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Volver a las asignaturas</a>
+<div class="results-heading"><h1 id="results-title">{SUBJECT_LABELS[source.name]}</h1><p class="results-count" id="results-count">{count} ejercicios</p></div>
+<ul class="exercise-list" id="task-list" aria-labelledby="results-title" role="list">
+{items}
+</ul>
+<section class="pdf-toolbar" aria-label="Descargar ejercicios en PDF">
+<div class="pdf-selection-tools" data-pdf-control hidden>
+<label class="pdf-select-all"><input type="checkbox" id="pdf-select-all">Seleccionar todos</label>
+<button class="pdf-clear" id="pdf-clear" type="button" disabled>Quitar selección</button>
+</div>
+{download_all}
+<button class="button" id="pdf-selected" type="button" data-pdf-control hidden disabled>Descargar seleccionados (0)</button>
+<p id="pdf-selection-status" role="status" aria-live="polite">Descarga los ejercicios en PDF, agrupados en un ZIP.</p>
+</section>
+</main>'''
+    html, replacements = re.subn(r'<main\b[^>]*>.*?</main>', lambda m: main, html, count=1, flags=re.S)
+    if replacements != 1:
+        raise ValueError(f"Falta el contenido del índice: {source.name}")
     html = adapt_header(html, "../../index.html", "../assets/")
     (destination / "INDICE.html").write_text(html, encoding="utf-8")
 
@@ -215,10 +219,8 @@ def main(source):
     # Los ajustes visuales de la web se mantienen separados del CSS original.
     for name in ("aula.css", "listado.css", "pdf.css"):
         shutil.copyfile(source / "interfaz" / name, shared / name)
-    batch_js = read(source / "interfaz/pdf-lotes.js")
-    batch_js = re.sub(r'const pdfDataURL = .*?;', "const pdfDataURL = new URL('assets/pdf-datos.js', location.href).href;", batch_js, count=1, flags=re.S)
-    batch_js = batch_js.replace("Todos los PDF incluye los borradores. ", "")
-    (shared / "pdf-lotes.js").write_text(batch_js, encoding="utf-8")
+    # pdf-lotes.js se mantiene en el repositorio junto al diseño de la lista;
+    # no sobrescribirlo con la versión de tablas y filtros del backup.
     report = []
     pdf_jobs = []
     bundles = []

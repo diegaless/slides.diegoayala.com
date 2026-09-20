@@ -66,19 +66,23 @@ con 18 tareas publicadas seleccionadas. El grupo DAM y los cursos anteriores no 
 Los enunciados, imágenes y adjuntos se conservan. `aula.css`, `listado.css`
 y `pdf.css` son copias literales del backup. Se comparten entre asignaturas.
 `pdf-lotes.js` mantiene la descarga de seleccionados y ajusta la ruta de sus datos
-a cada biblioteca. La tabla se genera en orden cronológico y funciona sin JavaScript.
+a cada biblioteca. Se mantiene en el repositorio y el importador no lo sobrescribe
+con la versión del backup. La lista se genera en orden cronológico y funciona sin JavaScript.
 
 La cabecera se reutiliza desde `index.html`, con la firma «Diego Ayala», la
 navegación DAM/DAW y SEF y el selector de tema. `ejercicios/assets/web.css` adapta
-las tablas, enunciados, botones y adjuntos a los mismos colores y tipografía de
+los listados, enunciados, botones y adjuntos a los mismos colores y tipografía de
 la portada. El tema se aplica antes de mostrar la página y se conserva al navegar.
-Los listados muestran el nombre de la asignatura y la tabla; los controles
-de descarga y «Quitar selección» aparecen debajo de ella.
+Los listados muestran el nombre de la asignatura y una lista de enlaces amplios,
+con separadores suaves, una flecha para abrir cada ejercicio y selección de PDF.
+«Seleccionar todos», los controles de descarga y «Quitar selección» aparecen debajo.
 No incluyen el bloque introductorio, el buscador ni los controles de ordenación y filtrado.
 También se retiran el bloque «Sobre las fechas y esta copia» y el pie de todas las
-páginas de ejercicios. La tabla muestra la selección de PDF, la tarea y sus adjuntos.
-`listado-web.css` mantiene la estructura de las tablas. El importador conserva
-la cabecera y estas adaptaciones al regenerar los HTML.
+páginas de ejercicios. No hay cabeceras de tabla ni contadores de adjuntos;
+los materiales siguen disponibles dentro de cada tarea.
+`listado-web.css` mantiene la estructura de la lista y su impresión. El importador
+conserva la cabecera y estas adaptaciones al regenerar los HTML. Sin JavaScript
+se ocultan los controles de selección; los enlaces y el ZIP completo siguen disponibles.
 
 El lateral de cada tarea muestra únicamente el botón «Descargar PDF», con los
 ajustes de `tarea-web.css`. Se eliminan el panel «Sobre esta tarea» —fechas,
