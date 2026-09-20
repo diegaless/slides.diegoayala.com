@@ -1,0 +1,32 @@
+.task-pdf { width: 100%; margin-top: 20px; font-size: 14px; }
+.pdf-note { margin: 10px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.task-deliveries { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 16px; }
+.task-deliveries .delivery-link { display: block; padding: 10px; border: 1px solid #c5d2f0; border-radius: 7px; text-align: center; font-size: 14px; font-weight: 600; color: var(--blue-dark); }
+
+@page { size: A4; margin: 14mm 16mm 18mm; }
+@media print {
+  .site-header, .back-link, .footer, .skip-link, .task-pdf, .pdf-note, .task-deliveries { display: none !important; }
+  :root, body { background: white !important; color: #17243b; font-size: 11pt; }
+  .wrap { width: 100%; margin: 0; }
+  .task-layout { display: block; }
+  .task-main, .task-aside { width: 100%; padding: 0; border: 0; border-radius: 0; box-shadow: none; background: white; }
+  .task-main h1 { font-size: 23pt; line-height: 1.25; margin-bottom: 8mm; }
+  .task-main h2, .task-aside h2 { font-size: 13pt; padding-top: 4mm; margin-bottom: 4mm; break-after: avoid; }
+  .eyebrow { font-size: 10pt; }
+  .instructions { font-size: 11pt; line-height: 1.5; }
+  .instructions p, .instructions li { orphans: 3; widows: 3; }
+  .instructions img { max-width: 100%; max-height: 220mm; width: auto; height: auto; object-fit: contain; break-inside: avoid; }
+  .instructions pre, .instructions code { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .instructions table { display: table; width: 100%; table-layout: fixed; font-size: 10pt; }
+  .instructions th, .instructions td { overflow-wrap: anywhere; padding: 2mm; }
+  .instructions thead { display: table-header-group; }
+  .instructions tr, .attachment-link { break-inside: avoid; }
+  .attachment-link { padding: 2mm; background: white; }
+  .attachment-link strong { font-size: 10pt; }
+  .attachment-link small, .pdf-materials-note { font-size: 9pt; }
+  .task-aside { margin-top: 8mm; padding-top: 4mm; border-top: 1px solid #dce3ee; break-inside: avoid; }
+  .task-aside dl { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 6mm; }
+  .task-aside dl > div { margin: 0; }
+  .task-aside dt, .task-aside dd, .task-aside .timezone { font-size: 9pt; }
+  .task-aside .timezone { margin-top: 3mm; }
+}

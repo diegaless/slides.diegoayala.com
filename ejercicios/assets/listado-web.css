@@ -1,0 +1,77 @@
+/* Estructura del listado público, también legible al imprimir. */
+.index-page .results-heading h1 {
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -.25px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.exercise-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: stretch;
+}
+
+.exercise-item .task-link {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  gap: 24px;
+}
+
+.exercise-item .task-link::after {
+  content: none;
+}
+
+.task-title {
+  overflow-wrap: anywhere;
+}
+
+.exercise-select {
+  display: grid;
+  flex: 0 0 48px;
+  place-items: center;
+  cursor: pointer;
+}
+
+.pdf-selection-tools {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.pdf-select-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+[data-pdf-control][hidden] {
+  display: none;
+}
+
+@media print {
+  .exercise-select,
+  .task-arrow {
+    display: none;
+  }
+
+  .exercise-item {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    break-inside: avoid;
+  }
+}

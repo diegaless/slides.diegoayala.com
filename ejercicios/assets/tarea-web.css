@@ -1,0 +1,16 @@
+/* El lateral de cada tarea contiene únicamente su botón de descarga. */
+.task-aside.task-download {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.task-download .task-pdf {
+  margin-top: 0;
+}
+
+@media print {
+  .task-aside.task-download {
+    display: none;
+  }
+}
