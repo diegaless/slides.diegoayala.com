@@ -1,4 +1,14 @@
 {
+  "dapw/Docker 1..10": {
+    "instructions": "dapw/docker-1-10.html",
+    "materials": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g385b3c8d33d_0_97",
+        "label": "Diapositivas de Docker · DAPW",
+        "detail": "Presentación de clase · abrir desde el ejercicio 1"
+      }
+    ]
+  },
   "dapw/Flask Cat App – Evaluable": {
     "instructions": "dapw/flask-cat-app.html"
   },

@@ -94,6 +94,8 @@ estado y puntuación— y la nota sobre el contenido del PDF.
 Las ampliaciones de enunciados se mantienen en `scripts/exercise-content/`, con
 un registro de instrucciones y materiales en `overrides.json`. El importador las
 aplica después de leer el backup y antes de generar los PDF. En DAPW se amplían
+«Docker 1..10» a partir de las diapositivas de clase y del documento enlazado en
+el ejercicio 10; el 7 y el 8 quedan pendientes de enunciado. También se amplían
 Flask Cat App y Dice App, con su enlace de Drive, y las tres etapas del blog de Laura:
 desarrollo, Gunicorn y Nginx. Las capturas y un único ZIP compartido del proyecto
 están en `ejercicios/assets/dapw/`; las tres etapas enlazan al mismo archivo.
