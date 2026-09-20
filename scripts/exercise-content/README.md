@@ -25,14 +25,14 @@ con capturas. Se aclaran las comprobaciones y los archivos, sin incluir solucion
 | 4 | 26 · `g385b3c8d33d_0_230` | Publicar `ejercicio4` mediante comandos; contexto de construcción y subida en las diapositivas 23–25. |
 | 5 | 27 · `g385b3c8d33d_0_240` | Publicar una imagen desde VS Code. |
 | 6 | 52 · `g36ca059bd8e_0_121` | Alpine activo con posibilidad de ejecutar comandos. |
-| 7 y 8 | No aparecen en la presentación publicada. | Pendientes, por indicación expresa del profesor; no se inventan ejercicios. |
 | 9 | 54 · `g36ca059bd8e_0_142` | Imagen Java, `java -version` y búsqueda de una imagen JRE más pequeña. |
 | 10 | 55 · `g36ca059bd8e_0_165` | Enlace al [documento de Suma.java](https://docs.google.com/document/d/1bCh8zcwTmcTxv4XaGONjjTVBlV9puPRXs5FxbZXmDaw/edit?usp=sharing): entrada por teclado, prueba local, Dockerfile, compilación y ejecución en Docker. |
 
 Cada ejercicio de Docker tiene un bloque independiente con número, título y
-enlace a su diapositiva mediante `slide=id.…`. Los ejercicios 7 y 8 siguen
-pendientes, sin enlaces inventados. Los bloques usan los estilos compartidos
-de `tarea-web.css` y conservan su separación en el PDF.
+enlace a su diapositiva mediante `slide=id.…`. Los bloques pendientes 7 y 8 se
+han retirado por indicación del profesor. Los ocho ejercicios restantes conservan
+sus números de referencia. Los bloques usan los estilos compartidos de
+`tarea-web.css` y conservan su separación en el PDF.
 
 Se han extraído las capturas originales de la presentación, sin recrearlas:
 
