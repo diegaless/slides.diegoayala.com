@@ -25,12 +25,16 @@ SUBJECTS = [
     ("DAPW", "dapw"),
     ("PI", "pi"),
 ]
-# Tareas individualizadas o con listados nominales: no son material público.
+# Tareas individualizadas o retiradas de la selección pública.
 # Los identificadores permiten excluirlas sin reproducir los nombres del alumnado.
 EXCLUDED_IDS = {
     "e4c0d408-c67b-4f15-b0c8-bab67578a541",
     "1c45e86c-6039-48da-bc36-a47518991dc6",
     "fa7504d6-d671-4312-b968-0dcf2f8102c5",
+    # LM 1DAW: tareas retiradas del material base.
+    "783587d4-0e83-4442-9dff-48ef6b6777c6",
+    "cc04bf3e-ca9d-4b7e-8255-8253a4afe803",
+    "d0135e33-6a41-412e-b907-05518aac35cd",
 }
 
 

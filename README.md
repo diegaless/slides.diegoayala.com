@@ -49,13 +49,13 @@ de las bibliotecas y los nombres de los ZIP de selección no incluyen el año.
 
 | Asignatura | Ruta | Tareas |
 | --- | --- | ---: |
-| Lenguaje de Marcas | `ejercicios/lm/INDICE.html` | 24 |
+| Lenguaje de Marcas | `ejercicios/lm/INDICE.html` | 21 |
 | Desarrollo de Interfaces | `ejercicios/di/INDICE.html` | 10 |
 | Despliegue de aplicaciones Web | `ejercicios/dapw/INDICE.html` | 13 |
 | Proyecto Intermodular | `ejercicios/pi/INDICE.html` | 2 |
 
 Lenguaje de Marcas utiliza únicamente el grupo `LM 1DAW` de 2025–2026,
-con sus 24 tareas publicadas. El grupo DAM y los cursos anteriores no se incluyen.
+con 21 tareas publicadas seleccionadas. El grupo DAM y los cursos anteriores no se incluyen.
 
 Los enunciados, imágenes, PDF y adjuntos se conservan. `aula.css`, `listado.css`
 y `pdf.css` son copias literales del backup. Se comparten entre asignaturas.
@@ -71,8 +71,9 @@ páginas de ejercicios. La tabla muestra la selección de PDF, la tarea y sus ad
 estas adaptaciones al regenerar los HTML.
 
 La copia incluye tareas publicadas. Excluye borradores, accesos a entregas,
-listados de alumnos y tres tareas con referencias nominales. Los ZIP y los datos
-de descarga se reconstruyen con la misma selección. El backup no se modifica.
+listados de alumnos, tareas individualizadas y tareas retiradas del material base.
+Los ZIP y los datos de descarga se reconstruyen con la misma selección.
+El backup no se modifica.
 
 Para volver a generar la copia, revisa la selección `SUBJECTS` y `EXCLUDED_IDS` de
 `scripts/import-exercises.py` y ejecuta:
