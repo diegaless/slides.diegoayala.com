@@ -129,3 +129,14 @@ Compose 2 reutiliza el `templates.zip` ya publicado en Flask Cat App y Compose 3
 enlaza al material de Dice App en Drive. Compose 4 conserva su adjunto original.
 Viaje de Estudios y Compose 4 siguen sin enlace a una diapositiva concreta, por
 indicación del profesor. No se incorporan entregas ni información del alumnado.
+
+## Defensa final
+
+`dapw/defensa-final.html` aplica, por indicación del profesor, las tres etapas
+de Compose a la práctica propia desarrollada con Lydia en Backend de segundo
+de DAW. Enlaza a Dev Stage, Prod Stage 1 y Prod Stage 2 mediante URLs públicas
+para que las referencias también funcionen en el PDF. Los nombres de módulos,
+servicios y rutas deben adaptarse al proyecto del alumno; no se adjunta el ZIP
+de Laura. Se conserva la obligación original de entregar el repositorio y un ZIP
+con la práctica final aunque ya se haya realizado la defensa. La tarea sigue
+sin enlace a una diapositiva específica.
