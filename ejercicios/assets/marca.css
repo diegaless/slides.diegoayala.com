@@ -1,0 +1,11 @@
+/* La marca de la web se comparte sin modificar los estilos del backup. */
+.brand-mark {
+  flex: none;
+}
+
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}

@@ -2,6 +2,8 @@
 
 Propuesta: desplegar las pestañas «Diapositivas» y «Ejercicios» bajo la asignatura seleccionada. Cada apertura empieza en «Diapositivas». Los ejercicios se abren en la biblioteca HTML existente, conservando su diseño y sus descargas. Se toma únicamente el último curso disponible de cada asignatura como base, sin mostrar etiquetas ni un selector de curso.
 
+La cabecera de los ejercicios comparte la marca DA de la web y muestra solo la asignatura. Se retiran el subtítulo «Biblioteca de tareas» y el bloque «Sobre las fechas y esta copia».
+
 ## Concepto con imagegen
 
 Generado con la herramienta integrada de imagegen a partir de una captura de la web original.

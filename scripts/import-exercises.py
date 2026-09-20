@@ -65,16 +65,27 @@ def without_deliveries(html):
     return html
 
 
-def adapt_header(html, home):
+def adapt_header(html, home, assets):
     html = re.sub(r'(<a class="brand" href=")[^"]+(" title=")[^"]+(" aria-label=")[^"]+',
                   lambda m: m[1] + home + m[2] + "Volver a las asignaturas" + m[3] + "Volver a las asignaturas", html)
+    logo = home.removesuffix("index.html") + "assets/favicon.svg"
+    html = re.sub(r'<span class="brand-mark">.*?</span>',
+                  lambda m: f'<span class="brand-mark"><img src="{logo}" alt="" width="64" height="64"></span>',
+                  html, count=1, flags=re.S)
+    html = html.replace('<span>Biblioteca de tareas</span>', '')
+    html = html.replace('<title>Biblioteca de tareas · ', '<title>Ejercicios · ')
+    html = re.sub(r'(<footer class="wrap footer">.*?) · Biblioteca de tareas',
+                  r'\1', html, count=1, flags=re.S)
+    html = html.replace('</head>',
+                        f'<link rel="stylesheet" href="{assets}marca.css">'
+                        f'<link rel="icon" type="image/svg+xml" href="{logo}"></head>')
     return html
 
 
 def copy_task(source, destination):
     html = without_deliveries(read(source / "TAREA.html"))
-    html = adapt_header(html, "../../../index.html")
     html = html.replace('href="../assets/', 'href="../../assets/')
+    html = adapt_header(html, "../../../index.html", "../../assets/")
     links = Links(html)
     destination.mkdir(parents=True, exist_ok=True)
     for filename in links.files:
@@ -92,8 +103,9 @@ def copy_task(source, destination):
 
 def copy_index(source, destination, tasks):
     html = without_deliveries(read(source / "INDICE.html"))
-    html = adapt_header(html, "../../index.html")
     html = html.replace('href="assets/', 'href="../assets/').replace('src="assets/', 'src="../assets/')
+    html = adapt_header(html, "../../index.html", "../assets/")
+    html = re.sub(r'<details class="help">.*?</details>', '', html, flags=re.S)
     ids = {task["Id"] for task in tasks}
 
     def keep_row(match):

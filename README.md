@@ -58,6 +58,10 @@ Los enunciados, imágenes, PDF y adjuntos se conservan. `aula.css`, `listado.css
 asignaturas. `pdf-lotes.js` mantiene la descarga de seleccionados y ajusta la ruta
 de sus datos a cada biblioteca.
 
+La cabecera usa la marca DA de la web mediante `marca.css`, sin el subtítulo
+«Biblioteca de tareas». Los índices omiten el bloque «Sobre las fechas y esta
+copia». El importador conserva estas adaptaciones al regenerar los HTML.
+
 La copia incluye tareas publicadas. Excluye borradores, accesos a entregas,
 listados de alumnos y tres tareas con referencias nominales. Los ZIP y los datos
 de descarga se reconstruyen con la misma selección. El backup no se modifica.
