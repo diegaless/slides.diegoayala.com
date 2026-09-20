@@ -6,6 +6,8 @@ La cabecera de los ejercicios comparte la marca DA de la web y muestra solo la a
 
 Los listados muestran la selección de PDF, «Tarea» y «Adjuntos», con búsqueda y ordenación. Se retiran las columnas de creación, entrega prevista, imágenes y estado, el filtro «Mostrar» y el texto del pie sobre disponibilidad sin conexión.
 
+Lenguaje de Marcas abre las 24 tareas publicadas de `LM 1DAW` del último curso disponible, 2025–2026. Se usa solo ese grupo, sin mostrar el curso en la web.
+
 ## Concepto con imagegen
 
 Generado con la herramienta integrada de imagegen a partir de una captura de la web original.
@@ -17,6 +19,8 @@ Generado con la herramienta integrada de imagegen a partir de una captura de la 
 ![Selector en la web](selector.png)
 
 ![Biblioteca HTML reutilizada](biblioteca.png)
+
+![Ejercicios de Lenguaje de Marcas](lenguaje-de-marcas.png)
 
 ## Prompt utilizado
 

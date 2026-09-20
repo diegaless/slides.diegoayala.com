@@ -8,7 +8,7 @@ Diseño minimalista centrado con modo claro/nocturno y preferencia guardada en e
 
 - `index.html`: selector de diapositivas y ejercicios DAM / DAW. Al abrir una
   asignatura se selecciona siempre «Diapositivas». Solo hay una asignatura desplegada.
-- `ejercicios/`: biblioteca de ejercicios de segundo, con los HTML, CSS, buscador,
+- `ejercicios/`: biblioteca de ejercicios por asignatura, con los HTML, CSS, buscador,
   ordenación y descargas de la biblioteca existente en el backup de Teams.
 - `sef/index.html`: certificados SEF con módulos desplegables.
 - `go/index.html`: puente estable a una diapositiva por su identificador interno.
@@ -41,7 +41,7 @@ Si prefieres abrir el visor privado de Google Slides, usa:
 Si alguna vez quieres forzar descarga como PDF, usa:
 `https://docs.google.com/presentation/d/ID/export/pdf`
 
-## Biblioteca de ejercicios de segundo
+## Biblioteca de ejercicios
 
 Cada asignatura utiliza únicamente el último curso disponible del backup como
 material base. La web no muestra etiquetas ni un selector de curso, y las rutas
@@ -49,9 +49,13 @@ de las bibliotecas y los nombres de los ZIP de selección no incluyen el año.
 
 | Asignatura | Ruta | Tareas |
 | --- | --- | ---: |
+| Lenguaje de Marcas | `ejercicios/lm/INDICE.html` | 24 |
 | Desarrollo de Interfaces | `ejercicios/di/INDICE.html` | 10 |
 | Despliegue de aplicaciones Web | `ejercicios/dapw/INDICE.html` | 13 |
 | Proyecto Intermodular | `ejercicios/pi/INDICE.html` | 2 |
+
+Lenguaje de Marcas utiliza únicamente el grupo `LM 1DAW` de 2025–2026,
+con sus 24 tareas publicadas. El grupo DAM y los cursos anteriores no se incluyen.
 
 Los enunciados, imágenes, PDF y adjuntos se conservan. `aula.css`, `listado.css`
 y `pdf.css` son copias literales del backup. Se comparten entre asignaturas.
@@ -81,8 +85,8 @@ Si `docpython` no está disponible, puede usarse `python3`; el importador solo
 necesita la biblioteca estándar. Sustituye exclusivamente las carpetas de salida
 de las asignaturas definidas en `SUBJECTS`.
 
-Lenguaje de Marcas y Sistemas informáticos conservan su acceso a diapositivas;
-sus ejercicios de primero no están incluidos en esta selección.
+Sistemas informáticos conserva su acceso a diapositivas; sus ejercicios todavía
+no están incluidos en esta selección.
 
 ## Propuesta visual
 

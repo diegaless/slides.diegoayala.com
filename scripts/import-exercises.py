@@ -20,6 +20,7 @@ DESTINATION = Path(__file__).resolve().parents[1] / "ejercicios"
 # Último curso disponible de cada asignatura, utilizado como biblioteca base.
 # Las rutas públicas no dependen del año de la clase de origen.
 SUBJECTS = [
+    ("LM 1DAW", "lm"),
     ("2DAM DI", "di"),
     ("DAPW", "dapw"),
     ("PI", "pi"),
