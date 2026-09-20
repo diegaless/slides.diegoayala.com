@@ -6,6 +6,8 @@ La cabecera de los ejercicios comparte la marca DA de la web y muestra solo la a
 
 Los listados muestran directamente las descargas y la tabla con selección de PDF, «Tarea» y «Adjuntos». Se retiran el bloque introductorio, el buscador y los controles de ordenación y filtrado, las columnas de creación, entrega prevista, imágenes y estado, y el pie de todas las páginas de ejercicios. Las tareas aparecen en orden cronológico sin necesitar JavaScript.
 
+En cada tarea, el lateral contiene únicamente el botón «Descargar PDF». Se eliminan el panel de información con fechas, estado y puntuación, y la nota bajo el botón.
+
 Lenguaje de Marcas abre 18 tareas publicadas seleccionadas de `LM 1DAW` del último curso disponible, 2025–2026. Desarrollo de Interfaces contiene 8 tareas. Los exámenes ocultos y las tareas retiradas se excluyen de la carpeta pública, incluidos sus PDF, adjuntos y descargas en ZIP. Los originales se conservan en el backup.
 
 ## Concepto con imagegen
@@ -21,6 +23,8 @@ Generado con la herramienta integrada de imagegen a partir de una captura de la 
 ![Biblioteca HTML reutilizada](biblioteca.png)
 
 ![Ejercicios de Lenguaje de Marcas](lenguaje-de-marcas.png)
+
+![Tarea con el botón de descarga](tarea.png)
 
 ## Prompt utilizado
 

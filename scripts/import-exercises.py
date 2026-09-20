@@ -97,6 +97,15 @@ def copy_task(source, destination):
     html = without_deliveries(read(source / "TAREA.html"))
     html = html.replace('href="../assets/', 'href="../../assets/')
     html = adapt_header(html, "../../../index.html", "../../assets/")
+    sidebar = re.search(r'<aside class="task-aside"[^>]*>.*?</aside>', html, flags=re.S)
+    download = re.search(r'<a\b[^>]*\bid="task-pdf-download"[^>]*>.*?</a>',
+                         sidebar[0] if sidebar else '', flags=re.S)
+    if not download:
+        raise ValueError(f"Falta el botón de descarga PDF: {source.name}")
+    html = (html[:sidebar.start()]
+            + '<aside class="task-aside task-download" aria-label="Descarga de la tarea">'
+            + download[0] + '</aside>' + html[sidebar.end():])
+    html = html.replace('</head>', '<link rel="stylesheet" href="../../assets/tarea-web.css"></head>')
     links = Links(html)
     destination.mkdir(parents=True, exist_ok=True)
     for filename in links.files:

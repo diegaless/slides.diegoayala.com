@@ -70,6 +70,10 @@ páginas de ejercicios. La tabla muestra la selección de PDF, la tarea y sus ad
 `listado-web.css` ajusta su ancho y el título del listado. El importador conserva
 estas adaptaciones al regenerar los HTML.
 
+El lateral de cada tarea muestra únicamente el botón «Descargar PDF», con los
+ajustes de `tarea-web.css`. Se eliminan el panel «Sobre esta tarea» —fechas,
+estado y puntuación— y la nota sobre el contenido del PDF.
+
 La copia incluye tareas publicadas. Excluye borradores, accesos a entregas,
 listados de alumnos, tareas individualizadas, los exámenes marcados como ocultos
 y las tareas retiradas del material base. Se retiran sus páginas, PDF y adjuntos
