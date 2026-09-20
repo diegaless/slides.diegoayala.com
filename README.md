@@ -57,7 +57,7 @@ de las bibliotecas y los nombres de los ZIP de selección no incluyen el año.
 | --- | --- | ---: |
 | Lenguaje de Marcas | `ejercicios/lm/INDICE.html` | 18 |
 | Desarrollo de Interfaces | `ejercicios/di/INDICE.html` | 8 |
-| Despliegue de aplicaciones Web | `ejercicios/dapw/INDICE.html` | 13 |
+| Despliegue de aplicaciones Web | `ejercicios/dapw/INDICE.html` | 12 |
 | Proyecto Intermodular | `ejercicios/pi/INDICE.html` | 2 |
 
 Lenguaje de Marcas utiliza únicamente el grupo `LM 1DAW` de 2025–2026,

@@ -50,6 +50,8 @@ EXCLUDED_IDS = {
     # DI: tareas retiradas del material base.
     "50d9c285-26eb-472b-86e1-9f694db8e7c8",
     "d69ee668-d2cb-48d2-9301-ddd04073867a",
+    # DAPW: retirar la tarea CV de la selección pública.
+    "c2999e9b-ce02-46b7-aae0-a05225740cf2",
 }
 
 
