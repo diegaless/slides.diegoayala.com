@@ -1,0 +1,45 @@
+{
+  "dapw/Flask Cat App – Evaluable": {
+    "instructions": "dapw/flask-cat-app.html"
+  },
+  "dapw/DICE-APP_EVALUABLE": {
+    "instructions": "dapw/dice-app.html",
+    "materials": [
+      {
+        "href": "https://drive.google.com/file/d/1TvVzBtT5Vftvd6HBDbNAEBcfS4wQ-O-4/view?usp=sharing",
+        "label": "Material de Dice App en Google Drive",
+        "detail": "Abrir en Google Drive · nueva pestaña"
+      }
+    ]
+  },
+  "dapw/COMPOSE -- DEV STAGE": {
+    "instructions": "dapw/compose-dev.html",
+    "materials": [
+      {
+        "href": "../../assets/dapw/laura-personal_blog-main.zip",
+        "label": "laura-personal_blog-main.zip",
+        "detail": "Blog personal de Laura · proyecto base para las tres etapas · ZIP, 2,6 MB"
+      }
+    ]
+  },
+  "dapw/COMPOSE - PROD STAGE 1": {
+    "instructions": "dapw/compose-prod-1.html",
+    "materials": [
+      {
+        "href": "../../assets/dapw/laura-personal_blog-main.zip",
+        "label": "laura-personal_blog-main.zip",
+        "detail": "Proyecto original de referencia · continúa sobre tu entrega de Dev Stage · ZIP, 2,6 MB"
+      }
+    ]
+  },
+  "dapw/COMPOSE -- PROD STAGE 2": {
+    "instructions": "dapw/compose-prod-2.html",
+    "materials": [
+      {
+        "href": "../../assets/dapw/laura-personal_blog-main.zip",
+        "label": "laura-personal_blog-main.zip",
+        "detail": "Proyecto original de referencia · continúa sobre tu entrega de Prod Stage 1 · ZIP, 2,6 MB"
+      }
+    ]
+  }
+}

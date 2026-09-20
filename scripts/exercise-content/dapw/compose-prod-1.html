@@ -1,0 +1,26 @@
+<p>Continúa sobre el repositorio de <a href="../COMPOSE%20--%20DEV%20STAGE/TAREA.html">Dev Stage</a> del blog que Laura hizo con Lidia en Backend de segundo de DAW. Esta es la segunda de las tres etapas de dockerización.</p>
+<h3>Objetivo de esta etapa</h3>
+<p>Integra únicamente la parte recuadrada en rojo en la primera captura: <strong>Gunicorn como servidor WSGI y la aplicación Django</strong>. Amplía los archivos Docker y Compose de la práctica anterior para sustituir el servidor de desarrollo. Nginx se añadirá en Prod Stage 2.</p>
+<h3>Trabajo a realizar</h3>
+<ol>
+  <li>Añade Gunicorn a las dependencias de producción y úsalo como proceso de arranque del servicio de la aplicación.</li>
+  <li>Localiza el módulo real <code>personalblog/wsgi.py</code> y su objeto <code>application</code>. El comando de referencia para este proyecto es:</li>
+</ol>
+<pre><code>gunicorn personalblog.wsgi:application --bind 0.0.0.0:8000</code></pre>
+<p><code>0.0.0.0</code> permite escuchar en las interfaces del contenedor y <code>8000</code> es el puerto de la aplicación. Ejecuta el proceso desde el directorio del proyecto, donde está <code>manage.py</code>.</p>
+<ol start="3">
+  <li>Prepara la configuración de producción de Django: desactiva <code>DEBUG</code> y configura los hosts con los que vas a acceder a la práctica en <code>ALLOWED_HOSTS</code>.</li>
+  <li>Retira <code>django-browser-reload</code> de las dependencias de producción y de las referencias activas del proyecto. En el ZIP aparece en <code>INSTALLED_APPS</code> y <code>MIDDLEWARE</code>, dentro de <code>personalblog/settings.py</code>, y en la ruta <code>__reload__/</code> de <code>personalblog/urls.py</code>.</li>
+  <li>Comprueba que el contenedor arranca con Gunicorn y que las peticiones llegan a Django. Documenta los cambios respecto a Dev Stage y conserva el trabajo del blog.</li>
+</ol>
+<p>En esta etapa se comprueba el funcionamiento de Gunicorn y Django. Con esta configuración, Gunicorn no proporciona el servicio de estáticos que ofrecía <code>runserver</code>: la integración de CSS, Tailwind e imágenes mediante Nginx se completa en la siguiente tarea.</p>
+<figure class="exercise-reference">
+  <a href="../../assets/dapw/compose-prod-1-wsgi.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar el esquema de Gunicorn y Django en una nueva pestaña"><img src="../../assets/dapw/compose-prod-1-wsgi.png" alt="Prod Stage 1: el recuadro rojo abarca el servidor WSGI y la aplicación. En esta práctica se integran Gunicorn y Django; el servidor web queda para la siguiente etapa."></a>
+  <figcaption>Integra la parte marcada en rojo: Gunicorn y Django. <span class="screen-only">Pulsa la imagen para ampliarla.</span></figcaption>
+</figure>
+<figure class="exercise-reference">
+  <a href="../../assets/dapw/compose-prod-1-reload.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar la captura sobre la retirada de browser reload en una nueva pestaña"><img src="../../assets/dapw/compose-prod-1-reload.png" alt="La configuración de producción debe retirar django-browser-reload de las dependencias y de sus referencias en el paquete personalblog."></a>
+  <figcaption>Retirada de la recarga de desarrollo en la configuración de producción.</figcaption>
+</figure>
+<h3>Entrega</h3>
+<p>Adjunta el enlace al mismo repositorio, actualizado, y amplía el <code>README.md</code> con el comando de Gunicorn, los archivos modificados, la retirada de la recarga y capturas de los contenedores, los registros y la aplicación respondiendo. Explica qué queda pendiente para <a href="../COMPOSE%20--%20PROD%20STAGE%202/TAREA.html">Prod Stage 2</a>.</p>

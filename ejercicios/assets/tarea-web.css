@@ -9,7 +9,47 @@
   margin-top: 0;
 }
 
+.authored-instructions h3 {
+  margin: 28px 0 12px;
+  font-size: 1em;
+  font-weight: 650;
+  line-height: 1.4;
+  break-after: avoid;
+}
+
+.authored-instructions .exercise-reference {
+  margin: 24px 0;
+  break-inside: avoid;
+}
+
+.exercise-reference img {
+  margin: 10px 0;
+}
+
+.exercise-reference figcaption {
+  color: var(--muted);
+  font-size: .8em;
+  line-height: 1.5;
+}
+
 @media print {
+  .authored-instructions h3 {
+    margin: 5mm 0 3mm;
+  }
+
+  .authored-instructions .exercise-reference {
+    margin: 3mm 0;
+  }
+
+  .authored-instructions .exercise-reference img {
+    max-width: 86%;
+    margin: 2mm auto;
+  }
+
+  .authored-instructions .screen-only {
+    display: none;
+  }
+
   .task-aside.task-download {
     display: none;
   }

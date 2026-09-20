@@ -2,7 +2,7 @@
 
 Propuesta: desplegar las pestañas «Diapositivas» y «Ejercicios» bajo la asignatura seleccionada. Cada apertura empieza en «Diapositivas». Los ejercicios reutilizan los HTML y las descargas existentes con el estilo de la portada. Se toma únicamente el último curso disponible de cada asignatura como base, sin mostrar etiquetas ni un selector de curso.
 
-Los cuatro listados y las 40 tareas comparten con la portada la cabecera «Diego Ayala», la navegación DAM/DAW y SEF, la tipografía, los acentos violeta y el selector de tema. El modo claro u oscuro se conserva al navegar. Los listados, los botones y los adjuntos siguen el mismo estilo. La impresión mantiene el fondo blanco y los estilos originales.
+Los cuatro listados y las 39 tareas comparten con la portada la cabecera «Diego Ayala», la navegación DAM/DAW y SEF, la tipografía, los acentos violeta y el selector de tema. El modo claro u oscuro se conserva al navegar. Los listados, los botones y los adjuntos siguen el mismo estilo. La impresión mantiene el fondo blanco y los estilos originales.
 
 Los ejercicios se presentan como una lista de enlaces amplios, con separadores suaves, una flecha para abrir el enunciado y selección de PDF integrada. Se elimina la tabla y su columna de adjuntos; los materiales se conservan dentro de cada ejercicio. «Seleccionar todos», los botones de descarga y «Quitar selección» aparecen debajo de la lista. Se retiran el bloque introductorio, el buscador y los controles de ordenación y filtrado, los datos de creación, entrega prevista, imágenes y estado, y el pie de todas las páginas de ejercicios. Las tareas aparecen en orden cronológico sin necesitar JavaScript; en ese caso, se oculta la selección y se mantiene la descarga completa.
 

@@ -60,7 +60,7 @@ de las bibliotecas y los nombres de los ZIP de selección no incluyen el año.
 | --- | --- | ---: |
 | Lenguaje de Marcas | `ejercicios/lm/INDICE.html` | 18 |
 | Desarrollo de Interfaces | `ejercicios/di/INDICE.html` | 8 |
-| Despliegue de aplicaciones Web | `ejercicios/dapw/INDICE.html` | 12 |
+| Despliegue de aplicaciones Web | `ejercicios/dapw/INDICE.html` | 11 |
 | Proyecto Intermodular | `ejercicios/pi/INDICE.html` | 2 |
 
 Lenguaje de Marcas utiliza únicamente el grupo `LM 1DAW` de 2025–2026,
@@ -90,6 +90,14 @@ se ocultan los controles de selección; los enlaces y el ZIP completo siguen dis
 El lateral de cada tarea muestra únicamente el botón «Descargar PDF», con los
 ajustes de `tarea-web.css`. Se eliminan el panel «Sobre esta tarea» —fechas,
 estado y puntuación— y la nota sobre el contenido del PDF.
+
+Las ampliaciones de enunciados se mantienen en `scripts/exercise-content/`, con
+un registro de instrucciones y materiales en `overrides.json`. El importador las
+aplica después de leer el backup y antes de generar los PDF. En DAPW se amplían
+Flask Cat App y Dice App, con su enlace de Drive, y las tres etapas del blog de Laura:
+desarrollo, Gunicorn y Nginx. Las capturas y un único ZIP compartido del proyecto
+están en `ejercicios/assets/dapw/`; las tres etapas enlazan al mismo archivo.
+La tarea «DOCKER COMPOSE APP LAURA» se retira de la selección pública.
 
 Los PDF descargables se generan desde estos HTML con los mismos estilos de
 impresión, sin el panel «Sobre esta tarea». Conservan los enunciados, imágenes,

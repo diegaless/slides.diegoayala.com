@@ -13,12 +13,14 @@ import subprocess
 import sys
 import zipfile
 import zlib
+from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 
 DESTINATION = Path(__file__).resolve().parents[1] / "ejercicios"
+CONTENT = Path(__file__).with_name("exercise-content")
 # Último curso disponible de cada asignatura, utilizado como biblioteca base.
 # Las rutas públicas no dependen del año de la clase de origen.
 SUBJECTS = [
@@ -52,6 +54,8 @@ EXCLUDED_IDS = {
     "d69ee668-d2cb-48d2-9301-ddd04073867a",
     # DAPW: retirar la tarea CV de la selección pública.
     "c2999e9b-ce02-46b7-aae0-a05225740cf2",
+    # Sustituida por las tres etapas de Compose del blog personal.
+    "12c8b5e0-7ca5-48fc-9eeb-91f95367ca09",
 }
 
 
@@ -108,7 +112,47 @@ def adapt_header(html, home, assets):
     return html
 
 
-def copy_task(source, destination):
+def apply_task_content(html, key):
+    overrides = json.loads(read(CONTENT / "overrides.json"))
+    override = overrides.get(key)
+    if not override:
+        return html
+    instructions = read(CONTENT / override["instructions"]).strip()
+    html, count = re.subn(
+        r'<h2>Instrucciones</h2>.*?(?=<h2>Materiales de la tarea</h2>)',
+        lambda m: '<h2>Instrucciones</h2><div class="instructions authored-instructions">\n' + instructions + '\n</div>\n',
+        html, count=1, flags=re.S)
+    if count != 1:
+        raise ValueError(f"Falta el bloque de instrucciones: {key}")
+    materials = override.get("materials", [])
+    if materials:
+        items = []
+        for material in materials:
+            href = escape(material["href"], quote=True)
+            external = urlsplit(material["href"]).scheme == "https"
+            attributes = ' target="_blank" rel="noopener noreferrer"' if external else ' download'
+            action = 'M7 17 17 7M7 7h10v10' if external else 'M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5'
+            items.append(
+                f'<li><a class="attachment-link" href="{href}"{attributes}>'
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" '
+                'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H5v18h14V8Z"/>'
+                '<path d="M14 3v5h5M8 12h8M8 16h5"/></svg><span><strong>'
+                + escape(material["label"]) + '</strong><small>' + escape(material["detail"]) + '</small></span>'
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" '
+                f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{action}"/></svg></a></li>')
+        added = '\n'.join(items)
+        existing = re.search(r'<ul class="attachments">.*?</ul>', html, flags=re.S)
+        if existing:
+            html = html[:existing.end()-5] + added + html[existing.end()-5:]
+        else:
+            html, count = re.subn(r'<p class="subtle">No hay archivos adjuntos en esta tarea\.</p>',
+                                  lambda m: '<ul class="attachments">' + added + '</ul>', html, count=1)
+            if count != 1:
+                raise ValueError(f"Falta el bloque de materiales: {key}")
+    return html
+
+
+def copy_task(source, destination, content_key=None):
     html = without_deliveries(read(source / "TAREA.html"))
     html = html.replace('href="../assets/', 'href="../../assets/')
     sidebar = re.search(r'<aside class="task-aside"[^>]*>.*?</aside>', html, flags=re.S)
@@ -121,6 +165,8 @@ def copy_task(source, destination):
             + download[0] + '</aside>' + html[sidebar.end():])
     html = html.replace('</head>', '<link rel="stylesheet" href="../../assets/tarea-web.css"></head>')
     html = adapt_header(html, "../../../index.html", "../../assets/")
+    if content_key:
+        html = apply_task_content(html, content_key)
     links = Links(html)
     destination.mkdir(parents=True, exist_ok=True)
     for filename in links.files:
@@ -237,13 +283,15 @@ def main(source):
         if target.exists():
             shutil.rmtree(target)
         target.mkdir(parents=True)
-        pdfs = [copy_task(origin / task["Carpeta"], target / task["Carpeta"]) for task in tasks]
+        pdfs = [copy_task(origin / task["Carpeta"], target / task["Carpeta"], f'{slug}/{task["Carpeta"]}')
+                for task in tasks]
         copy_index(origin, target, tasks)
         pdf_jobs.extend({"html": str(target / task["Carpeta"] / "TAREA.html"),
                          "pdf": str(target / task["Carpeta"] / filename)}
                         for task, filename in zip(tasks, pdfs))
         bundles.append((target, tasks, pdfs))
-        report.append({"subject": slug, "tasks": len(tasks), "attachments": sum(t["Adjuntos"] for t in tasks)})
+        report.append({"subject": slug, "tasks": len(tasks), "attachments": sum(
+            read(target / task["Carpeta"] / "TAREA.html").count('class="attachment-link"') for task in tasks)})
     subprocess.run(["node", str(renderer)], input=json.dumps(pdf_jobs), text=True, check=True)
     # Tanto el ZIP completo como la selección usan los PDF recién generados.
     for target, tasks, pdfs in bundles:
