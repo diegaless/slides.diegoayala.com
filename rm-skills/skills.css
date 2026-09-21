@@ -194,7 +194,6 @@
 .sources-details > div { padding: 0 0 18px; color: var(--muted); font-size: .76rem; }
 .sources-details ul { padding-left: 20px; line-height: 1.9; }
 .sources-details li + li { margin-top: 6px; }
-.skills-page .site-footer { border-top: 1px solid var(--line-soft); }
 
 @media (max-width: 1000px) {
   .call-grid { gap: 30px; }
@@ -255,7 +254,6 @@
   .exam-modules { gap: 20px; }
   .reference-grid { grid-template-columns: 1fr; }
   .reference-link { padding: 20px 0; }
-  .skills-page .site-footer { gap: 12px; font-size: .56rem; letter-spacing: .08em; }
 }
 
 @media (max-width: 360px) {
