@@ -6,7 +6,7 @@ No requiere dependencias de producción, servicios externos ni compilación.
 
 La convocatoria y el histórico siguen una propuesta visual de imagegen,
 implementada en HTML y CSS. El [prompt de diseño](design-prompt.md) documenta
-la referencia; el menú superior y la navegación interna se mantienen.
+la referencia; se conserva el menú superior del sitio.
 
 ## Contenido y fuentes
 

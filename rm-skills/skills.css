@@ -61,24 +61,7 @@
 .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .file-label { font-size: .68rem; font-weight: 650; white-space: nowrap; opacity: .9; }
 
-
-.skills-contents {
-  position: sticky;
-  top: 0;
-  z-index: 15;
-  display: flex;
-  gap: 34px;
-  padding: 0 2px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: color-mix(in srgb, var(--bg) 96%, transparent);
-  backdrop-filter: blur(12px);
-}
-
-.skills-contents a { display: flex; align-items: center; gap: 9px; min-height: 60px; color: var(--muted); font-size: .78rem; white-space: nowrap; }
-.skills-contents a span { color: var(--skills-accent); font-family: ui-monospace, monospace; font-size: .65rem; }
-.skills-contents a:hover { color: var(--ink); }
-.skills-section { padding: 66px 0; scroll-margin-top: 85px; }
+.skills-section { padding: 66px 0; scroll-margin-top: 20px; }
 .skills-section + .skills-section { border-top: 1px solid var(--line); }
 .section-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 18px; margin-bottom: 28px; }
 .skills-page .section-heading h1, .skills-page h2 { margin: 0; font-size: clamp(1.65rem, 3vw, 2.15rem); line-height: 1.2; font-weight: 600; letter-spacing: -.045em; }
@@ -153,7 +136,7 @@
 .context-note p { margin: 0; font-size: .82rem; color: var(--muted); }
 .context-note strong { color: var(--ink); font-weight: 600; }
 .exam-list { display: grid; gap: 12px; }
-.exam { min-width: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--skills-panel-soft); scroll-margin-top: 80px; }
+.exam { min-width: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--skills-panel-soft); scroll-margin-top: 20px; }
 .exam[open] { border-color: color-mix(in srgb, var(--skills-accent) 30%, var(--line)); }
 .exam > summary { display: grid; grid-template-columns: 84px minmax(0, 1fr) 28px; align-items: center; gap: 24px; padding: 22px 24px; cursor: pointer; list-style: none; border-radius: inherit; }
 .exam > summary::-webkit-details-marker, .sources-details > summary::-webkit-details-marker { display: none; }
@@ -228,10 +211,7 @@
 
 @media (max-width: 720px) {
   .skills-main { width: calc(100% - 40px); }
-  .skills-contents { gap: 0; justify-content: space-between; }
-  .skills-contents a { font-size: .63rem; min-height: 54px; }
-  .skills-contents a span { display: none; }
-  .skills-section { padding: 42px 0; scroll-margin-top: 73px; }
+  .skills-section { padding: 42px 0; }
   .section-heading { gap: 15px; margin-bottom: 22px; }
   .section-intro { font-size: .83rem; }
   .call-banner { grid-template-columns: 1fr 1fr; gap: 24px; padding: 24px; }
@@ -294,7 +274,7 @@
 
 @media print {
   .skills-page { color: #111; background: white; --ink: #111; --muted: #555; --bg: #fff; --line: #ddd; --skills-panel: #fff; --skills-panel-soft: #fff; --skills-accent: #333; --skills-positive: #333; }
-  .skills-page .site-header, .skills-page .site-footer, .skills-contents, .skip-link { display: none; }
+  .skills-page .site-header, .skills-page .site-footer, .skip-link { display: none; }
   .skills-main { width: 100%; }
   .skills-section { padding: 28px 0; }
   .exam, .school-notice, .call-banner { break-inside: avoid; }

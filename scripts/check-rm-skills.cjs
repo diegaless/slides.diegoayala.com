@@ -36,7 +36,7 @@ async function main() {
         assert.ok(await page.locator(`[id="${url.hash.slice(1)}"]`).count(), url.hash);
       }
     }
-    await page.locator('.skills-contents a[href="#pruebas"]').click();
+    await page.goto(`${base}/rm-skills/#pruebas`);
     assert.equal(new URL(page.url()).hash, "#pruebas");
     const exams = page.locator(".exam");
     assert.equal(await exams.count(), 8);
