@@ -3,9 +3,6 @@
   --skills-positive: #86efac;
   --skills-panel: #0b0d15;
   --skills-panel-soft: #07090e;
-  background:
-    radial-gradient(ellipse at 72% 4%, rgba(99, 102, 241, 0.12), transparent 22%),
-    var(--bg);
 }
 
 :root[data-theme="light"] .skills-page {
@@ -34,7 +31,7 @@
 
 .skip-link:focus { top: 16px; }
 .skills-page p { line-height: 1.7; }
-.skills-page svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.skills-main svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .skills-page .muted { color: var(--muted); }
 .skills-page .eyebrow { margin: 0 0 12px; color: var(--skills-accent); font-size: .68rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
 
@@ -62,6 +59,7 @@
 .file-label { font-size: .68rem; font-weight: 650; white-space: nowrap; opacity: .9; }
 
 .skills-section { padding: 66px 0; scroll-margin-top: 20px; }
+.skills-section:first-child { padding-top: 20px; }
 .skills-section + .skills-section { border-top: 1px solid var(--line); }
 .section-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 18px; margin-bottom: 28px; }
 .skills-page .section-heading h1, .skills-page h2 { margin: 0; font-size: clamp(1.65rem, 3vw, 2.15rem); line-height: 1.2; font-weight: 600; letter-spacing: -.045em; }
@@ -211,6 +209,7 @@
 @media (max-width: 720px) {
   .skills-main { width: calc(100% - 40px); }
   .skills-section { padding: 42px 0; }
+  .skills-section:first-child { padding-top: 12px; }
   .section-heading { gap: 15px; margin-bottom: 22px; }
   .section-intro { font-size: .83rem; }
   .call-banner { grid-template-columns: 1fr 1fr; gap: 24px; padding: 24px; }
