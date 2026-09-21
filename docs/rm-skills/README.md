@@ -31,6 +31,8 @@ Revisión de fuentes: **22 de septiembre de 2026**.
 | Tecnologías nacionales 2022 | [Descripción técnica](https://spain-skills.es/images/descargas/documentacion-skills-2022/dt/DT17_desarrollo_web_Spainskills2022.pdf), pp. 5–6 |
 | SpainSkills 2019: Game Skills | [ZIP oficial](https://spain-skills.es/images/descargas/documentacion-skills-2019/pp/17_DesarrolloWebPlanPruebas_SpainSkills2019.zip), enlazado en [documentación 2019](https://spain-skills.es/competiciones/estatal/spainskills-madrid-2019/documentacion-spainskills-2019). Seis PDF: diseño, BBDD, BackEnd, FrontEnd del día 2, FrontEnd del día 3, despliegue/presentación. Tareas y tiempos en p. 4 de cada uno |
 | Descripción técnica nacional 2019 | [PDF oficial](https://spain-skills.es/images/descargas/documentacion-skills-2019/dt/DT17_DesarrolloWeb_2019_VD.pdf) |
+| SpainSkills 2017: MisViajes | [Plan de pruebas](https://spain-skills.es/images/descargas/documentacion-skills-2017/pp/pp2017_17Desarrollo_WEB.pdf): proyecto pp. 3–7; módulos I–V en pp. 9, 11, 13, 15 y 17. [Descripción técnica](https://spain-skills.es/images/descargas/documentacion-skills-2017/dt/dt2017-17desarrolloweb.pdf). Ambos enlazados en el [archivo oficial de 2017](https://spain-skills.es/competiciones/estatal/spainskills-madrid-2017/documentacion-spainskills-2017) |
+| SpainSkills 2015: TempusFugit | [Plan de pruebas](https://spain-skills.es/images/descargas/documentacion-skills-2015/pp/pp-17disenoweb2015.pdf): proyecto pp. 2–5, puntuación y jornadas pp. 6–7. [Descripción técnica](https://spain-skills.es/images/descargas/documentacion-skills-2015/dt/dt17-disenoweb2015.pdf): tecnologías pp. 3–4, duración p. 6. Ambos enlazados en el [archivo oficial de 2015](https://spain-skills.es/competiciones/estatal/spainskills-madrid-2015/documentacion-spainskills-2015) |
 
 Se enlazan los originales; no se reescriben los test projects ni se publican
 soluciones. Los títulos breves y resúmenes facilitan localizar cada documento.
@@ -61,11 +63,26 @@ también visualmente para comprobar el programa y la fila de Miralmonte.
   de competición. No se ofrecen esos enlaces como descargas públicas.
 - El formato regional varía: Java en 2018, 2023 y 2025; web en 2021. No se
   presupone el lenguaje de RMurciaSkills 2027.
+- Los documentos nacionales de **2017** discrepan en tiempos: el cuadro del plan
+  suma 21 h; su texto introductorio y la DT señalan 24 h. El reparto por módulos
+  también cambia entre el cuadro y las fichas. La web enlaza cada fuente y no
+  atribuye un tiempo único a los módulos.
+- En **2015**, la introducción del plan dice 22 h, cuatro días y cuatro módulos;
+  su calendario y tareas muestran tres días, y su evaluación cinco módulos.
+  La DT indica 21 h en tres días. Los puntos mostrados proceden del plan (p. 6),
+  no del desglose distinto de la DT. Se comprobaron estas diferencias tanto
+  en el texto como en las páginas renderizadas.
 
 Se revisaron también [MurciaSkills 2016](https://www.llegarasalto.com/murciaskills/documentacion-murciaskills-2016/)
 y [2011](https://www.llegarasalto.com/murciaskills/menus-que-no-se-ven/murciaskills-211/):
 la primera tabla no publica DT ni TP para la modalidad 17; la segunda no recoge
-esa modalidad. No se añaden fichas vacías ni enlaces genéricos para esos años.
+esa modalidad. El manual común de Informática enlazado en 2016 responde HTTP 200,
+pero su árbol de páginas está dañado: MuPDF no encuentra páginas y pypdf rechaza
+el archivo. No se ofrece como material utilizable. Los archivos nacionales de
+[2013](https://spain-skills.es/competiciones/estatal/spainskills-madrid-2013) y
+[2011](https://spain-skills.es/competiciones/estatal/spainskills-madrid-2011)
+contienen información de las ediciones; no se localizaron enunciados de la
+modalidad 17. No se añaden fichas vacías ni enlaces genéricos para esos años.
 
 ## Mantenimiento
 
@@ -74,7 +91,7 @@ esa modalidad. No se añaden fichas vacías ni enlaces genéricos para esos año
 - `rm-skills/skills.css`: estilos acotados al módulo, con variantes claras y
   oscuras y adaptación a móvil. El selector nativo usa `:checked` y `:has()` para
   mostrar RM Skills (por defecto), SpainSkills o ambas, también sin JavaScript.
-  Las ocho ediciones empiezan plegadas; cada ficha declara `data-scope`.
+  Las diez ediciones empiezan plegadas; cada ficha declara `data-scope`.
 - `rm-skills/archive.js`: al recibir un enlace como `#prueba-2022`, selecciona
   la categoría correspondiente y abre esa edición. Respeta «Ambas» si ya está
   seleccionado. No guarda preferencias ni modifica el menú del sitio.
@@ -98,7 +115,7 @@ PLAYWRIGHT_MODULE=/ruta/al/modulo/playwright node scripts/check-rm-skills.cjs
 ```
 
 La comprobación cubre navegación, filtros por ámbito, selección con teclado,
-enlaces a ediciones inicialmente ocultas, ocho desplegables, tema con
+enlaces a ediciones inicialmente ocultas, diez desplegables, tema con
 almacenamiento bloqueado, filtros sin JavaScript, temas y
 desbordamiento en tamaños móviles. No accede a servicios de publicación.
 
