@@ -23,6 +23,7 @@ Revisión de fuentes: **22 de septiembre de 2026**.
 | Descripción técnica regional 2023 | [PDF oficial](https://www.llegarasalto.com/wp-content/uploads/2023/03/17-DT_DesarrolloWeb-RMSkills2023-v01.pdf) |
 | Descripción técnica regional 2025 | [PDF oficial](https://www.llegarasalto.com/wp-content/uploads/2025/02/17-DT_DesarrolloWeb-RMSkills2025-v01.docx-1.pdf): Java, 6,5 h, criterios en p. 5 y herramientas/restricciones en pp. 5–6 |
 | SpainSkills 2024 | [Paquete oficial](https://spain-skills.es/images/spainskills2024/pp/PLAN_DE_PRUEBAS_17_Desarrollo%20WEB_2024.zip), enlazado en [planes de prueba 2024](https://spain-skills.es/competiciones/estatal/spainskills-2024/planes-prueba). Inspeccionados el PDF de enunciados y la presencia del ZIP de materiales dentro del paquete |
+| Descripción técnica nacional 2024 | [PDF oficial](https://spain-skills.es/images/spainskills2024/DT/DT_17_Desarrollo_web_def.pdf), identificado como modalidad 17 y fechado el 17/01/2024; enlazado en [descripciones técnicas de 2024](https://spain-skills.es/competiciones/estatal/spainskills-2024/descripciones-tecnicas) |
 | SpainSkills 2026 | [Plan oficial](https://spain-skills.es/images/spainskills2026/pp/PLAN_DE_PRUEBAS_SK_2026_17_Desarrollo_Web.pdf), enlazado en [planes de prueba 2026](https://spain-skills.es/competiciones/estatal/spainskills-2026/planes-de-prueba). Programa: p. 3; módulos I–VI: pp. 4, 11, 13, 19, 22 y 27 del visor, respectivamente |
 | Tecnologías del material nacional 2026 | [Descripción técnica](https://spain-skills.es/images/spainskills2026/dt/DT_17_SK2026.pdf), especialmente pp. 5–6 |
 | Regional 2021, denominada RM Skills 2020 | [Descripción técnica](https://www.llegarasalto.com/wp-content/uploads/2021/04/17_DT_Desarrollo_Web.pdf): contenidos pp. 3–4, puntuación y duración p. 5, entorno p. 6. [Calendario](https://www.llegarasalto.com/competiciones-rmskills20/): 20 de abril por la tarde; [edición](https://www.llegarasalto.com/rmskills2020/): celebración en 2021 |
@@ -88,6 +89,10 @@ modalidad 17. No se añaden fichas vacías ni enlaces genéricos para esos años
 
 - `rm-skills/index.html`: texto, enlaces, fechas y fuentes. Revisar los estados de
   los plazos y la fecha de última comprobación cuando cambie la información.
+  Todas las fichas muestran primero «Descripción técnica (DT)» y después
+  «Test Project (TP)». Si falta un documento, su botón está desactivado e indica
+  «No disponible». Los enlaces a portales y calendarios van al pie de la ficha,
+  bajo «Más información», separados de las descargas.
 - `rm-skills/skills.css`: estilos acotados al módulo, con variantes claras y
   oscuras y adaptación a móvil. El selector nativo usa `:checked` y `:has()` para
   mostrar RM Skills (por defecto), SpainSkills o ambas, también sin JavaScript.

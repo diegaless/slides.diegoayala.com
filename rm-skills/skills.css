@@ -47,13 +47,15 @@
   border-radius: 8px;
   background: var(--skills-panel);
   color: var(--ink);
+  font-family: inherit;
   font-size: .8rem;
   font-weight: 650;
   line-height: 1.5;
   transition: border-color 160ms ease, background 160ms ease;
 }
 
-.skills-button:hover { border-color: var(--skills-accent); background: color-mix(in srgb, var(--skills-accent) 8%, var(--skills-panel)); }
+.skills-button:not(:disabled):hover { border-color: var(--skills-accent); background: color-mix(in srgb, var(--skills-accent) 8%, var(--skills-panel)); }
+.skills-button:disabled { border-style: dashed; background: transparent; color: var(--muted); cursor: default; }
 .text-link { display: inline-flex; align-items: center; gap: 12px; color: var(--skills-accent); font-size: .8rem; font-weight: 600; line-height: 1.6; }
 .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .file-label { font-size: .68rem; font-weight: 650; white-space: nowrap; opacity: .9; }
@@ -157,6 +159,7 @@
 .module-grid strong { font-weight: 550; font-size: .8rem; line-height: 1.5; }
 .module-grid small { color: var(--muted); font-size: .68rem; line-height: 1.5; }
 .material-note { color: var(--muted); font-size: .74rem; margin: 18px 0 0; }
+.exam-source { padding-top: 14px; border-top: 1px solid var(--line); }
 .criteria { display: flex; flex-wrap: wrap; gap: 8px; }
 .criteria > span { padding: 9px 12px; border: 1px solid var(--line); border-radius: 6px; font-size: .73rem; color: var(--muted); }
 .criteria strong { color: var(--ink); font-weight: 500; margin-left: 8px; }
