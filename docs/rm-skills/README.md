@@ -6,7 +6,7 @@ No requiere dependencias de producción, servicios externos ni compilación.
 
 ## Contenido y fuentes
 
-Revisión de fuentes: **21 de septiembre de 2026**.
+Revisión de fuentes: **22 de septiembre de 2026**.
 
 | Contenido | Fuente primaria y ubicación |
 | --- | --- |
@@ -21,6 +21,12 @@ Revisión de fuentes: **21 de septiembre de 2026**.
 | SpainSkills 2024 | [Paquete oficial](https://spain-skills.es/images/spainskills2024/pp/PLAN_DE_PRUEBAS_17_Desarrollo%20WEB_2024.zip), enlazado en [planes de prueba 2024](https://spain-skills.es/competiciones/estatal/spainskills-2024/planes-prueba). Inspeccionados el PDF de enunciados y la presencia del ZIP de materiales dentro del paquete |
 | SpainSkills 2026 | [Plan oficial](https://spain-skills.es/images/spainskills2026/pp/PLAN_DE_PRUEBAS_SK_2026_17_Desarrollo_Web.pdf), enlazado en [planes de prueba 2026](https://spain-skills.es/competiciones/estatal/spainskills-2026/planes-de-prueba). Programa: p. 3; módulos I–VI: pp. 4, 11, 13, 19, 22 y 27 del visor, respectivamente |
 | Tecnologías del material nacional 2026 | [Descripción técnica](https://spain-skills.es/images/spainskills2026/dt/DT_17_SK2026.pdf), especialmente pp. 5–6 |
+| Regional 2021, denominada RM Skills 2020 | [Descripción técnica](https://www.llegarasalto.com/wp-content/uploads/2021/04/17_DT_Desarrollo_Web.pdf): contenidos pp. 3–4, puntuación y duración p. 5, entorno p. 6. [Calendario](https://www.llegarasalto.com/competiciones-rmskills20/): 20 de abril por la tarde; [edición](https://www.llegarasalto.com/rmskills2020/): celebración en 2021 |
+| Regional 2018 | [Descripción técnica](https://www.llegarasalto.com/murciaskills/wp-content/uploads/2017/10/17-DTDesarrolloWeb.pdf), pp. 3–4. La portada dice febrero de 2018, aunque la URL contiene 2017. [Calendario y sede](https://www.llegarasalto.com/murciaskills/informacion/) |
+| SpainSkills 2022: Dragon Skills | [ZIP oficial](https://spain-skills.es/images/descargas/documentacion-skills-2022/pp/PP17_Desarrollo_web_2022.zip), enlazado en [documentación 2022](https://spain-skills.es/competiciones/estatal/spainskills-2022/documentacion-spainskills-2022). Cinco PDF: C1 BBDD/diseño, C1 SpeedTest, C2 BackEnd, C2 SpeedTest y C3 FrontEnd. Enunciados desde p. 5; programa y criterios pp. 3–4 de C1 |
+| Tecnologías nacionales 2022 | [Descripción técnica](https://spain-skills.es/images/descargas/documentacion-skills-2022/dt/DT17_desarrollo_web_Spainskills2022.pdf), pp. 5–6 |
+| SpainSkills 2019: Game Skills | [ZIP oficial](https://spain-skills.es/images/descargas/documentacion-skills-2019/pp/17_DesarrolloWebPlanPruebas_SpainSkills2019.zip), enlazado en [documentación 2019](https://spain-skills.es/competiciones/estatal/spainskills-madrid-2019/documentacion-spainskills-2019). Seis PDF: diseño, BBDD, BackEnd, FrontEnd del día 2, FrontEnd del día 3, despliegue/presentación. Tareas y tiempos en p. 4 de cada uno |
+| Descripción técnica nacional 2019 | [PDF oficial](https://spain-skills.es/images/descargas/documentacion-skills-2019/dt/DT17_DesarrolloWeb_2019_VD.pdf) |
 
 Se enlazan los originales; no se reescriben los test projects ni se publican
 soluciones. Los títulos breves y resúmenes facilitan localizar cada documento.
@@ -36,13 +42,26 @@ también visualmente para comprobar el programa y la fila de Miralmonte.
 - El portal de **2025** enlaza la descripción técnica, pero su celda TP no tiene
   un enlace de descarga. Por ello se presenta como descripción técnica.
 - El ejercicio 3 de **2023** requiere clases e interfaces de apoyo que no se
-  adjuntan al PDF. Se avisa dentro de la ficha.
+  adjuntan al PDF. La DT prevé cuatro horas y un anfitrión Linux; el test project
+  concreta la entrega a las 13:30 y una máquina virtual Windows 10. La ficha
+  identifica la fuente de cada dato, sin calcular otro horario.
+- En **2021** y **2018** las tablas oficiales enlazan la DT, pero no un test
+  project. La ficha de 2021 respeta la libertad de elección del lenguaje de
+  servidor y distingue el año de celebración del nombre RM Skills 2020.
+- Los ZIP nacionales de **2022** y **2019** contienen solo PDF. Se inspeccionaron
+  todos: cinco y seis, respectivamente. No contienen los recursos de partida
+  citados. El programa de 2022 incluye presentación, sin PDF propio en el ZIP.
+  Los tiempos de 2019 se transcriben por documento; no se infiere una duración
+  total de la suma de documentos que pueden solaparse.
 - El plan nacional de **2026** cita recursos de una dirección privada de la red
   de competición. No se ofrecen esos enlaces como descargas públicas.
-- La diferencia entre Java regional (2023 y DT 2025) y desarrollo web nacional
-  (2024 y 2026) es explícita. No se presupone el lenguaje de RMurciaSkills 2027.
-- Las cuatro actividades de entrenamiento y sus tiempos son propuestas de aula.
-  La duración de 3 h + 3 h 30 min del simulacro toma 2025 como referencia.
+- El formato regional varía: Java en 2018, 2023 y 2025; web en 2021. No se
+  presupone el lenguaje de RMurciaSkills 2027.
+
+Se revisaron también [MurciaSkills 2016](https://www.llegarasalto.com/murciaskills/documentacion-murciaskills-2016/)
+y [2011](https://www.llegarasalto.com/murciaskills/menus-que-no-se-ven/murciaskills-211/):
+la primera tabla no publica DT ni TP para la modalidad 17; la segunda no recoge
+esa modalidad. No se añaden fichas vacías ni enlaces genéricos para esos años.
 
 ## Mantenimiento
 
@@ -50,17 +69,15 @@ también visualmente para comprobar el programa y la fila de Miralmonte.
   los plazos y ambas fechas de última comprobación cuando cambie la información.
 - `rm-skills/skills.css`: estilos acotados al módulo, con variantes claras y
   oscuras y adaptación a móvil.
-- `rm-skills/skills.js`: ocho marcas de preparación, guardadas en
-  `diego-ayala.rm-skills.progress.v1`. No se envían datos. Un almacenamiento
-  bloqueado o inválido no impide usar la lista durante la sesión.
-- El contenido y los desplegables funcionan sin JavaScript. En ese caso no se
-  ofrece persistencia del progreso.
+- El contenido y los desplegables funcionan sin JavaScript. Solo se carga el
+  script compartido del tema. La ruta de entrenamiento y la lista personal de
+  preparación se retiraron a petición del usuario.
 - `scripts/import-exercises.py` adapta el enlace de RM Skills al copiar la
   cabecera común a listados y tareas. El cambio de navegación no requiere
   regenerar PDF ni ZIP: la cabecera solo se muestra en pantalla.
 
-Cuando se publique la DT 2027, añadirla junto a la convocatoria, comprobar sus
-tecnologías y reglas, y ajustar el plan de preparación. Mantener el archivo
+Cuando se publique la DT 2027, añadirla junto a la convocatoria y comprobar sus
+tecnologías y reglas. Mantener el archivo
 histórico identificado por edición y ámbito.
 
 ## Validación y vista previa
@@ -71,8 +88,8 @@ Con un servidor estático del proyecto en el puerto 4173:
 PLAYWRIGHT_MODULE=/ruta/al/modulo/playwright node scripts/check-rm-skills.cjs
 ```
 
-La comprobación cubre navegación, anchors, desplegables, persistencia y reinicio
-de la lista, almacenamiento bloqueado, funcionamiento sin JavaScript, temas y
+La comprobación cubre navegación, anchors, ocho desplegables, tema con
+almacenamiento bloqueado, funcionamiento sin JavaScript, temas y
 desbordamiento en tamaños móviles. No accede a servicios de publicación.
 
 Las fuentes externas se comprobaron mediante peticiones HTTP y se contrastaron

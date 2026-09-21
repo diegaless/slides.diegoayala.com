@@ -5,7 +5,6 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
 
 const base = process.env.PREVIEW_URL || "http://localhost:4173";
 const root = path.resolve(__dirname, "..");
-const progressKey = "diego-ayala.rm-skills.progress.v1";
 
 async function main() {
   const browser = await chromium.launch({ headless: true });
@@ -40,8 +39,8 @@ async function main() {
     await page.locator('.skills-contents a[href="#pruebas"]').click();
     assert.equal(new URL(page.url()).hash, "#pruebas");
     const exams = page.locator(".exam");
-    assert.equal(await exams.count(), 4);
-    for (let i = 0; i < 4; i++) {
+    assert.equal(await exams.count(), 8);
+    for (let i = 0; i < await exams.count(); i++) {
       const exam = exams.nth(i);
       const wasOpen = await exam.evaluate((el) => el.open);
       await exam.locator("summary").focus();
@@ -49,16 +48,6 @@ async function main() {
       assert.equal(await exam.evaluate((el) => el.open), !wasOpen);
       if (wasOpen) await exam.locator("summary").click();
     }
-
-    await page.locator('[data-check="statement"]').check();
-    await page.locator('[data-check="materials"]').check();
-    assert.equal(await page.locator("[data-progress]").evaluate((el) => el.value), 2);
-    await page.reload();
-    assert.equal(await page.locator("[data-check]:checked").count(), 2);
-    assert.match(await page.locator("[data-progress-label]").textContent(), /^2 de 8/);
-    await page.locator("[data-reset-progress]").click();
-    await page.reload();
-    assert.equal(await page.locator("[data-check]:checked").count(), 0);
 
     await page.locator("[data-theme-toggle]").click();
     assert.equal(await page.locator("html").getAttribute("data-theme"), "light");
@@ -87,29 +76,14 @@ async function main() {
     });
     const blockedPage = await blocked.newPage();
     await blockedPage.goto(`${base}/rm-skills/`);
-    await blockedPage.locator('[data-check="statement"]').check();
-    assert.match(await blockedPage.locator("[data-progress-label]").textContent(), /^1 de 8/);
-    assert.match(await blockedPage.locator("[data-storage-note]").textContent(), /no permite guardarla/);
     await blockedPage.locator("[data-theme-toggle]").click();
     assert.equal(await blockedPage.locator("html").getAttribute("data-theme"), "light");
-
-    const corrupt = await openContext();
-    await corrupt.addInitScript((key) => {
-      if (location.protocol === "http:" || location.protocol === "https:") localStorage.setItem(key, "{broken");
-    }, progressKey);
-    const corruptPage = await corrupt.newPage();
-    await corruptPage.goto(`${base}/rm-skills/`);
-    await corruptPage.locator('[data-check="statement"]').check();
-    assert.match(await corruptPage.locator("[data-progress-label]").textContent(), /^1 de 8/);
 
     const noScript = await openContext({ javaScriptEnabled: false });
     const noScriptPage = await noScript.newPage();
     await noScriptPage.goto(`${base}/rm-skills/`);
-    await noScriptPage.locator(".exam").nth(3).locator("summary").click();
+    await noScriptPage.locator("#prueba-2023 summary").click();
     assert.equal(await noScriptPage.getByRole("link", { name: "Abrir prueba completa" }).isVisible(), true);
-    assert.equal(await noScriptPage.locator("[data-progress-ui]").isVisible(), false);
-    assert.equal(await noScriptPage.locator("[data-reset-progress]").isVisible(), false);
-    assert.equal(await noScriptPage.locator("noscript").isVisible(), true);
 
     let exerciseHeaders = 0;
     function checkHeaders(directory) {
@@ -128,7 +102,7 @@ async function main() {
     checkHeaders(path.join(root, "ejercicios"));
     assert.ok(exerciseHeaders > 0);
     assert.deepEqual(errors, []);
-    console.log(`RM Skills: navegación de ${exerciseHeaders} páginas, enlaces locales, desplegables, progreso, temas y móvil correctos.`);
+    console.log(`RM Skills: navegación de ${exerciseHeaders} páginas, enlaces locales, 8 ediciones, desplegables, temas y móvil correctos.`);
   } finally {
     await browser.close();
   }
