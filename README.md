@@ -155,4 +155,7 @@ Sin JavaScript, los enlaces originales a las diapositivas siguen funcionando y
 las bibliotecas permiten abrir tareas y descargar PDF. El selector de material y
 la descarga de seleccionados usan JavaScript.
 
-Para una vista previa HTTP local: `python3 -m http.server 4173`.
+Para una vista previa HTTP local: `python3 scripts/preview.py`.
+Abre `http://localhost:4173/`. El servidor evita guardar páginas en caché para
+que los cambios de contenido y de rama se reflejen al navegar. Puedes elegir
+otro puerto con `--port 4174`.
