@@ -119,23 +119,37 @@
 .skills-section + .skills-section { border-top: 1px solid var(--line); }
 .section-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 18px; margin-bottom: 28px; }
 .skills-page h2 { margin: 0; font-size: clamp(1.65rem, 3vw, 2.15rem); line-height: 1.2; font-weight: 600; letter-spacing: -.045em; }
-.section-meta { color: var(--muted); font-size: .72rem; }
 .section-intro { max-width: 730px; margin: -9px 0 30px; color: var(--muted); font-size: .9rem; }
 .skills-page .small-title { margin: 0 0 24px; font-size: .85rem; font-weight: 600; }
 
-.school-notice { display: flex; align-items: center; gap: 16px; padding: 19px 22px; border: 1px solid color-mix(in srgb, var(--skills-positive) 18%, var(--line)); border-radius: 10px; background: color-mix(in srgb, var(--skills-positive) 4%, var(--bg)); }
+.call-banner { display: grid; grid-template-columns: 1fr .8fr 1.25fr; align-items: center; gap: 32px; padding: 32px 36px; margin-bottom: 18px; border: 1px solid color-mix(in srgb, var(--skills-accent) 16%, var(--line)); border-radius: 12px; background: var(--skills-panel-soft); }
+.call-edition { font-size: clamp(4rem, 8vw, 6.5rem); font-weight: 720; letter-spacing: -.08em; line-height: 1; }
+.call-edition > span { color: var(--skills-accent); }
+.call-specialty { text-align: center; }
+.call-code { display: block; font-family: ui-monospace, monospace; font-size: 2.6rem; color: var(--muted); letter-spacing: -.05em; }
+.call-code strong { color: var(--skills-accent); font-weight: 550; padding: 0 7px; }
+.call-specialty p { margin: 10px 0 0; font-size: .86rem; font-weight: 550; }
+.call-specialty p > span { display: block; color: var(--muted); font-weight: 400; font-size: .72rem; }
+.call-venue { display: grid; gap: 12px; padding-left: 32px; border-left: 1px solid var(--line); }
+.call-venue p { display: flex; align-items: center; gap: 14px; margin: 0; font-size: 1.1rem; font-weight: 550; letter-spacing: -.02em; }
+.call-venue svg { flex: 0 0 22px; width: 22px; height: 22px; color: var(--skills-accent); }
+.call-venue .text-link { margin-top: 8px; padding-top: 14px; border-top: 1px solid var(--line); font-size: .73rem; }
+.school-notice { display: flex; align-items: center; gap: 16px; padding: 19px 22px; border: 1px solid color-mix(in srgb, var(--skills-positive) 18%, var(--line)); border-left: 3px solid var(--skills-positive); border-radius: 8px; background: color-mix(in srgb, var(--skills-positive) 4%, var(--bg)); }
 .school-notice svg { flex: 0 0 23px; width: 23px; height: 23px; color: var(--skills-positive); }
 .school-notice p { flex: 1; margin: 0; font-size: .8rem; color: var(--muted); }
 .school-notice p strong:first-child { display: block; color: var(--ink); font-weight: 600; }
 .school-notice a { flex-shrink: 0; color: var(--skills-positive); font-size: .74rem; font-weight: 600; }
 .school-notice a:hover { text-decoration: underline; }
 .call-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .8fr); gap: 68px; margin-top: 42px; }
+.call-grid .small-title { padding-bottom: 18px; border-bottom: 1px solid var(--line); font-size: 1.12rem; letter-spacing: -.025em; }
 .timeline { list-style: none; margin: 0; padding: 0; }
-.timeline li { position: relative; display: flex; gap: 20px; padding: 0 0 24px; }
-.timeline li:not(:last-child)::before { content: ""; position: absolute; left: 4px; top: 14px; bottom: -1px; width: 1px; background: var(--line); }
-.timeline-dot { position: relative; z-index: 1; flex: 0 0 9px; width: 9px; height: 9px; margin-top: 6px; border: 1px solid var(--skills-accent); border-radius: 50%; background: var(--bg); }
+.timeline li { position: relative; display: flex; gap: 18px; padding: 0 0 28px; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li:not(:last-child)::before { content: ""; position: absolute; left: 8px; top: 20px; bottom: -1px; width: 1px; background: var(--line); }
+.timeline-dot { position: relative; z-index: 1; flex: 0 0 17px; width: 17px; height: 17px; margin-top: 3px; border: 1px solid var(--skills-accent); border-radius: 50%; background: var(--bg); }
 .past .timeline-dot { border-color: var(--muted); background: var(--line); }
-.next .timeline-dot { background: var(--skills-accent); box-shadow: 0 0 0 5px color-mix(in srgb, var(--skills-accent) 9%, transparent); }
+.next .timeline-dot { border: 2px solid var(--skills-accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--skills-accent) 9%, transparent); }
+.next h4 { color: var(--skills-accent); }
 .timeline .timeline-date { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin: 0 0 8px; color: var(--muted); font-size: .71rem; }
 .timeline h4 { margin: 0; font-size: .9rem; font-weight: 600; letter-spacing: -.02em; }
 .timeline p:not(.timeline-date) { margin: 7px 0 0; color: var(--muted); font-size: .79rem; }
@@ -144,32 +158,51 @@
 .source-note { margin: 14px 0 0; color: var(--muted); font-size: .71rem; }
 .source-note a, .sources-details a { color: var(--skills-accent); text-decoration: underline; text-underline-offset: 3px; }
 .eligibility { padding: 26px; border: 1px solid var(--line); border-radius: 10px; background: var(--skills-panel); }
-.eligibility h3 { margin: 0; font-size: 1.1rem; line-height: 1.4; letter-spacing: -.03em; font-weight: 600; }
+.eligibility h4 { margin: 0; font-size: 1.05rem; line-height: 1.4; letter-spacing: -.03em; font-weight: 600; }
 .plain-list { margin: 18px 0; padding-left: 17px; color: var(--muted); font-size: .81rem; line-height: 1.7; }
 .plain-list li + li { margin-top: 10px; }
 .plain-list strong { color: var(--ink); font-weight: 600; }
-.pending-note { margin-top: 24px; padding-left: 20px; border-left: 2px solid var(--line); }
-.pending-note h3 { font-size: .86rem; font-weight: 600; margin: 12px 0 9px; }
+.pending-note { margin-top: 18px; padding: 20px 24px; border: 1px solid var(--line); border-radius: 10px; background: var(--skills-panel-soft); }
+.pending-note h4 { font-size: .86rem; font-weight: 600; margin: 12px 0 9px; }
 .pending-note p { color: var(--muted); font-size: .78rem; margin: 8px 0 0; }
+
+.archive-heading { align-items: center; }
+.archive-selection { min-width: 0; }
+.archive-filter { display: flex; gap: 3px; margin: 0; padding: 4px; min-width: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--skills-panel-soft); }
+.archive-filter label { position: relative; flex: 1; cursor: pointer; }
+.archive-filter .visually-hidden, .archive-filter input { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.archive-filter label > span { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 9px 16px; border-radius: 6px; color: var(--muted); font-size: .75rem; font-weight: 550; white-space: nowrap; transition: background 150ms ease, color 150ms ease; }
+.archive-filter small { display: inline-grid; place-items: center; min-width: 21px; height: 21px; padding: 0 5px; border-radius: 50%; background: var(--line); font-size: .65rem; font-variant-numeric: tabular-nums; }
+.archive-filter label:hover > span { color: var(--ink); background: color-mix(in srgb, var(--skills-accent) 7%, transparent); }
+.archive-filter input:checked + span { color: var(--bg); background: var(--skills-accent); }
+.archive-filter input:checked + span small { background: color-mix(in srgb, var(--bg) 14%, transparent); }
+.archive-filter input:focus-visible + span { outline: 2px solid var(--skills-accent); outline-offset: 3px; }
+.archive-caption { min-height: 1.7em; margin: 9px 0 0; text-align: right; color: var(--muted); font-size: .69rem; }
+.archive-caption > span { display: none; }
+#pruebas:has([name="skills-scope"][value="regional"]:checked) [data-filter-caption="regional"],
+#pruebas:has([name="skills-scope"][value="national"]:checked) [data-filter-caption="national"],
+#pruebas:has([name="skills-scope"][value="all"]:checked) [data-filter-caption="all"] { display: inline; }
+#pruebas:has([name="skills-scope"][value="regional"]:checked) .exam[data-scope="national"],
+#pruebas:has([name="skills-scope"][value="national"]:checked) .exam[data-scope="regional"] { display: none; }
 
 .context-note { display: flex; gap: 16px; padding: 17px 20px; margin: 0 0 26px; background: var(--skills-panel-soft); border-left: 2px solid var(--skills-accent); border-radius: 0 8px 8px 0; }
 .context-note > span { color: var(--skills-accent); font-size: 1.3rem; }
 .context-note p { margin: 0; font-size: .82rem; color: var(--muted); }
 .context-note strong { color: var(--ink); font-weight: 600; }
-.exam-list { border-top: 1px solid var(--line); }
-.exam { border-bottom: 1px solid var(--line); }
-.exam > summary { display: grid; grid-template-columns: 100px minmax(0, 1fr) 28px; align-items: center; gap: 24px; padding: 27px 0; cursor: pointer; list-style: none; }
+.exam-list { display: grid; gap: 12px; }
+.exam { min-width: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--skills-panel-soft); scroll-margin-top: 80px; }
+.exam[open] { border-color: color-mix(in srgb, var(--skills-accent) 30%, var(--line)); }
+.exam > summary { display: grid; grid-template-columns: 84px minmax(0, 1fr) 28px; align-items: center; gap: 24px; padding: 22px 24px; cursor: pointer; list-style: none; border-radius: inherit; }
 .exam > summary::-webkit-details-marker, .sources-details > summary::-webkit-details-marker { display: none; }
 .exam > summary:hover .exam-title { color: var(--skills-accent); }
-.exam-year { align-self: start; padding-top: 3px; color: var(--muted); font-family: ui-monospace, monospace; font-size: 1.5rem; letter-spacing: -.07em; }
-.exam[open] .exam-year { color: var(--skills-accent); }
+.exam-year { display: flex; align-items: center; align-self: stretch; color: var(--skills-accent); border-right: 1px solid var(--line); font-family: ui-monospace, monospace; font-size: 1.6rem; font-weight: 550; letter-spacing: -.07em; }
 .exam-summary { display: grid; gap: 8px; }
 .exam-meta { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: .7rem; }
 .exam-title { font-size: 1.15rem; line-height: 1.4; font-weight: 550; letter-spacing: -.025em; transition: color 160ms ease; }
 .exam-description { color: var(--muted); font-size: .76rem; line-height: 1.5; }
 .exam-toggle { width: 28px; height: 28px; line-height: 24px; border: 1px solid var(--line); border-radius: 50%; text-align: center; color: var(--muted); font-size: 1.15rem; transition: transform 160ms ease; }
 .exam[open] .exam-toggle { transform: rotate(45deg); color: var(--skills-accent); }
-.exam-body { padding: 0 0 28px 124px; }
+.exam-body { padding: 0 24px 28px 132px; }
 .exam-body > p:first-child { margin: 0; max-width: 790px; color: var(--muted); font-size: .84rem; }
 .exam-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; margin: 20px 0; }
 .module-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
@@ -223,8 +256,12 @@
   .skills-page .event-days { font-size: 4.2rem; }
   .hero-actions { gap: 16px; }
   .call-grid { gap: 30px; }
+  .call-banner { grid-template-columns: 1fr .8fr 1.3fr; gap: 24px; padding: 28px; }
+  .call-venue { padding-left: 24px; }
+  .call-venue p { font-size: .96rem; gap: 10px; }
+  .call-code { font-size: 2.15rem; }
   .exam > summary { grid-template-columns: 70px minmax(0, 1fr) 28px; gap: 18px; }
-  .exam-body { padding-left: 88px; }
+  .exam-body { padding-left: 112px; }
   .module-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .exam-modules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .regional-modules { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -250,6 +287,14 @@
   .skills-section { padding: 42px 0; scroll-margin-top: 73px; }
   .section-heading { gap: 15px; margin-bottom: 22px; }
   .section-intro { font-size: .83rem; }
+  .call-banner { grid-template-columns: 1fr 1fr; gap: 24px; padding: 24px; }
+  .call-edition { font-size: 4.4rem; }
+  .call-specialty { text-align: right; }
+  .call-code { font-size: 2.2rem; }
+  .call-specialty p { font-size: .78rem; }
+  .call-venue { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--line); padding: 20px 0 0; gap: 10px; }
+  .call-venue p { font-size: 1rem; }
+  .call-venue .text-link { border: 0; padding: 0; margin-top: 6px; }
   .school-notice { flex-wrap: wrap; align-items: start; gap: 12px; padding: 18px; }
   .school-notice svg { margin-top: 2px; }
   .school-notice p { flex-basis: calc(100% - 40px); }
@@ -257,15 +302,20 @@
   .call-grid { grid-template-columns: 1fr; gap: 30px; margin-top: 30px; }
   .timeline li { padding-bottom: 25px; }
   .eligibility { padding: 22px; }
+  .pending-note { padding: 20px 22px; }
+  .archive-selection { width: 100%; }
+  .archive-filter label > span { padding: 10px 8px; gap: 7px; font-size: .71rem; }
+  .archive-filter small { min-width: 19px; height: 19px; padding: 0 4px; font-size: .6rem; }
+  .archive-caption { text-align: left; font-size: .67rem; }
   .context-note { padding: 15px; gap: 10px; }
   .context-note p { font-size: .77rem; }
-  .exam > summary { grid-template-columns: 45px minmax(0, 1fr) 24px; gap: 12px; padding: 24px 0; }
-  .exam-year { font-size: 1.05rem; padding-top: 6px; }
+  .exam > summary { grid-template-columns: 45px minmax(0, 1fr) 24px; gap: 12px; padding: 20px 16px; }
+  .exam-year { font-size: 1.05rem; align-self: start; border: 0; padding-top: 3px; }
   .exam-title { font-size: 1rem; }
   .exam-description { font-size: .68rem; }
   .exam-meta { font-size: .66rem; gap: 8px; }
   .exam-toggle { width: 24px; height: 24px; line-height: 20px; }
-  .exam-body { padding: 0 0 24px; }
+  .exam-body { padding: 0 16px 22px; }
   .exam-body > p:first-child { font-size: .8rem; }
   .exam-actions { gap: 16px; }
   .exam-actions .skills-button { justify-content: space-between; }
@@ -282,6 +332,15 @@
 }
 
 @media (max-width: 360px) {
+  .archive-filter label > span { gap: 5px; padding: 10px 6px; font-size: .65rem; }
+  .call-banner { padding: 20px; gap: 18px; }
+  .call-edition { font-size: 3.7rem; }
+  .call-code { font-size: 1.9rem; }
+  .call-specialty p { font-size: .71rem; }
+  .exam > summary { grid-template-columns: minmax(0, 1fr) 24px; gap: 10px; }
+  .exam-year { grid-column: 1; }
+  .exam-summary { grid-column: 1; }
+  .exam-toggle { grid-column: 2; grid-row: 1 / 3; }
   .exam-modules { grid-template-columns: 1fr; }
   .event-card { padding: 18px; gap: 0 10px; }
   .skills-page .event-days { font-size: 3.1rem; }
@@ -296,6 +355,6 @@
   .skills-hero { padding: 0 0 28px; gap: 24px; grid-template-columns: 1fr 240px; }
   .skills-hero h1 { font-size: 3rem; }
   .skills-section { padding: 28px 0; }
-  .exam, .school-notice { break-inside: avoid; }
+  .exam, .school-notice, .call-banner { break-inside: avoid; }
   .event-card { background: white; }
 }

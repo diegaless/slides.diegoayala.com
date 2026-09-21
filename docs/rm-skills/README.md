@@ -4,6 +4,10 @@ Módulo de apoyo para la modalidad 17, incorporado a la navegación de DAM/DAW,
 SEF y los ejercicios. Usa los colores, tipografía y tema persistente del sitio.
 No requiere dependencias de producción, servicios externos ni compilación.
 
+La convocatoria y el histórico siguen una propuesta visual de imagegen,
+implementada en HTML y CSS. El [prompt de diseño](design-prompt.md) documenta
+la referencia; el menú superior y la navegación interna se mantienen.
+
 ## Contenido y fuentes
 
 Revisión de fuentes: **22 de septiembre de 2026**.
@@ -68,10 +72,15 @@ esa modalidad. No se añaden fichas vacías ni enlaces genéricos para esos año
 - `rm-skills/index.html`: texto, enlaces, fechas y fuentes. Revisar los estados de
   los plazos y ambas fechas de última comprobación cuando cambie la información.
 - `rm-skills/skills.css`: estilos acotados al módulo, con variantes claras y
-  oscuras y adaptación a móvil.
-- El contenido y los desplegables funcionan sin JavaScript. Solo se carga el
-  script compartido del tema. La ruta de entrenamiento y la lista personal de
-  preparación se retiraron a petición del usuario.
+  oscuras y adaptación a móvil. El selector nativo usa `:checked` y `:has()` para
+  mostrar RM Skills (por defecto), SpainSkills o ambas, también sin JavaScript.
+  Las ocho ediciones empiezan plegadas; cada ficha declara `data-scope`.
+- `rm-skills/archive.js`: al recibir un enlace como `#prueba-2022`, selecciona
+  la categoría correspondiente y abre esa edición. Respeta «Ambas» si ya está
+  seleccionado. No guarda preferencias ni modifica el menú del sitio.
+- Al añadir ediciones, actualizar las cuentas y los intervalos de años junto
+  al selector. El contenido y los desplegables funcionan sin JavaScript.
+  La ruta de entrenamiento y la lista personal de preparación se retiraron.
 - `scripts/import-exercises.py` adapta el enlace de RM Skills al copiar la
   cabecera común a listados y tareas. El cambio de navegación no requiere
   regenerar PDF ni ZIP: la cabecera solo se muestra en pantalla.
@@ -88,8 +97,9 @@ Con un servidor estático del proyecto en el puerto 4173:
 PLAYWRIGHT_MODULE=/ruta/al/modulo/playwright node scripts/check-rm-skills.cjs
 ```
 
-La comprobación cubre navegación, anchors, ocho desplegables, tema con
-almacenamiento bloqueado, funcionamiento sin JavaScript, temas y
+La comprobación cubre navegación, filtros por ámbito, selección con teclado,
+enlaces a ediciones inicialmente ocultas, ocho desplegables, tema con
+almacenamiento bloqueado, filtros sin JavaScript, temas y
 desbordamiento en tamaños móviles. No accede a servicios de publicación.
 
 Las fuentes externas se comprobaron mediante peticiones HTTP y se contrastaron

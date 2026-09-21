@@ -40,6 +40,25 @@ async function main() {
     assert.equal(new URL(page.url()).hash, "#pruebas");
     const exams = page.locator(".exam");
     assert.equal(await exams.count(), 8);
+    assert.equal(await page.locator("#convocatoria-title").textContent(), "RM Skills 2027");
+    assert.equal(await page.locator("#pruebas-title").textContent(), "Histórico de ediciones");
+    const regional = ["prueba-2025", "prueba-2023", "prueba-2021", "prueba-2018"];
+    const national = ["prueba-2026", "prueba-2024", "prueba-2022", "prueba-2019"];
+    const visibleEditions = () => page.locator(".exam:visible").evaluateAll((items) => items.map((item) => item.id));
+    const chooseScope = (scope) => page.locator(`.archive-filter label:has(input[value="${scope}"])`).click();
+    assert.deepEqual(await visibleEditions(), regional);
+    assert.equal(await page.locator(".exam[open]").count(), 0);
+    await chooseScope("national");
+    assert.deepEqual(await visibleEditions(), national);
+    assert.match(await page.locator(".archive-caption span:visible").textContent(), /4 ediciones nacionales/);
+    await chooseScope("regional");
+    await page.locator('input[value="regional"]').focus();
+    await page.keyboard.press("ArrowRight");
+    assert.equal(await page.locator('input[value="national"]').isChecked(), true);
+    assert.deepEqual(await visibleEditions(), national);
+    await page.keyboard.press("ArrowRight");
+    assert.equal(await page.locator('input[value="all"]').isChecked(), true);
+    assert.equal((await visibleEditions()).length, 8);
     for (let i = 0; i < await exams.count(); i++) {
       const exam = exams.nth(i);
       const wasOpen = await exam.evaluate((el) => el.open);
@@ -48,6 +67,20 @@ async function main() {
       assert.equal(await exam.evaluate((el) => el.open), !wasOpen);
       if (wasOpen) await exam.locator("summary").click();
     }
+
+    // Links to an edition reveal its category and open it, even when initially hidden.
+    await page.goto("about:blank");
+    await page.goto(`${base}/rm-skills/#prueba-2022`);
+    assert.equal(await page.locator('input[value="national"]').isChecked(), true);
+    assert.equal(await page.locator("#prueba-2022").evaluate((el) => el.open), true);
+    assert.deepEqual(await visibleEditions(), national);
+    await page.evaluate(() => { location.hash = "#prueba-2023"; });
+    await page.waitForFunction(() => document.querySelector('input[value="regional"]').checked);
+    assert.equal(await page.locator("#prueba-2023").evaluate((el) => el.open), true);
+    await chooseScope("all");
+    await page.evaluate(() => { location.hash = "#prueba-2026"; });
+    await page.waitForFunction(() => document.getElementById("prueba-2026").open);
+    assert.equal(await page.locator('input[value="all"]').isChecked(), true);
 
     await page.locator("[data-theme-toggle]").click();
     assert.equal(await page.locator("html").getAttribute("data-theme"), "light");
@@ -59,6 +92,8 @@ async function main() {
       await page.waitForURL("**/rm-skills/");
       assert.equal(await page.locator("html").getAttribute("data-theme"), "light");
     }
+    assert.deepEqual(await visibleEditions(), regional);
+    await chooseScope("all");
     for (const theme of ["light", "dark"]) {
       await page.evaluate((value) => document.documentElement.dataset.theme = value, theme);
       for (const width of [320, 390, 768, 1440]) {
@@ -82,6 +117,13 @@ async function main() {
     const noScript = await openContext({ javaScriptEnabled: false });
     const noScriptPage = await noScript.newPage();
     await noScriptPage.goto(`${base}/rm-skills/`);
+    assert.equal(await noScriptPage.locator(".exam:visible").count(), 4);
+    assert.equal(await noScriptPage.locator("#prueba-2026").isVisible(), false);
+    await noScriptPage.locator('.archive-filter label:has(input[value="national"])').click();
+    assert.equal(await noScriptPage.locator("#prueba-2026").isVisible(), true);
+    assert.equal(await noScriptPage.locator("#prueba-2023").isVisible(), false);
+    await noScriptPage.locator('.archive-filter label:has(input[value="all"])').click();
+    assert.equal(await noScriptPage.locator(".exam:visible").count(), 8);
     await noScriptPage.locator("#prueba-2023 summary").click();
     assert.equal(await noScriptPage.getByRole("link", { name: "Abrir prueba completa" }).isVisible(), true);
 
@@ -102,7 +144,7 @@ async function main() {
     checkHeaders(path.join(root, "ejercicios"));
     assert.ok(exerciseHeaders > 0);
     assert.deepEqual(errors, []);
-    console.log(`RM Skills: navegación de ${exerciseHeaders} páginas, enlaces locales, 8 ediciones, desplegables, temas y móvil correctos.`);
+    console.log(`RM Skills: navegación de ${exerciseHeaders} páginas, filtros regional/nacional/ambas, enlaces a ediciones, teclado, sin JavaScript, temas y móvil correctos.`);
   } finally {
     await browser.close();
   }
