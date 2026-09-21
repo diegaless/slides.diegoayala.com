@@ -125,7 +125,7 @@ async function main() {
     await noScriptPage.locator('.archive-filter label:has(input[value="all"])').click();
     assert.equal(await noScriptPage.locator(".exam:visible").count(), 10);
     await noScriptPage.locator("#prueba-2023 summary").click();
-    assert.equal(await noScriptPage.getByRole("link", { name: "Abrir prueba completa" }).isVisible(), true);
+    assert.equal(await noScriptPage.locator("#prueba-2023").getByRole("link", { name: "Test Project (TP)" }).isVisible(), true);
 
     let exerciseHeaders = 0;
     function checkHeaders(directory) {
