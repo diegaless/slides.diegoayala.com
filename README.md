@@ -16,6 +16,9 @@ la tipografía y el selector de tema mediante `styles.css` y `theme.js`.
 - `ejercicios/`: biblioteca de ejercicios por asignatura, con los HTML, CSS y
   descargas de la biblioteca existente en el backup de Teams.
 - `sef/index.html`: certificados SEF con módulos desplegables.
+- `rm-skills/index.html`: convocatoria y preparación de Desarrollo web (modalidad 17),
+  con pruebas oficiales anteriores, recursos y una lista personal de preparación.
+  Las fuentes y el procedimiento de actualización están en `docs/rm-skills/README.md`.
 - `go/index.html`: puente estable a una diapositiva por su identificador interno.
 
 ## Enlaces estables a una diapositiva
