@@ -70,7 +70,7 @@ esa modalidad. No se añaden fichas vacías ni enlaces genéricos para esos año
 ## Mantenimiento
 
 - `rm-skills/index.html`: texto, enlaces, fechas y fuentes. Revisar los estados de
-  los plazos y ambas fechas de última comprobación cuando cambie la información.
+  los plazos y la fecha de última comprobación cuando cambie la información.
 - `rm-skills/skills.css`: estilos acotados al módulo, con variantes claras y
   oscuras y adaptación a móvil. El selector nativo usa `:checked` y `:has()` para
   mostrar RM Skills (por defecto), SpainSkills o ambas, también sin JavaScript.

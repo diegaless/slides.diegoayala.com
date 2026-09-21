@@ -24,7 +24,7 @@ async function main() {
     assert.equal(await page.locator("[data-subject-resources] button.subject-link").count(), 6);
     await page.locator(".section-nav").getByRole("link", { name: "RM Skills", exact: true }).click();
     await page.waitForURL("**/rm-skills/");
-    assert.equal(await page.locator("h1").textContent(), "RM Skills");
+    assert.equal(await page.locator("h1").textContent(), "RM Skills 2027");
     assert.equal(await page.locator("html").getAttribute("data-theme"), "dark");
 
     // Local links and section destinations must resolve, including nested routes.
