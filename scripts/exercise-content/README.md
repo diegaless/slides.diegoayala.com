@@ -166,6 +166,28 @@ de Laura. Se conserva la obligación original de entregar el repositorio y un ZI
 con la práctica final aunque ya se haya realizado la defensa. La tarea sigue
 sin enlace a una diapositiva específica.
 
+## Referencias de Desarrollo de Interfaces
+
+Se han contrastado las ocho tareas de DI con las 49 diapositivas de la
+[presentación publicada de Desarrollo de Interfaces](https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub),
+consultada el 21 de septiembre de 2026. La correspondencia concreta es
+«RA2,RA7 -Generar ejecutable. exe». La entrada solo añade `slides`: conserva
+las instrucciones y la entrega existentes, e incluye los enlaces en su PDF
+y en los ZIP de DI. Cada rango abre su primera diapositiva mediante un ID estable.
+
+| Referencia | Diapositivas | Identificador de inicio |
+| --- | --- | --- |
+| Generar el .exe con PyInstaller, recursos y archivo .spec | 13–15 | `g3a7d6d50509_1_51` |
+| Firma digital del ejecutable | 16–24 | `g3a7d6d50509_2_179` |
+| Instalador con Inno y ejecución desatendida | 25–41 | `g3a7d6d50509_2_303` |
+| Publicación en GitHub Releases | 42–44 | `g3a8f78e2a57_0_1` |
+| Apoyo RA2: reconocimiento de voz | 45–49 | `g3a8f78e2a57_0_36` |
+
+El bloque de voz se identifica como apoyo de RA2, según la correspondencia
+del temario en la diapositiva 4. Las otras siete tareas no reciben enlaces:
+las menciones generales a MiniOffice, componentes o FastAPI en el mapa de RA
+no contienen sus enunciados ni el desarrollo de las prácticas.
+
 ## Referencias de Lenguaje de Marcas
 
 Las 18 tareas públicas de LM 1DAW enlazan desde la cabecera a la

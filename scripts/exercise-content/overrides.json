@@ -162,6 +162,30 @@
   "dapw/Despliegue remoto": {
     "instructions": "dapw/remote-deployment.html"
   },
+  "di/RA2,RA7 -Generar ejecutable. exe": {
+    "slides": [
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a7d6d50509_1_51",
+        "label": "Generar el .exe · diap. 13–15"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a7d6d50509_2_179",
+        "label": "Firma digital · diap. 16–24"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a7d6d50509_2_303",
+        "label": "Instalador · diap. 25–41"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a8f78e2a57_0_1",
+        "label": "Publicar versiones · diap. 42–44"
+      },
+      {
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a8f78e2a57_0_36",
+        "label": "Apoyo RA2: voz · diap. 45–49"
+      }
+    ]
+  },
   "lm/XML 1": {
     "slides": [
       {
