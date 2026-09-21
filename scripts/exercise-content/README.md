@@ -33,6 +33,10 @@ describe el documento; no presupone un proveedor cloud ni un alojamiento nuevo.
 
 ## Enunciados y materiales de Docker y Compose
 
+Numeración revisada el 21 de septiembre de 2026 tras añadir 20 diapositivas
+en las posiciones 2–21. Las referencias siguientes usan la numeración actual
+de la presentación (142 diapositivas); los identificadores y enlaces se conservan.
+
 `dapw/docker-1-10.html` desarrolla la tarea «Docker 1..10» desde la
 [presentación publicada de DAPW](https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub),
 consultada el 20 de septiembre de 2026. Se conserva la entrega original en PDF
@@ -40,14 +44,14 @@ con capturas. Se aclaran las comprobaciones y los archivos, sin incluir solucion
 
 | Ejercicio | Diapositiva e identificador | Contenido |
 | --- | --- | --- |
-| 1 | 16 · `g385b3c8d33d_0_97` | Array de saludos aleatorios en `getGreeting.js`. |
-| 2 | 17 · `g385b3c8d33d_0_111` | Placeholder de `AddNewItemForm.jsx`, conservando el texto solicitado. |
-| 3 | 18 · `g385b3c8d33d_0_122` | Color de fondo en `index.scss`. |
-| 4 | 26 · `g385b3c8d33d_0_230` | Publicar `ejercicio4` mediante comandos; contexto de construcción y subida en las diapositivas 23–25. |
-| 5 | 27 · `g385b3c8d33d_0_240` | Publicar una imagen desde VS Code. |
-| 6 | 52 · `g36ca059bd8e_0_121` | Alpine activo con posibilidad de ejecutar comandos. |
-| 9 | 54 · `g36ca059bd8e_0_142` | Imagen Java, `java -version` y búsqueda de una imagen JRE más pequeña. |
-| 10 | 55 · `g36ca059bd8e_0_165` | Enlace al [documento de Suma.java](https://docs.google.com/document/d/1bCh8zcwTmcTxv4XaGONjjTVBlV9puPRXs5FxbZXmDaw/edit?usp=sharing): entrada por teclado, prueba local, Dockerfile, compilación y ejecución en Docker. |
+| 1 | 36 · `g385b3c8d33d_0_97` | Array de saludos aleatorios en `getGreeting.js`. |
+| 2 | 37 · `g385b3c8d33d_0_111` | Placeholder de `AddNewItemForm.jsx`, conservando el texto solicitado. |
+| 3 | 38 · `g385b3c8d33d_0_122` | Color de fondo en `index.scss`. |
+| 4 | 46 · `g385b3c8d33d_0_230` | Publicar `ejercicio4` mediante comandos; contexto de construcción y subida en las diapositivas 43–45. |
+| 5 | 47 · `g385b3c8d33d_0_240` | Publicar una imagen desde VS Code. |
+| 6 | 72 · `g36ca059bd8e_0_121` | Alpine activo con posibilidad de ejecutar comandos. |
+| 9 | 74 · `g36ca059bd8e_0_142` | Imagen Java, `java -version` y búsqueda de una imagen JRE más pequeña. |
+| 10 | 75 · `g36ca059bd8e_0_165` | Enlace al [documento de Suma.java](https://docs.google.com/document/d/1bCh8zcwTmcTxv4XaGONjjTVBlV9puPRXs5FxbZXmDaw/edit?usp=sharing): entrada por teclado, prueba local, Dockerfile, compilación y ejecución en Docker. |
 
 Cada ejercicio de Docker tiene un bloque independiente con número, título y
 enlace a su diapositiva mediante `slide=id.…`. Los bloques pendientes 7 y 8 se
@@ -59,27 +63,27 @@ Se han extraído las capturas originales de la presentación, sin recrearlas:
 
 | Recurso local en `ejercicios/assets/dapw/` | Procedencia y uso |
 | --- | --- |
-| `docker-todo-app.png` | Misma captura en las diapositivas 16, 17 y 18; se reutiliza en los ejercicios 1, 2 y 3. |
-| `docker-image-list.png` | Diapositiva 24: referencia de `docker image ls` para el ejercicio 4. |
-| `docker-vscode-editor.png` | Diapositiva 22: conectar Docker Hub desde VS Code, como apoyo al ejercicio 5. |
-| `docker-vscode-images.png` | Diapositiva 22: menú de imágenes con Push, como apoyo al ejercicio 5. |
+| `docker-todo-app.png` | Misma captura en las diapositivas 36, 37 y 38; se reutiliza en los ejercicios 1, 2 y 3. |
+| `docker-image-list.png` | Diapositiva 44: referencia de `docker image ls` para el ejercicio 4. |
+| `docker-vscode-editor.png` | Diapositiva 42: conectar Docker Hub desde VS Code, como apoyo al ejercicio 5. |
+| `docker-vscode-images.png` | Diapositiva 42: menú de imágenes con Push, como apoyo al ejercicio 5. |
 
 Las seis apariciones de estas cuatro imágenes tienen texto alternativo, enlace
 para ampliar el original y enlace a la diapositiva de procedencia. Los enlaces
-principales de los ejercicios 4 y 5 apuntan a sus enunciados (26 y 27), mientras
-que sus pies de imagen apuntan al material de apoyo (24 y 22).
+principales de los ejercicios 4 y 5 apuntan a sus enunciados (46 y 47), mientras
+que sus pies de imagen apuntan al material de apoyo (44 y 42).
 
 El resto de tareas de DAPW enlaza desde la cabecera del enunciado:
 
 | Tarea | Diapositivas e identificadores |
 | --- | --- |
-| COMPOSE 1 | 97 · `g3a063833045_0_119` |
-| COMPOSE 2 Y 3 --SOLO ALUMNOS AUSENTES | 98 · `g3a0e417b5f2_0_27`; 102 · `g3a0e417b5f2_0_36` |
-| Flask Cat App – Evaluable | 98 · `g3a0e417b5f2_0_27` |
-| DICE-APP_EVALUABLE | 102 · `g3a0e417b5f2_0_36` |
-| COMPOSE -- DEV STAGE | 115 · `g3aa2083d3bb_0_0` |
-| COMPOSE - PROD STAGE 1 | 116 · `g3aa2083d3bb_0_12`; 117 · `g3aa2083d3bb_0_22` |
-| COMPOSE -- PROD STAGE 2 | 118 · `g3aa2083d3bb_0_34`; 119 · `g3aa2083d3bb_0_46`; 120 · `g3aa711bcff2_0_0`; 121 · `g3aa2083d3bb_0_71`; 122 · `g3ad665943a1_0_0` |
+| COMPOSE 1 | 117 · `g3a063833045_0_119` |
+| COMPOSE 2 Y 3 --SOLO ALUMNOS AUSENTES | 118 · `g3a0e417b5f2_0_27`; 122 · `g3a0e417b5f2_0_36` |
+| Flask Cat App – Evaluable | 118 · `g3a0e417b5f2_0_27` |
+| DICE-APP_EVALUABLE | 122 · `g3a0e417b5f2_0_36` |
+| COMPOSE -- DEV STAGE | 135 · `g3aa2083d3bb_0_0` |
+| COMPOSE - PROD STAGE 1 | 136 · `g3aa2083d3bb_0_12`; 137 · `g3aa2083d3bb_0_22` |
+| COMPOSE -- PROD STAGE 2 | 138 · `g3aa2083d3bb_0_34`; 139 · `g3aa2083d3bb_0_46`; 140 · `g3aa711bcff2_0_0`; 141 · `g3aa2083d3bb_0_71`; 142 · `g3ad665943a1_0_0` |
 
 Las ocho capturas de las tres etapas de Compose enlazan también desde su pie a
 la diapositiva concreta. COMPOSE 4, VIAJE-ESTUDIOS_EVALUABLE y DEFENSA FINAL quedan
@@ -123,8 +127,8 @@ entregas en GitHub y las rúbricas cuando figuran en el original.
 | Fragmento | Fuente y alcance |
 | --- | --- |
 | `dapw/viaje-estudios.html` | `README.md` de `6-Viaje-estudios-votacion.zip`, publicado en DAPW como «practica viaje» el 30 de octubre de 2025. Construcción y ejecución mediante comandos: Flask/Gunicorn, red `webnet` y Nginx. |
-| `dapw/compose-1.html` | `README.md` y código de [compose-01.zip, enlazado en la diapositiva 97](https://drive.google.com/file/d/1I9znLac-E7TxhHEAtZE3bZedqWWGcCJf/view?usp=sharing). Completar el servicio PostgreSQL del proyecto de Apache. Los nombres `ejemplo`, `usuario` y `pg_pass` se contrastan con el CGI y el Compose originales. |
-| `dapw/compose-2-3.html` | Diapositivas 98 y 102: Flask Cat App y Dice App con Compose, en dos bloques separados. Se incorporan los requisitos de la aplicación del [documento original de Flask Cat App](https://docs.google.com/document/d/1E-U95T-MHzXg8tQ0FOPDXZLWHzogp60Mqh5U7icc-wY/edit?tab=t.0), adaptando la construcción y el arranque a Compose. Dice App conserva las tres comprobaciones de `.env` de la diapositiva 102. |
+| `dapw/compose-1.html` | `README.md` y código de [compose-01.zip, enlazado en la diapositiva 117](https://drive.google.com/file/d/1I9znLac-E7TxhHEAtZE3bZedqWWGcCJf/view?usp=sharing). Completar el servicio PostgreSQL del proyecto de Apache. Los nombres `ejemplo`, `usuario` y `pg_pass` se contrastan con el CGI y el Compose originales. |
+| `dapw/compose-2-3.html` | Diapositivas 118 y 122: Flask Cat App y Dice App con Compose, en dos bloques separados. Se incorporan los requisitos de la aplicación del [documento original de Flask Cat App](https://docs.google.com/document/d/1E-U95T-MHzXg8tQ0FOPDXZLWHzogp60Mqh5U7icc-wY/edit?tab=t.0), adaptando la construcción y el arranque a Compose. Dice App conserva las tres comprobaciones de `.env` de la diapositiva 122. |
 | `dapw/compose-4.html` | `README.md` y código del adjunto original `4-Viaje-estudios-votacion.zip`. Crear `docker-compose.yaml` con `fiesta_app` y `fiesta_nginx` en la red predeterminada de Compose; el Dockerfile y la configuración de Nginx ya se proporcionan. |
 
 La publicación «bug tarea viaje-estudios», del 31 de octubre de 2025, corrige
