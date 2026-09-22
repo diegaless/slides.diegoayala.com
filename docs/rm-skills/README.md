@@ -41,6 +41,29 @@ Las páginas de los enlaces `#page=` cuentan desde la primera página del archiv
 no desde la numeración impresa. Los documentos originales se inspeccionaron
 también visualmente para comprobar el programa y la fila de Miralmonte.
 
+## Sedes y fechas del histórico
+
+El párrafo introductorio de cada ficha muestra únicamente sede, ciudad y fecha.
+En las ediciones nacionales se indican los días de las pruebas, sin sumar las
+ceremonias de apertura y clausura. Las fechas están marcadas con `time` en el HTML.
+
+| Edición | Sede y fecha de las pruebas | Fuente |
+| --- | --- | --- |
+| SpainSkills 2026 | IFEMA, Madrid · 25–27 de febrero de 2026 | [Programa oficial](https://spain-skills.es/competiciones/estatal/spainskills-2026/programa) |
+| RM Skills 2025 | IES Ingeniero de la Cierva, Murcia · 25 y 26 de marzo de 2025 | [Sede](https://www.llegarasalto.com/rmskills2025/) y [DT, p. 5](https://www.llegarasalto.com/wp-content/uploads/2025/02/17-DT_DesarrolloWeb-RMSkills2025-v01.docx-1.pdf#page=5) |
+| SpainSkills 2024 | IFEMA, Madrid · 10–12 de abril de 2024 | [Archivo oficial](https://spain-skills.es/competiciones/estatal/spainskills-2024), días de acceso a la competición |
+| RM Skills 2023 | CIFP Carlos III, Cartagena · 26 de abril de 2023 | [Archivo oficial](https://www.llegarasalto.com/rmskills2023/) |
+| SpainSkills 2022 | IFEMA, Madrid · 23–25 de marzo de 2022 | [Archivo oficial](https://spain-skills.es/competiciones/estatal/spainskills-2022), días de acceso a la competición |
+| RM Skills 2021 | CIFP Carlos III, Cartagena · 20 de abril de 2021 | [Calendario de la edición RM Skills 2020](https://www.llegarasalto.com/competiciones-rmskills20/) |
+| SpainSkills 2019 | IFEMA, Madrid · 27–29 de marzo de 2019 | [Archivo oficial](https://spain-skills.es/competiciones/estatal/spainskills-madrid-2019) |
+| RM Skills 2018 | CIFP Carlos III, Cartagena · 9 de mayo de 2018 | [Calendario oficial](https://www.llegarasalto.com/murciaskills/informacion/) |
+| SpainSkills 2017 | IFEMA, Madrid · 1–3 de marzo de 2017 | [Archivo oficial](https://spain-skills.es/competiciones/estatal/spainskills-madrid-2017) |
+| SpainSkills 2015 | IFEMA, Madrid · 6–8 de mayo de 2015 | [Archivo oficial](https://spain-skills.es/competiciones/estatal/spainskills-madrid-2015) |
+
+Se ha retirado la sección «Documentación y apoyo», incluidos sus enlaces a
+documentación general, material de clase y el desplegable de fuentes. Las
+referencias se mantienen en este documento y junto a los datos de cada edición.
+
 ## Límites del material disponible
 
 - No se ha localizado una descripción técnica ni un test project de Desarrollo

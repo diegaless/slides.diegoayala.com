@@ -102,7 +102,7 @@
 .small-tag { display: inline-block; padding: 3px 7px; border: 1px solid var(--line); border-radius: 4px; color: var(--muted); font-size: .6rem; line-height: 1.5; font-weight: 550; white-space: nowrap; }
 .accent-tag, .regional-tag { border-color: color-mix(in srgb, var(--skills-accent) 22%, var(--line)); color: var(--skills-accent); background: color-mix(in srgb, var(--skills-accent) 5%, transparent); }
 .source-note { margin: 14px 0 0; color: var(--muted); font-size: .71rem; }
-.source-note a, .sources-details a { color: var(--skills-accent); text-decoration: underline; text-underline-offset: 3px; }
+.source-note a { color: var(--skills-accent); text-decoration: underline; text-underline-offset: 3px; }
 .eligibility { padding: 26px; border: 1px solid var(--line); border-radius: 10px; background: var(--skills-panel); }
 .eligibility h4 { margin: 0; font-size: 1.05rem; line-height: 1.4; letter-spacing: -.03em; font-weight: 600; }
 .plain-list { margin: 18px 0; padding-left: 17px; color: var(--muted); font-size: .81rem; line-height: 1.7; }
@@ -139,7 +139,7 @@
 .exam { min-width: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--skills-panel-soft); scroll-margin-top: 20px; }
 .exam[open] { border-color: color-mix(in srgb, var(--skills-accent) 30%, var(--line)); }
 .exam > summary { display: grid; grid-template-columns: 84px minmax(0, 1fr) 28px; align-items: center; gap: 24px; padding: 22px 24px; cursor: pointer; list-style: none; border-radius: inherit; }
-.exam > summary::-webkit-details-marker, .sources-details > summary::-webkit-details-marker { display: none; }
+.exam > summary::-webkit-details-marker { display: none; }
 .exam > summary:hover .exam-title { color: var(--skills-accent); }
 .exam-year { display: flex; align-items: center; align-self: stretch; color: var(--skills-accent); border-right: 1px solid var(--line); font-family: ui-monospace, monospace; font-size: 1.6rem; font-weight: 550; letter-spacing: -.07em; }
 .exam-summary { display: grid; gap: 8px; }
@@ -175,26 +175,6 @@
 .exam-modules p { margin: 0 0 10px; color: var(--muted); font-size: .77rem; }
 .exam-modules small { display: block; color: var(--muted); font-size: .66rem; line-height: 1.6; }
 .material-note a { color: var(--skills-accent); text-decoration: underline; text-underline-offset: 3px; }
-
-.reference-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
-.reference-link { display: flex; align-items: center; gap: 17px; min-width: 0; padding: 24px 0; border-bottom: 1px solid var(--line); }
-.reference-icon { display: grid; place-items: center; flex: 0 0 40px; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 8px; background: var(--skills-panel-soft); color: var(--skills-accent); font-family: ui-monospace, monospace; font-size: .8rem; }
-.reference-link > span:nth-child(2) { flex: 1; }
-.reference-link strong { display: block; margin-bottom: 6px; font-size: .85rem; font-weight: 550; }
-.reference-link small { display: block; color: var(--muted); font-size: .75rem; line-height: 1.6; }
-.reference-link > span:last-child { color: var(--muted); }
-.reference-link:hover strong, .reference-link:hover > span:last-child { color: var(--skills-accent); }
-.class-resources { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 30px; margin: 34px 0; }
-.class-resources h3 { width: 100%; margin: 0 0 3px; font-size: .8rem; font-weight: 550; }
-.class-resources a { color: var(--skills-accent); font-size: .74rem; line-height: 1.6; }
-.class-resources a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.sources-details { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.sources-details > summary { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; color: var(--muted); font-size: .8rem; cursor: pointer; list-style: none; }
-.sources-details > summary > span { transition: transform 160ms ease; }
-.sources-details[open] > summary > span { transform: rotate(45deg); }
-.sources-details > div { padding: 0 0 18px; color: var(--muted); font-size: .76rem; }
-.sources-details ul { padding-left: 20px; line-height: 1.9; }
-.sources-details li + li { margin-top: 6px; }
 
 @media (max-width: 1000px) {
   .call-grid { gap: 30px; }
@@ -254,8 +234,6 @@
   .module-grid small { font-size: .62rem; }
   .exam-facts { grid-template-columns: 1fr; gap: 14px; }
   .exam-modules { gap: 20px; }
-  .reference-grid { grid-template-columns: 1fr; }
-  .reference-link { padding: 20px 0; }
 }
 
 @media (max-width: 360px) {
