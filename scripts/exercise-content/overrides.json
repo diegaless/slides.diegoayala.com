@@ -162,6 +162,9 @@
   "dapw/Despliegue remoto": {
     "instructions": "dapw/remote-deployment.html"
   },
+  "di/PYSIDE 1-2": {
+    "instructions": "di/pyside-1-2.html"
+  },
   "di/RA2,RA7 -Generar ejecutable. exe": {
     "slides": [
       {
