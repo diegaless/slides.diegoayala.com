@@ -428,6 +428,41 @@ button {
   line-height: 1;
 }
 
+.resource-actions {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.resource-actions .resource-action {
+  flex: 1 1 175px;
+  gap: 8px;
+  padding: 10px 12px;
+  white-space: nowrap;
+}
+
+.resource-action-secondary {
+  border-color: var(--line);
+  background: transparent;
+}
+
+.resource-action-secondary:hover {
+  background: color-mix(in srgb, var(--accent) 10%, var(--bg));
+}
+
+.resource-download-note {
+  margin: -6px 0 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+.subjects > ul > li > .subject-download {
+  margin-top: 14px;
+}
+
 .resource-status {
   color: var(--muted);
   background: color-mix(in srgb, var(--ink) 4%, transparent);

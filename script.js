@@ -31,6 +31,7 @@ function initSubjectResources() {
     const tabs = [...resources.querySelectorAll("[role='tab']")];
     const panels = [...resources.querySelectorAll("[role='tabpanel']")];
     const prefix = `subject-${index + 1}`;
+    const download = link.parentElement.querySelector(".subject-download");
     const urls = {
       slides: link.hasAttribute("data-pending") ? "" : link.getAttribute("href"),
       exercises: link.dataset.exercisesUrl?.trim(),
@@ -43,6 +44,15 @@ function initSubjectResources() {
     trigger.setAttribute("aria-controls", `${prefix}-resources`);
     resources.id = `${prefix}-resources`;
     resources.querySelector("[role='tablist']").setAttribute("aria-label", `Recursos de ${subjectName}`);
+
+    if (download && urls.slides) {
+      resources.querySelector(".resource-actions").append(download);
+      const note = resources.querySelector("[data-download-note]");
+      note.id = `${prefix}-download-note`;
+      note.textContent = download.dataset.downloadDescription;
+      note.hidden = false;
+      download.setAttribute("aria-describedby", note.id);
+    }
 
     tabs.forEach((tab) => {
       tab.id = `${prefix}-${tab.dataset.resource}-tab`;
@@ -68,6 +78,8 @@ function initSubjectResources() {
         }
       } else {
         action.hidden = true;
+        const actions = action.closest(".resource-actions");
+        if (actions) actions.hidden = true;
         panel.tabIndex = 0;
         panel.querySelector("[data-unavailable]").hidden = false;
         panel.querySelector("[data-description]").textContent = resource === "slides"

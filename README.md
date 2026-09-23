@@ -53,6 +53,27 @@ Si prefieres abrir el visor privado de Google Slides, usa:
 Si alguna vez quieres forzar descarga como PDF, usa:
 `https://docs.google.com/presentation/d/ID/export/pdf`
 
+### Descargar las diapositivas
+
+Las asignaturas con diapositivas mantienen «Abrir diapositivas» para el visor
+publicado y añaden un segundo acceso dentro de esa misma pestaña. Lenguaje de
+Marcas, Desarrollo de Interfaces y Sistemas informáticos incluyen «Abrir y
+descargar»: abre el archivo original de Google, con permiso de lector, donde se
+puede elegir `Archivo -> Descargar -> PDF / PowerPoint`. Los cuatro enlaces de
+descarga están en los elementos `.subject-download` de `index.html` y también
+funcionan sin JavaScript. `script.js` los mueve al panel de su asignatura y muestra
+la explicación de `data-download-description`.
+
+DAPW dispone de una copia PDF en `assets/diapositivas/dapw.pdf`, exportada el
+23 de septiembre de 2026 de la presentación original `DAPPW`
+(`1Jp8Nc-g7-cGw9N7whTvKrDvy9mrdXsz_S9HJLmiSgIg`). Su original no permite acceso
+anónimo y el conector disponible no permite conceder acceso público con enlace;
+por eso su botón es «Descargar PDF» y muestra la fecha de esa copia. Al modificar
+las diapositivas, hay que volver a exportar ese PDF y actualizar su fecha en
+`index.html`. Alternativamente, cuando el original permita lectores con enlace,
+puede sustituirse por ese enlace y usar el mismo acceso que las otras asignaturas.
+Las asignaturas y módulos SEF aún pendientes siguen mostrando «Próximamente».
+
 ## Biblioteca de ejercicios
 
 Cada asignatura utiliza únicamente el último curso disponible del backup como
