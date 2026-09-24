@@ -223,3 +223,39 @@ en la presentación un enunciado específico de esas seis tareas. La numeración
 24 de HTML aparece tanto en audio (154) como en incrustación (161); se conservan
 ambos destinos. Los 28 enlaces se incluyen también en los PDF regenerados y
 en las descargas completas y por selección de LM.
+
+## Documentación de Proyecto Intermodular
+
+`pi/documentacion.html` conserva la entrega hasta el apartado 4 y la captura
+original. Añade el índice completo y ejemplos de ocho proyectos, con sus enlaces
+a una carpeta específica del Drive personal del profesor.
+
+El índice se ha exportado sin modificaciones desde
+[Indice Orientativo - Proyecto Intermodular - 2º DAW](https://docs.google.com/document/d/1MO2M3DZ0YIXtRvkcLrDn3sI6ld1nEqrXZhN8VbUEiS4/edit).
+Su texto coincide con la captura. La copia de dos páginas se conserva en Drive
+y se enlaza desde el enunciado y los materiales de la tarea.
+SHA-256: `18f8102e8369c14ec27bdc8db538c3cc6aec5b0af60406ba4b6520576c81ca6c`.
+
+Los nueve PDF de ejemplo proceden de `entregas-alumnos/PI/ENTREGAS.zip` del
+respaldo de Teams. Se usa la última versión de cada memoria final y se omiten
+duplicados y borradores anteriores. SportAccess se identifica como documentación
+parcial: conserva sus dos documentos complementarios. La entrega original de
+APPALUMNO incluye su memoria, presentación y enlace al repositorio; su código se
+ofrece en un ZIP independiente.
+
+Los enlaces de las memorias y del ZIP de APPALUMNO permitieron recuperar estas
+copias del código el 24 de septiembre de 2026:
+
+| Proyecto | Repositorio | Revisión |
+| --- | --- | --- |
+| Automalize · web | `Alejandro-Shadow/TFG-Miralmonte` | `328c4a3ccd0246539587deb7ab7571daff1f2286` |
+| Automalize · escritorio | `harold1094/tfg-aplicacion-de-escritorio` | `cabb3a74a6815a49c57e5edd6034ecd424786019` |
+| Automalize · n8n | `martinmunozb/n8nAutomatizacionVerifactu` | `840762e2f5aad924a5829b12851723e12c5eae89` |
+| APPALUMNO | `enriquegit24/appAlumno` | `4a01c73cde4db28c4a58d22250805d8d7d0ea695` |
+
+La copia de n8n sustituye una clave de servicio por un marcador e incluye un
+LEEME para configurar credenciales propias. El repositorio de facturación
+`gabrieljs26/Facturacion_Automanize` devolvía 404 y no se anuncia como disponible.
+Los archivos del alumnado se alojan en Drive; el repositorio de la web solo
+contiene sus enlaces. La descarga individual de la tarea y ambos ZIP de PI se
+regeneran para incluir los enlaces de los ejemplos.

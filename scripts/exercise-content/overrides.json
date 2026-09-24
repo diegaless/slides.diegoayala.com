@@ -372,5 +372,20 @@
         "label": "Práctica JSON, CSV y SQLite · diap. 367"
       }
     ]
+  },
+  "pi/Documentación PI": {
+    "instructions": "pi/documentacion.html",
+    "materials": [
+      {
+        "label": "Índice orientativo completo",
+        "detail": "PDF · Los ocho apartados de la memoria de Proyecto Intermodular.",
+        "href": "https://drive.google.com/file/d/1ZqiwgfxGy59DSNxQIOutxFeQ57fRbsJ2/view?usp=drivesdk"
+      },
+      {
+        "label": "Todos los ejemplos en Drive",
+        "detail": "Memorias, código fuente y materiales de los proyectos.",
+        "href": "https://drive.google.com/drive/folders/1lYoVKiK9grfyadwt-IunfR750UF2LtZl"
+      }
+    ]
   }
 }
