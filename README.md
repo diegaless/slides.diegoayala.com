@@ -65,14 +65,16 @@ descarga están en los elementos `.subject-download` de `index.html` y también
 funcionan sin JavaScript. `script.js` los mueve al panel de su asignatura y muestra
 la explicación de `data-download-description`.
 
-DAPW dispone de una copia PDF en `assets/diapositivas/dapw.pdf`, exportada el
-23 de septiembre de 2026 de la presentación original `DAPPW`
-(`1Jp8Nc-g7-cGw9N7whTvKrDvy9mrdXsz_S9HJLmiSgIg`). Su original no permite acceso
-anónimo y el conector disponible no permite conceder acceso público con enlace;
-por eso su botón es «Descargar PDF» y muestra la fecha de esa copia. Al modificar
-las diapositivas, hay que volver a exportar ese PDF y actualizar su fecha en
-`index.html`. Alternativamente, cuando el original permita lectores con enlace,
-puede sustituirse por ese enlace y usar el mismo acceso que las otras asignaturas.
+DAPW utiliza «Descargar PDF» con la exportación directa de su presentación original
+`DAPPW` en Google Slides:
+`https://docs.google.com/presentation/d/1Jp8Nc-g7-cGw9N7whTvKrDvy9mrdXsz_S9HJLmiSgIg/export/pdf`.
+El 27 de septiembre de 2026 se comprobó que el original permite lectores con
+enlace y que esta URL devuelve un PDF sin iniciar sesión. La descarga utiliza
+la versión de Google; ya no requiere actualizar una copia en el repositorio.
+«Abrir diapositivas» conserva el enlace al visor publicado. La exportación
+necesita el identificador del archivo original, no el identificador `2PACX` del visor.
+`assets/diapositivas/dapw.pdf` se conserva como copia histórica del 23 de septiembre
+de 2026 para mantener los enlaces antiguos, pero el menú ya no la utiliza.
 Las asignaturas y módulos SEF aún pendientes siguen mostrando «Próximamente».
 
 ## Biblioteca de ejercicios
