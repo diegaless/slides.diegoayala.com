@@ -211,7 +211,11 @@
     }
   },
   "di/PYSIDE 1-2": {
-    "instructions": "di/pyside-1-2.html"
+    "instructions": "di/pyside-1-2.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1R23tnpW83_vTZHwvK_BIyEgK21PQz2nq/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/di-soluciones/tree/main/01-PYSIDE-1-2"
+    }
   },
   "di/RA2,RA7 -Generar ejecutable. exe": {
     "slides": [
@@ -544,6 +548,12 @@
     "solutions": {
       "pdf": "https://drive.google.com/file/d/1M5h_mHIeETkwmCiiMXJ6N0a6OmbpVgAR/view?usp=drivesdk",
       "github": "https://github.com/diegaless/lm-soluciones/tree/main/01-CSS-1-a-16"
+    }
+  },
+  "di/QT 3 FORM": {
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1LtSskRwYUJBhG0nNObd3_QJIjF-5j_Hj/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/di-soluciones/tree/main/02-QT-3-FORM"
     }
   }
 }
