@@ -132,8 +132,8 @@ Estas referencias se conservan al regenerar los HTML, los PDF y los ZIP.
 
 En Proyecto Intermodular, «Documentación PI» conserva el índice orientativo y
 organiza los ejemplos en tres cursos desplegables: 2025/26 (8 proyectos),
-2024/25 (7) y 2023/24 (8). Solo el primero aparece abierto inicialmente; todos
-se incluyen en el PDF y en las descargas por lotes. El contenido permanente está
+2024/25 (7) y 2023/24 (8). Todos aparecen cerrados inicialmente y se incluyen
+completos en el PDF y en las descargas por lotes. El contenido permanente está
 en `scripts/exercise-content/pi/documentacion.html`.
 
 Los materiales se guardan en el Drive personal, dentro de
@@ -152,10 +152,10 @@ entrega, `inklord/Rush-Dush-tfg`, revisión
 contra la descarga original. La carpeta incluye las instrucciones. HACK SLASH
 no se publica: el ZIP de 2024/25 contiene solo una referencia Git LFS y falta
 el archivo real. Tampoco se enlazan repositorios o carpetas que devuelven 404.
-El ZIP completo de Moon Software está copiado en Drive, pero Google bloquea
-su acceso. El correo de Drive Safety indica una detección automática por su
-política sobre malware; no identifica qué archivo la provoca. El proyecto no se
-ha ejecutado ni se ha intentado eludir el bloqueo. Se enlaza únicamente su
+La copia del ZIP completo de Moon Software se ha eliminado del Drive personal
+a petición del usuario tras la alerta automática de Drive Safety por posible
+malware. El aviso no identifica qué archivo la provoca. El proyecto no se ha
+ejecutado ni se ha intentado eludir el bloqueo. Se enlaza únicamente su
 memoria PDF, cuya descarga pública sí se ha comprobado; esta comprobación de
 acceso no equivale a una certificación de seguridad.
 
