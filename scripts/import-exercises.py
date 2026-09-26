@@ -215,7 +215,7 @@ def apply_task_solutions(html, key):
         '<h2 id="task-solutions-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
         'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
         '<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4M12 14v3"/>'
-        '</svg>Soluciones</h2><p>Acceso exclusivo del profesor.</p>' + ''.join(links) + '</section>')
+        '</svg>Soluciones</h2>' + ''.join(links) + '</section>')
     html, count = re.subn(
         r'(<aside class="task-aside task-download"[^>]*>)(.*?)(</aside>)',
         lambda m: m[1].replace('aria-label="Descarga de la tarea"',

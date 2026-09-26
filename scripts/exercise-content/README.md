@@ -16,8 +16,8 @@ El backup y el ZIP de origen no se modifican.
 
 El campo opcional `solutions` de `overrides.json` contiene dos URL HTTPS:
 `pdf` (el PDF de la tarea en Google Drive) y `github` (su carpeta en el repositorio
-privado). Se muestran en el lateral, junto a la descarga del enunciado, con la
-indicación de acceso exclusivo del profesor. `apply_task_solutions` permite
+privado). Se muestran en el lateral, junto a la descarga del enunciado.
+`apply_task_solutions` permite
 actualizar estos enlaces sin reimportar los enunciados.
 
 Los botones son públicos. El acceso al contenido lo controlan los permisos de
