@@ -244,7 +244,11 @@
         "label": "Enunciado · diap. 35"
       }
     ],
-    "instructions": "lm/xml-1.html"
+    "instructions": "lm/xml-1.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1jROpmZJnLlZ9ZAXMpuy9D4XwGW4_q8er/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/02-XML-1"
+    }
   },
   "lm/XML2": {
     "slides": [
@@ -253,7 +257,11 @@
         "label": "Enunciado · diap. 36"
       }
     ],
-    "instructions": "lm/xml-2.html"
+    "instructions": "lm/xml-2.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1wCYsddpA1UBAbBxbjjE30EdzGND1HdmP/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/03-XML-2"
+    }
   },
   "lm/XML 3": {
     "slides": [
@@ -262,7 +270,11 @@
         "label": "Teoría: XML bien formado · diap. 37–38"
       }
     ],
-    "instructions": "lm/xml-3.html"
+    "instructions": "lm/xml-3.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1AiIUrwsaFGne8xkSJLBDfTrVq9wBEnrT/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/04-XML-3"
+    }
   },
   "lm/XML 4": {
     "slides": [
@@ -275,7 +287,11 @@
         "label": "Teoría: atributos · diap. 32–33"
       }
     ],
-    "instructions": "lm/xml-4.html"
+    "instructions": "lm/xml-4.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/13mAMOaBaO2gWYxHAw9CBhUM4SVMsa5vF/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/05-XML-4"
+    }
   },
   "lm/XML 5": {
     "slides": [
@@ -288,7 +304,11 @@
         "label": "Teoría: atributos · diap. 32–33"
       }
     ],
-    "instructions": "lm/xml-5.html"
+    "instructions": "lm/xml-5.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1dqCSdGu_4JAC9OSBpWUvAFZ4ks2m1XIN/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/06-XML-5"
+    }
   },
   "lm/XML-6": {
     "slides": [
@@ -297,7 +317,11 @@
         "label": "Teoría: espacios de nombres · diap. 42–44"
       }
     ],
-    "instructions": "lm/xml-6.html"
+    "instructions": "lm/xml-6.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/15UKbktPXa0RtTpoqLDy6rmy5kxkw7A75/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/07-XML-6"
+    }
   },
   "lm/xml 7": {
     "slides": [
@@ -306,7 +330,11 @@
         "label": "Teoría: espacios de nombres · diap. 42–44"
       }
     ],
-    "instructions": "lm/xml-7.html"
+    "instructions": "lm/xml-7.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/14X5B9Dd-7CPTk8IpBbhjSRybg1J-2bAN/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/08-XML-7"
+    }
   },
   "lm/xml - 8": {
     "slides": [
@@ -319,7 +347,11 @@
         "label": "Teoría: espacios de nombres · diap. 42–44"
       }
     ],
-    "instructions": "lm/xml-8.html"
+    "instructions": "lm/xml-8.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/16e17hoddJ9HrLEa3jzq-7h-0WeCuG7bD/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/09-XML-8"
+    }
   },
   "lm/HTML 1..4": {
     "slides": [
@@ -328,7 +360,11 @@
         "label": "HTML 1–4 · diap. 66–69"
       }
     ],
-    "instructions": "lm/html-1-4.html"
+    "instructions": "lm/html-1-4.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1agk_r26UdtMlTSabiObjcUMJ-_hjv5AK/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/10-HTML-1-a-4"
+    }
   },
   "lm/LM 5..8": {
     "slides": [
@@ -337,7 +373,11 @@
         "label": "HTML 5–8 · diap. 80–83"
       }
     ],
-    "instructions": "lm/html-5-8.html"
+    "instructions": "lm/html-5-8.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1g0pFysW0AfqDwZS4bhbJL2_qLlrzkz8q/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/11-HTML-5-a-8"
+    }
   },
   "lm/HTML 9..17": {
     "slides": [
@@ -354,7 +394,11 @@
         "label": "HTML 17 · diap. 122"
       }
     ],
-    "instructions": "lm/html-9-17.html"
+    "instructions": "lm/html-9-17.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1WrxOVnOkyf3MHqeXUn7W-egf9MJSFStp/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/12-HTML-9-a-17"
+    }
   },
   "lm/HTML 17..24": {
     "slides": [
@@ -375,7 +419,11 @@
         "label": "HTML 24: incrustación · diap. 161"
       }
     ],
-    "instructions": "lm/html-17-24.html"
+    "instructions": "lm/html-17-24.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1Rh5e6zdaB1nWNCNE5K9l5C4w400bvgCH/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/13-HTML-17-a-24"
+    }
   },
   "lm/RA2 -PRACTICA FINAL HTML --DEFENSA": {
     "slides": [
@@ -384,7 +432,11 @@
         "label": "Práctica HTML RA2 · diap. 162–166"
       }
     ],
-    "instructions": "lm/html-final.html"
+    "instructions": "lm/html-final.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/127xxYeni5xXsy24JtCPJzE8v1GkWy-gy/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/14-HTML-Practica-final"
+    }
   },
   "lm/EJERCICIOS HTML": {
     "slides": [
@@ -393,7 +445,11 @@
         "label": "Ejercicios de HTML · desde diap. 66"
       }
     ],
-    "instructions": "lm/html-entrega.html"
+    "instructions": "lm/html-entrega.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1yFxmNs1glUCQbtlH8qEw32-HuQH46HfI/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/15-Entrega-HTML"
+    }
   },
   "lm/RA2-FINAL CSS (50%)": {
     "slides": [
@@ -402,7 +458,11 @@
         "label": "Práctica final CSS · diap. 241"
       }
     ],
-    "instructions": "lm/css-final.html"
+    "instructions": "lm/css-final.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1dD5aUuFZZ82_aLliGF0lQzqehgxFNlvS/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/16-CSS-Practica-final"
+    }
   },
   "lm/RA3- JS DOM": {
     "slides": [
@@ -411,7 +471,11 @@
         "label": "Ejercicios DOM 5–9 · diap. 292–296"
       }
     ],
-    "instructions": "lm/js-dom.html"
+    "instructions": "lm/js-dom.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1nyfMACQy25zzljhXs7Z6Edh8FZ_r3Y_6/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/17-JavaScript-DOM"
+    }
   },
   "lm/RA4-Validadores, JSON, JSON SCHEMA": {
     "slides": [
@@ -428,7 +492,11 @@
         "label": "Teoría: JSON y JSON Schema · diap. 343–366"
       }
     ],
-    "instructions": "lm/json-validacion.html"
+    "instructions": "lm/json-validacion.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1mCpaiFpZFWgYr5T5orten5HlXBl6l3iv/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/18-JSON-Validacion"
+    }
   },
   "lm/RA5,6- JSON TO CSV, SQLITE": {
     "slides": [
@@ -437,7 +505,11 @@
         "label": "Práctica JSON, CSV y SQLite · diap. 367"
       }
     ],
-    "instructions": "lm/json-csv-sqlite.html"
+    "instructions": "lm/json-csv-sqlite.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1f9vuCX9gVvA8zUuBRbkHWf__riJNqTXL/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/19-JSON-CSV-SQLite"
+    }
   },
   "pi/Documentación PI": {
     "instructions": "pi/documentacion.html",
@@ -468,6 +540,10 @@
         "href": "../../assets/lm/css-inicio.zip",
         "detail": "ZIP · Selectores y página del libro, sin estilos"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1M5h_mHIeETkwmCiiMXJ6N0a6OmbpVgAR/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/lm-soluciones/tree/main/01-CSS-1-a-16"
+    }
   }
 }
