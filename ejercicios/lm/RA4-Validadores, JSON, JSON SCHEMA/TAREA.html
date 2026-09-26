@@ -41,6 +41,56 @@
 <div class="task-layout"><article class="task-main"><p class="eyebrow">LM 1DAW · Tarea</p><h1>RA4-Validadores, JSON, JSON SCHEMA</h1>
 <nav class="task-slide-links" aria-label="Diapositivas de esta tarea"><a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g33d4b376fa7_0_0" target="_blank" rel="noopener noreferrer"><span>Práctica final JSON · diap. 367</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a><a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g35ee66cfdd2_0_29" target="_blank" rel="noopener noreferrer"><span>Teoría: XML Schema · diap. 325–342</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a><a class="slide-link" href="https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g3616edbea6f_0_0" target="_blank" rel="noopener noreferrer"><span>Teoría: JSON y JSON Schema · diap. 343–366</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></nav>
 
-<h2>Instrucciones</h2><div class="instructions"><div><div>Adjuntad práctica en un .zip</div><div><br></div><div>Deberéis hacer la defensa de la práctica en el cronograma indicado</div></div></div>
+<h2>Instrucciones</h2><div class="instructions authored-instructions lm-instructions">
+<h3>Definición y validación de una lista de palabras vacías</h3>
+<p>Realiza las partes 1, 2 y 3 de la práctica de JSON.</p>
+<p>Consulta el <a href="https://docs.google.com/document/d/1oAI_FyRfGe3ECV4Ll4KZ8WAlanbQMCzi2vZNBO-K9CQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">documento original de la práctica</a>, enlazado en la diapositiva 367.</p>
+<nav class="exercise-index" aria-label="Ejercicios de esta tarea"><a href="#json-1">1 · Datos</a><a href="#json-2">2 · Esquema</a><a href="#json-3">3 · Validación</a></nav>
+<section class="exercise-block" id="json-1"><header class="exercise-block-header"><p class="exercise-kicker">Ejercicio 1</p>
+<h3>Crear data.json</h3>
+</header>
+<p>Crea <code>data.json</code> con un objeto que tenga una única propiedad llamada <code>stop</code>. Su valor será un array de palabras vacías habituales en español: palabras frecuentes que se ignoran en un análisis de texto.</p>
+<p>Ejemplo de datos:</p>
+<pre><code class="language-json">{&quot;stop&quot;: [&quot;a&quot;, &quot;de&quot;, &quot;la&quot;, &quot;y&quot;, &quot;que&quot;, &quot;el&quot;, &quot;en&quot;]}</code></pre>
+<h4>Condiciones</h4>
+<ul><li>Todas las palabras deben estar en minúsculas.</li>
+<li>Solo pueden contener letras, incluidos los acentos y la ñ; no se admiten números ni signos.</li>
+<li>Cada palabra tendrá entre <strong>1 y 10 caracteres</strong>.</li>
+<li>No puede haber palabras repetidas y el array no puede estar vacío.</li>
+</ul>
+</section>
+<section class="exercise-block" id="json-2"><header class="exercise-block-header"><p class="exercise-kicker">Ejercicio 2</p>
+<h3>Crear schema.json</h3>
+</header>
+<p>Crea <code>schema.json</code> para validar estrictamente los datos anteriores.</p>
+<ul><li>El documento debe ser un objeto con una única propiedad obligatoria: <code>stop</code>.</li>
+<li><code>stop</code> debe ser un array no vacío de cadenas de texto.</li>
+<li>Cada cadena debe contener únicamente letras minúsculas, incluidos acentos y ñ.</li>
+<li>Su longitud debe estar entre <strong>1 y 10 caracteres</strong>.</li>
+<li>El array no puede tener elementos duplicados.</li>
+<li>No se permiten propiedades adicionales en el objeto.</li>
+</ul>
+<h4>Casos de validación</h4>
+<p>Este documento debe ser válido:</p>
+<pre><code class="language-json">{&quot;stop&quot;: [&quot;hola&quot;, &quot;mañana&quot;, &quot;él&quot;]}</code></pre>
+<p>Este documento debe ser inválido, porque contiene una mayúscula y una palabra repetida:</p>
+<pre><code class="language-json">{&quot;stop&quot;: [&quot;Hola&quot;, &quot;mañana&quot;, &quot;él&quot;, &quot;él&quot;]}</code></pre>
+</section>
+<section class="exercise-block" id="json-3"><header class="exercise-block-header"><p class="exercise-kicker">Ejercicio 3</p>
+<h3>Validación real con JavaScript y Ajv</h3>
+</header>
+<p>Comprueba la validación con JavaScript y la librería <strong>Ajv</strong>. El proyecto debe contener <code>index.html</code>, <code>script.js</code>, <code>data.json</code> y <code>schema.json</code>.</p>
+<p>En <code>index.html</code>, carga Ajv y enlaza <code>script.js</code>. En el script:</p>
+<ol><li>Carga <code>schema.json</code>.</li>
+<li>Carga <code>data.json</code>.</li>
+<li>Compila el esquema con Ajv.</li>
+<li>Valida los datos con el esquema.</li>
+<li>Muestra en la consola si el documento es válido o inválido.</li>
+<li>Si hay errores, muestra la información de <code>validate.errors</code>.</li>
+</ol>
+</section>
+<h3>Entrega y defensa</h3>
+<p>Adjunta la práctica en un ZIP con los cuatro archivos. Prepara la defensa según el cronograma de clase.</p>
+</div>
 <h2>Materiales de la tarea</h2><p class="subtle">No hay archivos adjuntos en esta tarea.</p></article>
 <aside class="task-aside task-download" aria-label="Descarga de la tarea"><a id="task-pdf-download" class="button task-pdf" href="RA4-Validadores%2C%20JSON%2C%20JSON%20SCHEMA.pdf" download="RA4-Validadores, JSON, JSON SCHEMA.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg> Descargar PDF</a></aside></div></main></body></html>

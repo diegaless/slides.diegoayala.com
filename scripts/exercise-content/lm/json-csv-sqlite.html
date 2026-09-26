@@ -1,0 +1,67 @@
+<h3>Conversión a CSV y almacenamiento en SQLite</h3>
+<p>Amplía la práctica de JSON con las <strong>partes 4 y 5</strong>. Utiliza el mismo <code>data.json</code> y continúa trabajando en <code>script.js</code>.</p>
+<p>Consulta el <a href="https://docs.google.com/document/d/1oAI_FyRfGe3ECV4Ll4KZ8WAlanbQMCzi2vZNBO-K9CQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">documento original de la práctica</a>, enlazado en la diapositiva 367.</p>
+<nav class="exercise-index" aria-label="Ejercicios de esta tarea"><a href="#json-4">4 · CSV</a><a href="#json-5">5 · SQLite</a></nav>
+<section class="exercise-block" id="json-4"><header class="exercise-block-header"><p class="exercise-kicker">Ejercicio 4</p>
+<h3>Convertir JSON a CSV · RA5</h3>
+</header>
+<p>Continúa sobre el proyecto anterior. En <code>script.js</code>, crea una función llamada <code>convertirStopWordsACsv(data)</code> que reciba los datos de <code>data.json</code> y convierta el array de palabras en una cadena CSV.</p>
+<p>Para esta entrada:</p>
+<pre><code class="language-json">{&quot;stop&quot;: [&quot;a&quot;, &quot;de&quot;, &quot;la&quot;, &quot;y&quot;, &quot;que&quot;, &quot;el&quot;, &quot;en&quot;]}</code></pre>
+<p>El resultado debe ser una sola fila, sin cabecera:</p>
+<pre><code>a,de,la,y,que,el,en</code></pre>
+<p>Completa esta función:</p>
+<pre><code class="language-javascript">function convertirStopWordsACsv(data) {
+  // Completa la conversión.
+}</code></pre>
+<p>Documentación de apoyo: <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/join" target="_blank" rel="noopener noreferrer">Array.prototype.join()</a>.</p>
+</section>
+<section class="exercise-block" id="json-5"><header class="exercise-block-header"><p class="exercise-kicker">Ejercicio 5</p>
+<h3>SQLite y generación de JSON · RA6</h3>
+</header>
+<p>Utiliza SQLite para guardar las palabras vacías y recuperarlas en un nuevo documento JSON.</p>
+<p>El esqueleto crea la tabla <code>stop_words</code>, con un identificador autoincremental y una columna <code>palabra</code> de texto, obligatoria y única.</p>
+<p><strong>Debes completar únicamente estas dos consultas SQL:</strong></p>
+<ol><li>La inserción de las palabras en la tabla.</li>
+<li>La selección de las palabras almacenadas.</li>
+</ol>
+<p>La selección debe producir objetos con una propiedad <code>palabra</code>. La función facilitada <code>crearJsonDesdeBaseDeDatos()</code> los transforma en un objeto con la propiedad <code>stop</code>.</p>
+<h4>Código de partida</h4>
+<pre><code class="language-javascript">function crearJsonDesdeBaseDeDatos(resultadoConsulta) {
+  let palabras = resultadoConsulta.map((fila) =&gt; fila.palabra);
+  return { stop: palabras };
+}
+
+async function crearBaseDeDatosYGenerarJson(data) {
+  let SQL = await initSqlJs({
+    locateFile: (file) =&gt;
+      `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/${file}`,
+  });
+  let db = new SQL.Database();
+  db.run(`
+    CREATE TABLE stop_words (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      palabra TEXT NOT NULL UNIQUE
+    );
+  `);
+
+  // Completa la consulta de inserción, conservando el parámetro.
+  let insert = db.prepare(&quot; VALUES (?)&quot;);
+  data.stop.forEach((palabra) =&gt; insert.run([palabra]));
+  insert.free();
+
+  let resultadoConsulta = [];
+  // Completa la consulta de selección.
+  let select = db.prepare(&quot;&quot;);
+  while (select.step()) {
+    resultadoConsulta.push(select.getAsObject());
+  }
+  select.free();
+
+  let json = crearJsonDesdeBaseDeDatos(resultadoConsulta);
+  console.log(JSON.stringify(json));
+}</code></pre>
+<p>Documentación de apoyo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="noopener noreferrer">Array.prototype.map()</a>.</p>
+</section>
+<h3>Entrega</h3>
+<p>Adjunta un ZIP con la práctica ampliada, incluyendo los archivos de las partes 4 y 5 y los necesarios para ejecutar el proyecto.</p>

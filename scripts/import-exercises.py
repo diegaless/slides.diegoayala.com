@@ -142,9 +142,10 @@ def apply_task_content(html, key):
         return html
     if override.get("instructions"):
         instructions = read(CONTENT / override["instructions"]).strip()
+        classes = "instructions authored-instructions" + (" lm-instructions" if key.startswith("lm/") else "")
         html, count = re.subn(
             r'<h2>Instrucciones</h2>.*?(?=<h2>Materiales de la tarea</h2>)',
-            lambda m: '<h2>Instrucciones</h2><div class="instructions authored-instructions">\n' + instructions + '\n</div>\n',
+            lambda m: '<h2>Instrucciones</h2><div class="' + classes + '">\n' + instructions + '\n</div>\n',
             html, count=1, flags=re.S)
         if count != 1:
             raise ValueError(f"Falta el bloque de instrucciones: {key}")
