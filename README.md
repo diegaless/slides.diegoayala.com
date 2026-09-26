@@ -130,6 +130,35 @@ tareas de DAPW con una diapositiva identificada también enlazan directamente a 
 COMPOSE 4, VIAJE-ESTUDIOS_EVALUABLE y DEFENSA FINAL se mantienen sin enlace.
 Estas referencias se conservan al regenerar los HTML, los PDF y los ZIP.
 
+En Proyecto Intermodular, «Documentación PI» conserva el índice orientativo y
+organiza los ejemplos en tres cursos desplegables: 2025/26 (8 proyectos),
+2024/25 (7) y 2023/24 (8). Solo el primero aparece abierto inicialmente; todos
+se incluyen en el PDF y en las descargas por lotes. El contenido permanente está
+en `scripts/exercise-content/pi/documentacion.html`.
+
+Los materiales se guardan en el Drive personal, dentro de
+[Ejemplos de Proyecto Intermodular](https://drive.google.com/drive/folders/1lYoVKiK9grfyadwt-IunfR750UF2LtZl),
+con una carpeta por curso. Los de 2025/26 proceden de las entregas del backup de
+Teams; los históricos, de «Proyectos TFG24/25» y «PROYECTOSDAM2024» del Drive del
+colegio. Los originales no se modifican. Las memorias se enlazan por separado
+cuando están disponibles, junto con las presentaciones y entregas completas.
+Rush & Dush y DecorEvent tenían la memoria en DOCX y cuentan con una copia PDF.
+La copia pública de Picantón omite los DNI de su portada interior.
+
+El código de Rush & Dush se recuperó del repositorio público enlazado en su
+entrega, `inklord/Rush-Dush-tfg`, revisión
+`a86297e803ead3726dd80da4d71748e25d21a2f0`. Por el límite de subida se guarda en
+14 ZIP que se extraen en el mismo destino; se comprobaron sus 5.302 archivos
+contra la descarga original. La carpeta incluye las instrucciones. HACK SLASH
+no se publica: el ZIP de 2024/25 contiene solo una referencia Git LFS y falta
+el archivo real. Tampoco se enlazan repositorios o carpetas que devuelven 404.
+El ZIP completo de Moon Software está copiado en Drive, pero Google bloquea
+su acceso. El correo de Drive Safety indica una detección automática por su
+política sobre malware; no identifica qué archivo la provoca. El proyecto no se
+ha ejecutado ni se ha intentado eludir el bloqueo. Se enlaza únicamente su
+memoria PDF, cuya descarga pública sí se ha comprobado; esta comprobación de
+acceso no equivale a una certificación de seguridad.
+
 Los PDF descargables se generan desde estos HTML con los mismos estilos de
 impresión, sin el panel «Sobre esta tarea». Conservan los enunciados, imágenes,
 lista de materiales y numeración de páginas. Los PDF adjuntos se copian sin

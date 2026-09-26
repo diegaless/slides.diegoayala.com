@@ -22,6 +22,8 @@ async function main() {
         throw new Error(`El destino PDF no coincide con el botón: ${task.html}`);
       }
       await page.evaluate(async () => {
+        // Incluir todos los cursos aunque la web muestre solo el más reciente abierto.
+        document.querySelectorAll('details.project-course').forEach(details => { details.open = true; });
         await document.fonts.ready;
         await Promise.all([...document.images].map(img => img.decode()));
         // El panel de metadatos y los controles pertenecen a la web, no al PDF.

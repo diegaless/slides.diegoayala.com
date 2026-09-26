@@ -72,6 +72,110 @@
   break-inside: avoid;
 }
 
+.project-course {
+  margin: 24px 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.project-course > summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.project-course > summary::-webkit-details-marker {
+  display: none;
+}
+
+.project-course > summary:focus-visible {
+  outline: 2px solid var(--accent, var(--blue));
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.authored-instructions .project-course > summary h3 {
+  margin: 0;
+  font-size: 1.1em;
+}
+
+.project-course-count {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: .8em;
+  white-space: nowrap;
+}
+
+.project-course-icon {
+  color: var(--accent, var(--blue));
+  font-size: 1.25em;
+}
+
+.project-course[open] .project-course-icon {
+  transform: rotate(180deg);
+}
+
+.project-course-content {
+  padding: 0 24px 6px;
+}
+
+.authored-instructions .project-course .exercise-block {
+  margin: 20px 0;
+}
+
+.project-course .exercise-block h4 {
+  margin: 0 0 14px;
+  font-size: 1.2em;
+  line-height: 1.35;
+  font-weight: 600;
+  break-after: avoid;
+}
+
+@media screen and (max-width: 600px) {
+  .project-course > summary {
+    gap: 8px;
+    padding: 18px 14px;
+  }
+
+  .project-course-content {
+    padding: 0 10px 2px;
+  }
+}
+
+@media print {
+  .project-course {
+    margin: 5mm 0;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .project-course > summary {
+    padding: 3mm 0;
+    border-bottom: 1pt solid var(--line);
+    break-after: avoid;
+  }
+
+  .project-course-content {
+    padding: 0;
+    break-before: avoid;
+  }
+
+  .project-course-content > p:first-child {
+    break-after: avoid;
+  }
+
+  .project-course-icon {
+    display: none;
+  }
+
+  .authored-instructions .project-course .exercise-block {
+    margin: 4mm 0;
+  }
+}
+
 .exercise-block-header {
   margin-bottom: 24px;
   break-inside: avoid;
