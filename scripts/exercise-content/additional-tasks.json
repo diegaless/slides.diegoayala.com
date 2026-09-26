@@ -7,5 +7,13 @@
       "after": "COMPOSE -- PROD STAGE 2",
       "pdf": "materials/dapw/Ampliacion_Prod_2_DAPW_Alumnado_Memoria_Investigacion.pdf"
     }
+  ],
+  "lm": [
+    {
+      "id": "66e2e413-7254-585d-a848-281f87cb6922",
+      "folder": "CSS 1..16",
+      "title": "CSS 1..16",
+      "after": "EJERCICIOS HTML"
+    }
   ]
 }

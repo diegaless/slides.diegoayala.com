@@ -94,14 +94,23 @@ def select_tasks(source, slug):
             raise ValueError(f"Carpeta de tarea adicional inválida: {folder}")
         if any(task["Id"] == extra["id"] or task["Carpeta"].casefold() == folder.casefold() for task in tasks):
             raise ValueError(f"Tarea adicional duplicada: {slug}/{folder}")
-        pdf = (CONTENT / extra["pdf"]).resolve()
-        if not pdf.is_relative_to(CONTENT.resolve()) or not pdf.is_file() or pdf.suffix.lower() != ".pdf":
-            raise ValueError(f"PDF original inválido: {slug}/{folder}")
+        if extra.get("pdf"):
+            pdf = (CONTENT / extra["pdf"]).resolve()
+            if not pdf.is_relative_to(CONTENT.resolve()) or not pdf.is_file() or pdf.suffix.lower() != ".pdf":
+                raise ValueError(f"PDF original inválido: {slug}/{folder}")
+        else:
+            override = json.loads(read(CONTENT / "overrides.json")).get(f"{slug}/{folder}", {})
+            fragment = (CONTENT / override.get("instructions", "")).resolve()
+            if not fragment.is_relative_to(CONTENT.resolve()) or not fragment.is_file():
+                raise ValueError(f"Falta el enunciado de la tarea adicional: {slug}/{folder}")
         previous = next((i for i, task in enumerate(tasks) if task["Carpeta"] == extra["after"]), None)
         if previous is None:
             raise ValueError(f"Falta la tarea anterior a {slug}/{folder}: {extra['after']}")
-        tasks.insert(previous + 1, {"Id": extra["id"], "Carpeta": folder,
-                                  "Titulo": extra["title"], "PdfOriginal": extra["pdf"]})
+        task = {"Id": extra["id"], "Carpeta": folder,
+                "Titulo": extra["title"], "Additional": True}
+        if extra.get("pdf"):
+            task["PdfOriginal"] = extra["pdf"]
+        tasks.insert(previous + 1, task)
     return tasks
 
 
@@ -261,18 +270,23 @@ def copy_task(source, destination, content_key=None):
 
 
 def copy_additional_task(task, destination, slug):
-    original = CONTENT / task["PdfOriginal"]
+    original = CONTENT / task["PdfOriginal"] if task.get("PdfOriginal") else None
+    pdf_name = original.name if original else f'{task["Carpeta"]}.pdf'
     html = read(CONTENT / "task-template.html").format(
         title=escape(task["Titulo"]), subject=escape(slug.upper()),
-        pdf_href=quote(original.name, safe=""), pdf_name=escape(original.name, quote=True))
+        pdf_href=quote(pdf_name, safe=""), pdf_name=escape(pdf_name, quote=True))
+    if not original:
+        html = html.replace('El PDF descargable contiene el enunciado completo y los recursos de consulta.',
+                            'No hay archivos adjuntos en esta tarea.')
     html = adapt_header(html, "../../../index.html", "../../assets/")
     html = apply_task_content(html, f'{slug}/{task["Carpeta"]}')
     destination.mkdir(parents=True, exist_ok=True)
     (destination / "TAREA.html").write_text(html, encoding="utf-8")
     # El documento proporcionado es el enunciado completo. No regenerarlo
     # a partir del resumen HTML, ni en la descarga individual ni en los ZIP.
-    shutil.copyfile(original, destination / original.name)
-    return original.name
+    if original:
+        shutil.copyfile(original, destination / original.name)
+    return pdf_name
 
 
 def copy_index(source, destination, tasks):
@@ -296,7 +310,7 @@ def copy_index(source, destination, tasks):
     rows = {re.search(r'data-id="([^"]+)"', match[0])[1]: match[0]
             for match in re.finditer(r'<tr class="task-row"[^>]*>.*?</tr>', html, flags=re.S)}
     for task in tasks:
-        if task.get("PdfOriginal"):
+        if task.get("Additional") or task.get("PdfOriginal"):
             title = escape(task["Titulo"], quote=True)
             rows[task["Id"]] = (f'<input type="checkbox" class="pdf-select" value="{escape(task["Id"], quote=True)}" '
                                 f'aria-label="Seleccionar PDF: {title}">'
@@ -377,7 +391,7 @@ def main(source):
         if target.exists():
             shutil.rmtree(target)
         target.mkdir(parents=True)
-        pdfs = [copy_additional_task(task, target / task["Carpeta"], slug) if task.get("PdfOriginal")
+        pdfs = [copy_additional_task(task, target / task["Carpeta"], slug) if task.get("Additional") or task.get("PdfOriginal")
                 else copy_task(origin / task["Carpeta"], target / task["Carpeta"], f'{slug}/{task["Carpeta"]}')
                 for task in tasks]
         copy_index(origin, target, tasks)

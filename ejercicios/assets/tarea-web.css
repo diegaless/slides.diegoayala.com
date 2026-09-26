@@ -152,6 +152,10 @@
   break-after: avoid;
 }
 
+.lm-instructions .print-only {
+  display: none;
+}
+
 .lm-instructions .exercise-table-wrap {
   max-width: 100%;
   overflow-x: auto;
@@ -189,6 +193,10 @@
 }
 
 @media print {
+  .lm-instructions .print-only {
+    display: block;
+  }
+
   .lm-instructions .exercise-index {
     display: none;
   }

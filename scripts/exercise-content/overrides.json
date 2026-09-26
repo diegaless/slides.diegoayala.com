@@ -453,5 +453,21 @@
         "href": "https://drive.google.com/drive/folders/1lYoVKiK9grfyadwt-IunfR750UF2LtZl"
       }
     ]
+  },
+  "lm/CSS 1..16": {
+    "instructions": "lm/css-1-16.html",
+    "slides": [
+      {
+        "label": "Ejercicios CSS · desde diap. 171",
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub?start=false&loop=false&delayms=3000&slide=id.g3139e1dfa82_0_67"
+      }
+    ],
+    "materials": [
+      {
+        "label": "HTML de partida · CSS",
+        "href": "../../assets/lm/css-inicio.zip",
+        "detail": "ZIP · Selectores y página del libro, sin estilos"
+      }
+    ]
   }
 }
