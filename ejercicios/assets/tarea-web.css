@@ -1,4 +1,4 @@
-/* El lateral de cada tarea contiene únicamente su botón de descarga. */
+/* Descarga del enunciado y, cuando existen, enlaces a soluciones privadas. */
 .task-aside.task-download {
   background: none;
   border: 0;
@@ -7,6 +7,60 @@
 
 .task-download .task-pdf {
   margin-top: 0;
+}
+
+.task-solutions {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.task-aside .task-solutions h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--ink);
+  font-size: .86rem;
+  font-weight: 600;
+}
+
+.task-solutions p {
+  margin: 8px 0 14px;
+  color: var(--muted);
+  font-size: .75rem;
+  line-height: 1.6;
+}
+
+.solution-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--accent, var(--blue));
+  font-size: .8rem;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.solution-link:hover {
+  border-color: currentColor;
+  background: color-mix(in srgb, var(--accent, var(--blue)) 6%, transparent);
+}
+
+.solution-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.task-solutions svg {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
 }
 
 .authored-instructions h3 {

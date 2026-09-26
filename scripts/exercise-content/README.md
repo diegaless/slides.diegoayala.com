@@ -12,6 +12,21 @@ Los recursos compartidos de estas ampliaciones se mantienen en
 Se reutiliza una única copia del ZIP original de Laura en las tres etapas de Compose.
 El backup y el ZIP de origen no se modifican.
 
+## Enlaces a soluciones privadas
+
+El campo opcional `solutions` de `overrides.json` contiene dos URL HTTPS:
+`pdf` (el PDF de la tarea en Google Drive) y `github` (su carpeta en el repositorio
+privado). Se muestran en el lateral, junto a la descarga del enunciado, con la
+indicación de acceso exclusivo del profesor. `apply_task_solutions` permite
+actualizar estos enlaces sin reimportar los enunciados.
+
+Los botones son públicos. El acceso al contenido lo controlan los permisos de
+Drive y GitHub: los archivos y el repositorio deben seguir restringidos al
+profesor. No hay credenciales ni comprobación de acceso en el navegador.
+No se deben copiar los PDF de soluciones ni su código a este repositorio.
+El lateral se oculta al imprimir y el generador de PDF lo elimina; las descargas
+y los ZIP del alumnado contienen únicamente los enunciados y sus materiales.
+
 ## Tareas adicionales con PDF original
 
 `additional-tasks.json` incorpora tareas que no están en el backup. Cada entrada

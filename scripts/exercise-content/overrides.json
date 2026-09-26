@@ -7,7 +7,11 @@
         "label": "Diapositivas de Docker · DAPW",
         "detail": "Presentación de clase · abrir desde el ejercicio 1"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1MDnre3Ea-1AvMA5FXIVyDZir_2nfOlGB/view",
+      "github": "https://github.com/diegaless/dapw-soluciones/tree/main/01-Docker-1-a-10"
+    }
   },
   "dapw/Flask Cat App – Evaluable": {
     "instructions": "dapw/flask-cat-app.html",
@@ -16,7 +20,11 @@
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3a0e417b5f2_0_27",
         "label": "Diapositiva 118"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/19hoJHQMUIadkf-2s8cWiDRGc4mPAl-_x/view",
+      "github": "https://github.com/diegaless/dapw-soluciones/tree/main/02-Flask-Cat-App"
+    }
   },
   "dapw/DICE-APP_EVALUABLE": {
     "instructions": "dapw/dice-app.html",
@@ -32,7 +40,11 @@
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3a0e417b5f2_0_36",
         "label": "Diapositiva 122"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1pC3XEGHF5TnjzB5XdWeAAHQI0-La-lXU/view",
+      "github": "https://github.com/diegaless/dapw-soluciones/tree/main/03-Dice-App"
+    }
   },
   "dapw/COMPOSE -- DEV STAGE": {
     "instructions": "dapw/compose-dev.html",
@@ -48,7 +60,11 @@
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3aa2083d3bb_0_0",
         "label": "Diapositiva 135"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1lpL1frRED_-Jd9V7uEVYfAqBFxDpH_94/view",
+      "github": "https://github.com/diegaless/dapw-soluciones/tree/main/08-Compose-Dev"
+    }
   },
   "dapw/COMPOSE - PROD STAGE 1": {
     "instructions": "dapw/compose-prod-1.html",
@@ -68,7 +84,11 @@
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3aa2083d3bb_0_22",
         "label": "Diapositiva 137"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1ZO025NucJxDnUbHc5WwpBgaXizAfj7Jb/view",
+      "github": "https://github.com/diegaless/dapw-soluciones/tree/main/09-Compose-Prod-1"
+    }
   },
   "dapw/COMPOSE -- PROD STAGE 2": {
     "instructions": "dapw/compose-prod-2.html",
@@ -100,7 +120,11 @@
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&loop=false&delayms=3000&slide=id.g3ad665943a1_0_0",
         "label": "Diapositiva 142"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1bo_neNn27mU2ekvYIM5w8DnsGf1EDesF/view",
+      "github": "https://github.com/diegaless/dapw-soluciones/tree/main/10-Compose-Prod-2"
+    }
   },
   "dapw/COMPOSE 1": {
     "slides": [
@@ -116,7 +140,11 @@
         "label": "compose-01.zip",
         "detail": "Proyecto original de Apache y PostgreSQL · material de la diapositiva 117"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1DqjFaGcaVJYYLjUKMzb2a8ibF-lhsQ2p/view",
+      "github": "https://github.com/diegaless/dapw-soluciones/tree/main/05-Compose-1"
+    }
   },
   "dapw/COMPOSE 2 Y 3 --SOLO ALUMNOS AUSENTES": {
     "slides": [
@@ -141,7 +169,11 @@
         "label": "Material de Dice App en Google Drive",
         "detail": "Proyecto del ejercicio 3 · abrir en Google Drive"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1C1mvgCESwXLgv5GyXmJsst54VeHtdGFc/view",
+      "github": "https://github.com/diegaless/dapw-soluciones/tree/main/06-Compose-2-y-3"
+    }
   },
   "dapw/VIAJE-ESTUDIOS_EVALUABLE": {
     "instructions": "dapw/viaje-estudios.html",
@@ -151,16 +183,32 @@
         "label": "6-Viaje-estudios-votacion.zip",
         "detail": "Proyecto original de Flask · práctica con comandos de Docker"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/14v7ebVS0-4xakfmrKSNl0Tf15W221SsH/view",
+      "github": "https://github.com/diegaless/dapw-soluciones/tree/main/04-Viaje-estudios"
+    }
   },
   "dapw/COMPOSE 4": {
-    "instructions": "dapw/compose-4.html"
+    "instructions": "dapw/compose-4.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1ZAQNsrwN7XgXVHERqeIQWn1g3P6T4ZDQ/view",
+      "github": "https://github.com/diegaless/dapw-soluciones/tree/main/07-Compose-4"
+    }
   },
   "dapw/DEFENSA FINAL": {
-    "instructions": "dapw/defensa-final.html"
+    "instructions": "dapw/defensa-final.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1mQT951FDwTPGLt9cV5TAASC7H-O9FO2-/view",
+      "github": "https://github.com/diegaless/dapw-soluciones/tree/main/12-Defensa-final"
+    }
   },
   "dapw/Despliegue remoto": {
-    "instructions": "dapw/remote-deployment.html"
+    "instructions": "dapw/remote-deployment.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1ulpov38jpDcCWnZS2bBJnXYzwHZRp7BD/view",
+      "github": "https://github.com/diegaless/dapw-soluciones/tree/main/11-Despliegue-remoto"
+    }
   },
   "di/PYSIDE 1-2": {
     "instructions": "di/pyside-1-2.html"
