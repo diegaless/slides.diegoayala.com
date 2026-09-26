@@ -119,6 +119,117 @@
   break-inside: avoid;
 }
 
+.lm-instructions .exercise-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0;
+}
+
+.lm-instructions .exercise-index a {
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-size: .8rem;
+  text-decoration: none;
+}
+
+.lm-instructions .exercise-index a:hover,
+.lm-instructions .exercise-index a:focus-visible {
+  border-color: currentColor;
+}
+
+.lm-instructions .exercise-block {
+  scroll-margin-top: 100px;
+}
+
+.lm-instructions .task-slide-links {
+  margin: 0 0 20px;
+}
+
+.lm-instructions h4 {
+  margin: 24px 0 12px;
+  break-after: avoid;
+}
+
+.lm-instructions .exercise-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 24px 0;
+}
+
+.lm-instructions .exercise-table-wrap table {
+  display: table;
+  width: 100%;
+  min-width: 800px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: .85em;
+}
+
+.lm-instructions .exercise-table-wrap caption {
+  padding-bottom: 12px;
+  color: var(--muted);
+  text-align: left;
+}
+
+.lm-instructions .exercise-table-wrap th:nth-child(1) { width: 11%; }
+.lm-instructions .exercise-table-wrap th:nth-child(2) { width: 12%; }
+.lm-instructions .exercise-table-wrap th:nth-child(3) { width: 6%; }
+.lm-instructions .exercise-table-wrap th:nth-child(4) { width: 19%; }
+.lm-instructions .exercise-table-wrap th:nth-child(5) { width: 17%; }
+.lm-instructions .exercise-table-wrap th:nth-child(6) { width: 35%; }
+
+.lm-instructions .exercise-table-wrap th,
+.lm-instructions .exercise-table-wrap td {
+  padding: 10px;
+  border: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+}
+
+@media print {
+  .lm-instructions .exercise-index {
+    display: none;
+  }
+
+  .lm-instructions .exercise-block {
+    break-inside: auto !important;
+  }
+
+  .lm-instructions .task-slide-links {
+    margin: 0 0 4mm;
+    break-inside: avoid;
+    break-after: avoid;
+  }
+
+  .lm-instructions.authored-instructions .exercise-reference img {
+    max-width: 100%;
+    max-height: 125mm;
+  }
+
+  .lm-instructions pre {
+    font-size: 9pt;
+    line-height: 1.4;
+  }
+
+  .lm-instructions .exercise-table-wrap {
+    overflow: visible;
+    margin: 4mm 0;
+  }
+
+  .lm-instructions .exercise-table-wrap table {
+    min-width: 0;
+    font-size: 9pt;
+  }
+
+  .lm-instructions .exercise-table-wrap th,
+  .lm-instructions .exercise-table-wrap td {
+    padding: 1.5mm;
+  }
+
+}
+
 .project-course {
   margin: 24px 0;
   border: 1px solid var(--line);

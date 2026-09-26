@@ -203,12 +203,13 @@ del temario en la diapositiva 4. Las otras siete tareas no reciben enlaces:
 las menciones generales a MiniOffice, componentes o FastAPI en el mapa de RA
 no contienen sus enunciados ni el desarrollo de las prácticas.
 
-## Referencias de Lenguaje de Marcas
+## Enunciados y referencias de Lenguaje de Marcas
 
 Las 18 tareas públicas de LM 1DAW enlazan desde la cabecera a la
 [presentación publicada de Lenguaje de Marcas](https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub),
-consultada el 21 de septiembre de 2026 (394 diapositivas). Se añaden únicamente
-referencias `slides` en `overrides.json`, conservando los enunciados y materiales.
+revisada el 26 de septiembre de 2026 (394 diapositivas). Los fragmentos de `lm/`
+desarrollan sus enunciados y se registran como `instructions` en `overrides.json`,
+conservando los materiales originales y las referencias `slides` de la cabecera.
 Los enlaces usan el identificador estable `slide=id.…`; los rangos abren su
 primera diapositiva y permiten continuar por las siguientes en la presentación.
 
@@ -236,8 +237,29 @@ primera diapositiva y permiten continuar por las siguientes en la presentación.
 Las referencias de apoyo de XML se rotulan como «Teoría»: no se ha localizado
 en la presentación un enunciado específico de esas seis tareas. La numeración
 24 de HTML aparece tanto en audio (154) como en incrustación (161); se conservan
-ambos destinos. Los 28 enlaces se incluyen también en los PDF regenerados y
-en las descargas completas y por selección de LM.
+ambos destinos. Se mantienen los 28 enlaces de cabecera y se añade la referencia
+concreta dentro de cada ejercicio de HTML y DOM. Los enlaces se incluyen también
+en los PDF regenerados y en las descargas completas y por selección de LM.
+
+Los textos y las capturas se han extraído de `LM.pptx`
+(`1pYu5hH0a3Orng83iFuPfiCGDcvfbdpH2`, modificado el 15 de septiembre de 2026).
+Las capturas originales se guardan en `ejercicios/assets/lm/`, con su número
+de diapositiva, texto alternativo, enlace para ampliarlas y enlace a la fuente.
+No se incorpora la presentación completa al repositorio.
+
+XML 1 y XML2 transcriben las imágenes de las diapositivas 35 y 36. XML 3–8 se
+organizan a partir de sus enunciados y adjuntos originales: el XML de planetas,
+el PDF de espacios de nombres y las capturas de Liga Fantasy y la feria de libros.
+La tabla de XML2 conserva los datos del ejercicio, incluidas las celdas vacías.
+«EJERCICIOS HTML» sigue siendo una entrega en ZIP: enlaza a los cuatro bloques
+de ejercicios sin atribuirle un rango que no consta en el original.
+
+Las dos tareas de JSON desarrollan las partes 1–3 y 4–5 del
+[documento enlazado en la diapositiva 367](https://docs.google.com/document/d/1oAI_FyRfGe3ECV4Ll4KZ8WAlanbQMCzi2vZNBO-K9CQ/edit).
+El profesor ha fijado **10 caracteres tanto para los datos como para el esquema**,
+resolviendo la discrepancia 10/20 del documento. Se mantienen los ejemplos de
+validación y el código incompleto facilitado para CSV y SQLite, sin añadir las
+soluciones. Los apartados de entrega conservan el formato de las tareas originales.
 
 ## Documentación de Proyecto Intermodular
 
