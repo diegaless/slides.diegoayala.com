@@ -186,6 +186,43 @@ def apply_task_content(html, key):
                                   lambda m: '<ul class="attachments">' + added + '</ul>', html, count=1)
             if count != 1:
                 raise ValueError(f"Falta el bloque de materiales: {key}")
+    return apply_task_solutions(html, key)
+
+
+def apply_task_solutions(html, key):
+    """Enlaza material privado externo sin incorporarlo a los archivos públicos."""
+    solutions = json.loads(read(CONTENT / "overrides.json")).get(key, {}).get("solutions")
+    html = re.sub(r'\n?<section class="task-solutions"[^>]*>.*?</section>', '', html, flags=re.S)
+    if not solutions:
+        return html
+    destinations = (
+        ("pdf", "Solución PDF", "drive.google.com"),
+        ("github", "Solución GitHub", "github.com"),
+    )
+    links = []
+    for field, label, host in destinations:
+        href = solutions[field]
+        url = urlsplit(href)
+        if url.scheme != "https" or url.netloc != host:
+            raise ValueError(f"Enlace de solución inválido: {key}/{field}")
+        links.append(
+            '<a class="solution-link" href="' + escape(href, quote=True)
+            + '" target="_blank" rel="noopener noreferrer"><span>' + label
+            + '</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" '
+            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>')
+    section = (
+        '\n<section class="task-solutions" aria-labelledby="task-solutions-title">'
+        '<h2 id="task-solutions-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+        'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+        '<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4M12 14v3"/>'
+        '</svg>Soluciones</h2><p>Acceso exclusivo del profesor.</p>' + ''.join(links) + '</section>')
+    html, count = re.subn(
+        r'(<aside class="task-aside task-download"[^>]*>)(.*?)(</aside>)',
+        lambda m: m[1].replace('aria-label="Descarga de la tarea"',
+                              'aria-label="Descarga y soluciones de la tarea"') + m[2] + section + m[3],
+        html, count=1, flags=re.S)
+    if count != 1:
+        raise ValueError(f"Falta el lateral de la tarea: {key}")
     return html
 
 
