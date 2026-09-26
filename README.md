@@ -38,8 +38,9 @@ abierta.
 
 En `index.html`, el `href` de cada `.subject-link` contiene la URL de Google Slides;
 `data-exercises-url` contiene la ruta a su biblioteca de ejercicios. Para enlazar
-las diapositivas de Proyecto Intermodular o Programación de Servicios y Procesos,
+las diapositivas de Programación de Servicios y Procesos,
 sustituye `href="#"` y retira `data-pending`.
+Proyecto Intermodular ya enlaza sus diapositivas publicadas en Google Slides.
 Una URL de ejercicios vacía muestra «Próximamente» sin crear un enlace inválido.
 Programación de Servicios y Procesos está incluida en el menú; sus diapositivas
 y ejercicios quedan pendientes de enlazar.
