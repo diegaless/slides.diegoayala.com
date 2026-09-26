@@ -27,12 +27,15 @@ No se deben copiar los PDF de soluciones ni su código a este repositorio.
 El lateral se oculta al imprimir y el generador de PDF lo elimina; las descargas
 y los ZIP del alumnado contienen únicamente los enunciados y sus materiales.
 
-## Tareas adicionales con PDF original
+## Tareas adicionales
 
 `additional-tasks.json` incorpora tareas que no están en el backup. Cada entrada
 indica un identificador estable, carpeta, título, carpeta de la tarea anterior
-(`after`) y ruta del PDF original dentro de este directorio. El resumen HTML se
-asocia en `overrides.json` y utiliza `task-template.html` con el estilo común.
+(`after`) y, opcionalmente, la ruta del PDF original dentro de este directorio.
+El enunciado HTML se asocia en `overrides.json` y utiliza `task-template.html`
+con el estilo común. Cuando se proporciona `pdf`, se conservan sus bytes;
+cuando se omite, el PDF se genera a partir del enunciado HTML, como en las tareas
+importadas. Una tarea sin PDF original debe tener un fragmento de instrucciones.
 
 «Despliegue remoto — Ampliación de Prod Stage 2» aparece después de Prod Stage 2.
 Su fuente es `Ampliacion_Prod_2_DAPW_Alumnado_Memoria_Investigacion.pdf`, facilitado
@@ -205,7 +208,7 @@ no contienen sus enunciados ni el desarrollo de las prácticas.
 
 ## Enunciados y referencias de Lenguaje de Marcas
 
-Las 18 tareas públicas de LM 1DAW enlazan desde la cabecera a la
+Las 19 tareas públicas de LM 1DAW enlazan desde la cabecera a la
 [presentación publicada de Lenguaje de Marcas](https://docs.google.com/presentation/d/e/2PACX-1vSgGxnpcx0d7veUB6VO_9h_39i1KS80H405V9xurcaIgrDlWmbL7saxlkiWKzoafg/pub),
 revisada el 26 de septiembre de 2026 (394 diapositivas). Los fragmentos de `lm/`
 desarrollan sus enunciados y se registran como `instructions` en `overrides.json`,
@@ -229,6 +232,7 @@ primera diapositiva y permiten continuar por las siguientes en la presentación.
 | HTML 17..24 | 122; 135–143; 152–154; 161 | Ejercicio 17, grupo 18–22, vídeo/audio e incrustación. |
 | RA2 -PRACTICA FINAL HTML --DEFENSA | 162–166 | Práctica HTML-RA2 (25), con sus capturas de referencia. |
 | EJERCICIOS HTML | Desde 66 | Acceso al primer ejercicio de HTML; la tarea solo indica «ADJUNTAD ZIP» y no concreta un rango. |
+| CSS 1..16 | 171; 184; 189; 198–205; 210; 212; 214; 239–240 | Los 16 ejercicios numerados de CSS, con requisitos, capturas y el menú animado. |
 | RA2-FINAL CSS (50%) | 241 | La práctica de Flexbox, imágenes redondeadas y hover coincide con el enunciado. |
 | RA3- JS DOM | 292–296 | Ejercicios DOM 5–9; el ejercicio 5 de la diapositiva 279 trata de números primos y pertenece a otro bloque. |
 | RA4-Validadores, JSON, JSON SCHEMA | 367; 325–342; 343–366 | Práctica final de JSON y teoría de XML Schema, JSON y JSON Schema. |
@@ -237,8 +241,8 @@ primera diapositiva y permiten continuar por las siguientes en la presentación.
 Las referencias de apoyo de XML se rotulan como «Teoría»: no se ha localizado
 en la presentación un enunciado específico de esas seis tareas. La numeración
 24 de HTML aparece tanto en audio (154) como en incrustación (161); se conservan
-ambos destinos. Se mantienen los 28 enlaces de cabecera y se añade la referencia
-concreta dentro de cada ejercicio de HTML y DOM. Los enlaces se incluyen también
+ambos destinos. Se mantienen 29 enlaces de cabecera y se añade la referencia
+concreta dentro de cada ejercicio de HTML, CSS y DOM. Los enlaces se incluyen también
 en los PDF regenerados y en las descargas completas y por selección de LM.
 
 Los textos y las capturas se han extraído de `LM.pptx`
@@ -260,6 +264,23 @@ El profesor ha fijado **10 caracteres tanto para los datos como para el esquema*
 resolviendo la discrepancia 10/20 del documento. Se mantienen los ejemplos de
 validación y el código incompleto facilitado para CSV y SQLite, sin añadir las
 soluciones. Los apartados de entrega conservan el formato de las tareas originales.
+
+`lm/css-1-16.html` reúne todos los ejercicios numerados del bloque CSS. La tarea
+«CSS 1..16» se inserta después de «EJERCICIOS HTML» y enlaza al final con la práctica
+evaluada que ya existía. Se conservan los números 5–7, aunque sus diapositivas
+desarrollan una misma página sobre un libro, y 12–13, que repiten la lista de
+propiedades para practicar. No se atribuyen nuevos ejercicios a las diapositivas
+de teoría de Flexbox o del modelo de caja.
+
+Los selectores del ejercicio 4 y las propiedades de los ejercicios 12–13 se
+transcriben de sus capturas. `css-inicio.zip` contiene dos HTML sin estilos
+(`selectores.html` y `libro.html`), preparados a partir del contenido visible en
+las diapositivas 184 y 201. Permiten realizar los ejercicios 2–3 y 5–7 sin tener
+que recuperar un archivo de partida que no acompaña a la presentación.
+
+La animación original de la diapositiva 204 se mantiene como GIF en la web.
+Su segundo estado resaltado se exporta como PNG para que el PDF muestre el
+borde rojo del enlace al pasar el ratón. No se incluyen reglas CSS resueltas.
 
 ## Documentación de Proyecto Intermodular
 
