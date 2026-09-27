@@ -22,6 +22,7 @@ Revisión de fuentes: **22 de septiembre de 2026**.
 | Test project regional 2023 | [PDF oficial](https://www.llegarasalto.com/wp-content/uploads/2023/05/TestProjectSkill17.pdf), enlazado en [el archivo de 2023](https://www.llegarasalto.com/rmskills2023/): palíndromos (p. 5), suma de subconjuntos (p. 6), lista DECO (p. 7). Puntuaciones y bonificación: pp. 8–9 |
 | Descripción técnica regional 2023 | [PDF oficial](https://www.llegarasalto.com/wp-content/uploads/2023/03/17-DT_DesarrolloWeb-RMSkills2023-v01.pdf) |
 | Descripción técnica regional 2025 | [PDF oficial](https://www.llegarasalto.com/wp-content/uploads/2025/02/17-DT_DesarrolloWeb-RMSkills2025-v01.docx-1.pdf): Java, 6,5 h, criterios en p. 5 y herramientas/restricciones en pp. 5–6 |
+| Test project regional 2025 | [Copia local del PDF](../../rm-skills/materiales/2025/test-project-desarrollo-web.pdf), aportada el 27 de septiembre de 2026 como `2025_skills_desarrolloweb (3).pdf`: 12 páginas escaneadas, portada «Desarrollo web · Test Project · RMskills’25». Se conserva el archivo original sin modificar. |
 | SpainSkills 2024 | [Paquete oficial](https://spain-skills.es/images/spainskills2024/pp/PLAN_DE_PRUEBAS_17_Desarrollo%20WEB_2024.zip), enlazado en [planes de prueba 2024](https://spain-skills.es/competiciones/estatal/spainskills-2024/planes-prueba). Inspeccionados el PDF de enunciados y la presencia del ZIP de materiales dentro del paquete |
 | Descripción técnica nacional 2024 | [PDF oficial](https://spain-skills.es/images/spainskills2024/DT/DT_17_Desarrollo_web_def.pdf), identificado como modalidad 17 y fechado el 17/01/2024; enlazado en [descripciones técnicas de 2024](https://spain-skills.es/competiciones/estatal/spainskills-2024/descripciones-tecnicas) |
 | SpainSkills 2026 | [Plan oficial](https://spain-skills.es/images/spainskills2026/pp/PLAN_DE_PRUEBAS_SK_2026_17_Desarrollo_Web.pdf), enlazado en [planes de prueba 2026](https://spain-skills.es/competiciones/estatal/spainskills-2026/planes-de-prueba). Programa: p. 3; módulos I–VI: pp. 4, 11, 13, 19, 22 y 27 del visor, respectivamente |
@@ -70,7 +71,8 @@ referencias se mantienen en este documento y junto a los datos de cada edición.
   web de **2027** en el portal consultado. Esto se comunica como pendiente de
   confirmar; no se trasladan automáticamente las condiciones de otro año.
 - El portal de **2025** enlaza la descripción técnica, pero su celda TP no tiene
-  un enlace de descarga. Por ello se presenta como descripción técnica.
+  un enlace de descarga. Desde el 27 de septiembre de 2026, la ficha enlaza una
+  copia local del test project aportado por el docente, junto a la DT oficial.
 - El ejercicio 3 de **2023** requiere clases e interfaces de apoyo que no se
   adjuntan al PDF. La DT prevé cuatro horas y un anfitrión Linux; el test project
   concreta la entrega a las 13:30 y una máquina virtual Windows 10. La ficha
