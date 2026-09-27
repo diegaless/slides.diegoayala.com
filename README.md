@@ -109,6 +109,10 @@ La cabecera se reutiliza desde `index.html`, con la firma «Diego Ayala», la
 navegación DAM/DAW y SEF y el selector de tema. `ejercicios/assets/web.css` adapta
 los listados, enunciados, botones y adjuntos a los mismos colores y tipografía de
 la portada. El tema se aplica antes de mostrar la página y se conserva al navegar.
+Los enunciados ampliados se presentan como texto continuo: los apartados se
+distinguen por títulos, listas y espacios, sin tarjetas ni separadores entre
+pasos. Esta presentación se comparte entre asignaturas y se adapta al móvil;
+se define en `web.css`, que solo se carga en pantalla.
 Los listados muestran el nombre de la asignatura y una lista de enlaces amplios,
 con separadores suaves, una flecha para abrir cada ejercicio y selección de PDF.
 «Seleccionar todos», los controles de descarga y «Quitar selección» aparecen debajo.
