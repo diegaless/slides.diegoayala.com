@@ -4,8 +4,8 @@ Capturas reales de los ejecutables Windows x64 publicados en la [versión de dem
 
 | Ejercicio | Aplicación | Captura |
 | --- | --- | --- |
-| Alfa | Mini Word | miniword-editor.png |
-| Final | MiniDock | minidock-busqueda.png |
+| Alfa | Mini Word de Sonia Guevara García | miniword-editor.png |
+| Final | MiniDock de Joaquín Carrasco Gómez | minidock-busqueda.png |
 | Final | MiniOffice de Javier Alcaraz Martín | javier-busqueda.png |
 
 Se han usado los ZIP aportados por el docente, con estas adaptaciones:
@@ -22,3 +22,5 @@ Cada ZIP contiene el ejecutable, `_internal`, `ejemplo.txt`, instrucciones de us
 Verificación realizada en Windows 11: arranque de los tres ejecutables, búsqueda desde la interfaz de MiniDock y Javier, e inicio de la versión de Javier después de extraer el ZIP en otra ruta con espacios. La copia extraída carga Python y Qt desde su propia carpeta. También se comprobaron en las fuentes abrir/guardar UTF-8, cancelación de diálogos, búsqueda en ambos sentidos, reemplazo, entrada vacía, deshacer/rehacer y contador. No se activó el micrófono ni se probó el servicio de voz.
 
 Los fragmentos de `scripts/exercise-content/di/mini-office-*.html` y las entradas de `overrides.json` conservan las imágenes y descargas al regenerar los ejercicios. Las capturas también se incluyen en los dos PDF y en el lote de DI.
+
+Autorías contrastadas con las entregas de Teams y los repositorios originales: [Sonia Guevara García](https://github.com/soniag017/Mini-Word) y [Joaquín Carrasco Gómez](https://github.com/JCGDeveloper/MiniDockQT6). El código de los ZIP aportados coincide con las revisiones indicadas en `manifest.json`.

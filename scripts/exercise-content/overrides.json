@@ -565,8 +565,8 @@
     "materials": [
       {
         "href": "https://github.com/diegaless/slides.diegoayala.com/releases/download/minioffice-demos-2026-09-27/MiniWord-Portable-Windows-x64.zip",
-        "label": "Descargar Mini Word · Windows 64 bits",
-        "detail": "ZIP portable · extraer toda la carpeta y abrir el .exe · incluye documento de prueba"
+        "label": "Descargar Mini Word · Sonia Guevara García",
+        "detail": "Windows 64 bits · ZIP portable · extraer toda la carpeta y abrir el .exe · incluye documento de prueba"
       }
     ]
   },
@@ -575,8 +575,8 @@
     "materials": [
       {
         "href": "https://github.com/diegaless/slides.diegoayala.com/releases/download/minioffice-demos-2026-09-27/MiniDock-Portable-Windows-x64.zip",
-        "label": "Descargar MiniDock · Windows 64 bits",
-        "detail": "ZIP portable · panel acoplable con botones de búsqueda y reemplazo"
+        "label": "Descargar MiniDock · Joaquín Carrasco Gómez",
+        "detail": "Windows 64 bits · ZIP portable · panel acoplable con botones de búsqueda y reemplazo"
       },
       {
         "href": "https://github.com/diegaless/slides.diegoayala.com/releases/download/minioffice-demos-2026-09-27/MiniOffice-Javier-Portable-Windows-x64.zip",

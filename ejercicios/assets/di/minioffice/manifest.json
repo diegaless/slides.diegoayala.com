@@ -9,13 +9,19 @@
       "id": "miniword",
       "archive": "Mini-Word-main (1).zip",
       "sha256": "214ac357c2f141d7a7aae453714d6b66c74cc8eb5831d9cad4c7456fc52f4fb6",
-      "files": 4
+      "files": 4,
+      "author": "Sonia Guevara García",
+      "repo": "https://github.com/soniag017/Mini-Word",
+      "commit": "b5c2697af906e2b7323b917c8485cdb3e5592247"
     },
     {
       "id": "minidock",
       "archive": "MiniDockQT6-main (1).zip",
       "sha256": "5fc2a9f7e1cf2e8ed3ead9310ca9fde39721a57d8dc94a5c60c06086e5560e62",
-      "files": 20
+      "files": 20,
+      "author": "Joaquín Carrasco Gómez",
+      "repo": "https://github.com/JCGDeveloper/MiniDockQT6",
+      "commit": "624e0ed2139a439561d0e8d533a6e315098b6fc0"
     },
     {
       "id": "javier",
@@ -28,16 +34,18 @@
     {
       "id": "miniword",
       "file": "MiniWord-Portable-Windows-x64.zip",
-      "bytes": 71090143,
-      "sha256": "100b7febf192131b342a124f4b5fb4d392baae1cafffe30d225fee1342815152",
-      "exe_sha256": "226f9c92c4136ac2d0b4dfab1109aa3e591cd96290cba4d289f308457d1a6d28"
+      "bytes": 71090502,
+      "sha256": "e7d422a056ba7f1ad7399a7ce5549b1b3817ee5253f32c7cdd5d1308dd56c2fd",
+      "exe_sha256": "226f9c92c4136ac2d0b4dfab1109aa3e591cd96290cba4d289f308457d1a6d28",
+      "author": "Sonia Guevara García"
     },
     {
       "id": "minidock",
       "file": "MiniDock-Portable-Windows-x64.zip",
-      "bytes": 71084449,
-      "sha256": "cad46ae1eaa8213254fab59a8453471d738f4038a006dcf08bf66fd759bb915c",
-      "exe_sha256": "3be080882b04f7bb00e411c0b87bd2dae427a0a0a842c90c4e811d3bf42ca7e8"
+      "bytes": 71084818,
+      "sha256": "1930aaf81530377005846591ca768b3cc0e364e5874da7d24e6a4ee184d08cce",
+      "exe_sha256": "3be080882b04f7bb00e411c0b87bd2dae427a0a0a842c90c4e811d3bf42ca7e8",
+      "author": "Joaquín Carrasco Gómez"
     },
     {
       "id": "javier",
