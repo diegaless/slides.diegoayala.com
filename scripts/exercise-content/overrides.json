@@ -248,7 +248,11 @@
         "label": "Apoyo RA2: voz"
       }
     ],
-    "instructions": "di/mini-office-ejecutable.html"
+    "instructions": "di/mini-office-ejecutable.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1ms4mwzgddH5qyR35-VAju6nSGcdT568C/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/di-soluciones/tree/main/06-RA7-Distribucion"
+    }
   },
   "lm/XML 1": {
     "slides": [
@@ -566,7 +570,11 @@
     }
   },
   "di/QT6 - 8": {
-    "instructions": "di/qt6-8.html"
+    "instructions": "di/qt6-8.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1JlDDRR9mEoTsRlY57sTVnKUe8DDla0Qe/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/di-soluciones/tree/main/03-QT6-8"
+    }
   },
   "di/QT6 - 9 Mini office -Practica final - alfa": {
     "instructions": "di/mini-office-alfa.html",
@@ -576,7 +584,11 @@
         "label": "Descargar Mini Word · Sonia Guevara García",
         "detail": "Windows 64 bits · ZIP portable · extraer toda la carpeta y abrir el .exe · incluye documento de prueba"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/16V3sNq5HMIACEeqQVdgL2t_wkhA91gUR/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/di-soluciones/tree/main/04-MiniOffice-alfa"
+    }
   },
   "di/RA1, RA4, RA6-QT MINI OFFICE -- PRACTICA FINAL": {
     "instructions": "di/mini-office-final.html",
@@ -591,7 +603,11 @@
         "label": "Descargar MiniOffice de Javier Alcaraz · Windows 64 bits",
         "detail": "ZIP portable · panel con campos integrados y coincidencias resaltadas"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1gyExx9IFNmFhMqVzJCwEcmbQorn0Wq5W/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/di-soluciones/tree/main/05-MiniOffice-final"
+    }
   },
   "di/RA5 PYJINJA2+FASTAPI": {
     "instructions": "di/fastapi-jinja2.html",
@@ -601,9 +617,17 @@
         "label": "Proyecto de partida · py-jinja",
         "detail": "Repositorio original de clase · incluye ENUNCIADO.md y archivos para el despliegue"
       }
-    ]
+    ],
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1V6B0GLP7a3EE2eva_7du3ZGeVDWj79IG/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/di-soluciones/tree/main/07-RA5-FastAPI-Jinja2"
+    }
   },
   "di/RA3- SEÑALES, COMPONENTES REUTILIZABLES": {
-    "instructions": "di/componentes-senales.html"
+    "instructions": "di/componentes-senales.html",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1QflN2L5w1YdbgDqC_6ePUiNrmV923JfL/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/di-soluciones/tree/main/08-RA3-Componentes"
+    }
   }
 }

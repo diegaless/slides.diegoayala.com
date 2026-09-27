@@ -27,6 +27,11 @@ No se deben copiar los PDF de soluciones ni su código a este repositorio.
 El lateral se oculta al imprimir y el generador de PDF lo elimina; las descargas
 y los ZIP del alumnado contienen únicamente los enunciados y sus materiales.
 
+El 28 de septiembre de 2026 se completaron los enlaces de las ocho tareas de DI.
+Los seis nuevos PDF mantienen acceso exclusivo del propietario en el Drive personal;
+el código y la distribución de referencia de RA7 están en el repositorio privado.
+Se han añadido únicamente los enlaces, conservando los PDF y ZIP del alumnado.
+
 ## Tareas adicionales
 
 `additional-tasks.json` incorpora tareas que no están en el backup. Cada entrada
