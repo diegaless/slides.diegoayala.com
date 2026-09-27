@@ -1,42 +1,73 @@
-<p><strong>Objetivo:</strong> preparar una versión de MiniOffice que pueda distribuirse y ejecutarse en Windows, y documentar cómo se ha generado. Usa tu proyecto de clase como punto de partida.</p>
-<p>La entrega reúne el ejecutable y la memoria en <code>README.md</code>. Los apartados siguientes concretan el proceso de empaquetado, firma y distribución trabajado en las diapositivas enlazadas.</p>
+<p><strong>Objetivo:</strong> distribuir tu MiniOffice en Windows de dos formas: una versión portable y un instalador. El trabajo de RA7 incluye preparar el entorno, empaquetar los recursos, firmar el ejecutable, configurar el instalador, probar ambas distribuciones y publicar una versión descargable.</p>
+<p>Parte de tu proyecto de clase. Entrega el repositorio con el código y la memoria en <code>README.md</code>, y enlaza la versión publicada en <strong>GitHub Releases</strong> con el portable y el instalador.</p>
 
 <section class="exercise-block">
   <h3>1. Prepara una compilación reproducible</h3>
   <ul>
-    <li>Comprueba que la aplicación funciona desde su código fuente y registra las versiones de Python y de sus dependencias.</li>
-    <li>Utiliza el entorno de Pipenv trabajado en clase y conserva <code>Pipfile</code> y <code>Pipfile.lock</code>.</li>
-    <li>Localiza el archivo de entrada y los recursos que necesita la aplicación: iconos, imágenes y otros archivos.</li>
+    <li>Prepara el entorno de <strong>Pipenv</strong> trabajado en clase. Las diapositivas usan Python 3.13: indica la versión con la que haces la entrega.</li>
+    <li>Instala PySide6, PyInstaller y las demás dependencias de tu aplicación. Conserva <code>Pipfile</code> y <code>Pipfile.lock</code>, y explica cómo crear el entorno y ejecutar el proyecto.</li>
+    <li>Comprueba el funcionamiento desde el código fuente. Identifica el archivo de entrada y todos los recursos necesarios: iconos, imágenes, ayuda y otros archivos.</li>
   </ul>
 </section>
 
 <section class="exercise-block">
   <h3>2. Genera y prueba el ejecutable</h3>
-  <p>Genera el <code>.exe</code> con <strong>PyInstaller en Windows</strong>. Documenta el comando o el archivo <code>.spec</code> utilizado y cómo incluyes los recursos.</p>
+  <p>Genera el <code>.exe</code> con <strong>PyInstaller en Windows</strong>. Personaliza el nombre y el icono, evita que se abra una consola junto a la interfaz e incluye los recursos que usa MiniOffice. Documenta las opciones <code>--name</code>, <code>--icon</code>, <code>--noconsole</code> y <code>--add-data</code> que correspondan a tu proyecto.</p>
+  <p>Conserva el archivo <code>.spec</code> y el comando de compilación. Explica qué contienen <code>build/</code> y <code>dist/</code>, y de dónde sale el archivo que vas a distribuir.</p>
   <p>Si eliges <code>onefile</code>, distribuye el ejecutable resultante. Si eliges <code>onedir</code>, conserva toda la carpeta generada y comprímela para su descarga: el <code>.exe</code> aislado no contiene todas sus dependencias.</p>
-  <p>Prueba la distribución fuera de la carpeta del proyecto y sin depender de tu entorno de desarrollo. Verifica el arranque, los iconos, Abrir/Guardar y las funciones principales. Indica el sistema donde lo has comprobado.</p>
+  <p>Prueba la distribución fuera de la carpeta del proyecto y sin depender de tu entorno de desarrollo. Verifica el arranque, los iconos, Abrir/Guardar y las funciones principales. Indica el sistema donde lo has comprobado y cualquier requisito externo.</p>
 </section>
 
 <section class="exercise-block">
   <h3>3. Firma la versión de prueba</h3>
-  <p>Sigue el proceso de clase: genera un certificado de firma de código autofirmado, exporta su <code>.pfx</code> protegido por contraseña y firma el ejecutable con <strong>SignTool</strong>.</p>
-  <p>Comprueba la firma con la herramienta y en las propiedades del archivo. Incluye capturas y explica el resultado: un certificado autofirmado sirve para esta práctica, pero no implica que otros equipos confíen en él automáticamente.</p>
+  <ol>
+    <li>Genera en PowerShell un certificado autofirmado de tipo <code>CodeSigningCert</code>. Localízalo en el almacén del usuario con <code>certmgr.msc</code>.</li>
+    <li>Exporta el certificado a un archivo <code>.pfx</code> protegido por contraseña.</li>
+    <li>Instala las herramientas de firma del <strong>SDK de Windows</strong> y localiza <code>signtool.exe</code>. Firma el ejecutable que vas a distribuir siguiendo el ejemplo de clase.</li>
+    <li>Verifica la firma con <code>signtool verify /pa /v</code> y en la pestaña «Firmas digitales» de las propiedades del archivo. Guarda capturas y explica el resultado, incluidos los avisos de confianza que aparezcan.</li>
+  </ol>
+  <p>Explica para qué sirve la firma y la diferencia entre un certificado autofirmado de prueba y uno emitido por una entidad de confianza. El autofirmado no hace que otros equipos confíen automáticamente en tu aplicación. Firma la versión definitiva antes de incluirla en el instalador.</p>
   <p>Conserva la clave privada, el <code>.pfx</code> y su contraseña fuera del repositorio y de la descarga pública.</p>
 </section>
 
 <section class="exercise-block">
   <h3>4. Prepara el instalador</h3>
-  <p>Crea el instalador con <strong>Inno Setup</strong>, incorporando el ejecutable y los recursos necesarios. Configura nombre, versión, destino, accesos directos y desinstalación. Añade la licencia trabajada en clase.</p>
-  <p>Conserva el archivo <code>.iss</code> en el proyecto. Prueba instalar, abrir y desinstalar la aplicación; documenta también la ejecución desatendida tratada en las diapositivas.</p>
+  <p>Crea el instalador con <strong>Inno Setup</strong> y conserva su archivo <code>.iss</code> dentro del proyecto. Revisa las opciones del asistente y adapta los valores del ejemplo a tu aplicación:</p>
+  <ul>
+    <li><strong>Identificación:</strong> nombre, versión, autor, carpeta de destino, nombre del instalador e icono.</li>
+    <li><strong>Archivos:</strong> ejecutable firmado y todos sus recursos y dependencias. Si usas <code>onedir</code>, incluye la distribución completa.</li>
+    <li><strong>Asistente:</strong> idioma, licencia y modo de instalación para el usuario actual o para todos los usuarios. Documenta los permisos que requiere la opción elegida.</li>
+    <li><strong>Accesos y desinstalación:</strong> grupo del menú Inicio con el nombre de MiniOffice, opción de acceso directo en el escritorio y desinstalador.</li>
+  </ul>
+  <p>Sustituye las rutas de tu equipo por <strong>rutas relativas al proyecto</strong> en <code>LicenseFile</code>, <code>SetupIconFile</code> y las entradas <code>Source</code>. Revisa <code>DefaultGroupName</code> para que no conserve «My Program». Compila el instalador e identifica la carpeta donde se genera.</p>
+</section>
+
+<section class="exercise-block exercise-block--long">
+  <h3>5. Prueba la instalación y la desinstalación</h3>
+  <p><strong>Con asistente:</strong> instala MiniOffice, comprueba la licencia, el destino y los accesos directos. Abre la aplicación instalada y prueba sus funciones. Comprueba su entrada en «Aplicaciones instaladas» y desinstálala, verificando la retirada del programa y de sus accesos.</p>
+  <p><strong>De forma desatendida:</strong> prueba tanto la instalación como la desinstalación con <code>/VERYSILENT /NORESTART</code>, como se trabaja en las diapositivas. Ejemplos para PowerShell, adaptando los nombres y las rutas:</p>
+  <pre><code>.\MiniOffice-Setup.exe /VERYSILENT /NORESTART
+.\unins000.exe /VERYSILENT /NORESTART</code></pre>
+  <p>El primer comando se aplica al <strong>instalador generado por Inno</strong>; el segundo, al desinstalador de la carpeta instalada. Explica qué hace cada parámetro y comprueba el resultado de ambas operaciones. Registra los comandos y las evidencias en la memoria.</p>
 </section>
 
 <section class="exercise-block">
-  <h3>5. Publica y documenta la entrega</h3>
-  <ul>
-    <li><strong>Repositorio Git:</strong> código, recursos, dependencias, configuración de empaquetado, script del instalador y <code>README.md</code>. Excluye los archivos temporales y las salidas de compilación mediante <code>.gitignore</code>.</li>
-    <li><strong>GitHub Releases:</strong> publica una versión identificable con el ejecutable o su carpeta comprimida y el instalador. Enlaza esa descarga desde el README.</li>
-    <li><strong>Memoria en el README:</strong> requisitos, pasos para reproducir el proceso, uso de la aplicación, firma, instalación, pruebas con capturas y problemas conocidos.</li>
-  </ul>
-  <p><strong>Comprobación final:</strong> descarga los archivos de la versión publicada y prueba esa copia. Otra persona debe poder localizar la descarga y seguir tus instrucciones sin acceder a carpetas de tu equipo.</p>
-  <p>El enlace de voz sirve de apoyo para RA2. Si tu MiniOffice incorpora esa funcionalidad, comprueba también sus dependencias, el micrófono y su comportamiento en la versión empaquetada.</p>
+  <h3>6. Publica una versión descargable</h3>
+  <p>Crea una <strong>Release</strong> con etiqueta de versión, título y una breve descripción. Adjunta el portable firmado (el <code>.exe</code> o el ZIP completo de <code>onedir</code>) y el instalador. Distingue las dos descargas para que el usuario sepa cuál elegir.</p>
+  <p>En el repositorio conserva el código, los recursos, <code>Pipfile</code>, <code>Pipfile.lock</code>, <code>.spec</code>, <code>.iss</code>, la licencia y el README. Usa <code>.gitignore</code> para excluir el entorno, los temporales, <code>build/</code>, <code>dist/</code> y la carpeta de salida del instalador. Los binarios se adjuntan a la Release.</p>
+  <p><strong>Comprobación final:</strong> descarga los dos archivos publicados y prueba esas copias. Enlaza la Release desde el README y comprueba que el profesor puede acceder a ella.</p>
 </section>
+
+<section class="exercise-block">
+  <h3>7. Completa la memoria en el README</h3>
+  <p>Documenta el proceso en el mismo repositorio, con los comandos y capturas de tu propia aplicación. Incluye:</p>
+  <ul>
+    <li>Requisitos, versiones de las herramientas y pasos para ejecutar y empaquetar el proyecto.</li>
+    <li>Recursos incluidos, modo de PyInstaller elegido y generación y verificación de la firma.</li>
+    <li>Configuración del instalador, licencia, rutas relativas y pruebas con asistente y desatendidas.</li>
+    <li>Instrucciones de uso y descarga, capturas del resultado y problemas conocidos.</li>
+  </ul>
+  <p><strong>Entrega:</strong> enlace al repositorio y a la Release con las dos distribuciones. Otra persona debe poder reproducir el proceso y probar MiniOffice siguiendo tu memoria.</p>
+</section>
+
+<p><strong>Apoyo RA2: voz.</strong> Las últimas diapositivas explican el dictado con SpeechRecognition y PyAudio. Si tu MiniOffice lo incorpora, verifica el micrófono, las dependencias y su funcionamiento en la distribución. La diapositiva final propone como <strong>extra</strong> los comandos «negrita», «cursiva», «subrayado», «guardar archivo» y «nuevo documento».</p>

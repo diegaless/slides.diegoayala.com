@@ -241,6 +241,40 @@ en Git, binarios en Releases, firma autofirmada de prueba e instalador Inno.
 Se aclaran la distribución completa de `onedir`, la confidencialidad del PFX
 y la diferencia entre una firma válida y la confianza del equipo receptor.
 
+### Ampliación de RA7 a partir de las diapositivas · 27 de septiembre de 2026
+
+Se revisa de nuevo la presentación DI-QT completa (65 diapositivas, archivo de
+Drive `1LueI4NQ7m5dvLJlRPxrDlg-fnM0CmrRz`, modificado el 27 de septiembre),
+incluidas las capturas de comandos y del asistente de Inno. El enunciado original
+de Teams solo pedía memoria en el README, ejecutable y repositorio. El desarrollo
+del trabajo se encuentra en las diapositivas 24–60:
+
+| Contenido concretado en la tarea | Diapositivas actuales |
+| --- | --- |
+| Entorno Pipenv y archivos de dependencias | 24–27 |
+| Nombre, icono, consola, recursos, `.spec`, `build/` y `dist/` | 28–31 |
+| Certificado, almacén, PFX, SDK, firma y comprobación | 32–40 |
+| Opciones de Inno, licencia, permisos, idioma y accesos | 41–47 |
+| Rutas relativas, `DefaultGroupName`, script y compilación | 48–50 |
+| Pruebas de instalación y desinstalación con asistente | 51–56 |
+| Instalación **y** desinstalación desatendidas | 57 |
+| Portable e instalador en una Release; exclusiones de Git | 58–60 |
+
+Se añaden accesos directos a Pipenv (`g3a7d6d50509_1_16`) y al apartado
+desatendido (`g3a7d6d50509_2_573`), conservando los cinco enlaces existentes.
+Los nombres, rutas y decisiones del asistente se adaptan al proyecto del alumno;
+las capturas sirven de referencia, sin exigir reproducir todos sus valores.
+El ejemplo desatendido identifica expresamente el instalador de Inno para evitar
+confundirlo con el ejecutable portable. Sus parámetros se contrastan con la ayuda
+oficial de [instalación](https://jrsoftware.org/ishelp/topic_setupcmdline.htm)
+y [desinstalación](https://jrsoftware.org/ishelp/topic_uninstcmdline.htm);
+la verificación de firma usa la política Authenticode `/pa` de
+[SignTool](https://learn.microsoft.com/en-us/windows/win32/seccrypto/signtool).
+
+El dictado de las diapositivas 61–64 permanece como apoyo de RA2. Los cinco
+comandos de la diapositiva 65 se identifican como «extra», como en la fuente.
+Se actualizan el HTML, el PDF individual y las dos modalidades de ZIP de DI.
+
 Se contrastan las aclaraciones técnicas con la documentación oficial de
 [QWhatsThis](https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/QWhatsThis.html),
 [QTextEdit](https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/QTextEdit.html),

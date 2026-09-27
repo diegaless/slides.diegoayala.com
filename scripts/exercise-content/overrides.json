@@ -220,6 +220,10 @@
   "di/RA2,RA7 -Generar ejecutable. exe": {
     "slides": [
       {
+        "label": "Entorno Pipenv",
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a7d6d50509_1_16"
+      },
+      {
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a7d6d50509_1_51",
         "label": "Generar el .exe"
       },
@@ -230,6 +234,10 @@
       {
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a7d6d50509_2_303",
         "label": "Instalador"
+      },
+      {
+        "label": "Instalación desatendida",
+        "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a7d6d50509_2_573"
       },
       {
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a8f78e2a57_0_1",
