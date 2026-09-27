@@ -62,23 +62,23 @@ Si alguna vez quieres forzar descarga como PDF, usa:
 
 ### Descargar las diapositivas
 
-Las asignaturas con diapositivas mantienen «Abrir diapositivas» para el visor
-publicado y añaden un segundo acceso dentro de esa misma pestaña. Lenguaje de
-Marcas, Desarrollo de Interfaces y Sistemas informáticos incluyen «Abrir y
-descargar»: abre el archivo original de Google, con permiso de lector, donde se
-puede elegir `Archivo -> Descargar -> PDF / PowerPoint`. Los cuatro enlaces de
-descarga están en los elementos `.subject-download` de `index.html` y también
+Las cinco asignaturas con diapositivas mantienen «Abrir diapositivas» para el
+visor publicado y ofrecen «Descargar PDF» dentro de esa misma pestaña. La descarga
+guarda el archivo directamente, sin abrir la interfaz de Google ni otra pestaña.
+Los enlaces están en los elementos `.subject-download` de `index.html` y también
 funcionan sin JavaScript. `script.js` los mueve al panel de su asignatura y muestra
 la explicación de `data-download-description`.
 
-DAPW utiliza «Descargar PDF» con la exportación directa de su presentación original
-`DAPPW` en Google Slides:
-`https://docs.google.com/presentation/d/1Jp8Nc-g7-cGw9N7whTvKrDvy9mrdXsz_S9HJLmiSgIg/export/pdf`.
-El 27 de septiembre de 2026 se comprobó que el original permite lectores con
-enlace y que esta URL devuelve un PDF sin iniciar sesión. La descarga utiliza
-la versión de Google; ya no requiere actualizar una copia en el repositorio.
-«Abrir diapositivas» conserva el enlace al visor publicado. La exportación
-necesita el identificador del archivo original, no el identificador `2PACX` del visor.
+Lenguaje de Marcas, Desarrollo de Interfaces, Sistemas informáticos, DAPW y
+Proyecto Intermodular usan la exportación directa
+`https://docs.google.com/presentation/d/ID/export/pdf`.
+El 27 de septiembre de 2026 se verificó el acceso anónimo y la respuesta PDF con
+`Content-Disposition: attachment`, también para los tres originales PowerPoint.
+Los cinco originales tienen acceso público de lector. Las descargas utilizan la
+versión actual de Google, sin mantener copias en el repositorio. La exportación
+necesita el identificador original, no el identificador `2PACX` del visor publicado.
+El original de PI es `1UO8wBxbfBgXrHgb1V47hi8cqk1PllFjbzI3tOUbHEX4`.
+
 `assets/diapositivas/dapw.pdf` se conserva como copia histórica del 23 de septiembre
 de 2026 para mantener los enlaces antiguos, pero el menú ya no la utiliza.
 Las asignaturas y módulos SEF aún pendientes siguen mostrando «Próximamente».
