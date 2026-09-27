@@ -19,6 +19,12 @@ la tipografía y el selector de tema mediante `styles.css` y `theme.js`.
 - `rm-skills/index.html`: convocatoria y preparación de Desarrollo web (modalidad 17),
   con pruebas oficiales anteriores, criterios de evaluación y recursos por edición.
   Las fuentes y el procedimiento de actualización están en `docs/rm-skills/README.md`.
+- `fem/index.html`: acceso a [CV App](https://cvapp.diegoayala.com/) para crear un CV
+  gratis, con una breve descripción sobre los filtros de selección (ATS).
+  Implementa la tercera propuesta de ImageGen: titular centrado y botón «Crear mi CV».
+  FEM aparece a la derecha de RM Skills en el menú de todas las páginas, incluidos
+  los ejercicios y el puente a diapositivas. Usa el tema compartido; sus estilos
+  específicos están en `fem/fem.css` y el enlace funciona también sin JavaScript.
 - `go/index.html`: puente estable a una diapositiva por su identificador interno.
 
 ## Enlaces estables a una diapositiva

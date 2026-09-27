@@ -1,0 +1,102 @@
+.fem-page {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.fem-page .site-header,
+.fem-page .site-footer {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.fem-page .page-main {
+  min-height: 0;
+  flex: 1;
+  padding: 56px 24px 64px;
+}
+
+.fem-hero {
+  width: min(100%, 680px);
+  text-align: center;
+}
+
+.fem-kicker {
+  margin: 0 0 32px;
+  color: var(--muted);
+  font-size: .75rem;
+  font-weight: 650;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
+
+.fem-hero h1 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 300;
+  letter-spacing: -.025em;
+  line-height: 1.24;
+}
+
+.fem-hero h1 span {
+  display: block;
+}
+
+.fem-description {
+  max-width: 510px;
+  margin: 28px auto 0;
+  color: var(--muted);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  text-wrap: balance;
+}
+
+.fem-action {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 36px;
+  padding: 14px 32px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #f8fafc;
+  background: #4f46b8;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.fem-action:hover {
+  border-color: var(--accent);
+  background: #5b52ca;
+}
+
+.fem-action:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 5px;
+}
+
+@media (max-width: 720px) {
+  .fem-page .page-main {
+    padding: 36px 20px 48px;
+  }
+
+  .fem-kicker {
+    margin-bottom: 24px;
+  }
+
+  .fem-description {
+    max-width: 360px;
+    margin-top: 24px;
+    font-size: 1rem;
+  }
+
+  .fem-action {
+    margin-top: 28px;
+  }
+}

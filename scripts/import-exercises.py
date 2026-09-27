@@ -129,6 +129,7 @@ def adapt_header(html, home, assets):
     header = header.replace('href="./"', f'href="{home}"')
     header = header.replace('href="sef/"', f'href="{site}sef/"')
     header = header.replace('href="rm-skills/"', f'href="{site}rm-skills/"')
+    header = header.replace('href="fem/"', f'href="{site}fem/"')
     html = re.sub(r'<header class="site-header">.*?</header>', lambda m: header, html, count=1, flags=re.S)
     html = html.replace('<html lang="es">', '<html lang="es" data-theme="dark">', 1)
     html = re.sub(r'<body(?: class="([^"]*)")?>',
