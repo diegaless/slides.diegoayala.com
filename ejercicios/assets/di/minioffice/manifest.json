@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-27",
+  "platform": "Windows x64",
+  "python": "3.13.14",
+  "pyside6": "6.10.1",
+  "pyinstaller": "6.17.0",
+  "sources": [
+    {
+      "id": "miniword",
+      "archive": "Mini-Word-main (1).zip",
+      "sha256": "214ac357c2f141d7a7aae453714d6b66c74cc8eb5831d9cad4c7456fc52f4fb6",
+      "files": 4
+    },
+    {
+      "id": "minidock",
+      "archive": "MiniDockQT6-main (1).zip",
+      "sha256": "5fc2a9f7e1cf2e8ed3ead9310ca9fde39721a57d8dc94a5c60c06086e5560e62",
+      "files": 20
+    },
+    {
+      "id": "javier",
+      "archive": "DI-main-javier-alcaraz (1).zip",
+      "sha256": "605ba7e153194f88f9226067af0d79e5289c2716fe0938ed7a19ff57db081c3b",
+      "files": 56
+    }
+  ],
+  "downloads": [
+    {
+      "id": "miniword",
+      "file": "MiniWord-Portable-Windows-x64.zip",
+      "bytes": 71090143,
+      "sha256": "100b7febf192131b342a124f4b5fb4d392baae1cafffe30d225fee1342815152",
+      "exe_sha256": "226f9c92c4136ac2d0b4dfab1109aa3e591cd96290cba4d289f308457d1a6d28"
+    },
+    {
+      "id": "minidock",
+      "file": "MiniDock-Portable-Windows-x64.zip",
+      "bytes": 71084449,
+      "sha256": "cad46ae1eaa8213254fab59a8453471d738f4038a006dcf08bf66fd759bb915c",
+      "exe_sha256": "3be080882b04f7bb00e411c0b87bd2dae427a0a0a842c90c4e811d3bf42ca7e8"
+    },
+    {
+      "id": "javier",
+      "file": "MiniOffice-Javier-Portable-Windows-x64.zip",
+      "bytes": 71114849,
+      "sha256": "52fa89b46a97480bc2db737d97176261dd804cb5d38afb00840c590d46b589a9",
+      "exe_sha256": "fe0090e598157793a46ae63c244258d0e0e0a54234c6389360a50c4ff38627d4"
+    }
+  ]
+}

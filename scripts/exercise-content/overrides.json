@@ -561,10 +561,29 @@
     "instructions": "di/qt6-8.html"
   },
   "di/QT6 - 9 Mini office -Practica final - alfa": {
-    "instructions": "di/mini-office-alfa.html"
+    "instructions": "di/mini-office-alfa.html",
+    "materials": [
+      {
+        "href": "https://github.com/diegaless/slides.diegoayala.com/releases/download/minioffice-demos-2026-09-27/MiniWord-Portable-Windows-x64.zip",
+        "label": "Descargar Mini Word · Windows 64 bits",
+        "detail": "ZIP portable · extraer toda la carpeta y abrir el .exe · incluye documento de prueba"
+      }
+    ]
   },
   "di/RA1, RA4, RA6-QT MINI OFFICE -- PRACTICA FINAL": {
-    "instructions": "di/mini-office-final.html"
+    "instructions": "di/mini-office-final.html",
+    "materials": [
+      {
+        "href": "https://github.com/diegaless/slides.diegoayala.com/releases/download/minioffice-demos-2026-09-27/MiniDock-Portable-Windows-x64.zip",
+        "label": "Descargar MiniDock · Windows 64 bits",
+        "detail": "ZIP portable · panel acoplable con botones de búsqueda y reemplazo"
+      },
+      {
+        "href": "https://github.com/diegaless/slides.diegoayala.com/releases/download/minioffice-demos-2026-09-27/MiniOffice-Javier-Portable-Windows-x64.zip",
+        "label": "Descargar MiniOffice de Javier Alcaraz · Windows 64 bits",
+        "detail": "ZIP portable · panel con campos integrados y coincidencias resaltadas"
+      }
+    ]
   },
   "di/RA5 PYJINJA2+FASTAPI": {
     "instructions": "di/fastapi-jinja2.html",
