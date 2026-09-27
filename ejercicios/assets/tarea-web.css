@@ -79,6 +79,24 @@
   line-height: 1.5;
 }
 
+.exercise-reference-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+  break-inside: avoid;
+}
+
+.exercise-reference-pair figure {
+  min-width: 0;
+}
+
+@media screen and (max-width: 680px) {
+  .exercise-reference-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
 .task-slide-links {
   display: flex;
   flex-wrap: wrap;
@@ -450,6 +468,10 @@
   }
 
   .authored-instructions .exercise-block:not(:has(.exercise-reference)) {
+    break-inside: avoid;
+  }
+
+  .authored-instructions .exercise-block.exercise-reference-section {
     break-inside: avoid;
   }
 

@@ -221,25 +221,26 @@
     "slides": [
       {
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a7d6d50509_1_51",
-        "label": "Generar el .exe · diap. 13–15"
+        "label": "Generar el .exe"
       },
       {
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a7d6d50509_2_179",
-        "label": "Firma digital · diap. 16–24"
+        "label": "Firma digital"
       },
       {
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a7d6d50509_2_303",
-        "label": "Instalador · diap. 25–41"
+        "label": "Instalador"
       },
       {
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a8f78e2a57_0_1",
-        "label": "Publicar versiones · diap. 42–44"
+        "label": "Publicar versiones"
       },
       {
         "href": "https://docs.google.com/presentation/d/e/2PACX-1vQjSCFaYOks61DHA7HLPfKcNM3FRX-cdEMkOVCL2Kq3hNAgg6dtyZqQemcE4F0JKA/pub?start=false&loop=false&delayms=3000&slide=id.g3a8f78e2a57_0_36",
-        "label": "Apoyo RA2: voz · diap. 45–49"
+        "label": "Apoyo RA2: voz"
       }
-    ]
+    ],
+    "instructions": "di/mini-office-ejecutable.html"
   },
   "lm/XML 1": {
     "slides": [
@@ -555,5 +556,27 @@
       "pdf": "https://drive.google.com/file/d/1LtSskRwYUJBhG0nNObd3_QJIjF-5j_Hj/view?usp=drivesdk",
       "github": "https://github.com/diegaless/di-soluciones/tree/main/02-QT-3-FORM"
     }
+  },
+  "di/QT6 - 8": {
+    "instructions": "di/qt6-8.html"
+  },
+  "di/QT6 - 9 Mini office -Practica final - alfa": {
+    "instructions": "di/mini-office-alfa.html"
+  },
+  "di/RA1, RA4, RA6-QT MINI OFFICE -- PRACTICA FINAL": {
+    "instructions": "di/mini-office-final.html"
+  },
+  "di/RA5 PYJINJA2+FASTAPI": {
+    "instructions": "di/fastapi-jinja2.html",
+    "materials": [
+      {
+        "href": "https://github.com/diegaless/py-jinja",
+        "label": "Proyecto de partida · py-jinja",
+        "detail": "Repositorio original de clase · incluye ENUNCIADO.md y archivos para el despliegue"
+      }
+    ]
+  },
+  "di/RA3- SEÑALES, COMPONENTES REUTILIZABLES": {
+    "instructions": "di/componentes-senales.html"
   }
 }

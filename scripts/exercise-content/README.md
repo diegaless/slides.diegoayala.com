@@ -202,9 +202,51 @@ y en los ZIP de DI. Cada rango abre su primera diapositiva mediante un ID establ
 | Apoyo RA2: reconocimiento de voz | 45–49 | `g3a8f78e2a57_0_36` |
 
 El bloque de voz se identifica como apoyo de RA2, según la correspondencia
-del temario en la diapositiva 4. Las otras siete tareas no reciben enlaces:
-las menciones generales a MiniOffice, componentes o FastAPI en el mapa de RA
-no contienen sus enunciados ni el desarrollo de las prácticas.
+del temario en la diapositiva 4. Las menciones generales a MiniOffice,
+componentes o FastAPI en el mapa de RA no contienen sus enunciados.
+
+### Revisión de los seis enunciados de DI · 27 de septiembre de 2026
+
+Se añaden instrucciones persistentes para QT6-8, MiniOffice alfa, MiniOffice
+final, ejecutable, RA5 y componentes/señales. Se conservan sus rutas y títulos,
+las tres capturas originales y el adjunto `contadorWidget.py`. Cada ejercicio
+explica objetivo, trabajo esperado, comprobaciones y entrega; no añade fechas
+ni ponderaciones. Los PDF individuales y ambos tipos de ZIP usan esta versión.
+
+Las fuentes son los enunciados de `web/2DAM DI` del respaldo de Teams, las
+diapositivas de DI y los cuatro ZIP aportados por el profesor: Mini-Word,
+MiniDockQT6, DI-main-javier-alcaraz y Practica-FastApi-jinja2. Sus README,
+documentación de señales y código sirven como referencia para aclarar
+comportamientos. No se incorporan estos proyectos resueltos a las descargas
+del alumnado ni se modifican los originales. Las mejoras de formato y los
+gráficos adicionales se identifican como ejemplos de las opciones disponibles.
+
+Para RA5 se recupera el enlace `https://github.com/diegaless/py-jinja` de
+`general/2DAM DI/PUBLICACIONES.json`: publicación del 9 de enero, «PROBAD EL
+DESPLIEGUE». El archivo original es
+[ENUNCIADO.md](https://github.com/diegaless/py-jinja/blob/5a883b9b05e8e322130a9407498e131eeca60114/ENUNCIADO.md),
+revisión `5a883b9b05e8e322130a9407498e131eeca60114`. Pide un informe de incidencias,
+filtros de categoría y gravedad, resumen, tabla, gráfico por categoría y una
+modificación de la plantilla a elegir. Permite datos en Python o JSON. El
+ejemplo de código del profesor trata sobre tareas: el texto deja explícito
+que debe adaptarse a incidencias. La dockerización se apoya en la publicación
+y los archivos Docker y Compose de ese mismo repositorio. El segundo gráfico
+por gravedad del ZIP aportado es una posibilidad, no la única modificación válida.
+
+La versión actual del PDF de DI tiene 65 diapositivas. Se mantienen los ID de
+los cinco enlaces anteriores, pero se retiran sus números de página de las
+etiquetas públicas para evitar referencias desfasadas al insertar diapositivas.
+La entrega de ejecutables sigue las indicaciones de clase: código y memoria
+en Git, binarios en Releases, firma autofirmada de prueba e instalador Inno.
+Se aclaran la distribución completa de `onedir`, la confidencialidad del PFX
+y la diferencia entre una firma válida y la confianza del equipo receptor.
+
+Se contrastan las aclaraciones técnicas con la documentación oficial de
+[QWhatsThis](https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/QWhatsThis.html),
+[QTextEdit](https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/QTextEdit.html),
+[PyInstaller](https://pyinstaller.org/en/stable/operating-mode.html),
+[plantillas de FastAPI](https://fastapi.tiangolo.com/advanced/templates/)
+y [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/).
 
 ## Enunciados y referencias de Lenguaje de Marcas
 

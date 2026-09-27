@@ -139,6 +139,13 @@ tareas de DAPW con una diapositiva identificada también enlazan directamente a 
 COMPOSE 4, VIAJE-ESTUDIOS_EVALUABLE y DEFENSA FINAL se mantienen sin enlace.
 Estas referencias se conservan al regenerar los HTML, los PDF y los ZIP.
 
+En DI se amplían QT6-8, MiniOffice alfa y final, distribución del ejecutable,
+FastAPI/Jinja2 y componentes/señales. Los textos aclaran objetivos, pasos,
+comprobaciones y entrega a partir de los originales y los proyectos de
+referencia del profesor. RA5 recupera `ENUNCIADO.md` del repositorio de clase
+`diegaless/py-jinja`, enlazado en el respaldo de Teams. Las fuentes y el alcance
+quedan documentados en `scripts/exercise-content/README.md`.
+
 En Proyecto Intermodular, «Documentación PI» conserva el índice orientativo y
 organiza los ejemplos en tres cursos desplegables: 2025/26 (8 proyectos),
 2024/25 (7) y 2023/24 (8). Todos aparecen cerrados inicialmente y se incluyen
