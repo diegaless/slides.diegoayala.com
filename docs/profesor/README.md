@@ -75,6 +75,7 @@ proveedor Google; no autoriza por un correo escrito en el cliente.
 ```sh
 npm test
 npm run test:rules
+python3 tests/preview-security.py
 npx firebase deploy --only firestore --project slides-profesor-diego
 ```
 
@@ -82,6 +83,8 @@ Las pruebas de reglas requieren Java 21 y usan `demo-slides-profesor`, sin
 credenciales ni datos de producción. Cubren acceso anónimo, cuentas ajenas,
 suplantación del correo, privilegios, cierre, programación, esquema y archivos
 inmutables. La interfaz se sirve localmente con `python3 scripts/preview.py`.
+La vista previa escucha solo en localhost y bloquea `.private`, los archivos
+ocultos, dependencias, listados de carpetas y enlaces a archivos fuera de la web.
 Con la configuración publicada conecta al proyecto real: no publicar tareas
 reales al probar la interfaz. Para pruebas locales aisladas, dejar temporalmente
 `firebaseConfig = null` en una copia local y arrancar los emuladores; nunca

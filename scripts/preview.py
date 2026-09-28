@@ -8,11 +8,24 @@ from pathlib import Path
 
 class PreviewHandler(SimpleHTTPRequestHandler):
     def send_head(self):
+        # Las copias de soluciones y el estado local nunca se sirven por HTTP.
+        root = Path(self.directory).resolve()
+        target = Path(self.translate_path(self.path)).resolve()
+        if not target.is_relative_to(root) or any(
+            part.startswith('.') or part == 'node_modules'
+            for part in target.relative_to(root).parts
+        ):
+            self.send_error(403)
+            return None
         # Always read the working copy, including after switching branches.
         for header in ("If-Modified-Since", "If-None-Match"):
             if header in self.headers:
                 del self.headers[header]
         return super().send_head()
+
+    def list_directory(self, path):
+        self.send_error(403)
+        return None
 
     def end_headers(self):
         self.send_header("Cache-Control", "no-store")
@@ -22,7 +35,7 @@ class PreviewHandler(SimpleHTTPRequestHandler):
 def main():
     parser = argparse.ArgumentParser(description="Vista previa local sin caché.")
     parser.add_argument("--port", type=int, default=4173)
-    parser.add_argument("--bind", default="0.0.0.0")
+    parser.add_argument("--bind", default="127.0.0.1")
     args = parser.parse_args()
     root = Path(__file__).resolve().parent.parent
     handler = partial(PreviewHandler, directory=str(root))
