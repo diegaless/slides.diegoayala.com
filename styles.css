@@ -561,7 +561,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 24px;
-  padding: 34px 24px;
+  padding: 34px 80px;
   color: var(--footer);
   font-size: 0.72rem;
   font-weight: 750;
@@ -575,6 +575,28 @@ button {
 
 .site-footer a:hover {
   color: var(--accent);
+}
+
+.site-footer .teacher-link {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 4px;
+  transform: translateY(-50%);
+}
+
+.teacher-link svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .site-footer span {
@@ -700,13 +722,24 @@ button {
 
   .site-footer {
     gap: 16px;
-    padding: 24px 18px;
+    padding: 24px 64px;
     font-size: 0.66rem;
     letter-spacing: 0.16em;
   }
 
-  .site-footer .teacher-separator { display:none; }
-  .site-footer .teacher-link { flex-basis:100%; text-align:center; }
+  .site-footer .teacher-link { right: 8px; }
+}
+
+@media (max-width: 420px) {
+  .site-footer {
+    padding: 24px 18px 60px;
+  }
+
+  .site-footer .teacher-link {
+    top: auto;
+    bottom: 4px;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

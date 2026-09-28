@@ -27,7 +27,8 @@ la tipografía y el selector de tema mediante `styles.css` y `theme.js`.
   específicos están en `fem/fem.css` y el enlace funciona también sin JavaScript.
 - `go/index.html`: puente estable a una diapositiva por su identificador interno.
 - `profesor/index.html`: acceso con Google para publicar, cerrar o programar las
-  soluciones de cada tarea. El enlace está en el pie de las cuatro secciones.
+  soluciones de cada tarea. Se entra desde el pequeño candado a la derecha del
+  pie de las cuatro secciones.
 - `soluciones/index.html`: visor PDF y descarga ZIP de las soluciones abiertas.
   Usa un proyecto Firebase independiente en Spark, sin facturación. Las 39
   tareas iniciales permanecen privadas hasta que el profesor las abra.
