@@ -53,11 +53,14 @@ function render() {
     const main = node('div',null,'row-main');
     const info = node('div');
     const heading = node('h3',null,'task-title');
-    const link = node('a',task.title); link.href=task.exercise; link.target='_blank'; link.rel='noopener';
+    const link = node('a',task.title); link.href=task.exercise;
     heading.append(link); info.append(heading);
     const meta = node('div',null,'task-meta');
     const badge = node('span',state ? stateLabel(state) : 'Pendiente de preparar','visibility-label'); badge.dataset.mode=mode;
     meta.append(badge);
+    const preview = node('a','Ver solución','preview-link');
+    preview.href=`../soluciones/?tarea=${encodeURIComponent(task.id)}&archivo=pdf`;
+    meta.append(preview);
     for (const [label,url] of [['PDF original',task.pdf],['Código original',task.github]]) {
       const reference = node('a',label,'reference-link'); reference.href=url; reference.target='_blank'; reference.rel='noopener'; meta.append(reference);
     }
@@ -105,7 +108,7 @@ async function showDashboard(user) {
   catalog = await response.json();
   states = await client.getAllStates();
   $('login-screen').hidden=true; $('dashboard').hidden=false;
-  render(); message('Los cambios de acceso se guardan automáticamente.');
+  render(); message('Puedes ver todas las soluciones sin publicarlas. Los cambios de acceso se guardan automáticamente.');
 }
 $('google-login').addEventListener('click',async()=>{
   $('google-login').disabled=true;

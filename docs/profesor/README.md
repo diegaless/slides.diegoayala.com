@@ -1,9 +1,23 @@
 # Panel de soluciones
 
-Acceso: https://slides.diegoayala.com/profesor/ y «Acceso profesor» en el pie.
+Acceso: https://slides.diegoayala.com/profesor/ y el candado del pie de página.
 El profesor inicia sesión con Google y elige, por tarea, **Publicar**, cerrar el
 acceso o **Programar** una fecha. El alumnado no necesita iniciar sesión para
 consultar soluciones públicas. Las copias que ya haya descargado se conservan.
+
+**Ver solución** permite al profesor consultar PDF y código aunque la tarea
+siga privada o programada. El visor también ofrece los originales en Drive y
+GitHub a la cuenta autorizada. Consultar nunca cambia el estado de publicación.
+Si se llega a una solución privada sin sesión, **Entrar como profesor** permite
+identificarse y abrir ese mismo archivo, sin pasar primero por el panel.
+
+La sesión se conserva en la pestaña hasta cerrarla o pulsar **Cerrar sesión**.
+Los enlaces internos del panel y de las soluciones mantienen esa pestaña para
+no perder la identificación. En otra pestaña independiente se puede iniciar
+sesión desde el propio visor. No se guarda una sesión permanente en el equipo.
+Los enunciados con soluciones autorizan en su CSP la versión concreta del SDK
+y los orígenes de Firebase necesarios para comprobar el estado y la cuenta;
+el resto de restricciones de contenido se conservan.
 
 ## Proyecto y coste
 
@@ -99,3 +113,8 @@ Verificado el 29 de septiembre de 2026: 6 pruebas de lógica y 11 de reglas;
 publicar/cerrar/programar/cancelar desde el panel; descarga anónima de PDF/ZIP y
 rechazo tras cerrar, con el ZIP idéntico al original por SHA-256. Revisión visual
 de escritorio y móvil (390 px), en modo claro y oscuro.
+
+También se comprobó el acceso directo con Google desde una solución privada,
+la lectura del PDF y descarga del ZIP sin publicarla, la conservación de sesión
+al navegar entre panel, enunciado y visor, y el bloqueo tras cerrar sesión. La
+vista simultánea de un visitante permaneció cerrada durante toda la prueba.

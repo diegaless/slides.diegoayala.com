@@ -9,9 +9,11 @@ if(section) {
   async function refresh() {
     clearTimeout(timeout);
     try {
-      const {getState}=await import('./client.mjs');
-      const state=await getState(section.dataset.solutionId);
-      status.textContent=visibility(state)==='public'?'Disponibles para descargar.':'El profesor aún no ha abierto estas soluciones.';
+      const {getState,currentUser,isTeacher}=await import('./client.mjs');
+      const [state,user]=await Promise.all([getState(section.dataset.solutionId),currentUser()]);
+      status.textContent=visibility(state)==='public'?'Disponibles para descargar.':
+        isTeacher(user)?'Puedes verlas como profesor. Aún no están disponibles para el alumnado.':
+        'El profesor aún no ha abierto estas soluciones.';
       if(state?.mode==='scheduled')timeout=setTimeout(refresh,60_000);
     } catch {
       status.textContent='Abre la solución para comprobar su disponibilidad.';

@@ -27,6 +27,15 @@
     <p class="eyebrow">SOLUCIÓN DE REFERENCIA</p>
     <h1 id="task-title">Solución del ejercicio</h1>
     <p class="page-intro">Consulta la explicación y descarga el código para probarlo.</p>
+    <div id="teacher-session" class="teacher-session" hidden>
+      <p id="teacher-note" class="muted"></p>
+      <div class="teacher-tools">
+        <a id="original-pdf" class="reference-link" target="_blank" rel="noopener noreferrer">PDF original en Drive</a>
+        <a id="original-code" class="reference-link" target="_blank" rel="noopener noreferrer">Código en GitHub</a>
+        <a class="reference-link" href="../profesor/">Panel de profesor</a>
+        <button id="logout" class="text-button" type="button">Cerrar sesión</button>
+      </div>
+    </div>
     <p id="status" class="operation-status" role="status" aria-live="polite">Comprobando el acceso…</p>
     <p id="error" class="error-message" role="alert" hidden></p>
     <div id="actions" class="download-actions" hidden>
@@ -34,7 +43,11 @@
       <button id="code" class="primary-button" type="button">Descargar código ZIP</button>
       <a id="save-pdf" hidden>Guardar PDF</a>
     </div>
-    <p id="closed" class="muted" hidden>El profesor todavía no ha abierto esta solución. <a href="../profesor/">Acceso profesor</a></p>
+    <div id="closed" hidden>
+      <p class="muted">El profesor todavía no ha abierto esta solución para el alumnado.</p>
+      <button id="teacher-login" class="primary-button" type="button">Entrar como profesor</button>
+      <p class="muted">Con tu cuenta autorizada puedes verla sin publicarla.</p>
+    </div>
     <iframe id="preview" class="pdf-preview" title="PDF con la solución del ejercicio" hidden></iframe>
     <noscript><p>Activa JavaScript para consultar la solución.</p></noscript>
   </main>

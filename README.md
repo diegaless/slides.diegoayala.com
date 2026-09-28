@@ -28,7 +28,8 @@ la tipografía y el selector de tema mediante `styles.css` y `theme.js`.
 - `go/index.html`: puente estable a una diapositiva por su identificador interno.
 - `profesor/index.html`: acceso con Google para publicar, cerrar o programar las
   soluciones de cada tarea. Se entra desde el pequeño candado a la derecha del
-  pie de las cuatro secciones.
+  pie de las cuatro secciones. «Ver solución» abre las privadas para el profesor
+  sin publicarlas; la navegación interna conserva su sesión en la pestaña.
 - `soluciones/index.html`: visor PDF y descarga ZIP de las soluciones abiertas.
   Usa un proyecto Firebase independiente en Spark, sin facturación. Las 39
   tareas iniciales permanecen privadas hasta que el profesor las abra.

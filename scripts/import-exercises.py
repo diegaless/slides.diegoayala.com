@@ -208,6 +208,14 @@ def apply_task_solutions(html, key):
     html = html.replace(module + '\n', '').replace(module, '')
     if not solutions:
         return html
+    # El estado y la sesión usan el mismo SDK que el visor, con orígenes acotados.
+    html = html.replace(
+        "script-src 'self';",
+        "script-src 'self' https://www.gstatic.com/firebasejs/12.19.0/; "
+        "connect-src 'self' https://firestore.googleapis.com "
+        "https://identitytoolkit.googleapis.com https://securetoken.googleapis.com; "
+        "frame-src https://slides-profesor-diego.firebaseapp.com;",
+    )
     folder = unquote('/'.join(urlsplit(solutions['github']).path.strip('/').split('/')[4:]))
     solution_id = key.split('/', 1)[0] + '-' + re.sub('[^a-z0-9]+', '-', folder.lower()).strip('-')
     destinations = (
@@ -224,9 +232,9 @@ def apply_task_solutions(html, key):
         href = f'/soluciones/?tarea={solution_id}&archivo={kind}'
         links.append(
             '<a class="solution-link" href="' + escape(href, quote=True)
-            + '" target="_blank" rel="noopener noreferrer"><span>' + label
+            + '"><span>' + label
             + '</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" '
-            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>')
+            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>')
     section = (
         f'\n<section class="task-solutions" data-solution-id="{solution_id}" aria-labelledby="task-solutions-title">'
         '<h2 id="task-solutions-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '

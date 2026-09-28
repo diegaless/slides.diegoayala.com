@@ -32,6 +32,11 @@ button:disabled { cursor:wait; opacity:.5; }
 .visibility-label[data-mode="public"] { color:#63bda6; }
 .visibility-label[data-mode="scheduled"] { color:var(--accent); }
 .reference-link { font-size:.75rem; color:var(--muted); text-decoration:underline; text-underline-offset:3px; }
+.preview-link { font-size:.75rem; color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+.teacher-session { padding:16px 0; border-block:1px solid var(--line); }
+.teacher-session p { margin:0 0 8px; }
+.teacher-tools { display:flex; align-items:center; flex-wrap:wrap; gap:8px 20px; }
+.teacher-tools .text-button { font-size:.75rem; }
 .row-actions { display:flex; align-items:center; gap:22px; flex-shrink:0; }
 .row-actions .text-button { font-size:.8rem; }
 .publish-switch { display:inline-flex; align-items:center; gap:11px; min-width:128px; padding:10px 0; border:0; background:none; color:var(--ink); font:inherit; font-weight:500; font-size:.82rem; line-height:1.4; cursor:pointer; text-align:left; }
