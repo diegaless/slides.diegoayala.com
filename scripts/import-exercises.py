@@ -201,14 +201,18 @@ def apply_task_content(html, key):
 
 
 def apply_task_solutions(html, key):
-    """Enlaza material privado externo sin incorporarlo a los archivos públicos."""
+    """Enlaza las descargas protegidas sin incorporar soluciones a la web estática."""
     solutions = json.loads(read(CONTENT / "overrides.json")).get(key, {}).get("solutions")
     html = re.sub(r'\n?<section class="task-solutions"[^>]*>.*?</section>', '', html, flags=re.S)
+    module = '<script type="module" src="/assets/solutions/exercise.mjs"></script>'
+    html = html.replace(module + '\n', '').replace(module, '')
     if not solutions:
         return html
+    folder = unquote('/'.join(urlsplit(solutions['github']).path.strip('/').split('/')[4:]))
+    solution_id = key.split('/', 1)[0] + '-' + re.sub('[^a-z0-9]+', '-', folder.lower()).strip('-')
     destinations = (
         ("pdf", "Solución PDF", "drive.google.com"),
-        ("github", "Solución GitHub", "github.com"),
+        ("github", "Código ZIP", "github.com"),
     )
     links = []
     for field, label, host in destinations:
@@ -216,13 +220,15 @@ def apply_task_solutions(html, key):
         url = urlsplit(href)
         if url.scheme != "https" or url.netloc != host:
             raise ValueError(f"Enlace de solución inválido: {key}/{field}")
+        kind = 'pdf' if field == 'pdf' else 'codigo'
+        href = f'/soluciones/?tarea={solution_id}&archivo={kind}'
         links.append(
             '<a class="solution-link" href="' + escape(href, quote=True)
             + '" target="_blank" rel="noopener noreferrer"><span>' + label
             + '</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" '
             'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>')
     section = (
-        '\n<section class="task-solutions" aria-labelledby="task-solutions-title">'
+        f'\n<section class="task-solutions" data-solution-id="{solution_id}" aria-labelledby="task-solutions-title">'
         '<h2 id="task-solutions-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
         'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
         '<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4M12 14v3"/>'
@@ -234,7 +240,7 @@ def apply_task_solutions(html, key):
         html, count=1, flags=re.S)
     if count != 1:
         raise ValueError(f"Falta el lateral de la tarea: {key}")
-    return html
+    return html.replace('</body>', module + '\n</body>')
 
 
 def copy_task(source, destination, content_key=None):

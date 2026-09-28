@@ -1,0 +1,314 @@
+[
+  {
+    "id": "di-01-pyside-1-2",
+    "subject": "di",
+    "title": "PYSIDE 1-2",
+    "exercise": "/ejercicios/di/PYSIDE%201-2/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1R23tnpW83_vTZHwvK_BIyEgK21PQz2nq/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/di-soluciones/tree/main/01-PYSIDE-1-2"
+  },
+  {
+    "id": "di-02-qt-3-form",
+    "subject": "di",
+    "title": "QT 3 FORM",
+    "exercise": "/ejercicios/di/QT%203%20FORM/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1LtSskRwYUJBhG0nNObd3_QJIjF-5j_Hj/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/di-soluciones/tree/main/02-QT-3-FORM"
+  },
+  {
+    "id": "di-03-qt6-8",
+    "subject": "di",
+    "title": "QT6 - 8",
+    "exercise": "/ejercicios/di/QT6%20-%208/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1JlDDRR9mEoTsRlY57sTVnKUe8DDla0Qe/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/di-soluciones/tree/main/03-QT6-8"
+  },
+  {
+    "id": "di-04-minioffice-alfa",
+    "subject": "di",
+    "title": "QT6 - 9 Mini office -Practica final - alfa",
+    "exercise": "/ejercicios/di/QT6%20-%209%20Mini%20office%20-Practica%20final%20-%20alfa/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/16V3sNq5HMIACEeqQVdgL2t_wkhA91gUR/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/di-soluciones/tree/main/04-MiniOffice-alfa"
+  },
+  {
+    "id": "di-05-minioffice-final",
+    "subject": "di",
+    "title": "RA1, RA4, RA6-QT MINI OFFICE -- PRACTICA FINAL",
+    "exercise": "/ejercicios/di/RA1%2C%20RA4%2C%20RA6-QT%20MINI%20OFFICE%20--%20PRACTICA%20FINAL/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1gyExx9IFNmFhMqVzJCwEcmbQorn0Wq5W/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/di-soluciones/tree/main/05-MiniOffice-final"
+  },
+  {
+    "id": "di-06-ra7-distribucion",
+    "subject": "di",
+    "title": "RA2,RA7 -Generar ejecutable. exe",
+    "exercise": "/ejercicios/di/RA2%2CRA7%20-Generar%20ejecutable.%20exe/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1ms4mwzgddH5qyR35-VAju6nSGcdT568C/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/di-soluciones/tree/main/06-RA7-Distribucion"
+  },
+  {
+    "id": "di-07-ra5-fastapi-jinja2",
+    "subject": "di",
+    "title": "RA5 PYJINJA2+FASTAPI",
+    "exercise": "/ejercicios/di/RA5%20PYJINJA2%2BFASTAPI/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1V6B0GLP7a3EE2eva_7du3ZGeVDWj79IG/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/di-soluciones/tree/main/07-RA5-FastAPI-Jinja2"
+  },
+  {
+    "id": "di-08-ra3-componentes",
+    "subject": "di",
+    "title": "RA3- SEÑALES, COMPONENTES REUTILIZABLES",
+    "exercise": "/ejercicios/di/RA3-%20SE%C3%91ALES%2C%20COMPONENTES%20REUTILIZABLES/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1QflN2L5w1YdbgDqC_6ePUiNrmV923JfL/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/di-soluciones/tree/main/08-RA3-Componentes"
+  },
+  {
+    "id": "lm-01-css-1-a-16",
+    "subject": "lm",
+    "title": "CSS 1..16",
+    "exercise": "/ejercicios/lm/CSS%201..16/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1M5h_mHIeETkwmCiiMXJ6N0a6OmbpVgAR/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/01-CSS-1-a-16"
+  },
+  {
+    "id": "lm-02-xml-1",
+    "subject": "lm",
+    "title": "XML 1",
+    "exercise": "/ejercicios/lm/XML%201/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1jROpmZJnLlZ9ZAXMpuy9D4XwGW4_q8er/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/02-XML-1"
+  },
+  {
+    "id": "lm-03-xml-2",
+    "subject": "lm",
+    "title": "XML2",
+    "exercise": "/ejercicios/lm/XML2/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1wCYsddpA1UBAbBxbjjE30EdzGND1HdmP/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/03-XML-2"
+  },
+  {
+    "id": "lm-04-xml-3",
+    "subject": "lm",
+    "title": "XML 3",
+    "exercise": "/ejercicios/lm/XML%203/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1AiIUrwsaFGne8xkSJLBDfTrVq9wBEnrT/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/04-XML-3"
+  },
+  {
+    "id": "lm-05-xml-4",
+    "subject": "lm",
+    "title": "XML 4",
+    "exercise": "/ejercicios/lm/XML%204/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/13mAMOaBaO2gWYxHAw9CBhUM4SVMsa5vF/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/05-XML-4"
+  },
+  {
+    "id": "lm-06-xml-5",
+    "subject": "lm",
+    "title": "XML 5",
+    "exercise": "/ejercicios/lm/XML%205/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1dqCSdGu_4JAC9OSBpWUvAFZ4ks2m1XIN/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/06-XML-5"
+  },
+  {
+    "id": "lm-07-xml-6",
+    "subject": "lm",
+    "title": "XML-6",
+    "exercise": "/ejercicios/lm/XML-6/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/15UKbktPXa0RtTpoqLDy6rmy5kxkw7A75/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/07-XML-6"
+  },
+  {
+    "id": "lm-08-xml-7",
+    "subject": "lm",
+    "title": "xml 7",
+    "exercise": "/ejercicios/lm/xml%207/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/14X5B9Dd-7CPTk8IpBbhjSRybg1J-2bAN/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/08-XML-7"
+  },
+  {
+    "id": "lm-09-xml-8",
+    "subject": "lm",
+    "title": "xml - 8",
+    "exercise": "/ejercicios/lm/xml%20-%208/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/16e17hoddJ9HrLEa3jzq-7h-0WeCuG7bD/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/09-XML-8"
+  },
+  {
+    "id": "lm-10-html-1-a-4",
+    "subject": "lm",
+    "title": "HTML 1..4",
+    "exercise": "/ejercicios/lm/HTML%201..4/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1agk_r26UdtMlTSabiObjcUMJ-_hjv5AK/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/10-HTML-1-a-4"
+  },
+  {
+    "id": "lm-11-html-5-a-8",
+    "subject": "lm",
+    "title": "LM 5..8",
+    "exercise": "/ejercicios/lm/LM%205..8/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1g0pFysW0AfqDwZS4bhbJL2_qLlrzkz8q/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/11-HTML-5-a-8"
+  },
+  {
+    "id": "lm-12-html-9-a-17",
+    "subject": "lm",
+    "title": "HTML 9..17",
+    "exercise": "/ejercicios/lm/HTML%209..17/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1WrxOVnOkyf3MHqeXUn7W-egf9MJSFStp/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/12-HTML-9-a-17"
+  },
+  {
+    "id": "lm-13-html-17-a-24",
+    "subject": "lm",
+    "title": "HTML 17..24",
+    "exercise": "/ejercicios/lm/HTML%2017..24/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1Rh5e6zdaB1nWNCNE5K9l5C4w400bvgCH/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/13-HTML-17-a-24"
+  },
+  {
+    "id": "lm-14-html-practica-final",
+    "subject": "lm",
+    "title": "RA2 -PRACTICA FINAL HTML --DEFENSA",
+    "exercise": "/ejercicios/lm/RA2%20-PRACTICA%20FINAL%20HTML%20--DEFENSA/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/127xxYeni5xXsy24JtCPJzE8v1GkWy-gy/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/14-HTML-Practica-final"
+  },
+  {
+    "id": "lm-15-entrega-html",
+    "subject": "lm",
+    "title": "EJERCICIOS HTML",
+    "exercise": "/ejercicios/lm/EJERCICIOS%20HTML/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1yFxmNs1glUCQbtlH8qEw32-HuQH46HfI/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/15-Entrega-HTML"
+  },
+  {
+    "id": "lm-16-css-practica-final",
+    "subject": "lm",
+    "title": "RA2-FINAL CSS (50%)",
+    "exercise": "/ejercicios/lm/RA2-FINAL%20CSS%20%2850%25%29/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1dD5aUuFZZ82_aLliGF0lQzqehgxFNlvS/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/16-CSS-Practica-final"
+  },
+  {
+    "id": "lm-17-javascript-dom",
+    "subject": "lm",
+    "title": "RA3- JS DOM",
+    "exercise": "/ejercicios/lm/RA3-%20JS%20DOM/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1nyfMACQy25zzljhXs7Z6Edh8FZ_r3Y_6/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/17-JavaScript-DOM"
+  },
+  {
+    "id": "lm-18-json-validacion",
+    "subject": "lm",
+    "title": "RA4-Validadores, JSON, JSON SCHEMA",
+    "exercise": "/ejercicios/lm/RA4-Validadores%2C%20JSON%2C%20JSON%20SCHEMA/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1mCpaiFpZFWgYr5T5orten5HlXBl6l3iv/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/18-JSON-Validacion"
+  },
+  {
+    "id": "lm-19-json-csv-sqlite",
+    "subject": "lm",
+    "title": "RA5,6- JSON TO CSV, SQLITE",
+    "exercise": "/ejercicios/lm/RA5%2C6-%20JSON%20TO%20CSV%2C%20SQLITE/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1f9vuCX9gVvA8zUuBRbkHWf__riJNqTXL/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/lm-soluciones/tree/main/19-JSON-CSV-SQLite"
+  },
+  {
+    "id": "dapw-01-docker-1-a-10",
+    "subject": "dapw",
+    "title": "Docker 1..10",
+    "exercise": "/ejercicios/dapw/Docker%201..10/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1MDnre3Ea-1AvMA5FXIVyDZir_2nfOlGB/view",
+    "github": "https://github.com/diegaless/dapw-soluciones/tree/main/01-Docker-1-a-10"
+  },
+  {
+    "id": "dapw-02-flask-cat-app",
+    "subject": "dapw",
+    "title": "Flask Cat App – Evaluable",
+    "exercise": "/ejercicios/dapw/Flask%20Cat%20App%20%E2%80%93%20Evaluable/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/19hoJHQMUIadkf-2s8cWiDRGc4mPAl-_x/view",
+    "github": "https://github.com/diegaless/dapw-soluciones/tree/main/02-Flask-Cat-App"
+  },
+  {
+    "id": "dapw-03-dice-app",
+    "subject": "dapw",
+    "title": "DICE-APP:EVALUABLE",
+    "exercise": "/ejercicios/dapw/DICE-APP_EVALUABLE/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1pC3XEGHF5TnjzB5XdWeAAHQI0-La-lXU/view",
+    "github": "https://github.com/diegaless/dapw-soluciones/tree/main/03-Dice-App"
+  },
+  {
+    "id": "dapw-04-viaje-estudios",
+    "subject": "dapw",
+    "title": "VIAJE-ESTUDIOS:EVALUABLE",
+    "exercise": "/ejercicios/dapw/VIAJE-ESTUDIOS_EVALUABLE/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/14v7ebVS0-4xakfmrKSNl0Tf15W221SsH/view",
+    "github": "https://github.com/diegaless/dapw-soluciones/tree/main/04-Viaje-estudios"
+  },
+  {
+    "id": "dapw-05-compose-1",
+    "subject": "dapw",
+    "title": "COMPOSE 1",
+    "exercise": "/ejercicios/dapw/COMPOSE%201/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1DqjFaGcaVJYYLjUKMzb2a8ibF-lhsQ2p/view",
+    "github": "https://github.com/diegaless/dapw-soluciones/tree/main/05-Compose-1"
+  },
+  {
+    "id": "dapw-06-compose-2-y-3",
+    "subject": "dapw",
+    "title": "COMPOSE 2 Y 3 --SOLO ALUMNOS AUSENTES",
+    "exercise": "/ejercicios/dapw/COMPOSE%202%20Y%203%20--SOLO%20ALUMNOS%20AUSENTES/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1C1mvgCESwXLgv5GyXmJsst54VeHtdGFc/view",
+    "github": "https://github.com/diegaless/dapw-soluciones/tree/main/06-Compose-2-y-3"
+  },
+  {
+    "id": "dapw-07-compose-4",
+    "subject": "dapw",
+    "title": "COMPOSE 4",
+    "exercise": "/ejercicios/dapw/COMPOSE%204/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1ZAQNsrwN7XgXVHERqeIQWn1g3P6T4ZDQ/view",
+    "github": "https://github.com/diegaless/dapw-soluciones/tree/main/07-Compose-4"
+  },
+  {
+    "id": "dapw-08-compose-dev",
+    "subject": "dapw",
+    "title": "COMPOSE -- DEV STAGE",
+    "exercise": "/ejercicios/dapw/COMPOSE%20--%20DEV%20STAGE/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1lpL1frRED_-Jd9V7uEVYfAqBFxDpH_94/view",
+    "github": "https://github.com/diegaless/dapw-soluciones/tree/main/08-Compose-Dev"
+  },
+  {
+    "id": "dapw-09-compose-prod-1",
+    "subject": "dapw",
+    "title": "COMPOSE - PROD STAGE 1",
+    "exercise": "/ejercicios/dapw/COMPOSE%20-%20PROD%20STAGE%201/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1ZO025NucJxDnUbHc5WwpBgaXizAfj7Jb/view",
+    "github": "https://github.com/diegaless/dapw-soluciones/tree/main/09-Compose-Prod-1"
+  },
+  {
+    "id": "dapw-10-compose-prod-2",
+    "subject": "dapw",
+    "title": "COMPOSE -- PROD STAGE 2",
+    "exercise": "/ejercicios/dapw/COMPOSE%20--%20PROD%20STAGE%202/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1bo_neNn27mU2ekvYIM5w8DnsGf1EDesF/view",
+    "github": "https://github.com/diegaless/dapw-soluciones/tree/main/10-Compose-Prod-2"
+  },
+  {
+    "id": "dapw-11-despliegue-remoto",
+    "subject": "dapw",
+    "title": "Despliegue remoto — Ampliación de Prod Stage 2",
+    "exercise": "/ejercicios/dapw/Despliegue%20remoto/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1ulpov38jpDcCWnZS2bBJnXYzwHZRp7BD/view",
+    "github": "https://github.com/diegaless/dapw-soluciones/tree/main/11-Despliegue-remoto"
+  },
+  {
+    "id": "dapw-12-defensa-final",
+    "subject": "dapw",
+    "title": "DEFENSA FINAL",
+    "exercise": "/ejercicios/dapw/DEFENSA%20FINAL/TAREA.html",
+    "pdf": "https://drive.google.com/file/d/1mQT951FDwTPGLt9cV5TAASC7H-O9FO2-/view",
+    "github": "https://github.com/diegaless/dapw-soluciones/tree/main/12-Defensa-final"
+  }
+]

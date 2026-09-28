@@ -1,0 +1,53 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Estados: solo mode, publishAt y updatedAt. No contienen soluciones ni credenciales.
+    // Archivos: manifiesto inmutable taskId/size/parts/sha256 y partes binarias.
+    function isTeacher() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.firebase.sign_in_provider == 'google.com'
+        && exists(/databases/$(database)/documents/teacherAccounts/$(request.auth.uid))
+        && get(/databases/$(database)/documents/teacherAccounts/$(request.auth.uid)).data.enabled == true;
+    }
+    function isPublished(taskId) {
+      let state = get(/databases/$(database)/documents/solutionStates/$(taskId)).data;
+      return state.mode == 'public'
+        || (state.mode == 'scheduled' && state.publishAt is timestamp && request.time >= state.publishAt);
+    }
+    function validState() {
+      let value = request.resource.data;
+      return value.keys().hasAll(['mode', 'publishAt', 'updatedAt'])
+        && value.keys().hasOnly(['mode', 'publishAt', 'updatedAt'])
+        && value.mode in ['private', 'public', 'scheduled']
+        && value.updatedAt == request.time
+        && ((value.mode in ['private', 'public'] && value.publishAt == null)
+          || (value.mode == 'scheduled' && value.publishAt is timestamp
+            && value.publishAt > request.time
+            && value.publishAt < request.time + duration.value(366, 'd')));
+    }
+    match /solutionStates/{taskId} {
+      allow get: if true;
+      allow list: if isTeacher();
+      allow update: if isTeacher() && validState();
+      // Altas y contenido se sincronizan con una credencial administrativa, nunca desde el navegador.
+      allow create, delete: if false;
+    }
+    match /teacherAccounts/{uid} {
+      allow get: if isTeacher() && request.auth.uid == uid;
+      allow list, write: if false;
+    }
+    match /solutionFiles/{fileId} {
+      allow get: if isTeacher() || isPublished(resource.data.taskId);
+      allow list, write: if false;
+      match /parts/{partId} {
+        allow get: if isTeacher() || isPublished(
+          get(/databases/$(database)/documents/solutionFiles/$(fileId)).data.taskId);
+        allow list, write: if false;
+      }
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

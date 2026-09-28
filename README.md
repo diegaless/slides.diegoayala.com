@@ -26,6 +26,12 @@ la tipografía y el selector de tema mediante `styles.css` y `theme.js`.
   los ejercicios y el puente a diapositivas. Usa el tema compartido; sus estilos
   específicos están en `fem/fem.css` y el enlace funciona también sin JavaScript.
 - `go/index.html`: puente estable a una diapositiva por su identificador interno.
+- `profesor/index.html`: acceso con Google para publicar, cerrar o programar las
+  soluciones de cada tarea. El enlace está en el pie de las cuatro secciones.
+- `soluciones/index.html`: visor PDF y descarga ZIP de las soluciones abiertas.
+  Usa un proyecto Firebase independiente en Spark, sin facturación. Las 39
+  tareas iniciales permanecen privadas hasta que el profesor las abra.
+  Configuración, protección y mantenimiento: [panel de profesor](docs/profesor/README.md).
 
 ## Enlaces estables a una diapositiva
 
@@ -124,7 +130,9 @@ los materiales siguen disponibles dentro de cada tarea.
 conserva la cabecera y estas adaptaciones al regenerar los HTML. Sin JavaScript
 se ocultan los controles de selección; los enlaces y el ZIP completo siguen disponibles.
 
-El lateral de cada tarea muestra únicamente el botón «Descargar PDF», con los
+El lateral de cada tarea muestra el botón «Descargar PDF» y, cuando tiene
+solución preparada, sus enlaces al PDF y código protegidos. Se utiliza
+`assets/solutions/exercise.mjs` para mostrar su disponibilidad. Mantiene los
 ajustes de `tarea-web.css`. Se eliminan el panel «Sobre esta tarea» —fechas,
 estado y puntuación— y la nota sobre el contenido del PDF.
 

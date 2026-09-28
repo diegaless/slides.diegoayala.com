@@ -557,6 +557,7 @@ button {
   left: 0;
   z-index: 10;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 24px;
@@ -703,6 +704,9 @@ button {
     font-size: 0.66rem;
     letter-spacing: 0.16em;
   }
+
+  .site-footer .teacher-separator { display:none; }
+  .site-footer .teacher-link { flex-basis:100%; text-align:center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
