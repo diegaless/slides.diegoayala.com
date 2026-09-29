@@ -5,10 +5,18 @@ El profesor inicia sesión con Google y elige, por tarea, **Publicar**, cerrar e
 acceso o **Programar** una fecha. El alumnado no necesita iniciar sesión para
 consultar soluciones públicas. Las copias que ya haya descargado se conservan.
 
+En el enunciado, **Solución PDF** abre el PDF directamente en un visor sobre el
+ejercicio, con descarga y cierre; **Código ZIP** descarga sin cambiar de página.
+Funciona para soluciones publicadas y para el profesor con sesión iniciada,
+aunque sigan privadas o programadas. Cada clic comprueba el acceso en las reglas
+del servidor: si no hay acceso, abre el original de Drive o GitHub, que mantiene
+sus propios permisos. Los originales también son la alternativa si no se puede
+cargar la copia, al abrir en otra pestaña o con JavaScript desactivado.
+
 **Ver solución** permite al profesor consultar PDF y código aunque la tarea
 siga privada o programada. El visor también ofrece los originales en Drive y
 GitHub a la cuenta autorizada. Consultar nunca cambia el estado de publicación.
-Si se llega a una solución privada sin sesión, **Entrar como profesor** permite
+Si se llega al visor del panel sin sesión, **Entrar como profesor** permite
 identificarse y abrir ese mismo archivo, sin pasar primero por el panel.
 
 La sesión se conserva en la pestaña hasta cerrarla o pulsar **Cerrar sesión**.
@@ -17,7 +25,8 @@ no perder la identificación. En otra pestaña independiente se puede iniciar
 sesión desde el propio visor. No se guarda una sesión permanente en el equipo.
 Los enunciados con soluciones autorizan en su CSP la versión concreta del SDK
 y los orígenes de Firebase necesarios para comprobar el estado y la cuenta;
-el resto de restricciones de contenido se conservan.
+el visor admite únicamente los PDF obtenidos como `blob:`. El resto de
+restricciones de contenido se conservan. Al cerrar el visor se libera el archivo.
 
 ## Proyecto y coste
 
@@ -118,3 +127,9 @@ También se comprobó el acceso directo con Google desde una solución privada,
 la lectura del PDF y descarga del ZIP sin publicarla, la conservación de sesión
 al navegar entre panel, enunciado y visor, y el bloqueo tras cerrar sesión. La
 vista simultánea de un visitante permaneció cerrada durante toda la prueba.
+
+Acceso directo desde el enunciado verificado con una solución privada real y
+sesión de profesor, y con una solución pública anónima en los emuladores. Ambos
+abren PDF y descargan el ZIP idéntico por SHA-256. Tras cerrar la publicación en
+el emulador, el mismo enlace lleva a GitHub; sin sesión en la web, el PDF privado
+lleva a Drive. No se cambia ninguna publicación real durante estas pruebas.

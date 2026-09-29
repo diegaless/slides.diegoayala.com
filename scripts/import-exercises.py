@@ -216,6 +216,10 @@ def apply_task_solutions(html, key):
         "https://identitytoolkit.googleapis.com https://securetoken.googleapis.com; "
         "frame-src https://slides-profesor-diego.firebaseapp.com;",
     )
+    html = html.replace(
+        "frame-src https://slides-profesor-diego.firebaseapp.com;",
+        "frame-src blob: https://slides-profesor-diego.firebaseapp.com; object-src blob:;",
+    )
     folder = unquote('/'.join(urlsplit(solutions['github']).path.strip('/').split('/')[4:]))
     solution_id = key.split('/', 1)[0] + '-' + re.sub('[^a-z0-9]+', '-', folder.lower()).strip('-')
     destinations = (
@@ -229,10 +233,9 @@ def apply_task_solutions(html, key):
         if url.scheme != "https" or url.netloc != host:
             raise ValueError(f"Enlace de solución inválido: {key}/{field}")
         kind = 'pdf' if field == 'pdf' else 'codigo'
-        href = f'/soluciones/?tarea={solution_id}&archivo={kind}'
         links.append(
             '<a class="solution-link" href="' + escape(href, quote=True)
-            + '"><span>' + label
+            + f'" data-solution-kind="{kind}"><span>' + label
             + '</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" '
             'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>')
     section = (

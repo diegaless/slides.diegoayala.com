@@ -15,6 +15,9 @@ la tipografía y el selector de tema mediante `styles.css` y `theme.js`.
   asignatura se selecciona siempre «Diapositivas». Solo hay una asignatura desplegada.
 - `ejercicios/`: biblioteca de ejercicios por asignatura, con los HTML, CSS y
   descargas de la biblioteca existente en el backup de Teams.
+  «Solución PDF» abre el visor sobre el ejercicio y «Código ZIP» descarga el
+  archivo si está publicado o hay sesión de profesor. Sin acceso, abren el
+  original en Drive o GitHub, que comprueba sus propios permisos.
 - `sef/index.html`: certificados SEF con módulos desplegables.
 - `rm-skills/index.html`: convocatoria y preparación de Desarrollo web (modalidad 17),
   con pruebas oficiales anteriores, criterios de evaluación y recursos por edición.
