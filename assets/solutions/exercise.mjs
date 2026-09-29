@@ -1,7 +1,22 @@
-import {visibility} from './domain.mjs';
+import {visibility,timestampMillis} from './domain.mjs';
 
 const section=document.querySelector('.task-solutions[data-solution-id]');
 if(section) {
+  const heading=document.createElement('div');
+  heading.className='solution-heading';
+  const title=section.querySelector('h2');
+  title.before(heading); heading.append(title);
+  const publish=document.createElement('button');
+  publish.type='button'; publish.className='solution-publish'; publish.hidden=true;
+  publish.setAttribute('role','switch');
+  publish.setAttribute('aria-label','Publicar las soluciones de esta tarea');
+  publish.setAttribute('aria-checked','false');
+  publish.innerHTML='<span class="solution-publish-track" aria-hidden="true"><span class="solution-publish-thumb">'+
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+
+    '<rect x="5" y="10" width="14" height="11" rx="2"/><path class="lock-closed" d="M8 10V6a4 4 0 0 1 8 0v4"/>'+
+    '<path class="lock-open" d="M8 10V6a4 4 0 0 1 7.5-2"/><path d="M12 14v3"/></svg></span></span>'+
+    '<span class="solution-publish-label" aria-hidden="true">Privada</span>';
+  heading.append(publish);
   const status=document.createElement('p');
   status.className='solution-availability';
   status.setAttribute('role','status');
@@ -12,20 +27,77 @@ if(section) {
   section.append(session);
   const logout=session.querySelector('button');
   const links=[...section.querySelectorAll('a[data-solution-kind]')];
-  let timeout, busy=false, preview, revision=0;
+  let timeout, busy=false, preview, revision=0, teacherAccess=false, publicationState=null, stateReady=false;
   const urls=new Set();
 
   function setTeacher(teacher) {
+    teacherAccess=teacher;
+    publish.hidden=!teacher;
+    if(!teacher) {publicationState=null; stateReady=false;}
+    renderPublication();
     const code=links.find(link=>link.dataset.solutionKind==='codigo');
     if(code)code.querySelector('span').textContent=teacher?'Código en GitHub':'Código ZIP';
   }
 
   function setBusy(value) {
     busy=value; logout.disabled=value;
+    publish.disabled=value||!stateReady;
     links.forEach(link=>value?link.setAttribute('aria-disabled','true'):link.removeAttribute('aria-disabled'));
     if(value)section.setAttribute('aria-busy','true');
     else section.removeAttribute('aria-busy');
   }
+
+  function renderPublication() {
+    const mode=visibility(publicationState);
+    publish.setAttribute('aria-checked',String(mode==='public'));
+    publish.disabled=busy||!stateReady;
+    publish.querySelector('.solution-publish-label').textContent=!stateReady?'Sin estado':
+      mode==='public'?'Pública':mode==='scheduled'?'Programada':'Privada';
+    let description=mode==='public'?'Hacer privadas las soluciones de esta tarea':'Publicar el PDF y el código de esta tarea';
+    const date=timestampMillis(publicationState?.publishAt);
+    if(mode==='scheduled'&&Number.isFinite(date)) {
+      description=`Programada para ${new Date(date).toLocaleString('es-ES')}. Pulsa para publicar ahora.`;
+    }
+    publish.title=stateReady?description:'No se ha podido consultar el estado. Recarga la página para volver a intentarlo.';
+  }
+
+  function scheduleRefresh() {
+    clearTimeout(timeout);
+    if(visibility(publicationState)==='scheduled')timeout=setTimeout(refresh,60_000);
+  }
+
+  publish.addEventListener('click',async()=>{
+    if(busy||!teacherAccess||!stateReady)return;
+    const mode=visibility(publicationState)==='public'?'private':'public';
+    revision++; clearTimeout(timeout); setBusy(true);
+    status.textContent='Guardando el acceso a las soluciones…';
+    try {
+      const client=await import('./client.mjs');
+      setTeacher(client.isTeacher(await client.currentUser()));
+      if(!teacherAccess)throw new Error('teacher-access');
+      publicationState=await client.setState(section.dataset.solutionId,mode);
+      stateReady=Boolean(publicationState);
+      status.textContent=visibility(publicationState)==='public'?
+        'Soluciones públicas: el alumnado ya puede abrir el PDF y descargar el código.':
+        'Soluciones privadas: el acceso del alumnado está cerrado.';
+    } catch {
+      // Una respuesta perdida no significa que la escritura haya fallado.
+      // Consultar de nuevo antes de mostrar el estado definitivo.
+      stateReady=false;
+      if(teacherAccess) {
+        try {
+          const client=await import('./client.mjs');
+          publicationState=await client.getState(section.dataset.solutionId);
+          stateReady=Boolean(publicationState);
+        } catch { /* Se mantiene desactivado hasta poder consultar el estado. */ }
+      }
+      status.textContent=!teacherAccess?'Tu sesión ya no tiene acceso de profesor.':stateReady?
+        'No se ha podido completar el cambio. Se muestra el estado actual; vuelve a intentarlo.':
+        'No se ha podido confirmar el cambio. Recarga la página para comprobar el estado.';
+    } finally {
+      renderPublication(); setBusy(false); scheduleRefresh();
+    }
+  });
 
   logout.addEventListener('click',async()=>{
     if(busy)return;
@@ -116,6 +188,7 @@ if(section) {
     clearTimeout(timeout);
     if(busy)return;
     const check=++revision;
+    stateReady=false; publish.disabled=true;
     try {
       const {backend,getState,currentUser,isTeacher}=await import('./client.mjs');
       const {auth}=backend();
@@ -127,17 +200,18 @@ if(section) {
       if(check!==revision)return;
       const teacher=isTeacher(user);
       setTeacher(teacher);
-      if(teacher) {
-        status.textContent='Acceso de profesor: PDF en Drive y código en GitHub.';
-        return;
-      }
       const state=await getState(section.dataset.solutionId);
       if(check!==revision)return;
-      status.textContent=visibility(state)==='public'?'Abre el PDF o descarga el ZIP.':
+      publicationState=state; stateReady=Boolean(state); renderPublication();
+      status.textContent=teacher?'Acceso de profesor: PDF en Drive y código en GitHub.':
+        visibility(state)==='public'?'Abre el PDF o descarga el ZIP.':
         'Soluciones privadas. Los enlaces abren Drive o GitHub, donde necesitas permiso.';
-      if(state?.mode==='scheduled')timeout=setTimeout(refresh,60_000);
+      scheduleRefresh();
     } catch {
-      if(check===revision)status.textContent='Si la solución no está disponible, el enlace abrirá su original.';
+      if(check===revision) {
+        renderPublication();
+        status.textContent='No se ha podido consultar el estado. Los enlaces siguen abriendo Drive o GitHub.';
+      }
     }
   }
   refresh();

@@ -1,7 +1,7 @@
 import {visibility, visibleTasks, timestampMillis} from '../assets/solutions/domain.mjs';
 
 const $ = id => document.getElementById(id);
-let client, catalog = [], states = new Map(), pending = new Set();
+let client, catalog = [], states = new Map(), pending = new Set(), revision=0;
 const dateFormat = new Intl.DateTimeFormat('es-ES', {dateStyle:'medium',timeStyle:'short'});
 const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 function node(tag, text, className) {
@@ -23,6 +23,7 @@ function stateLabel(state) {
 }
 async function change(task, mode, date) {
   if (pending.has(task.id)) return;
+  revision++;
   pending.add(task.id);
   const row = document.querySelector(`[data-task-id="${task.id}"]`);
   row.setAttribute('aria-busy','true');
@@ -101,6 +102,7 @@ function render() {
   $('counts').textContent=`${tasks.length} tareas · ${publics} públicas · ${scheduled} programadas`;
 }
 async function showDashboard(user) {
+  revision++;
   $('account-name').textContent=user.email;
   message('Cargando tus tareas…');
   const response = await fetch('../assets/solutions/catalog.json');
@@ -117,6 +119,7 @@ $('google-login').addEventListener('click',async()=>{
   finally { $('google-login').disabled=false; }
 });
 $('logout').addEventListener('click',async()=>{
+  revision++;
   try {
     await client.logout(); states.clear(); $('task-list').replaceChildren();
     $('dashboard').hidden=true; $('login-screen').hidden=false; message('Sesión cerrada.');
@@ -124,9 +127,26 @@ $('logout').addEventListener('click',async()=>{
 });
 $('subject-filter').addEventListener('change',render);
 $('search-filter').addEventListener('input',render);
-window.addEventListener('pageshow', async event=>{
-  if (event.persisted && client && !client.isTeacher(await client.currentUser())) location.reload();
-});
+async function refreshDashboard() {
+  if(!client||$('dashboard').hidden||pending.size)return;
+  const check=++revision;
+  try {
+    const user=await client.currentUser();
+    if(check!==revision)return;
+    if(!client.isTeacher(user)) {location.reload(); return;}
+    const latest=await client.getAllStates();
+    if(check!==revision||pending.size||$('dashboard').hidden)return;
+    const changed=latest.size!==states.size||[...latest].some(([id,state])=>{
+      const previous=states.get(id);
+      return state.mode!==previous?.mode||timestampMillis(state.publishAt)!==timestampMillis(previous?.publishAt);
+    });
+    states=latest;
+    // Conservar búsquedas y fechas que se estén editando si nada ha cambiado.
+    if(changed)render();
+  } catch(problem) {if(check===revision)error(problem);}
+}
+window.addEventListener('focus',refreshDashboard);
+window.addEventListener('pageshow',event=>{if(event.persisted)refreshDashboard();});
 try {
   client = await import('../assets/solutions/client.mjs');
   const user = await client.currentUser();

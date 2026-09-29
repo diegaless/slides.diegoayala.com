@@ -56,6 +56,82 @@
   height: 16px;
 }
 
+.solution-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.solution-heading:has(.solution-publish:not([hidden])) h2 { padding-top: 5px; }
+
+.solution-publish {
+  flex: 0 0 auto;
+  min-width: 54px;
+  min-height: 44px;
+  padding: 4px 2px;
+  border: 0;
+  border-radius: 4px;
+  color: var(--muted);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.solution-publish:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.solution-publish-track {
+  display: block;
+  box-sizing: border-box;
+  width: 36px;
+  height: 20px;
+  padding: 2px;
+  border: 1px solid color-mix(in srgb, var(--muted) 65%, transparent);
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--muted) 25%, var(--bg));
+  transition: background .15s ease, border-color .15s ease;
+}
+
+.solution-publish-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  color: #374151;
+  background: #e2e8f0;
+  transition: transform .15s ease;
+}
+
+.task-solutions .solution-publish svg { width: 10px; height: 10px; flex-basis: 10px; }
+.solution-publish .lock-open { display: none; }
+.solution-publish-label { font-size: .68rem; line-height: 1.2; }
+.solution-publish[aria-checked="true"] { color: var(--accent); }
+.solution-publish[aria-checked="true"] .solution-publish-track {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+.solution-publish[aria-checked="true"] .solution-publish-thumb {
+  transform: translateX(16px);
+  color: #6366f1;
+  background: white;
+}
+.solution-publish[aria-checked="true"] .lock-closed { display: none; }
+.solution-publish[aria-checked="true"] .lock-open { display: block; }
+.solution-publish:hover:not(:disabled) .solution-publish-track { border-color: var(--ink); }
+.solution-publish:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.solution-publish:disabled { opacity: .6; cursor: progress; }
+
+@media (prefers-reduced-motion: reduce) {
+  .solution-publish-track, .solution-publish-thumb { transition: none; }
+}
+
 .authored-instructions h3 {
   margin: 28px 0 12px;
   font-size: 1em;
