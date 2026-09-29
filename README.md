@@ -15,9 +15,10 @@ la tipografía y el selector de tema mediante `styles.css` y `theme.js`.
   asignatura se selecciona siempre «Diapositivas». Solo hay una asignatura desplegada.
 - `ejercicios/`: biblioteca de ejercicios por asignatura, con los HTML, CSS y
   descargas de la biblioteca existente en el backup de Teams.
-  «Solución PDF» abre el visor sobre el ejercicio y «Código ZIP» descarga el
-  archivo si está publicado o hay sesión de profesor. Sin acceso, abren el
-  original en Drive o GitHub, que comprueba sus propios permisos.
+  Con sesión de profesor, las soluciones abren el PDF en Drive y el código en
+  GitHub; el lateral permite cerrar sesión. El alumnado puede ver el PDF y
+  descargar el ZIP de las soluciones publicadas. Sin acceso a la copia, los
+  enlaces abren el original en Drive o GitHub, con sus propios permisos.
 - `sef/index.html`: certificados SEF con módulos desplegables.
 - `rm-skills/index.html`: convocatoria y preparación de Desarrollo web (modalidad 17),
   con pruebas oficiales anteriores, criterios de evaluación y recursos por edición.
@@ -31,8 +32,8 @@ la tipografía y el selector de tema mediante `styles.css` y `theme.js`.
 - `go/index.html`: puente estable a una diapositiva por su identificador interno.
 - `profesor/index.html`: acceso con Google para publicar, cerrar o programar las
   soluciones de cada tarea. Se entra desde el pequeño candado a la derecha del
-  pie de las cuatro secciones. «Ver solución» abre las privadas para el profesor
-  sin publicarlas; la navegación interna conserva su sesión en la pestaña.
+  pie de las cuatro secciones. «PDF en Drive» y «Código en GitHub» abren los
+  originales; la navegación interna conserva su sesión en la pestaña.
 - `soluciones/index.html`: visor PDF y descarga ZIP de las soluciones abiertas.
   Usa un proyecto Firebase independiente en Spark, sin facturación. Las 39
   tareas iniciales permanecen privadas hasta que el profesor las abra.

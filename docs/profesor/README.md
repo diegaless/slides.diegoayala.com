@@ -5,19 +5,21 @@ El profesor inicia sesión con Google y elige, por tarea, **Publicar**, cerrar e
 acceso o **Programar** una fecha. El alumnado no necesita iniciar sesión para
 consultar soluciones públicas. Las copias que ya haya descargado se conservan.
 
-En el enunciado, **Solución PDF** abre el PDF directamente en un visor sobre el
-ejercicio, con descarga y cierre; **Código ZIP** descarga sin cambiar de página.
-Funciona para soluciones publicadas y para el profesor con sesión iniciada,
-aunque sigan privadas o programadas. Cada clic comprueba el acceso en las reglas
-del servidor: si no hay acceso, abre el original de Drive o GitHub, que mantiene
-sus propios permisos. Los originales también son la alternativa si no se puede
-cargar la copia, al abrir en otra pestaña o con JavaScript desactivado.
+Con sesión de profesor, **Solución PDF** abre el visor original de Drive y
+**Código en GitHub** abre la carpeta del repositorio, sin descargar un ZIP.
+Debajo aparecen **Panel de profesor** y **Cerrar sesión**, disponibles también
+si no se puede consultar el estado de publicación. Cerrar sesión elimina el
+acceso de profesor en esa pestaña y actualiza los enlaces del ejercicio.
 
-**Ver solución** permite al profesor consultar PDF y código aunque la tarea
-siga privada o programada. El visor también ofrece los originales en Drive y
-GitHub a la cuenta autorizada. Consultar nunca cambia el estado de publicación.
-Si se llega al visor del panel sin sesión, **Entrar como profesor** permite
-identificarse y abrir ese mismo archivo, sin pasar primero por el panel.
+Para el alumnado, una solución publicada abre el PDF sobre el ejercicio y
+descarga el ZIP con un clic. Cada descarga comprueba el acceso en las reglas
+del servidor. Sin acceso, los enlaces abren los originales de Drive o GitHub,
+que mantienen sus permisos. También son la alternativa si falla la carga de la
+copia, al abrir en otra pestaña o con JavaScript desactivado.
+
+El panel enlaza directamente **PDF en Drive** y **Código en GitHub**. Los enlaces
+antiguos al visor de la web siguen funcionando: al identificar al profesor,
+redirigen al original del archivo elegido. Consultar no publica soluciones.
 
 La sesión se conserva en la pestaña hasta cerrarla o pulsar **Cerrar sesión**.
 Los enlaces internos del panel y de las soluciones mantienen esa pestaña para
@@ -128,8 +130,9 @@ la lectura del PDF y descarga del ZIP sin publicarla, la conservación de sesió
 al navegar entre panel, enunciado y visor, y el bloqueo tras cerrar sesión. La
 vista simultánea de un visitante permaneció cerrada durante toda la prueba.
 
-Acceso directo desde el enunciado verificado con una solución privada real y
-sesión de profesor, y con una solución pública anónima en los emuladores. Ambos
-abren PDF y descargan el ZIP idéntico por SHA-256. Tras cerrar la publicación en
-el emulador, el mismo enlace lleva a GitHub; sin sesión en la web, el PDF privado
-lleva a Drive. No se cambia ninguna publicación real durante estas pruebas.
+Acceso del alumnado verificado con una solución pública anónima en los
+emuladores: PDF en el visor y ZIP idéntico por SHA-256. Tras cerrar la publicación
+en el emulador, el mismo enlace lleva a GitHub; sin sesión en la web, el PDF
+privado lleva a Drive. El profesor usa ahora esos originales directamente y
+puede cerrar sesión desde el propio enunciado. No se cambia ninguna publicación
+real durante estas pruebas.

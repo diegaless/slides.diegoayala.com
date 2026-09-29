@@ -58,10 +58,10 @@ function render() {
     const meta = node('div',null,'task-meta');
     const badge = node('span',state ? stateLabel(state) : 'Pendiente de preparar','visibility-label'); badge.dataset.mode=mode;
     meta.append(badge);
-    const preview = node('a','Ver solución','preview-link');
-    preview.href=`../soluciones/?tarea=${encodeURIComponent(task.id)}&archivo=pdf`;
+    const preview = node('a','PDF en Drive','preview-link');
+    preview.href=task.pdf; preview.target='_blank'; preview.rel='noopener';
     meta.append(preview);
-    for (const [label,url] of [['PDF original',task.pdf],['Código original',task.github]]) {
+    for (const [label,url] of [['Código en GitHub',task.github]]) {
       const reference = node('a',label,'reference-link'); reference.href=url; reference.target='_blank'; reference.rel='noopener'; meta.append(reference);
     }
     info.append(meta); main.append(info);

@@ -18,6 +18,10 @@ async function load(kind) {
   busy=true; $('pdf').disabled=true; $('code').disabled=true; $('logout').disabled=true; $('error').hidden=true;
   $('status').textContent=kind==='pdf'?'Preparando el PDF…':'Preparando el código…';
   try {
+    if(client.isTeacher(await client.currentUser())) {
+      location.assign($(kind==='pdf'?'original-pdf':'original-code').href);
+      return;
+    }
     const file=await client.getFile(id,kind);
     const url=URL.createObjectURL(file.blob); urls.add(url);
     if(kind==='pdf') {
@@ -46,6 +50,8 @@ async function refreshAccess(autoOpen=false) {
     const teacher=client.isTeacher(user);
     const mode=visibility(state);
     allowed=mode==='public'||teacher;
+    $('pdf').textContent=teacher?'Ver PDF en Drive':'Ver PDF';
+    $('code').textContent=teacher?'Ver código en GitHub':'Descargar código ZIP';
     $('teacher-session').hidden=!teacher;
     $('teacher-note').textContent=mode==='public'?'Has accedido como profesor.':
       mode==='scheduled'?'Vista de profesor: esta solución sigue programada para el alumnado.':

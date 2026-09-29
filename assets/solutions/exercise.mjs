@@ -6,9 +6,42 @@ if(section) {
   status.className='solution-availability';
   status.setAttribute('role','status');
   section.append(status);
+  const session=document.createElement('div');
+  session.className='solution-session'; session.hidden=true;
+  session.innerHTML='<a href="/profesor/">Panel de profesor</a><button type="button">Cerrar sesión</button>';
+  section.append(session);
+  const logout=session.querySelector('button');
   const links=[...section.querySelectorAll('a[data-solution-kind]')];
-  let timeout, busy=false, preview;
+  let timeout, busy=false, preview, revision=0;
   const urls=new Set();
+
+  function setTeacher(teacher) {
+    const code=links.find(link=>link.dataset.solutionKind==='codigo');
+    if(code)code.querySelector('span').textContent=teacher?'Código en GitHub':'Código ZIP';
+  }
+
+  function setBusy(value) {
+    busy=value; logout.disabled=value;
+    links.forEach(link=>value?link.setAttribute('aria-disabled','true'):link.removeAttribute('aria-disabled'));
+    if(value)section.setAttribute('aria-busy','true');
+    else section.removeAttribute('aria-busy');
+  }
+
+  logout.addEventListener('click',async()=>{
+    if(busy)return;
+    revision++; clearTimeout(timeout); setBusy(true);
+    status.textContent='Cerrando sesión…';
+    try {
+      const client=await import('./client.mjs');
+      await client.logout();
+      if(preview?.open)preview.close();
+      urls.forEach(release);
+      session.hidden=true; setTeacher(false);
+      status.textContent='Sesión de profesor cerrada.';
+    } catch {
+      status.textContent='No se ha podido cerrar la sesión. Vuelve a intentarlo.';
+    } finally {setBusy(false);}
+  });
 
   function release(url) {
     URL.revokeObjectURL(url);
@@ -45,15 +78,17 @@ if(section) {
     if(event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
     event.preventDefault();
     if(busy)return;
-    busy=true;
+    revision++; setBusy(true);
     const link=event.currentTarget;
     const kind=link.dataset.solutionKind;
-    links.forEach(item=>item.setAttribute('aria-disabled','true'));
-    section.setAttribute('aria-busy','true');
-    status.textContent=kind==='pdf'?'Abriendo el PDF…':'Preparando el ZIP…';
+    status.textContent=kind==='pdf'?'Abriendo el PDF…':'Abriendo el código…';
     try {
       const client=await import('./client.mjs');
-      await client.currentUser();
+      const user=await client.currentUser();
+      if(client.isTeacher(user)) {
+        window.location.assign(link.href);
+        return;
+      }
       // Las reglas deciden el acceso con la sesión y la hora del servidor.
       // No basta con el estado que se mostró al cargar el enunciado.
       const file=await client.getFile(section.dataset.solutionId,kind);
@@ -73,26 +108,36 @@ if(section) {
       // alternativa si la copia no puede cargarse por un fallo de conexión.
       status.textContent=kind==='pdf'?'Abriendo el original en Drive…':'Abriendo el código en GitHub…';
       window.location.assign(link.href);
-    } finally {
-      busy=false;
-      links.forEach(item=>item.removeAttribute('aria-disabled'));
-      section.removeAttribute('aria-busy');
-    }
+    } finally {setBusy(false);}
   }
   links.forEach(link=>link.addEventListener('click',openSolution));
 
   async function refresh() {
     clearTimeout(timeout);
     if(busy)return;
+    const check=++revision;
     try {
-      const {getState,currentUser,isTeacher}=await import('./client.mjs');
-      const [state,user]=await Promise.all([getState(section.dataset.solutionId),currentUser()]);
-      if(!busy)status.textContent=visibility(state)==='public'?'Abre el PDF o descarga el ZIP.':
-        isTeacher(user)?'Acceso de profesor. Estas soluciones siguen privadas para el alumnado.':
+      const {backend,getState,currentUser,isTeacher}=await import('./client.mjs');
+      const {auth}=backend();
+      await auth.authStateReady();
+      if(check!==revision)return;
+      // Cerrar sesión sigue disponible aunque falle la consulta del estado.
+      session.hidden=!auth.currentUser;
+      const user=await currentUser();
+      if(check!==revision)return;
+      const teacher=isTeacher(user);
+      setTeacher(teacher);
+      if(teacher) {
+        status.textContent='Acceso de profesor: PDF en Drive y código en GitHub.';
+        return;
+      }
+      const state=await getState(section.dataset.solutionId);
+      if(check!==revision)return;
+      status.textContent=visibility(state)==='public'?'Abre el PDF o descarga el ZIP.':
         'Soluciones privadas. Los enlaces abren Drive o GitHub, donde necesitas permiso.';
       if(state?.mode==='scheduled')timeout=setTimeout(refresh,60_000);
     } catch {
-      if(!busy)status.textContent='Si la solución no está disponible, el enlace abrirá su original.';
+      if(check===revision)status.textContent='Si la solución no está disponible, el enlace abrirá su original.';
     }
   }
   refresh();
