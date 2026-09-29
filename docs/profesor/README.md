@@ -1,6 +1,10 @@
 # Panel de soluciones
 
 Acceso: https://slides.diegoayala.com/profesor/ y el candado del pie de página.
+La entrada muestra el botón de Google centrado y el gag «Solo para Diego.
+Prueba y me quedo tus datos. 😏». Solo aparecen otros mensajes cuando se está
+preparando el acceso o hay un error. El texto es una broma; el cambio visual no
+añade ninguna recogida de datos ni modifica los permisos de las cuentas.
 El profesor inicia sesión con Google y elige, por tarea, **Publicar**, cerrar el
 acceso o **Programar** una fecha. El alumnado no necesita iniciar sesión para
 consultar soluciones públicas. Las copias que ya haya descargado se conservan.

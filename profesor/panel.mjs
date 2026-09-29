@@ -122,7 +122,7 @@ $('logout').addEventListener('click',async()=>{
   revision++;
   try {
     await client.logout(); states.clear(); $('task-list').replaceChildren();
-    $('dashboard').hidden=true; $('login-screen').hidden=false; message('Sesión cerrada.');
+    $('dashboard').hidden=true; $('login-screen').hidden=false; message('');
   } catch(problem) {error(problem);}
 });
 $('subject-filter').addEventListener('change',render);
