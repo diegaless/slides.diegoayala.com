@@ -1,0 +1,18 @@
+{
+  "rmskills/2023": {
+    "title": "RM Skills 2023 · ejercicios 1 y 2",
+    "exercise": "/rm-skills/#prueba-2023",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/1VraRNUXYdveLiiXvUEItbfLkyhFh7uvO/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/rmskills-soluciones/tree/main/2023"
+    }
+  },
+  "rmskills/2025": {
+    "title": "RM Skills 2025 · Conecta 4 y Trie",
+    "exercise": "/rm-skills/#prueba-2025",
+    "solutions": {
+      "pdf": "https://drive.google.com/file/d/18r-VBOKTBUhePD00GAEtkDx3AgmPZx_E/view?usp=drivesdk",
+      "github": "https://github.com/diegaless/rmskills-soluciones/tree/main/2025"
+    }
+  }
+}

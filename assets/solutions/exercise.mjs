@@ -1,15 +1,14 @@
 import {visibility,timestampMillis} from './domain.mjs';
 
-const section=document.querySelector('.task-solutions[data-solution-id]');
-if(section) {
+for(const section of document.querySelectorAll('.task-solutions[data-solution-id]')) {
   const heading=document.createElement('div');
   heading.className='solution-heading';
-  const title=section.querySelector('h2');
+  const title=section.querySelector('h2,h3');
   title.before(heading); heading.append(title);
   const publish=document.createElement('button');
   publish.type='button'; publish.className='solution-publish'; publish.hidden=true;
   publish.setAttribute('role','switch');
-  publish.setAttribute('aria-label','Publicar las soluciones de esta tarea');
+  publish.setAttribute('aria-label','Publicar las soluciones de '+(section.dataset.solutionTitle||'esta tarea'));
   publish.setAttribute('aria-checked','false');
   publish.innerHTML='<span class="solution-publish-track" aria-hidden="true"><span class="solution-publish-thumb">'+
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+
@@ -110,6 +109,7 @@ if(section) {
       urls.forEach(release);
       session.hidden=true; setTeacher(false);
       status.textContent='Sesión de profesor cerrada.';
+      window.dispatchEvent(new Event('solutions-logout'));
     } catch {
       status.textContent='No se ha podido cerrar la sesión. Vuelve a intentarlo.';
     } finally {setBusy(false);}
@@ -215,6 +215,14 @@ if(section) {
     }
   }
   refresh();
+  window.addEventListener('solutions-logout',()=>{
+    // Una edición puede cerrar la sesión de todas las soluciones de la página.
+    revision++; clearTimeout(timeout);
+    session.hidden=true; setTeacher(false);
+    if(preview?.open)preview.close();
+    urls.forEach(release);
+    status.textContent='Sesión de profesor cerrada.';
+  });
   window.addEventListener('focus',refresh);
   window.addEventListener('pagehide',()=>{
     clearTimeout(timeout);

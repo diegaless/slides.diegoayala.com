@@ -15,7 +15,8 @@
   border-top: 1px solid var(--line);
 }
 
-.task-aside .task-solutions h2 {
+.task-aside .task-solutions h2,
+.exam-solutions h3 {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -63,7 +64,7 @@
   gap: 8px;
 }
 
-.solution-heading:has(.solution-publish:not([hidden])) h2 { padding-top: 5px; }
+.solution-heading:has(.solution-publish:not([hidden])) :is(h2,h3) { padding-top: 5px; }
 
 .solution-publish {
   flex: 0 0 auto;

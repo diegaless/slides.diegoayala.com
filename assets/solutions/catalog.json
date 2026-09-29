@@ -310,5 +310,21 @@
     "exercise": "/ejercicios/dapw/DEFENSA%20FINAL/TAREA.html",
     "pdf": "https://drive.google.com/file/d/1mQT951FDwTPGLt9cV5TAASC7H-O9FO2-/view",
     "github": "https://github.com/diegaless/dapw-soluciones/tree/main/12-Defensa-final"
+  },
+  {
+    "id": "rmskills-2023",
+    "subject": "rmskills",
+    "title": "RM Skills 2023 · ejercicios 1 y 2",
+    "exercise": "/rm-skills/#prueba-2023",
+    "pdf": "https://drive.google.com/file/d/1VraRNUXYdveLiiXvUEItbfLkyhFh7uvO/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/rmskills-soluciones/tree/main/2023"
+  },
+  {
+    "id": "rmskills-2025",
+    "subject": "rmskills",
+    "title": "RM Skills 2025 · Conecta 4 y Trie",
+    "exercise": "/rm-skills/#prueba-2025",
+    "pdf": "https://drive.google.com/file/d/18r-VBOKTBUhePD00GAEtkDx3AgmPZx_E/view?usp=drivesdk",
+    "github": "https://github.com/diegaless/rmskills-soluciones/tree/main/2025"
   }
 ]

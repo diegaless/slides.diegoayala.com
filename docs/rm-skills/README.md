@@ -2,7 +2,8 @@
 
 Módulo de apoyo para la modalidad 17, incorporado a la navegación de DAM/DAW,
 SEF y los ejercicios. Usa los colores, tipografía y tema persistente del sitio.
-No requiere dependencias de producción, servicios externos ni compilación.
+Los enunciados no requieren compilación. Las soluciones usan el acceso
+protegido compartido con el resto de tareas.
 
 La convocatoria y el histórico siguen una propuesta visual de imagegen,
 implementada en HTML y CSS. El [prompt de diseño](design-prompt.md) documenta
@@ -36,8 +37,8 @@ Revisión de fuentes: **22 de septiembre de 2026**.
 | SpainSkills 2017: MisViajes | [Plan de pruebas](https://spain-skills.es/images/descargas/documentacion-skills-2017/pp/pp2017_17Desarrollo_WEB.pdf): proyecto pp. 3–7; módulos I–V en pp. 9, 11, 13, 15 y 17. [Descripción técnica](https://spain-skills.es/images/descargas/documentacion-skills-2017/dt/dt2017-17desarrolloweb.pdf). Ambos enlazados en el [archivo oficial de 2017](https://spain-skills.es/competiciones/estatal/spainskills-madrid-2017/documentacion-spainskills-2017) |
 | SpainSkills 2015: TempusFugit | [Plan de pruebas](https://spain-skills.es/images/descargas/documentacion-skills-2015/pp/pp-17disenoweb2015.pdf): proyecto pp. 2–5, puntuación y jornadas pp. 6–7. [Descripción técnica](https://spain-skills.es/images/descargas/documentacion-skills-2015/dt/dt17-disenoweb2015.pdf): tecnologías pp. 3–4, duración p. 6. Ambos enlazados en el [archivo oficial de 2015](https://spain-skills.es/competiciones/estatal/spainskills-madrid-2015/documentacion-spainskills-2015) |
 
-Se enlazan los originales; no se reescriben los test projects ni se publican
-soluciones. Los títulos breves y resúmenes facilitan localizar cada documento.
+Se enlazan los originales sin reescribir los test projects. Los títulos breves
+y resúmenes facilitan localizar cada documento.
 Las páginas de los enlaces `#page=` cuentan desde la primera página del archivo,
 no desde la numeración impresa. Los documentos originales se inspeccionaron
 también visualmente para comprobar el programa y la fila de Miralmonte.
@@ -112,6 +113,20 @@ modalidad 17. No se añaden fichas vacías ni enlaces genéricos para esos años
 
 ## Mantenimiento
 
+Desde el 29 de septiembre de 2026, las ediciones 2023 y 2025 incluyen soluciones
+de referencia en PDF y Java. Los archivos originales están en Drive privado y
+en `diegaless/rmskills-soluciones` (privado); el sitio solo contiene enlaces y
+metadatos. Se incorporan privadas al panel del profesor y pueden abrirse por
+edición desde su candado. El alumnado obtiene las copias protegidas únicamente
+cuando el profesor las publica. Ver [el panel](../profesor/README.md).
+
+2023 resuelve palíndromos y subconjuntos; ListaDECO no se implementa hasta recibir
+las clases originales, según lo solicitado por el profesor. 2025 resuelve los
+seis pasos de Conecta 4 y Trie, respetando el anexo. Cada entrega incorpora una
+matriz TP/DT, pruebas reproducibles y un informe de ejecuciones reales. Es material
+docente con asistencia de IA, no una entrega realizada bajo las condiciones de
+la competición.
+
 - `rm-skills/index.html`: texto, enlaces, fechas y fuentes. Revisar los estados de
   los plazos y la fecha de última comprobación cuando cambie la información.
   Todas las fichas muestran primero «Descripción técnica (DT)» y después
@@ -152,3 +167,10 @@ desbordamiento en tamaños móviles. No accede a servicios de publicación.
 Las fuentes externas se comprobaron mediante peticiones HTTP y se contrastaron
 con los documentos descargados para revisión. Se mantiene la web estática y sin
 seguimiento automático de convocatorias.
+
+Soluciones verificadas el 29 de septiembre de 2026: 24.447 comprobaciones Java
+y 24 ejecuciones de consola. En los emuladores se verificaron el filtro del
+panel, la publicación independiente de las dos ediciones, el cierre simultáneo
+de sesión, el PDF anónimo y el ZIP descargado (mismo SHA-256 que el original).
+Revisión visual de escritorio y móvil de 390 px. En producción se comprobaron
+los manifiestos y el rechazo de lectura anónima; ambas ediciones siguen privadas.

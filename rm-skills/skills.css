@@ -257,3 +257,9 @@
   .skills-section { padding: 28px 0; }
   .exam, .school-notice, .call-banner { break-inside: avoid; }
 }
+.exam-solutions { max-width: 660px; }
+.exam-solutions .solution-scope { margin: 10px 0 4px; font-size: .88rem; color: var(--muted); }
+.exam-solution-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+@media (max-width: 480px) {
+  .exam-solution-links { grid-template-columns: 1fr; gap: 0; }
+}

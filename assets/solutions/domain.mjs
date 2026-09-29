@@ -3,6 +3,7 @@ export const SUBJECTS = {
   lm: 'Lenguaje de Marcas',
   dapw: 'Despliegue de aplicaciones Web',
   pi: 'Proyecto Intermodular',
+  rmskills: 'RM Skills',
 };
 
 export function timestampMillis(value) {

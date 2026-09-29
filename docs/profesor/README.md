@@ -63,8 +63,8 @@ permanecen en Firebase CLI, fuera del repositorio y del navegador del alumnado.
 
 ## Actualizar soluciones
 
-Necesita Node 22+ y los repositorios privados `di-soluciones`, `lm-soluciones`
-y `dapw-soluciones` como carpetas hermanas. Solo se empaquetan archivos
+Necesita Node 22+ y los repositorios privados `di-soluciones`, `lm-soluciones`,
+`dapw-soluciones` y `rmskills-soluciones` como carpetas hermanas. Solo se empaquetan archivos
 versionados de `HEAD`; revisar y confirmar los cambios privados primero.
 
 ```sh
@@ -84,6 +84,13 @@ Revisar la cuota de almacenamiento al realizar muchas actualizaciones grandes.
 Los nuevos enlaces se conservan al regenerar tareas con
 `scripts/import-exercises.py`. No regenerar PDF de enunciados por cambios del
 panel: las soluciones se sirven por separado.
+
+RM Skills utiliza `scripts/exercise-content/rm-skills-solutions.json`, con una
+entrada por edición. El panel ofrece el filtro RM Skills y abre el desplegable
+del año correspondiente. Los dos bloques comparten sesión, pero tienen estados
+de publicación independientes. Cerrar sesión en uno oculta los controles de
+profesor en ambos. En 2023 solo están resueltos los ejercicios 1 y 2; ListaDECO
+se mantiene pendiente de los archivos auxiliares originales.
 
 Para autorizar otra cuenta de profesor, esta debe haber intentado entrar con
 Google primero. El propietario del proyecto ejecuta explícitamente:

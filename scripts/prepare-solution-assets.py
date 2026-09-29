@@ -12,8 +12,9 @@ PROJECTS=ROOT.parent
 OUTPUT=ROOT/'.private/solution-assets'
 OUTPUT.mkdir(parents=True,exist_ok=True)
 overrides=json.loads((ROOT/'scripts/exercise-content/overrides.json').read_text())
+overrides.update(json.loads((ROOT/'scripts/exercise-content/rm-skills-solutions.json').read_text()))
 catalog=[]; uploads=[]
-order={'di':0,'lm':1,'dapw':2,'pi':3}
+order={'di':0,'lm':1,'dapw':2,'pi':3,'rmskills':4}
 
 def git(repo,*args):
     return subprocess.check_output(['git','-C',str(repo),*args])
@@ -56,7 +57,7 @@ for key,entry in overrides.items():
     if path.exists():
         heading=re.search(r'<h1[^>]*>(.*?)</h1>',path.read_text(),re.S)
         if heading:title=html.unescape(re.sub('<[^>]+>','',heading[1])).strip()
-    catalog.append({'id':sid,'subject':subject,'title':title,'exercise':'/ejercicios/'+quote(key,safe='/')+'/TAREA.html',**entry['solutions']})
+    catalog.append({'id':sid,'subject':subject,'title':entry.get('title',title),'exercise':entry.get('exercise','/ejercicios/'+quote(key,safe='/')+'/TAREA.html'),**entry['solutions']})
 catalog.sort(key=lambda item:(order.get(item['subject'],9),item['id']))
 assert len({item['id'] for item in catalog})==len(catalog)
 (ROOT/'assets/solutions/catalog.json').write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
