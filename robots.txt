@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /scripts/
+Disallow: /tests/
+Disallow: /docs/
+
+Sitemap: https://slides.diegoayala.com/sitemap.xml

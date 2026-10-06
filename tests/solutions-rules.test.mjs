@@ -1,11 +1,23 @@
 import {after,before,test} from 'node:test';
 import {readFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {initializeApp,deleteApp} from 'firebase/app';
+import * as lite from 'firebase/firestore/lite';
 import {
   initializeTestEnvironment, assertFails, assertSucceeds,
 } from '@firebase/rules-unit-testing';
 import {doc,getDoc,getDocs,collection,setDoc,updateDoc,deleteDoc,Timestamp,serverTimestamp,Bytes} from 'firebase/firestore';
 
 let env;
+const liteApps=[];
+function liteDatabase(id) {
+  const app=initializeApp({projectId:'demo-slides-profesor'},`lite-${liteApps.length}`);
+  liteApps.push(app);
+  const db=lite.getFirestore(app);
+  const [host,port]=process.env.FIRESTORE_EMULATOR_HOST.split(':');
+  lite.connectFirestoreEmulator(db,host,Number(port),id?{mockUserToken:{sub:id,...claims}}:{});
+  return db;
+}
 const uid='teacher-test';
 const claims={email:'teacher@example.test',email_verified:true,firebase:{sign_in_provider:'google.com'}};
 const account=(id=uid,overrides={})=>env.authenticatedContext(id,{...claims,...overrides}).firestore();
@@ -26,6 +38,7 @@ before(async()=>{
       ['di-future','scheduled',Timestamp.fromMillis(now+86400000)],
       ['di-past','scheduled',Timestamp.fromMillis(now-86400000)],
       ['di-mutable','private',null],
+      ['di-lite-mutable','private',null],
     ]) {
       await setDoc(state(db,id),{mode,publishAt,updatedAt:Timestamp.now()});
       await setDoc(file(db,id),{taskId:id,parts:1,size:3,sha256:'sha'});
@@ -35,7 +48,7 @@ before(async()=>{
     await setDoc(part(db,'di-orphan'),{bytes:Bytes.fromUint8Array(new Uint8Array([1,2,3]))});
   });
 });
-after(async()=>{await env?.cleanup();});
+after(async()=>{await Promise.all(liteApps.map(deleteApp)); await env?.cleanup();});
 
 test('cualquiera puede consultar un estado conocido, sin leer archivos privados',async()=>{
   await assertSucceeds(getDoc(state(guest(),'di-private')));
@@ -113,4 +126,25 @@ test('archivos, hashes y relaciones con otras tareas son inmutables desde el cli
     await assertFails(deleteDoc(file(db,'di-public')));
     await assertFails(setDoc(doc(db,'other','document'),{admin:true}));
   }
+});
+
+test('Firestore Lite conserva permisos, bytes y revocación sin reutilizar una copia local',async()=>{
+  const visitor=liteDatabase(), teacher=liteDatabase(uid), student=liteDatabase('student');
+  const stateRef=lite.doc(teacher,'solutionStates','di-lite-mutable');
+  const fileRef=lite.doc(visitor,'solutionFiles','di-lite-mutable-pdf');
+  const partRef=lite.doc(visitor,'solutionFiles','di-lite-mutable-pdf','parts','sha-0');
+  await assertSucceeds(lite.getDoc(lite.doc(visitor,'solutionStates','di-lite-mutable')));
+  await assertFails(lite.getDoc(fileRef));
+  await assertFails(lite.getDoc(partRef));
+  await assertSucceeds(lite.getDoc(lite.doc(teacher,'solutionFiles','di-lite-mutable-pdf')));
+  await assertFails(lite.updateDoc(lite.doc(student,'solutionStates','di-lite-mutable'),{
+    mode:'public',publishAt:null,updatedAt:lite.serverTimestamp(),
+  }));
+  await assertSucceeds(lite.updateDoc(stateRef,{mode:'public',publishAt:null,updatedAt:lite.serverTimestamp()}));
+  await assertSucceeds(lite.getDoc(fileRef));
+  const part=await assertSucceeds(lite.getDoc(partRef));
+  assert.deepEqual([...part.data().bytes.toUint8Array()],[1,2,3]);
+  await assertSucceeds(lite.updateDoc(stateRef,{mode:'private',publishAt:null,updatedAt:lite.serverTimestamp()}));
+  await assertFails(lite.getDoc(fileRef));
+  await assertFails(lite.getDoc(partRef));
 });

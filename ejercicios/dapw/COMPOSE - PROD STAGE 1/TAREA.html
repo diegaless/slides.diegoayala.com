@@ -4,12 +4,15 @@
 <meta name="theme-color" content="#030405"><script src="../../../theme.js"></script><title>COMPOSE - PROD STAGE 1 · DAPW</title>
 <link rel="stylesheet" href="../../assets/aula.css">
 <link rel="stylesheet" href="../../assets/pdf.css">
-<link rel="stylesheet" href="../../assets/tarea-web.css"><link rel="stylesheet" href="../../../styles.css" media="screen"><link rel="stylesheet" href="../../assets/web.css" media="screen"><link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"></head><body class="exercises-page">
+<link rel="stylesheet" href="../../assets/tarea-web.css"><link rel="stylesheet" href="../../../styles.css" media="screen"><link rel="stylesheet" href="../../assets/web.css" media="screen"><link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<meta name="description" content="COMPOSE - PROD STAGE 1: enunciado y materiales de la práctica de Despliegue de aplicaciones Web. Recursos de clase de Diego Ayala para DAM y DAW.">
+<link rel="canonical" href="https://slides.diegoayala.com/ejercicios/dapw/COMPOSE%20-%20PROD%20STAGE%201/TAREA.html">
+</head><body class="exercises-page">
 <a class="skip-link" href="#contenido">Ir al contenido</a>
 <header class="site-header">
-      <a class="site-name" href="../../../index.html" aria-label="Inicio">Diego Ayala</a>
+      <a class="site-name" href="../../../" aria-label="Inicio">Diego Ayala</a>
       <nav class="section-nav" aria-label="Secciones de material de clase">
-        <a href="../../../index.html" aria-current="page">DAM / DAW</a>
+        <a href="../../../" aria-current="page">DAM / DAW</a>
         <a href="../../../sef/">SEF</a>
         <a href="../../../rm-skills/">RM Skills</a>
         <a href="../../../fem/">FEM</a>
@@ -60,11 +63,11 @@
 </ol>
 <p>En esta etapa se comprueba el funcionamiento de Gunicorn y Django. Con esta configuración, Gunicorn no proporciona el servicio de estáticos que ofrecía <code>runserver</code>: la integración de CSS, Tailwind e imágenes mediante Nginx se completa en la siguiente tarea.</p>
 <figure class="exercise-reference">
-  <a href="../../assets/dapw/compose-prod-1-wsgi.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar el esquema de Gunicorn y Django en una nueva pestaña"><img src="../../assets/dapw/compose-prod-1-wsgi.png" alt="Prod Stage 1: el recuadro rojo abarca el servidor WSGI y la aplicación. En esta práctica se integran Gunicorn y Django; el servidor web queda para la siguiente etapa."></a>
+  <a href="../../assets/dapw/compose-prod-1-wsgi.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar el esquema de Gunicorn y Django en una nueva pestaña"><img src="../../../assets/optimized/e014179e4d96d9eb-1440.webp" alt="Prod Stage 1: el recuadro rojo abarca el servidor WSGI y la aplicación. En esta práctica se integran Gunicorn y Django; el servidor web queda para la siguiente etapa." srcset="../../../assets/optimized/e014179e4d96d9eb-360.webp 360w, ../../../assets/optimized/e014179e4d96d9eb-720.webp 720w, ../../../assets/optimized/e014179e4d96d9eb-1440.webp 1440w" sizes="(max-width: 780px) calc(100vw - 44px), (max-width: 1100px) 65vw, 720px" width="1685" height="953" decoding="async" loading="eager" data-original-src="../../assets/dapw/compose-prod-1-wsgi.png" fetchpriority="high"></a>
   <figcaption>Integra la parte marcada en rojo: Gunicorn y Django. <span class="screen-only">Pulsa la imagen para ampliarla.</span><br><a class="slide-caption-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g3aa2083d3bb_0_12" target="_blank" rel="noopener noreferrer">Ver diapositiva 136 ↗</a></figcaption>
 </figure>
 <figure class="exercise-reference">
-  <a href="../../assets/dapw/compose-prod-1-reload.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar la captura sobre la retirada de browser reload en una nueva pestaña"><img src="../../assets/dapw/compose-prod-1-reload.png" alt="La configuración de producción debe retirar django-browser-reload de las dependencias y de sus referencias en el paquete personalblog."></a>
+  <a href="../../assets/dapw/compose-prod-1-reload.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar la captura sobre la retirada de browser reload en una nueva pestaña"><img src="../../../assets/optimized/2d8a65b2de9ba21a-1440.webp" alt="La configuración de producción debe retirar django-browser-reload de las dependencias y de sus referencias en el paquete personalblog." srcset="../../../assets/optimized/2d8a65b2de9ba21a-360.webp 360w, ../../../assets/optimized/2d8a65b2de9ba21a-720.webp 720w, ../../../assets/optimized/2d8a65b2de9ba21a-1440.webp 1440w" sizes="(max-width: 780px) calc(100vw - 44px), (max-width: 1100px) 65vw, 720px" width="1619" height="852" decoding="async" loading="lazy" data-original-src="../../assets/dapw/compose-prod-1-reload.png"></a>
   <figcaption>Retirada de la recarga de desarrollo en la configuración de producción.<br><a class="slide-caption-link" href="https://docs.google.com/presentation/d/e/2PACX-1vTw-DZSe_JoloOOoBuGynxYXvCZ31fSif3pI7ijGYLHFs9t7eIO8DFnGYahfhgsYdl-N1GGRDX2Ab1R/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g3aa2083d3bb_0_22" target="_blank" rel="noopener noreferrer">Ver diapositiva 137 ↗</a></figcaption>
 </figure>
 <h3>Entrega</h3>

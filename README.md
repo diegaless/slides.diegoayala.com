@@ -54,12 +54,11 @@ abierta.
 
 ## Editar enlaces
 
-En `index.html`, el `href` de cada `.subject-link` contiene la URL de Google Slides;
-`data-exercises-url` contiene la ruta a su biblioteca de ejercicios. Para enlazar
-las diapositivas de Programación de Servicios y Procesos,
-sustituye `href="#"` y retira `data-pending`.
+En `index.html`, cada asignatura usa un `<details class="subject-group">`.
+Sus paneles contienen directamente los enlaces a Google Slides, la biblioteca
+de ejercicios y la descarga. Para añadir un recurso pendiente, sustituye el
+texto «Próximamente» por un enlace con su URL en el panel correspondiente.
 Proyecto Intermodular ya enlaza sus diapositivas publicadas en Google Slides.
-Una URL de ejercicios vacía muestra «Próximamente» sin crear un enlace inválido.
 Programación de Servicios y Procesos está incluida en el menú; sus diapositivas
 y ejercicios quedan pendientes de enlazar.
 Los enlaces de contacto de DAM/DAW y SEF utilizan `diego.ayala@colegiomiralmonte.es`.
@@ -78,8 +77,8 @@ Las cinco asignaturas con diapositivas mantienen «Abrir diapositivas» para el
 visor publicado y ofrecen «Descargar PDF» dentro de esa misma pestaña. La descarga
 guarda el archivo directamente, sin abrir la interfaz de Google ni otra pestaña.
 Los enlaces están en los elementos `.subject-download` de `index.html` y también
-funcionan sin JavaScript. `script.js` los mueve al panel de su asignatura y muestra
-la explicación de `data-download-description`.
+funcionan sin JavaScript. Los paneles ya están presentes en el HTML: `script.js`
+activa las pestañas sin mover contenido ni cambiar la altura inicial de la portada.
 
 Lenguaje de Marcas, Desarrollo de Interfaces, Sistemas informáticos, DAPW y
 Proyecto Intermodular usan la exportación directa
@@ -218,11 +217,32 @@ indica su carpeta de módulo con `PLAYWRIGHT_MODULE`:
 PLAYWRIGHT_MODULE=/ruta/al/modulo/playwright docpython scripts/import-exercises.py /ruta/a/teams-backup/web
 ```
 
-Si `docpython` no está disponible, puede usarse `python3`; la parte Python solo
-necesita la biblioteca estándar. El importador comprueba que Chromium funciona,
+Si `docpython` no está disponible, puede usarse `python3` con Pillow (versión en
+`scripts/requirements-web.txt`). El importador comprueba que Chromium funciona,
 sustituye exclusivamente las carpetas de salida de las asignaturas definidas en
 `SUBJECTS` y llama a `scripts/render-exercise-pdfs.cjs` antes de reconstruir los ZIP.
 La exportación usa archivos locales y no realiza peticiones a Internet.
+Al terminar, ejecuta la optimización web descrita a continuación.
+
+## SEO e imágenes para la web
+
+`python3 scripts/optimize-site.py` genera descripciones, URL canónicas, `sitemap.xml`
+y variantes WebP con tamaños adaptados a móvil y escritorio. Es idempotente;
+`python3 scripts/optimize-site.py --check` comprueba los archivos publicados.
+Los originales y las descargas PDF/ZIP se conservan. Las imágenes guardan su
+origen en `data-original-src`, reservan espacio con dimensiones y cargan de forma
+diferida salvo la primera de cada enunciado. Los GIF conservan su animación.
+
+El sitemap incluye las 49 páginas docentes. El acceso de profesor, el visor de
+soluciones y el puente a diapositivas conservan `noindex` y no se incluyen.
+`robots.txt` anuncia el sitemap y excluye las carpetas de herramientas y documentación.
+
+Las soluciones usan Firestore Lite: cada lectura comprueba los permisos en el
+servidor y no reutiliza copias sin conexión. Los enunciados cargan este cliente
+cuando el bloque de soluciones está próximo a la vista o se pulsa un enlace.
+La sesión del profesor se restaura sin preparar la ventana de Google hasta que
+se solicita iniciar sesión. `npm run test:rules` prueba también publicación,
+retirada y lectura de bytes con el cliente Lite, exclusivamente en emuladores.
 
 Sistemas informáticos conserva su acceso a diapositivas; sus ejercicios todavía
 no están incluidos en esta selección.
@@ -236,8 +256,8 @@ El concepto generado con imagegen y las capturas de la implementación están en
 
 Puedes abrir `index.html` directamente en el navegador. No requiere servidor ni dependencias.
 Sin JavaScript, los enlaces originales a las diapositivas siguen funcionando y
-las bibliotecas permiten abrir tareas y descargar PDF. El selector de material y
-la descarga de seleccionados usan JavaScript.
+las bibliotecas permiten abrir tareas y descargar PDF. Las asignaturas también
+se despliegan sin JavaScript; sus pestañas y la descarga de seleccionados lo usan.
 
 Para una vista previa HTTP local: `python3 scripts/preview.py`.
 Abre `http://localhost:4173/`. El servidor evita guardar páginas en caché para

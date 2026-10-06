@@ -423,6 +423,8 @@ def main(source):
     # Los ZIP reúnen los PDF generados y los originales de las tareas adicionales.
     for target, tasks, pdfs in bundles:
         pdf_bundle(target, tasks, pdfs)
+    # Optimizar únicamente la salida web; los PDF conservan sus imágenes originales.
+    subprocess.run([sys.executable, str(Path(__file__).with_name('optimize-site.py'))], check=True)
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
 

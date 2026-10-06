@@ -214,7 +214,25 @@ for(const section of document.querySelectorAll('.task-solutions[data-solution-id
       }
     }
   }
-  refresh();
+  // El enunciado y sus imágenes tienen prioridad. En móviles y en el archivo
+  // Skills no cargamos Firebase hasta que las soluciones se acercan a la vista.
+  let activated=false;
+  function activate() {
+    if(activated)return;
+    activated=true;
+    const start=()=>{
+      if('requestIdleCallback' in window)window.requestIdleCallback(refresh,{timeout:1500});
+      else setTimeout(refresh,0);
+    };
+    if(document.readyState==='complete')start();
+    else window.addEventListener('load',start,{once:true});
+  }
+  if('IntersectionObserver' in window) {
+    const observer=new IntersectionObserver(entries=>{
+      if(entries.some(entry=>entry.isIntersecting)) {observer.disconnect(); activate();}
+    },{rootMargin:'200px'});
+    observer.observe(section);
+  } else activate();
   window.addEventListener('solutions-logout',()=>{
     // Una edición puede cerrar la sesión de todas las soluciones de la página.
     revision++; clearTimeout(timeout);
@@ -223,11 +241,11 @@ for(const section of document.querySelectorAll('.task-solutions[data-solution-id
     urls.forEach(release);
     status.textContent='Sesión de profesor cerrada.';
   });
-  window.addEventListener('focus',refresh);
+  window.addEventListener('focus',()=>{if(activated&&document.readyState==='complete')refresh();});
   window.addEventListener('pagehide',()=>{
     clearTimeout(timeout);
     if(preview?.open)preview.close();
     urls.forEach(release);
   });
-  window.addEventListener('pageshow',event=>{if(event.persisted)refresh();});
+  window.addEventListener('pageshow',event=>{if(event.persisted&&activated)refresh();});
 }

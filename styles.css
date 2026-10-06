@@ -269,10 +269,15 @@ button {
   font-size: clamp(1.35rem, 2.4vw, 2rem);
   font-weight: 300;
   line-height: 1.12;
+  list-style: none;
   transition:
     color 180ms ease,
     text-shadow 180ms ease,
     transform 180ms ease;
+}
+
+.subject-link::-webkit-details-marker {
+  display: none;
 }
 
 .subject-link span {
@@ -298,23 +303,23 @@ button {
 }
 
 .subject-link:hover,
-.subject-link.is-active {
+.subject-group[open] > .subject-link {
   color: var(--ink);
   font-weight: 650;
   text-shadow: 0 0 22px color-mix(in srgb, var(--accent) 42%, transparent);
 }
 
 .subject-link:hover i::before,
-.subject-link.is-active i::before {
+.subject-group[open] > .subject-link i::before {
   width: 100%;
 }
 
-.subject-link.is-active {
+.subject-group[open] > .subject-link {
   font-size: clamp(1.55rem, 2.4vw, 2rem);
   font-weight: 650;
 }
 
-.subject-link.is-active i {
+.subject-group[open] > .subject-link i {
   width: min(100%, 340px);
 }
 
@@ -457,10 +462,6 @@ button {
   color: var(--muted);
   font-size: 0.74rem;
   line-height: 1.6;
-}
-
-.subjects > ul > li > .subject-download {
-  margin-top: 14px;
 }
 
 .resource-status {
@@ -700,7 +701,7 @@ button {
     font-size: 1.3rem;
   }
 
-  .subject-link.is-active {
+  .subject-group[open] > .subject-link {
     font-size: 1.55rem;
   }
 
