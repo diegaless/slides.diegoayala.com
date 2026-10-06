@@ -247,6 +247,26 @@ retirada y lectura de bytes con el cliente Lite, exclusivamente en emuladores.
 Sistemas informáticos conserva su acceso a diapositivas; sus ejercicios todavía
 no están incluidos en esta selección.
 
+## Estadísticas de visitas y búsquedas
+
+Cloudflare Web Analytics mide las visitas, páginas vistas, procedencia, dispositivos
+y rendimiento de las páginas docentes. Su cargador `assets/analytics.js` se inserta
+en las 49 páginas públicas mediante `scripts/optimize-site.py`; solo se activa en
+`https://slides.diegoayala.com`, sin medir vistas previas ni exportaciones locales.
+El panel del profesor, el visor de soluciones y el puente de diapositivas no lo cargan.
+Las páginas con CSP permiten únicamente el script oficial y el destino de medición,
+además de los orígenes que ya necesitaban. Se usa la instalación manual gratuita;
+no requiere cambiar DNS, el alojamiento en GitHub Pages ni el plan de Cloudflare.
+
+Search Console usa la propiedad de prefijo `https://slides.diegoayala.com/`.
+La etiqueta `google-site-verification` de la portada debe conservarse para mantener
+la verificación. Su sitemap es `https://slides.diegoayala.com/sitemap.xml`.
+El servicio muestra clics, impresiones y búsquedas de Google; no cuenta todas las
+visitas directas o procedentes de otros sitios.
+
+- [Cloudflare Web Analytics](https://dash.cloudflare.com/79f92f021b8459a0faafd36db0511c32/web-analytics/overview?siteTag~in=d296751514e246079fa106b21cc99ad0&excludeBots=Yes)
+- [Google Search Console](https://search.google.com/search-console?resource_id=https%3A%2F%2Fslides.diegoayala.com%2F)
+
 ## Propuesta visual
 
 El concepto generado con imagegen y las capturas de la implementación están en

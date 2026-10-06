@@ -22,6 +22,8 @@ ORIGIN = 'https://slides.diegoayala.com'
 SUBJECTS = {'di': 'Desarrollo de Interfaces', 'lm': 'Lenguaje de Marcas',
             'dapw': 'Despliegue de aplicaciones Web', 'pi': 'Proyecto Intermodular'}
 SIZES = '(max-width: 780px) calc(100vw - 44px), (max-width: 1100px) 65vw, 720px'
+BEACON_SCRIPT = 'https://static.cloudflareinsights.com/beacon.min.js'
+BEACON_ENDPOINT = 'https://cloudflareinsights.com'
 
 
 class Tags(HTMLParser):
@@ -93,6 +95,28 @@ def image_source(page, src):
     if not path.is_file():
         raise ValueError(f'Image missing: {page.relative_to(ROOT)}: {src}')
     return path
+
+
+def analytics(page, html):
+    # Solo se llama para las páginas docentes públicas. La comprobación de host
+    # del cargador evita enviar estadísticas desde localhost y las exportaciones.
+    src = Path(os.path.relpath(ROOT / 'assets/analytics.js', page.parent)).as_posix()
+    if not any(tag == 'script' and a.get('src') == src for tag, a, _, _ in Tags(html).tags):
+        html = html.replace('</body>', f'<script src="{src}" defer></script>\n</body>', 1)
+    for tag, a, start, end in reversed(Tags(html).tags):
+        if tag != 'meta' or a.get('http-equiv', '').lower() != 'content-security-policy':
+            continue
+        directives = [part.strip().split() for part in a['content'].split(';') if part.strip()]
+        for name, source in [('script-src', BEACON_SCRIPT), ('connect-src', BEACON_ENDPOINT)]:
+            directive = next((part for part in directives if part[0] == name), None)
+            if directive is None:
+                directives.append([name, "'self'", source])
+            elif source not in directive:
+                directive.append(source)
+        policy = '; '.join(' '.join(part) for part in directives)
+        replacement = f'<meta http-equiv="Content-Security-Policy" content="{escape(policy, quote=True)}">'
+        html = html[:start] + replacement + html[end:]
+    return html
 
 
 class Images:
@@ -175,6 +199,15 @@ def check(pages):
             errors.append(f'{page}: missing or duplicated description')
         if canonicals != [canonical(page)]:
             errors.append(f'{page}: incorrect canonical')
+        analytics_src = Path(os.path.relpath(ROOT / 'assets/analytics.js', page.parent)).as_posix()
+        loaders = [a for tag, a, _, _ in tags if tag == 'script' and a.get('src') == analytics_src]
+        if len(loaders) != 1 or 'defer' not in loaders[0]:
+            errors.append(f'{page}: missing, duplicated or blocking analytics loader')
+        for tag, a, _, _ in tags:
+            if tag == 'meta' and a.get('http-equiv', '').lower() == 'content-security-policy':
+                policy = dict((parts[0], parts[1:]) for text in a['content'].split(';') if (parts := text.split()))
+                if BEACON_SCRIPT not in policy.get('script-src', []) or BEACON_ENDPOINT not in policy.get('connect-src', []):
+                    errors.append(f'{page}: CSP does not allow Web Analytics')
         for tag, a, _, _ in tags:
             if tag == 'img':
                 if not a.get('width') or not a.get('height'):
@@ -191,11 +224,13 @@ def check(pages):
         errors.append('Sitemap differs from the public teaching pages')
     for section in ('profesor', 'soluciones', 'go'):
         html = (ROOT / section / 'index.html').read_text()
+        if 'analytics.js' in html or 'cloudflareinsights.com' in html:
+            errors.append(f'{section}: analytics must stay on public teaching pages')
         if not any(tag == 'meta' and a.get('name') == 'robots' and 'noindex' in a.get('content', '') for tag, a, _, _ in Tags(html).tags):
             errors.append(f'{section}: missing noindex')
     if errors:
         raise SystemExit('\n'.join(errors))
-    print(f'OK: {len(pages)} public pages; metadata, images, sitemap and private noindex checked.')
+    print(f'OK: {len(pages)} public pages; metadata, images, sitemap, analytics and private noindex checked.')
 
 
 def main():
@@ -209,7 +244,7 @@ def main():
     changed = 0
     for page in pages:
         before = page.read_text()
-        after = images.rewrite(page, metadata(page, before))
+        after = analytics(page, images.rewrite(page, metadata(page, before)))
         if after != before:
             page.write_text(after)
             changed += 1
