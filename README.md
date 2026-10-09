@@ -58,7 +58,9 @@ En `index.html`, cada asignatura usa un `<details class="subject-group">`.
 Sus paneles contienen directamente los enlaces a Google Slides, la biblioteca
 de ejercicios y la descarga. Para añadir un recurso pendiente, sustituye el
 texto «Próximamente» por un enlace con su URL en el panel correspondiente.
-Proyecto Intermodular ya enlaza sus diapositivas publicadas en Google Slides.
+Proyecto Intermodular abre «PI - Proyecto Intermodular (premios FP y resoluciones)»
+en la diapositiva `pi_desempate_2026`, mediante el enlace publicado indicado por
+el profesor el 9 de octubre de 2026. El visor admite acceso anónimo.
 Programación de Servicios y Procesos está incluida en el menú; sus diapositivas
 y ejercicios quedan pendientes de enlazar.
 Los enlaces de contacto de DAM/DAW y SEF utilizan `diego.ayala@colegiomiralmonte.es`.
@@ -88,7 +90,11 @@ El 27 de septiembre de 2026 se verificó el acceso anónimo y la respuesta PDF c
 Los cinco originales tienen acceso público de lector. Las descargas utilizan la
 versión actual de Google, sin mantener copias en el repositorio. La exportación
 necesita el identificador original, no el identificador `2PACX` del visor publicado.
-El original de PI es `1UO8wBxbfBgXrHgb1V47hi8cqk1PllFjbzI3tOUbHEX4`.
+La descarga de PI conserva el original `1UO8wBxbfBgXrHgb1V47hi8cqk1PllFjbzI3tOUbHEX4`.
+El botón lo identifica como «PDF anterior» para distinguirlo del nuevo visor.
+El nuevo visor de PI corresponde a `1Zri6xKCFoXig889ZF2pewBhWWxNnKOhRbQ_arUUeiXk`:
+su exportación PDF devuelve 401 sin sesión (9 de octubre de 2026), por lo que no
+se sustituye la descarga por ese enlace restringido ni se cambian sus permisos.
 
 `assets/diapositivas/dapw.pdf` se conserva como copia histórica del 23 de septiembre
 de 2026 para mantener los enlaces antiguos, pero el menú ya no la utiliza.
