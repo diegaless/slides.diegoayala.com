@@ -20,7 +20,8 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://slides.diegoayala.com'
 SUBJECTS = {'di': 'Desarrollo de Interfaces', 'lm': 'Lenguaje de Marcas',
-            'dapw': 'Despliegue de aplicaciones Web', 'pi': 'Proyecto Intermodular'}
+            'dapw': 'Despliegue de aplicaciones Web', 'pi': 'Proyecto Intermodular',
+            'psp': 'Programación de Servicios y Procesos'}
 SIZES = '(max-width: 780px) calc(100vw - 44px), (max-width: 1100px) 65vw, 720px'
 BEACON_SCRIPT = 'https://static.cloudflareinsights.com/beacon.min.js'
 BEACON_ENDPOINT = 'https://cloudflareinsights.com'
@@ -45,6 +46,7 @@ def public_pages():
     pages += [ROOT / section / 'index.html' for section in ('sef', 'rm-skills', 'fem')]
     pages += sorted((ROOT / 'ejercicios').glob('*/INDICE.html'))
     pages += sorted((ROOT / 'ejercicios').glob('*/*/TAREA.html'))
+    pages += sorted((ROOT / 'ejemplos').glob('*/*/index.html'))
     return pages
 
 
@@ -61,6 +63,8 @@ def plain(text):
 
 def description(path, html):
     subject = SUBJECTS[path.relative_to(ROOT).parts[1]]
+    if path.relative_to(ROOT).parts[0] == 'ejemplos':
+        return f'Ejemplos de {subject}: consulta el código, descarga los archivos y practica con los materiales de clase de Diego Ayala.'
     if path.name == 'INDICE.html':
         return f'Ejercicios de {subject}: consulta los enunciados, las referencias y los materiales de clase de Diego Ayala para DAM y DAW.'
     title = plain(re.search(r'<h1\b[^>]*>(.*?)</h1>', html, re.S)[1])

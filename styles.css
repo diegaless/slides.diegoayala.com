@@ -364,6 +364,22 @@ button {
   color: var(--ink);
 }
 
+.resource-tabs-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.resource-tabs-three .resource-tab {
+  gap: 5px;
+  padding-inline: 4px;
+  font-size: .76rem;
+}
+
+@media (max-width: 720px) {
+  .resource-tabs-three .resource-tab svg {
+    display: none;
+  }
+}
+
 .resource-tab[aria-selected="true"] {
   border-color: color-mix(in srgb, var(--accent) 26%, transparent);
   color: var(--ink);

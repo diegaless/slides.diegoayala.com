@@ -1,0 +1,45 @@
+.examples-subject {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+.examples-page.index-page .results-heading {
+  padding-bottom: 16px;
+}
+
+.examples-intro {
+  max-width: 660px;
+  margin-bottom: 22px;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.7;
+}
+
+.examples-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.examples-note {
+  margin-bottom: 28px;
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.6;
+}
+
+.examples-page .task-title {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.example-number {
+  flex: none;
+  min-width: 2ch;
+  color: var(--muted);
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+}

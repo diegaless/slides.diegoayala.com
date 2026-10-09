@@ -19,6 +19,8 @@ la tipografía y el selector de tema mediante `styles.css` y `theme.js`.
   GitHub; el lateral permite cerrar sesión. El alumnado puede ver el PDF y
   descargar el ZIP de las soluciones publicadas. Sin acceso a la copia, los
   enlaces abren el original en Drive o GitHub, con sus propios permisos.
+- `ejemplos/psp/ra1/index.html`: los nueve ejemplos de RA1 de PSP, con enlaces
+  individuales al código y descarga del bloque completo desde GitHub.
 - `sef/index.html`: certificados SEF con módulos desplegables.
 - `rm-skills/index.html`: convocatoria y preparación de Desarrollo web (modalidad 17),
   con pruebas oficiales anteriores, criterios de evaluación y recursos por edición.
@@ -62,7 +64,13 @@ Proyecto Intermodular abre «PI - Proyecto Intermodular (premios FP y resolucion
 en la diapositiva `pi_desempate_2026`, mediante el enlace publicado indicado por
 el profesor el 9 de octubre de 2026. El visor admite acceso anónimo.
 Programación de Servicios y Procesos está incluida en el menú; sus diapositivas
-y ejercicios quedan pendientes de enlazar.
+y ejercicios quedan pendientes de enlazar. La pestaña «Ejemplos» abre RA1, con
+los ejemplos 01–09 del material V7. El código se publica en
+[`diegaless/psp-ejemplos`](https://github.com/diegaless/psp-ejemplos), dentro de
+`RA1/`, junto con `sesion.py`, `trabajadores.py`, los seis datos de prueba,
+`requirements.txt` y las instrucciones de ejecución. El ZIP de la versión
+`ra1-v7` se descarga desde GitHub Releases. Las notas docentes y el resto de
+documentos del paquete de origen no forman parte de esta publicación.
 Los enlaces de contacto de DAM/DAW y SEF utilizan `diego.ayala@colegiomiralmonte.es`.
 Para evitar que Google pida cuenta en móvil, usa el enlace de `Archivo -> Compartir -> Publicar en la web`, con formato:
 `https://docs.google.com/presentation/d/e/ID_PUBLICADO/pub?start=false&loop=false&delayms=3000`
@@ -239,7 +247,7 @@ Los originales y las descargas PDF/ZIP se conservan. Las imágenes guardan su
 origen en `data-original-src`, reservan espacio con dimensiones y cargan de forma
 diferida salvo la primera de cada enunciado. Los GIF conservan su animación.
 
-El sitemap incluye las 49 páginas docentes. El acceso de profesor, el visor de
+El sitemap incluye las 50 páginas docentes. El acceso de profesor, el visor de
 soluciones y el puente a diapositivas conservan `noindex` y no se incluyen.
 `robots.txt` anuncia el sitemap y excluye las carpetas de herramientas y documentación.
 
@@ -257,7 +265,7 @@ no están incluidos en esta selección.
 
 Cloudflare Web Analytics mide las visitas, páginas vistas, procedencia, dispositivos
 y rendimiento de las páginas docentes. Su cargador `assets/analytics.js` se inserta
-en las 49 páginas públicas mediante `scripts/optimize-site.py`; solo se activa en
+en las 50 páginas públicas mediante `scripts/optimize-site.py`; solo se activa en
 `https://slides.diegoayala.com`, sin medir vistas previas ni exportaciones locales.
 El panel del profesor, el visor de soluciones y el puente de diapositivas no lo cargan.
 Las páginas con CSP permiten únicamente el script oficial y el destino de medición,

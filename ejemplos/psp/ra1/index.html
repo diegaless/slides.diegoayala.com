@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; img-src &#x27;self&#x27; data:; style-src &#x27;self&#x27;; script-src &#x27;self&#x27; https://static.cloudflareinsights.com/beacon.min.js; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;; connect-src &#x27;self&#x27; https://cloudflareinsights.com">
+<meta name="theme-color" content="#030405">
+<script src="../../../theme.js"></script>
+<title>PSP · Ejemplos de RA1 | Diego Ayala</title>
+<meta name="description" content="Nueve ejemplos de procesos en Python para RA1 de PSP: multiprocessing, colas, cancelación, QTimer y lectura de archivos. Consulta el código y descarga el ZIP.">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<link rel="stylesheet" href="../../../ejercicios/assets/aula.css">
+<link rel="stylesheet" href="../../../ejercicios/assets/listado-web.css">
+<link rel="stylesheet" href="../../../styles.css" media="screen">
+<link rel="stylesheet" href="../../../ejercicios/assets/web.css" media="screen">
+<link rel="stylesheet" href="../../ejemplos.css">
+<link rel="canonical" href="https://slides.diegoayala.com/ejemplos/psp/ra1/">
+</head>
+<body class="exercises-page index-page examples-page">
+<a class="skip-link" href="#contenido">Ir al contenido</a>
+<header class="site-header">
+  <a class="site-name" href="../../../" aria-label="Inicio">Diego Ayala</a>
+  <nav class="section-nav" aria-label="Secciones de material de clase">
+    <a href="../../../" aria-current="page">DAM / DAW</a>
+    <a href="../../../sef/">SEF</a>
+    <a href="../../../rm-skills/">RM Skills</a>
+    <a href="../../../fem/">FEM</a>
+  </nav>
+  <button class="theme-toggle" type="button" data-theme-toggle aria-label="Activar modo claro" aria-pressed="true" title="Cambiar tema">
+    <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.4 15.8A8.5 8.5 0 0 1 8.2 3.6 8.5 8.5 0 1 0 20.4 15.8z"></path></svg>
+    <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93 6.34 6.34M17.66 17.66 19.07 19.07M2 12h2M20 12h2M6.34 17.66 4.93 19.07M19.07 4.93 17.66 6.34"></path></svg>
+  </button>
+</header>
+<main class="wrap" id="contenido">
+  <a class="back-link" href="../../../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Volver a las asignaturas</a>
+  <p class="examples-subject">Programación de Servicios y Procesos</p>
+  <div class="results-heading">
+    <h1 id="examples-title">RA1 · Procesos en Python</h1>
+    <p class="results-count">9 ejemplos</p>
+  </div>
+  <p class="examples-intro">Del primer proceso a una ventana que recoge sus resultados. Abre cada ejemplo para consultar su código o descarga el bloque completo para probarlo.</p>
+  <div class="examples-actions">
+    <a class="resource-action" href="https://github.com/diegaless/psp-ejemplos/releases/download/ra1-v7/psp-ra1-ejemplos-01-09.zip" download>Descargar ZIP <span aria-hidden="true">↓</span></a>
+    <a class="resource-action resource-action-secondary" href="https://github.com/diegaless/psp-ejemplos/tree/main/RA1" target="_blank" rel="noreferrer">Ver código <span aria-hidden="true">↗</span></a>
+  </div>
+  <p class="examples-note">Incluye archivos auxiliares, datos de prueba e instrucciones de ejecución.</p>
+  <ul class="exercise-list" aria-labelledby="examples-title" role="list">
+    <li class="exercise-item"><a class="task-link" href="https://github.com/diegaless/psp-ejemplos/blob/main/RA1/ejemplos/e01_primer_proceso.py" target="_blank" rel="noreferrer"><span class="task-title"><span class="example-number">01</span>Primer proceso</span><svg class="task-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></li>
+    <li class="exercise-item"><a class="task-link" href="https://github.com/diegaless/psp-ejemplos/blob/main/RA1/ejemplos/e02_dos_procesos.py" target="_blank" rel="noreferrer"><span class="task-title"><span class="example-number">02</span>Dos procesos</span><svg class="task-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></li>
+    <li class="exercise-item"><a class="task-link" href="https://github.com/diegaless/psp-ejemplos/blob/main/RA1/ejemplos/e03_memoria_separada.py" target="_blank" rel="noreferrer"><span class="task-title"><span class="example-number">03</span>Memoria separada</span><svg class="task-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></li>
+    <li class="exercise-item"><a class="task-link" href="https://github.com/diegaless/psp-ejemplos/blob/main/RA1/ejemplos/e04_resultado_por_cola.py" target="_blank" rel="noreferrer"><span class="task-title"><span class="example-number">04</span>Resultado por cola</span><svg class="task-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></li>
+    <li class="exercise-item"><a class="task-link" href="https://github.com/diegaless/psp-ejemplos/blob/main/RA1/ejemplos/e05_lotes_y_cancelacion.py" target="_blank" rel="noreferrer"><span class="task-title"><span class="example-number">05</span>Lotes y cancelación</span><svg class="task-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></li>
+    <li class="exercise-item"><a class="task-link" href="https://github.com/diegaless/psp-ejemplos/blob/main/RA1/ejemplos/e06_qtimer_basico.py" target="_blank" rel="noreferrer"><span class="task-title"><span class="example-number">06</span>QTimer básico</span><svg class="task-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></li>
+    <li class="exercise-item"><a class="task-link" href="https://github.com/diegaless/psp-ejemplos/blob/main/RA1/ejemplos/e07_qtimer_no_es_paralelo.py" target="_blank" rel="noreferrer"><span class="task-title"><span class="example-number">07</span>QTimer no es paralelo</span><svg class="task-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></li>
+    <li class="exercise-item"><a class="task-link" href="https://github.com/diegaless/psp-ejemplos/blob/main/RA1/ejemplos/e08_ventana_y_procesos.py" target="_blank" rel="noreferrer"><span class="task-title"><span class="example-number">08</span>Ventana y procesos</span><svg class="task-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></li>
+    <li class="exercise-item"><a class="task-link" href="https://github.com/diegaless/psp-ejemplos/blob/main/RA1/ejemplos/e09_leer_un_archivo.py" target="_blank" rel="noreferrer"><span class="task-title"><span class="example-number">09</span>Leer un archivo</span><svg class="task-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></li>
+  </ul>
+</main>
+<script src="../../../assets/analytics.js" defer></script>
+</body>
+</html>
