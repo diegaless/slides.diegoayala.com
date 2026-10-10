@@ -63,8 +63,9 @@ texto «Próximamente» por un enlace con su URL en el panel correspondiente.
 Proyecto Intermodular abre «PI - Proyecto Intermodular (premios FP y resoluciones)»
 en la diapositiva `pi_desempate_2026`, mediante el enlace publicado indicado por
 el profesor el 9 de octubre de 2026. El visor admite acceso anónimo.
-Programación de Servicios y Procesos está incluida en el menú; sus diapositivas
-y ejercicios quedan pendientes de enlazar. La pestaña «Ejemplos» abre RA1, con
+Programación de Servicios y Procesos abre el visor publicado de Google Slides
+facilitado por el profesor el 10 de octubre de 2026. Sus ejercicios quedan
+pendientes de enlazar. La pestaña «Ejemplos» abre RA1, con
 los ejemplos 01–09 del material V7. El código se publica en
 [`diegaless/psp-ejemplos`](https://github.com/diegaless/psp-ejemplos), dentro de
 `RA1/`, junto con `sesion.py`, `trabajadores.py`, los seis datos de prueba,
@@ -83,7 +84,7 @@ Si alguna vez quieres forzar descarga como PDF, usa:
 
 ### Descargar las diapositivas
 
-Las cinco asignaturas con diapositivas mantienen «Abrir diapositivas» para el
+Las cinco asignaturas con descarga de diapositivas mantienen «Abrir diapositivas» para el
 visor publicado y ofrecen «Descargar PDF» dentro de esa misma pestaña. La descarga
 guarda el archivo directamente, sin abrir la interfaz de Google ni otra pestaña.
 Los enlaces están en los elementos `.subject-download` de `index.html` y también
