@@ -99,12 +99,12 @@ El 27 de septiembre de 2026 se verificó el acceso anónimo y la respuesta PDF c
 Los cinco originales tienen acceso público de lector. Las descargas utilizan la
 versión actual de Google, sin mantener copias en el repositorio. La exportación
 necesita el identificador original, no el identificador `2PACX` del visor publicado.
-La descarga de PI conserva el original `1UO8wBxbfBgXrHgb1V47hi8cqk1PllFjbzI3tOUbHEX4`.
-El botón lo identifica como «PDF anterior» para distinguirlo del nuevo visor.
+El 10 de octubre de 2026, la descarga de PI se actualizó al original
+`142_SJ5oLv8hePj-npMPpgnwEi-bOTFLcwCO7OaUzoUc` y se comprobó el acceso
+anónimo a su exportación en PDF. El botón «Descargar PDF» obtiene directamente
+la versión actual de Google Slides.
 El visor vigente de PI utiliza el enlace publicado
 `2PACX-1vRsNlskMDUEJZhCM7Fp9reebZFzOJC5GdVzSLTBDgMp68fhasR6yu7yoChsflauvtA5d2-QL3lWBjF1`.
-La descarga conserva el PDF anterior hasta disponer de la exportación actual
-con acceso público.
 
 `assets/diapositivas/dapw.pdf` se conserva como copia histórica del 23 de septiembre
 de 2026 para mantener los enlaces antiguos, pero el menú ya no la utiliza.
