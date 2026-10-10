@@ -60,9 +60,9 @@ En `index.html`, cada asignatura usa un `<details class="subject-group">`.
 Sus paneles contienen directamente los enlaces a Google Slides, la biblioteca
 de ejercicios y la descarga. Para añadir un recurso pendiente, sustituye el
 texto «Próximamente» por un enlace con su URL en el panel correspondiente.
-Proyecto Intermodular abre «PI - Proyecto Intermodular (premios FP y resoluciones)»
-en la diapositiva `pi_desempate_2026`, mediante el enlace publicado indicado por
-el profesor el 9 de octubre de 2026. El visor admite acceso anónimo.
+Proyecto Intermodular abre «PI - Proyecto Intermodular (actualizado) - Premios
+Extraordinarios FP», mediante el enlace publicado indicado por el profesor el
+10 de octubre de 2026. El visor admite acceso anónimo y comienza en la portada.
 Programación de Servicios y Procesos abre el visor publicado de Google Slides
 facilitado por el profesor el 10 de octubre de 2026. Sus ejercicios quedan
 pendientes de enlazar. La pestaña «Ejemplos» abre RA1, con
@@ -101,9 +101,10 @@ versión actual de Google, sin mantener copias en el repositorio. La exportació
 necesita el identificador original, no el identificador `2PACX` del visor publicado.
 La descarga de PI conserva el original `1UO8wBxbfBgXrHgb1V47hi8cqk1PllFjbzI3tOUbHEX4`.
 El botón lo identifica como «PDF anterior» para distinguirlo del nuevo visor.
-El nuevo visor de PI corresponde a `1Zri6xKCFoXig889ZF2pewBhWWxNnKOhRbQ_arUUeiXk`:
-su exportación PDF devuelve 401 sin sesión (9 de octubre de 2026), por lo que no
-se sustituye la descarga por ese enlace restringido ni se cambian sus permisos.
+El visor vigente de PI utiliza el enlace publicado
+`2PACX-1vRsNlskMDUEJZhCM7Fp9reebZFzOJC5GdVzSLTBDgMp68fhasR6yu7yoChsflauvtA5d2-QL3lWBjF1`.
+La descarga conserva el PDF anterior hasta disponer de la exportación actual
+con acceso público.
 
 `assets/diapositivas/dapw.pdf` se conserva como copia histórica del 23 de septiembre
 de 2026 para mantener los enlaces antiguos, pero el menú ya no la utiliza.
