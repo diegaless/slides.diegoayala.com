@@ -265,6 +265,28 @@ no están incluidos en esta selección.
 
 ## Estadísticas de visitas y búsquedas
 
+Google Analytics 4 dispone de una propiedad independiente llamada
+slides.diegoayala.com, en la cuenta Default Account for Firebase. Su propiedad es
+559805408, su flujo web es 16166025302 y su identificador de medición es
+G-5N2T7K0FMJ. Usa la versión gratuita, con zona horaria Europe/Madrid y moneda EUR;
+no necesita activar facturación de Google Cloud, Analytics 360 ni BigQuery.
+
+El cargador compartido añade un aviso para aceptar o rechazar las cookies de
+Google Analytics y un botón Cookies en el pie para cambiar la elección. La
+preferencia se guarda durante 180 días en este origen. En modo de consentimiento
+básico no se carga ninguna etiqueta de Google antes de aceptar. Al retirar el
+consentimiento se desactiva la medición, se borran sus cookies con prefijo slides
+y se recarga la página. La elección se sincroniza entre pestañas. Sin acceso al
+almacenamiento se pregunta de nuevo en la siguiente página.
+
+Solo se miden páginas públicas del dominio publicado. Se excluyen las herramientas
+de profesor, soluciones y redirecciones. La URL medida no contiene parámetros ni
+fragmentos y la procedencia solo incluye el origen. La medición mejorada está
+desactivada en el flujo: no se recogen formularios ni clics a enlaces de soluciones.
+Las funciones publicitarias y Google Signals permanecen desactivados.
+
+- [Google Analytics · Slides](https://analytics.google.com/analytics/web/#/a394130768p559805408/reports/intelligenthome)
+
 Cloudflare Web Analytics mide las visitas, páginas vistas, procedencia, dispositivos
 y rendimiento de las páginas docentes. Su cargador `assets/analytics.js` se inserta
 en las 50 páginas públicas mediante `scripts/optimize-site.py`; solo se activa en

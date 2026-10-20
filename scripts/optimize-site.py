@@ -25,6 +25,13 @@ SUBJECTS = {'di': 'Desarrollo de Interfaces', 'lm': 'Lenguaje de Marcas',
 SIZES = '(max-width: 780px) calc(100vw - 44px), (max-width: 1100px) 65vw, 720px'
 BEACON_SCRIPT = 'https://static.cloudflareinsights.com/beacon.min.js'
 BEACON_ENDPOINT = 'https://cloudflareinsights.com'
+GOOGLE_TAG = 'https://www.googletagmanager.com'
+GOOGLE_ENDPOINT = 'https://*.google-analytics.com'
+ANALYTICS_SOURCES = {
+    'script-src': [BEACON_SCRIPT, GOOGLE_TAG],
+    'connect-src': [BEACON_ENDPOINT, GOOGLE_TAG, GOOGLE_ENDPOINT, 'https://*.google.com'],
+    'img-src': [GOOGLE_TAG, GOOGLE_ENDPOINT],
+}
 
 
 class Tags(HTMLParser):
@@ -111,12 +118,12 @@ def analytics(page, html):
         if tag != 'meta' or a.get('http-equiv', '').lower() != 'content-security-policy':
             continue
         directives = [part.strip().split() for part in a['content'].split(';') if part.strip()]
-        for name, source in [('script-src', BEACON_SCRIPT), ('connect-src', BEACON_ENDPOINT)]:
+        for name, sources in ANALYTICS_SOURCES.items():
             directive = next((part for part in directives if part[0] == name), None)
             if directive is None:
-                directives.append([name, "'self'", source])
-            elif source not in directive:
-                directive.append(source)
+                directive = [name, "'self'"]
+                directives.append(directive)
+            directive.extend(source for source in sources if source not in directive)
         policy = '; '.join(' '.join(part) for part in directives)
         replacement = f'<meta http-equiv="Content-Security-Policy" content="{escape(policy, quote=True)}">'
         html = html[:start] + replacement + html[end:]
@@ -210,8 +217,9 @@ def check(pages):
         for tag, a, _, _ in tags:
             if tag == 'meta' and a.get('http-equiv', '').lower() == 'content-security-policy':
                 policy = dict((parts[0], parts[1:]) for text in a['content'].split(';') if (parts := text.split()))
-                if BEACON_SCRIPT not in policy.get('script-src', []) or BEACON_ENDPOINT not in policy.get('connect-src', []):
-                    errors.append(f'{page}: CSP does not allow Web Analytics')
+                for directive, sources in ANALYTICS_SOURCES.items():
+                    if not set(sources).issubset(policy.get(directive, [])):
+                        errors.append(f'{page}: CSP does not allow analytics {directive}')
         for tag, a, _, _ in tags:
             if tag == 'img':
                 if not a.get('width') or not a.get('height'):
