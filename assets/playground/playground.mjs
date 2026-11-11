@@ -155,7 +155,7 @@ export function createPlayground() {
       frame.dataset.background = appearance.backgroundColor;
       frame.dataset.foreground = appearance.color;
       frame.dataset.surface = appearance.background;
-      frame.src = new URL('./frame.html', import.meta.url).href;
+      frame.src = new URL('./frame.html?v=2', import.meta.url).href;
       dialog.prepend(frame);
       document.body.classList.add('playground-open');
       dialog.showModal();
