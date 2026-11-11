@@ -1,0 +1,774 @@
+/* Adapted from https://iansilber.com/styles.css (2026-11-11). */
+:root {
+  color-scheme: dark;
+  --control-accent: #fff;
+  --page-background: #000;
+  --page-foreground: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  overflow-x: clip;
+  margin: 0;
+  background: var(--page-background);
+}
+
+body {
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+}
+
+.shader {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100svh;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  image-rendering: pixelated;
+}
+
+.air-hockey-goal {
+  --air-hockey-goal-width: 180px;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  z-index: 5;
+  width: var(--air-hockey-goal-width);
+  height: 2px;
+  color: var(--page-foreground);
+  pointer-events: none;
+  opacity: 0;
+  background: transparent;
+  transform: translate3d(-50%, -100%, 0);
+  transition:
+    opacity 180ms ease,
+    transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.air-hockey-goal::before {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 100vh;
+  content: "";
+  background: var(--page-background);
+}
+
+.air-hockey-goal::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: currentColor;
+  opacity: 0.78;
+}
+
+body.air-hockey-mode .air-hockey-goal {
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0);
+}
+
+
+.air-hockey-hud {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  z-index: 6;
+  display: flex;
+  width: 180px;
+  align-items: baseline;
+  justify-content: space-between;
+  color: var(--page-foreground);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-50%, -8px, 0);
+  transition:
+    opacity 180ms ease,
+    transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+
+body.air-hockey-mode .air-hockey-hud {
+  opacity: 0.72;
+  transform: translate3d(-50%, 0, 0);
+}
+
+body.air-hockey-round-over .air-hockey-hud {
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.air-hockey-score-burst {
+  position: fixed;
+  top: 42px;
+  left: 50%;
+  z-index: 7;
+  color: var(--page-foreground);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-50%, 10px, 0) scale(0.7);
+}
+
+.air-hockey-score-burst.is-visible {
+  animation: air-hockey-score-burst 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes air-hockey-score-burst {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, 12px, 0) scale(0.65);
+  }
+
+  22% {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0) scale(1.18);
+  }
+
+  55% {
+    opacity: 1;
+    transform: translate3d(-50%, -6px, 0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, -22px, 0) scale(0.92);
+  }
+}
+
+body.air-hockey-round-over .ring-hit-target {
+  pointer-events: none;
+}
+
+.air-hockey-end-card {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  color: var(--page-foreground);
+  background: color-mix(
+    in srgb,
+    var(--page-background) 78%,
+    transparent
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 220ms ease,
+    visibility 0s linear 220ms;
+}
+
+body.air-hockey-show-results .air-hockey-end-card {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.air-hockey-end-card-panel {
+  width: min(372px, 100%);
+  max-width: 100%;
+  min-width: 0;
+  max-height: calc(100svh - 36px);
+  /* Keep the 5px focus ring inside the scroll container's clipping edge. */
+  padding: 6px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  text-align: center;
+  transform: translate3d(0, 18px, 0) scale(0.96);
+  transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.air-hockey-show-results .air-hockey-end-card-panel {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.air-hockey-end-card-panel::-webkit-scrollbar {
+  display: none;
+}
+
+.air-hockey-end-card-kicker,
+.air-hockey-end-card-subtitle {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  opacity: 0.5;
+}
+
+.air-hockey-end-card h2 {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0 4px;
+  font-weight: 400;
+}
+
+.air-hockey-final-score {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  font-size: min(clamp(64px, 18vw, 90px), calc(100cqw / var(--score-digits, 1) / 0.6));
+  font-variant-numeric: tabular-nums;
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+
+.air-hockey-final-label {
+  margin-top: 12px;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.air-hockey-end-card-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.air-hockey-end-card button {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 18px;
+  color: var(--page-background);
+  font: inherit;
+  background: var(--page-foreground);
+  border: 1px solid var(--page-foreground);
+  border-radius: 999px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.air-hockey-end-card button:focus-visible {
+  outline: 2px solid var(--page-foreground);
+  outline-offset: 3px;
+}
+
+.air-hockey-end-card .air-hockey-replay {
+  color: var(--page-foreground);
+  background: transparent;
+}
+
+.air-hockey-end-card .air-hockey-done {
+  width: auto;
+  min-height: 36px;
+  margin-top: 12px;
+  padding: 6px 14px;
+  color: var(--page-foreground);
+  background: transparent;
+  border-color: transparent;
+  opacity: 0.55;
+}
+
+.air-hockey-leaderboard {
+  min-width: 0;
+  margin-top: 20px;
+  overflow: hidden;
+  padding: 12px 0;
+  border-top: 1px solid color-mix(in srgb, currentColor 28%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, currentColor 28%, transparent);
+}
+
+.air-hockey-leaderboard-heading,
+.air-hockey-leaderboard-list li {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) minmax(72px, 42%);
+  align-items: center;
+  text-align: left;
+}
+
+.air-hockey-leaderboard-heading {
+  margin-bottom: 6px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.air-hockey-leaderboard-heading h3 {
+  grid-column: 1 / 3;
+  margin: 0;
+  font: inherit;
+}
+
+.air-hockey-leaderboard-heading span {
+  text-align: right;
+}
+
+.air-hockey-leaderboard-list {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.air-hockey-leaderboard-list li {
+  min-height: 21px;
+}
+
+.air-hockey-leaderboard-rank {
+  font-size: 11px;
+  opacity: 0.42;
+}
+
+.air-hockey-leaderboard-initials {
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 0.14em;
+}
+
+.air-hockey-leaderboard-score {
+  min-width: 0;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.air-hockey-leaderboard-form {
+  display: grid;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.air-hockey-leaderboard-form[hidden] {
+  display: none;
+}
+
+.air-hockey-leaderboard-form > label {
+  font-size: 12px;
+  text-align: left;
+  opacity: 0.62;
+}
+
+.air-hockey-initials-row,
+.air-hockey-initials {
+  display: flex;
+  gap: 6px;
+}
+
+.air-hockey-initials {
+  flex: 1;
+}
+
+.air-hockey-initials input {
+  width: 42px;
+  min-width: 0;
+  height: 42px;
+  padding: 0;
+  color: var(--page-foreground);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid color-mix(in srgb, currentColor 55%, transparent);
+  border-radius: 50%;
+  outline: none;
+  caret-color: transparent;
+  -webkit-appearance: none;
+}
+
+.air-hockey-initials input:focus {
+  border-color: currentColor;
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+.air-hockey-end-card .air-hockey-leaderboard-submit {
+  width: auto;
+  min-width: 76px;
+  min-height: 42px;
+  padding: 8px 16px;
+}
+
+.air-hockey-leaderboard-submit:disabled {
+  cursor: wait;
+  opacity: 0.5;
+}
+
+.air-hockey-leaderboard-status {
+  min-height: 16px;
+  margin: 6px 0 -2px;
+  font-size: 11px;
+  opacity: 0.55;
+}
+
+.air-hockey-leaderboard-status.is-error {
+  opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .air-hockey-end-card,
+  .air-hockey-end-card-panel {
+    transition: none;
+  }
+}
+
+
+.air-hockey-goal.is-scored::after {
+  animation: air-hockey-goal-score 360ms ease-out;
+}
+
+@keyframes air-hockey-goal-score {
+  0%,
+  100% {
+    filter: none;
+    opacity: 0.78;
+  }
+
+  35% {
+    filter: drop-shadow(0 0 14px currentColor);
+    opacity: 1;
+  }
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--page-background);
+}
+
+.shader-controls {
+  display: none;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 3;
+  width: min(240px, calc(100vw - 32px));
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+body.is-local .shader-controls {
+  display: block;
+}
+
+.shader-controls summary {
+  display: block;
+  width: max-content;
+  margin-left: auto;
+  padding: 6px 8px;
+  cursor: pointer;
+  background: #000;
+  border: 1px solid var(--control-accent);
+  list-style: none;
+}
+
+.shader-controls summary::-webkit-details-marker {
+  display: none;
+}
+
+.control-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 12px;
+  background: #000;
+  border: 1px solid var(--control-accent);
+}
+
+.control-grid label {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.control-grid input,
+.control-grid select {
+  width: 100%;
+  min-width: 0;
+  accent-color: var(--control-accent);
+}
+
+.control-grid input[type="color"] {
+  height: 22px;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--control-accent);
+}
+
+.control-grid input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 2px;
+}
+
+.control-grid input[type="color"]::-webkit-color-swatch {
+  border: 0;
+}
+
+.control-grid select {
+  color: #fff;
+  background: #000;
+  border: 1px solid var(--control-accent);
+}
+
+.artwork {
+  position: relative;
+  width: min(100%, calc(100svh * 469 / 852));
+  aspect-ratio: 469 / 852;
+  flex: 0 0 auto;
+  container-type: inline-size;
+  background: var(--page-background);
+}
+
+.circular-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  display: block;
+  color: var(--page-foreground);
+  cursor: grab;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  contain: layout size style;
+  backface-visibility: hidden;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.ring-hit-target {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.circular-view,
+.circular-view * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.circular-view canvas {
+  -webkit-user-drag: none;
+}
+
+.circular-view.is-dragging {
+  cursor: grabbing;
+}
+
+.circular-view.is-goal-transit .ring-hit-target,
+.spawned-ring.is-passive .ring-hit-target {
+  pointer-events: none;
+}
+
+.spawned-ring.is-passive {
+  cursor: default;
+}
+
+.circle-controls {
+  display: none;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 5;
+  width: min(220px, calc(100vw - 32px));
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+body.show-tweaks .circle-controls {
+  display: block;
+}
+
+.circle-controls summary {
+  display: block;
+  width: max-content;
+  margin-left: auto;
+  padding: 6px 8px;
+  cursor: pointer;
+  background: #000;
+  border: 1px solid #fff;
+  list-style: none;
+}
+
+.circle-controls summary::-webkit-details-marker {
+  display: none;
+}
+
+.circle-controls .control-grid {
+  border-color: #fff;
+}
+
+.circle-controls label {
+  grid-template-columns: 52px 1fr;
+  gap: 4px 10px;
+}
+
+.circle-controls output {
+  justify-self: end;
+  color: #aaa;
+  font-variant-numeric: tabular-nums;
+}
+
+.circle-controls input {
+  grid-column: 1 / -1;
+}
+
+.circle-controls select {
+  justify-self: stretch;
+}
+
+.circle-reset,
+.circle-save,
+.sound-test {
+  padding: 3px 7px;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  background: #000;
+  border: 1px solid #fff;
+}
+
+.circle-reset:hover,
+.circle-reset:focus-visible,
+.circle-save:hover,
+.circle-save:focus-visible,
+.sound-test:hover,
+.sound-test:focus-visible {
+  color: #000;
+  background: #fff;
+}
+
+@media (max-width: 700px) {
+  .circle-controls {
+    right: 10px;
+    bottom: 10px;
+    width: min(190px, calc(100vw - 20px));
+  }
+}
+
+.ball-deform {
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+
+.ring-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  backface-visibility: hidden;
+}
+
+
+
+.control-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+
+body.is-production:not(.show-tweaks) .circle-controls {
+  display: none !important;
+}
+
+.circle-debug {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  left: max(12px, env(safe-area-inset-left));
+  z-index: 50;
+  display: none;
+  padding: 8px 10px;
+  color: #fff;
+  font: 11px/1.35 ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  font-variant-numeric: tabular-nums;
+  white-space: pre;
+  pointer-events: none;
+  user-select: none;
+  background: rgb(0 0 0 / 78%);
+  border: 1px solid rgb(255 255 255 / 55%);
+}
+
+body.show-tweaks .circle-debug {
+  display: block;
+}
+
+.audio-keeper {
+  display: none;
+}
+
+.audio-start {
+  position: fixed;
+  z-index: 1000;
+  top: max(24px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--page-foreground);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  opacity: 0.22;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.audio-start[hidden] {
+  display: none;
+}
+
+.audio-debug {
+  position: fixed;
+  z-index: 1100;
+  top: max(8px, env(safe-area-inset-top));
+  right: 8px;
+  max-width: calc(100vw - 16px);
+  padding: 8px 10px;
+  border-radius: 7px;
+  background: rgb(0 0 0 / 82%);
+  color: #fff;
+  font: 11px/1.35 ui-monospace, SFMono-Regular, Menlo, monospace;
+  white-space: pre-wrap;
+  pointer-events: none;
+}

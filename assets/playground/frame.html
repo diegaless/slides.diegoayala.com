@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#000000">
+    <title>Material de clase · Modo interactivo</title>
+    <link rel="stylesheet" href="ring.css">
+    <link rel="preload" href="./assets/balloon-squeeze.b64" as="fetch" crossorigin>
+    <link rel="preload" href="./assets/balloon-pop.b64" as="fetch" crossorigin>
+  </head>
+  <body>
+    <canvas class="shader" aria-hidden="true"></canvas>
+    <div class="air-hockey-goal" aria-hidden="true"></div>
+    <div class="air-hockey-hud" aria-live="polite">
+      <span class="air-hockey-timer">:15</span><span class="air-hockey-score">0</span>
+    </div>
+    <div class="air-hockey-score-burst" aria-hidden="true">+1</div>
+    <section
+      class="air-hockey-end-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="air-hockey-result-title"
+      aria-hidden="true"
+    >
+      <div class="air-hockey-end-card-panel">
+        <h2 id="air-hockey-result-title">
+          <span class="air-hockey-final-score">0</span>
+          <span class="air-hockey-final-label">goles</span>
+        </h2>
+        <p class="air-hockey-end-card-subtitle">en 15 segundos</p>
+        <section class="air-hockey-leaderboard" aria-labelledby="air-hockey-leaderboard-title">
+          <div class="air-hockey-leaderboard-heading">
+            <h3 id="air-hockey-leaderboard-title">clasificación de este navegador</h3>
+            <span>goles</span>
+          </div>
+          <ol class="air-hockey-leaderboard-list" aria-live="polite"></ol>
+          <form class="air-hockey-leaderboard-form" hidden novalidate>
+            <label>Firma con tus iniciales</label>
+            <div class="air-hockey-initials-row">
+              <div class="air-hockey-initials" role="group" aria-label="Tres iniciales">
+                <input aria-label="Primera inicial" maxlength="1" pattern="[A-Za-z]" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false">
+                <input aria-label="Segunda inicial" maxlength="1" pattern="[A-Za-z]" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false">
+                <input aria-label="Tercera inicial" maxlength="1" pattern="[A-Za-z]" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false">
+              </div>
+              <button class="air-hockey-leaderboard-submit" type="submit">Guardar</button>
+            </div>
+          </form>
+          <p class="air-hockey-leaderboard-status" role="status"></p>
+        </section>
+        <div class="air-hockey-end-card-actions">
+          <button class="air-hockey-replay" type="button">Volver a jugar</button>
+        </div>
+        <button class="air-hockey-done" type="button">Terminar</button>
+      </div>
+    </section>
+    <main class="page" aria-label="Material de clase de Diego Ayala">
+      <section class="artwork">
+        <div
+          class="circular-view"
+          role="img"
+          aria-label="Diego Ayala. Diapositivas y ejercicios de clase. DAM / DAW · SEF · RM Skills · FEM."
+        ></div>
+      </section>
+    </main>
+    <details class="circle-controls">
+      <summary>ajustes</summary>
+      <div class="control-grid">
+        <label>
+          tamaño de portería <output data-circle-output="goalSize">2×</output>
+          <input type="range" data-circle-control="goalSize" min="1.25" max="3" step="0.05" value="2">
+        </label>
+        <label>
+          fricción del disco <output data-circle-output="puckFriction">4.0%</output>
+          <input type="range" data-circle-control="puckFriction" min="0" max="0.04" step="0.001" value="0.04">
+        </label>
+        <div class="control-actions">
+          <button class="circle-save" type="button">guardar</button>
+          <button class="circle-reset" type="button">restablecer</button>
+        </div>
+      </div>
+    </details>
+    <div class="audio-start" aria-hidden="true" hidden>
+      Toca para activar el sonido
+    </div>
+    <output class="audio-debug" aria-hidden="true" hidden></output>
+    <script src="engine.mjs" type="module"></script>
+  </body>
+</html>

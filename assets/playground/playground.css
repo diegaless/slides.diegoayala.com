@@ -1,0 +1,54 @@
+.playground-open { overflow: hidden; }
+
+.circle-playground {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  color: #fff;
+  background: #000;
+  overscroll-behavior: none;
+}
+.circle-playground::backdrop { background: #000; }
+.playground-frame { display: block; width: 100%; height: 100%; border: 0; }
+.playground-close {
+  position: absolute;
+  top: max(12px, env(safe-area-inset-top));
+  right: max(12px, env(safe-area-inset-right));
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: #0006;
+  font: 24px/1 Arial, sans-serif;
+  opacity: 0.45;
+  cursor: pointer;
+}
+.playground-close:hover, .playground-close:focus-visible { opacity: 1; }
+.playground-close:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.playground-hint {
+  position: absolute;
+  right: 24px;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  left: 24px;
+  margin: 0;
+  color: #fff;
+  font: 12px/1.6 Arial, sans-serif;
+  text-align: center;
+  text-shadow: 0 1px 4px #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms;
+}
+.playground-hint.is-visible { opacity: 0.55; }
+@media (prefers-reduced-motion: reduce) { .playground-hint { transition: none; } }

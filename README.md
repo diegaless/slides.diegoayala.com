@@ -312,6 +312,15 @@ El concepto generado con imagegen y las capturas de la implementación están en
 
 ## Abrir
 
+En la portada, una pulsación de **Espacio** abre un modo interactivo con el
+motor de [iansilber.com](https://iansilber.com/) adaptado al contenido de esta
+web. El círculo permite arrastrar, lanzar, deformar y jugar al hockey con doble
+clic o doble toque. **Esc**, **Espacio** o el botón de cierre vuelven a la
+portada. Las flechas y **Intro** permiten moverlo y jugar con el teclado.
+La clasificación se guarda solo en este navegador. El modo se carga cuando
+se solicita y necesita HTTP. Origen del motor y detalles de adaptación:
+[`assets/playground/README.md`](assets/playground/README.md).
+
 Puedes abrir `index.html` directamente en el navegador. No requiere servidor ni dependencias.
 Sin JavaScript, los enlaces originales a las diapositivas siguen funcionando y
 las bibliotecas permiten abrir tareas y descargar PDF. Las asignaturas también
