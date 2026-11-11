@@ -2,6 +2,16 @@
 import { readLeaderboard, saveScore } from "./leaderboard.mjs";
 
       (() => {
+        const homeAppearance = window.frameElement?.dataset;
+        let waitingForEntrance = homeAppearance?.morph === "true";
+        const initialBackground = homeAppearance?.background || "#000000";
+        const initialForeground = homeAppearance?.foreground || "#ffffff";
+        document.documentElement.style.setProperty("--page-background", initialBackground);
+        document.documentElement.style.setProperty("--page-foreground", initialForeground);
+        if (homeAppearance?.surface) {
+          document.documentElement.style.setProperty("--home-surface", homeAppearance.surface);
+          document.body.classList.add("has-home-surface");
+        }
         const localHosts = new Set(["localhost", "127.0.0.1", "0.0.0.0", "::1", "[::1]"]);
         const isLocal = window.location.protocol === "file:" || localHosts.has(window.location.hostname);
 
@@ -290,7 +300,7 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
         let motionPermissionRequested = false;
         let lastMotionTime = -Infinity;
         const colorThemes = [
-          { background: "#000000", text: "#ffffff" },
+          { background: initialBackground, text: initialForeground },
           { background: "#163cff", text: "#ffffff" },
           { background: "#ff3b30", text: "#ffffff" },
           { background: "#d7ff00", text: "#111111" },
@@ -307,6 +317,7 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
           colorThemeIndex = (colorThemeIndex + 1) % colorThemes.length;
           const theme = colorThemes[colorThemeIndex];
 
+          document.body.classList.remove("has-home-surface");
           document.documentElement.style.setProperty("--page-background", theme.background);
           document.documentElement.style.setProperty("--page-foreground", theme.text);
           document.querySelector('meta[name="theme-color"]')?.setAttribute(
@@ -323,6 +334,7 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
           for (const ball of spawnedBalls) {
             drawSpawnedBall(ball);
           }
+          window.parent.postMessage({ type: "slides-playground-theme", color: theme.text }, window.location.origin);
         };
 
         const registerBounceForTheme = () => {
@@ -4838,7 +4850,7 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
             if (!event.repeat) window.parent.postMessage({ type: "slides-playground-close" }, window.location.origin);
             return;
           }
-          if (interactive || event.repeat || airHockeyState?.roundOver) return;
+          if (waitingForEntrance || interactive || event.repeat || airHockeyState?.roundOver) return;
           if (event.key.startsWith("Arrow")) {
             event.preventDefault();
             ensureAudioContext();
@@ -4861,8 +4873,39 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
         // Do not accumulate animation work while this tab is in the background.
         document.addEventListener("visibilitychange", () => {
           if (document.hidden) { stopPhysics(); stopSqueezeSound(); }
-          else startPhysics();
+          else if (!waitingForEntrance) startPhysics();
+        });
+
+        // Expose drawn glyph poses so the host can assemble its actual page letters
+        // into this ring before starting the original physics engine.
+        const transitionGlyphs = () => {
+          const base = circleSettings.startRotation * Math.PI / 180 + spinAngle;
+          const color = getComputedStyle(document.documentElement).getPropertyValue("--page-foreground").trim();
+          return ringLayout.characters.flatMap((character, index) => {
+            if (!ringLayout.visible[index]) return [];
+            const pose = getContactRingPose(base + ringLayout.angles[index], index);
+            return [{ character, x: ballPosition.x + pose.x, y: ballPosition.y + pose.y,
+              rotation: pose.rotation, fontSize: circleSettings.fontSize * ringScale,
+              scale: ringLayout.horizontalScale, color }];
+          });
+        };
+        window.addEventListener("message", (event) => {
+          if (event.source !== window.parent || event.origin !== window.location.origin) return;
+          if (event.data?.type === "slides-playground-begin" && waitingForEntrance) {
+            waitingForEntrance = false;
+            startPhysics();
+          }
+          if (event.data?.type === "slides-playground-snapshot") {
+            stopPhysics();
+            stopSqueezeSound();
+            waitingForEntrance = true;
+            const glyphs = !popState && !airHockeyState ? transitionGlyphs() : null;
+            if (glyphs) circularView.style.visibility = "hidden";
+            window.parent.postMessage({ type: "slides-playground-snapshot", glyphs }, window.location.origin);
+          }
         });
         renderCircularView();
-        startPhysics();
+        if (waitingForEntrance) {
+          window.parent.postMessage({ type: "slides-playground-ready", glyphs: transitionGlyphs() }, window.location.origin);
+        } else startPhysics();
       })();

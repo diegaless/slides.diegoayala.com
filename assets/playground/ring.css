@@ -20,6 +20,24 @@ body {
   background: var(--page-background);
 }
 
+/* Preserve the homepage's gradient until the first color-changing bounce. */
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  background: var(--home-surface, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 360ms ease;
+}
+
+body.has-home-surface::before { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { transition: none; }
+}
+
 body {
   overflow: hidden;
   font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
@@ -461,7 +479,7 @@ body.air-hockey-show-results .air-hockey-end-card-panel {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--page-background);
+  background: transparent;
 }
 
 .shader-controls {
@@ -546,7 +564,7 @@ body.is-local .shader-controls {
   aspect-ratio: 469 / 852;
   flex: 0 0 auto;
   container-type: inline-size;
-  background: var(--page-background);
+  background: transparent;
 }
 
 .circular-view {

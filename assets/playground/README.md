@@ -17,6 +17,15 @@ El motor, los estilos del anillo y los sonidos se adaptan del código servido po
 
 La integración usa un diálogo con un marco independiente, cargado al solicitar
 el modo. El texto se obtiene del nombre, título y navegación de la portada.
+La ayuda inferior se ha eliminado. `transition.mjs` mide las letras visibles de
+la página con `Range`, las reúne en las posiciones exactas que dibuja el motor
+y las devuelve a la portada al cerrar. El motor espera a que termine la entrada
+antes de activar las físicas, para evitar saltos entre la animación y el anillo.
+La entrada conserva el color, el texto y el fondo con resplandor del tema activo.
+Los cambios de paleta de los rebotes se mantienen. Con movimiento reducido se
+omite el recorrido de letras. Durante una partida o explosión, la salida usa un
+fundido breve en lugar de reconstruir un anillo que ya no está completo.
+
 Los colores, eventos y sonidos del motor quedan dentro del marco; al cerrar se
 elimina para liberar las animaciones, temporizadores y audio y recuperar el
 foco. Los ajustes del motor solo aparecen con `?tweaks` en la URL del marco.
@@ -31,4 +40,5 @@ resultados de la sesión mientras siga abierto el modo.
 La portada habitual sigue disponible sin JavaScript. El modo interactivo usa
 módulos y necesita HTTP; para probarlo, ejecutar `python3 scripts/preview.py`
 y abrir la dirección local que imprime. `npm test` comprueba también el orden,
-validación y funcionamiento sin almacenamiento de la clasificación.
+validación y funcionamiento sin almacenamiento de la clasificación, la
+correspondencia única de letras y la continuidad de los extremos del recorrido.
