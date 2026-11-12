@@ -1,5 +1,5 @@
 export const LEADERBOARD_LIMIT = 10;
-export const MAX_SCORE = 999;
+export const MAX_SCORE = Number.MAX_SAFE_INTEGER;
 
 export function validateScore(initials, score) {
   if (typeof initials !== 'string' || !/^[A-Z]{3}$/.test(initials) ||
@@ -14,7 +14,7 @@ export function replacementForScore(previous, initials, score) {
 }
 
 // Load authentication and the database only when the results are requested.
-const client = () => import('./score-client.mjs?v=4');
+const client = () => import('./score-client.mjs?v=6');
 async function remote(operation, message) {
   let timer;
   try {

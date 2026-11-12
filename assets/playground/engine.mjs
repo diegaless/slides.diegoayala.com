@@ -1,5 +1,5 @@
 // Interaction engine adapted from https://iansilber.com/ (2026-11-11). See README.md.
-import { readLeaderboard, saveScore } from "./leaderboard.mjs?v=4";
+import { readLeaderboard, saveScore } from "./leaderboard.mjs?v=6";
 import { createGlyphAtlas } from "./glyph-atlas.mjs";
 
       (() => {

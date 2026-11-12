@@ -153,7 +153,7 @@ export function createPlayground() {
       frame.dataset.surface = appearance.background;
       if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) &&
           new URLSearchParams(location.search).get('scores') === 'emulator') frame.dataset.scoreEmulator = 'true';
-      frame.src = new URL('./frame.html?v=5', import.meta.url).href;
+      frame.src = new URL('./frame.html?v=6', import.meta.url).href;
       dialog.prepend(frame);
       document.body.classList.add('playground-open');
       dialog.showModal();

@@ -181,7 +181,7 @@ test('solo cada identidad anónima escribe su marca y no obtiene permisos de pro
 test('las marcas rechazan campos, tipos, iniciales y fechas falsificadas al crear y actualizar',async()=>{
   let index=0;
   for(const invalid of [{initials:'AB'},{initials:'abc'},{initials:'<b>'},{initials:'A'.repeat(100000)},
-    {initials:['A','B','C']},{score:-1},{score:1000},
+    {initials:['A','B','C']},{score:-1},{score:Number.MAX_SAFE_INTEGER+1},
     {score:2.5},{score:'2'},{extra:'injected'},{email:'private@example.test'},
     {uid:'player-a'},{isAdmin:true},{updatedAt:Timestamp.fromMillis(0)},
     {updatedAt:Timestamp.fromMillis(Date.now()+86400000)}]) {
@@ -205,6 +205,20 @@ test('solo se admite mejorar el récord tras el intervalo entre partidas',async(
   await assertFails(setDoc(ref,scoreData(4)));
   await assertSucceeds(setDoc(ref,scoreData(5,'DAW')));
   await assertFails(setDoc(ref,scoreData(6)));
+});
+
+test('se guardan bonificaciones altas y el límite coincide con los enteros seguros del navegador',async()=>{
+  const id='high-score-player', db=playerDb(id), ref=scoreRef(db,id);
+  await assertSucceeds(setDoc(ref,scoreData(10_000,'ALT')));
+  assert.equal((await getDoc(ref)).data().score,10_000);
+  await env.withSecurityRulesDisabled(context=>setDoc(scoreRef(context.firestore(),id),{
+    initials:'ALT',score:10_000,updatedAt:Timestamp.fromMillis(Date.now()-60000),
+  }));
+  await assertSucceeds(setDoc(ref,scoreData(16_384,'ALT')));
+  assert.equal((await getDoc(ref)).data().score,16_384);
+  const maxId='max-safe-score';
+  await assertSucceeds(setDoc(scoreRef(playerDb(maxId),maxId),scoreData(Number.MAX_SAFE_INTEGER,'MAX')));
+  assert.equal((await getDoc(scoreRef(playerDb(maxId),maxId))).data().score,Number.MAX_SAFE_INTEGER);
 });
 
 test('dos clientes independientes con Auth anónimo y Firestore Lite comparten la clasificación',async()=>{
