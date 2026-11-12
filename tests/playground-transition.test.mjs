@@ -1,34 +1,53 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { matchLetters, letterPose } from '../assets/playground/transition.mjs';
+import { readFileSync } from 'node:fs';
+import { subjectsText, pairLetters, letterTransform } from '../assets/playground/transition.mjs';
+import { createGlyphAtlas } from '../assets/playground/glyph-atlas.mjs';
 
-test('takes each original letter only once, matching case and accents and preferring nearby letters', () => {
-  const sources = [
-    { character: 'A', x: 0, y: 0 }, { character: 'a', x: 100, y: 100 },
-    { character: 'í', x: 30, y: 50 }, { character: 'Z', x: 10, y: 10 },
-  ];
-  const targets = [
-    { character: 'a', x: 90, y: 90 }, { character: 'a', x: 80, y: 80 },
-    { character: 'a', x: 70, y: 70 }, { character: 'i', x: 0, y: 0 },
-    { character: '.', x: 0, y: 0 },
-  ];
-  assert.deepEqual(matchLetters(sources, targets), [1, 0, -1, 2, -1]);
+test('the ring contains exactly the six subject names from the homepage, preserving case and accents', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const names = [...html.matchAll(/<summary class="subject-link"><span>(.*?)<\/span>/gu)].map(match => match[1]);
+  assert.deepEqual(names, ['Lenguaje de Marcas', 'Desarrollo de Interfaces',
+    'Programación de Servicios y Procesos', 'Despliegue de aplicaciones Web',
+    'Proyecto Intermodular', 'Sistemas informáticos']);
+  const circle = subjectsText(names);
+  assert.equal(circle.replace(/\s/gu, ''), names.join('').replace(/\s/gu, ''));
+  assert.equal(subjectsText([' Lenguaje\n de Marcas ', 'Programación']), 'Lenguaje de Marcas   Programación');
 });
 
-test('meets the source and drawn ring poses without a visible jump at either endpoint', () => {
-  const from = { x: 40, y: 50, fontSize: 12, rotation: 0, scale: 1 };
-  const to = { x: 900, y: 700, fontSize: 26, rotation: -2.4, scale: 0.82 };
-  for (const [progress, expected] of [[0, from], [1, to], [-1, from], [2, to]]) {
-    const actual = letterPose(from, to, progress);
-    for (const key of Object.keys(expected)) assert.ok(Math.abs(actual[key] - expected[key]) < 1e-9, key);
-  }
-  for (const [progress, expected] of [[0.001, from], [0.999, to]]) {
-    const actual = letterPose(from, to, progress);
-    assert.ok(Math.hypot(actual.x - expected.x, actual.y - expected.y) < 0.01);
-  }
-  for (let progress = 0; progress <= 1; progress += 0.01) {
-    const actual = letterPose(from, to, progress);
-    assert.ok(Object.values(actual).every(Number.isFinite));
-    assert.ok(actual.fontSize >= from.fontSize && actual.fontSize <= to.fontSize);
+test('duplicate letters retain their original identity and order, regardless of their distance to the ring', () => {
+  const sources = [{ character: 'a', x: 0 }, { character: 'a', x: 100 }, { character: 'í', x: 50 }];
+  const targets = [{ character: 'a', x: 95 }, { character: 'a', x: 5 }, { character: 'í', x: 20 }];
+  const pairs = pairLetters(sources, targets);
+  pairs.forEach((pair, index) => {
+    assert.equal(pair.source, sources[index]);
+    assert.equal(pair.target, targets[index]);
+  });
+  for (const invalid of [targets.slice(1), [...targets, { character: '.' }],
+    [targets[0], targets[1], { character: 'i' }]]) assert.throws(() => pairLetters(sources, invalid));
+});
+
+test('movement scales the original glyph uniformly and lands on the ring anchor', () => {
+  const source = { x: 30, y: 40, width: 12, height: 36, fontSize: 32, scale: 1 };
+  assert.equal(letterTransform(source, source), 'translate3d(24px, 22px, 0) rotate(0rad) scale(1, 1)');
+  assert.equal(letterTransform(source, { x: 900, y: 700, fontSize: 24, rotation: -2.4, scale: 1 }),
+    'translate3d(894px, 682px, 0) rotate(-2.4rad) scale(0.75, 0.75)');
+});
+
+test('the ring rasterizes each distinct glyph only once instead of drawing text in every animation frame', () => {
+  const originalDocument = globalThis.document;
+  let rasterized = 0, copied = 0;
+  const context = { measureText: () => ({ width: 12 }), setTransform() {}, fillText() { rasterized++; } };
+  globalThis.document = { createElement: () => ({ getContext: () => context }) };
+  try {
+    const atlas = createGlyphAtlas(Array.from('Marcas Marcas'), '300 26px sans-serif', 26, '#fff', 2);
+    assert.equal(rasterized, 5);
+    const target = { drawImage() { copied++; } };
+    for (let frame = 0; frame < 120; frame++) for (const character of 'Marcas') atlas.draw(target, character);
+    assert.equal(copied, 720);
+    assert.equal(rasterized, 5);
+  } finally {
+    if (originalDocument === undefined) delete globalThis.document;
+    else globalThis.document = originalDocument;
   }
 });

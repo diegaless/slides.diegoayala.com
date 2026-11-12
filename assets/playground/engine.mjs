@@ -1,8 +1,15 @@
 // Interaction engine adapted from https://iansilber.com/ (2026-11-11). See README.md.
 import { readLeaderboard, saveScore } from "./leaderboard.mjs";
+import { createGlyphAtlas } from "./glyph-atlas.mjs";
 
       (() => {
         const homeAppearance = window.frameElement?.dataset;
+        const ringFontFamily = homeAppearance?.fontFamily || '"Helvetica Neue", Helvetica, Arial, sans-serif';
+        const ringFontWeight = homeAppearance?.fontWeight || "400";
+        const ringFont = (size) => `${ringFontWeight} ${size}px ${ringFontFamily}`;
+        let homeGlyphColors = [];
+        try { homeGlyphColors = JSON.parse(homeAppearance?.glyphColors || "[]"); } catch {}
+        let useHomeGlyphColors = homeGlyphColors.length > 0;
         let waitingForEntrance = homeAppearance?.morph === "true";
         const initialBackground = homeAppearance?.background || "#000000";
         const initialForeground = homeAppearance?.foreground || "#ffffff";
@@ -155,8 +162,7 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
         circularView.dataset.ballId = "0";
         const circleControls = document.querySelectorAll("[data-circle-control]");
         const circleTweaksStorageKey = "slides-circle-tweaks-v1";
-        const getResponsiveRingRadius = () =>
-          window.matchMedia("(max-width: 700px)").matches ? 0.3125 : 0.425;
+        const getResponsiveRingRadius = () => 0.425;
         const circleSettings = {
           spinDuration: 60,
           fontSize: 26,
@@ -318,6 +324,8 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
           const theme = colorThemes[colorThemeIndex];
 
           document.body.classList.remove("has-home-surface");
+          useHomeGlyphColors = false;
+          ringLayout?.atlases?.clear();
           document.documentElement.style.setProperty("--page-background", theme.background);
           document.documentElement.style.setProperty("--page-foreground", theme.text);
           document.querySelector('meta[name="theme-color"]')?.setAttribute(
@@ -438,8 +446,8 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
         };
 
         const circleLabel = window.frameElement?.dataset.circleText ||
-          "Diego Ayala. Diapositivas y ejercicios de clase. DAM / DAW · SEF · RM Skills · FEM.";
-        const circleText = circleLabel.toLocaleLowerCase("es");
+          "Lenguaje de Marcas   Desarrollo de Interfaces   Programación de Servicios y Procesos   Despliegue de aplicaciones Web   Proyecto Intermodular   Sistemas informáticos";
+        const circleText = circleLabel;
         circularView.setAttribute("aria-label", circleLabel);
 
         const updateBallBounds = () => {
@@ -1378,8 +1386,7 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
           const characters = Array.from(circleText);
 
           ringContext.setTransform(ringPixelRatio, 0, 0, ringPixelRatio, 0, 0);
-          ringContext.font =
-            `400 ${fontSize}px "Helvetica Neue", Helvetica, Arial, sans-serif`;
+          ringContext.font = ringFont(fontSize);
           ringContext.textAlign = "center";
           ringContext.textBaseline = "middle";
           ringContext.fillStyle = getComputedStyle(document.documentElement)
@@ -1410,6 +1417,8 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
             advance += widths[index] + tracking;
           }
 
+          const metrics = ringContext.measureText("Mg");
+          let colorIndex = 0;
           ringLayout = {
             characters,
             angles,
@@ -1417,6 +1426,9 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
             center: size / 2,
             horizontalScale,
             visible,
+            colors: characters.map(character => /\s/u.test(character) ? null : homeGlyphColors[colorIndex++]),
+            centerOffset: ((metrics.fontBoundingBoxDescent || 0) - (metrics.fontBoundingBoxAscent || 0)) / 2,
+            atlases: new Map(),
           };
         };
 
@@ -1596,6 +1608,13 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
             if (!visible[index]) continue;
 
             const character = characters[index];
+            const color = (useHomeGlyphColors && ringLayout.colors[index]) || ringContext.fillStyle;
+            let atlas = ringLayout.atlases.get(color);
+            if (!atlas) {
+              atlas = createGlyphAtlas(characters, ringFont(circleSettings.fontSize * ringScale),
+                circleSettings.fontSize * ringScale, color, ratio);
+              ringLayout.atlases.set(color, atlas);
+            }
             const angle = baseRotation + angles[index];
             const pose = getContactRingPose(angle, index);
             const cosine = Math.cos(pose.rotation);
@@ -1609,7 +1628,7 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
               ratio * (pose.x + ringCanvasPadding),
               ratio * (pose.y + ringCanvasPadding),
             );
-            ringContext.fillText(character, 0, 0);
+            atlas.draw(ringContext, character);
           }
         };
 
@@ -1730,8 +1749,7 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
             (circleSettings.startRotation * Math.PI) / 180;
           context.setTransform(ratio, 0, 0, ratio, 0, 0);
           context.clearRect(0, 0, paddedSize, paddedSize);
-          context.font =
-            `400 ${layout.fontSize}px "Helvetica Neue", Helvetica, Arial, sans-serif`;
+          context.font = ringFont(layout.fontSize);
           context.textAlign = "center";
           context.textBaseline = "middle";
 
@@ -1815,8 +1833,7 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
           });
           context.imageSmoothingEnabled = true;
           context.imageSmoothingQuality = "high";
-          context.font =
-            `400 ${ball.fontSize}px "Helvetica Neue", Helvetica, Arial, sans-serif`;
+          context.font = ringFont(ball.fontSize);
 
           const characters = Array.from(circleText);
           const gapLength = ball.fontSize * circleSettings.gap;
@@ -3203,8 +3220,7 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
             alpha: true,
             desynchronized: true,
           });
-          popContext.font =
-            `400 ${circleSettings.fontSize * ringScale}px "Helvetica Neue", Helvetica, Arial, sans-serif`;
+          popContext.font = ringFont(circleSettings.fontSize * ringScale);
           popContext.textAlign = "center";
           popContext.textBaseline = "middle";
           popContext.fillStyle = getComputedStyle(document.documentElement)
@@ -3327,8 +3343,7 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
           positionBall();
           const rect = circularView.getBoundingClientRect();
           const particleFontSize = circleSettings.fontSize * ringScale;
-          popContext.font =
-            `400 ${particleFontSize}px "Helvetica Neue", Helvetica, Arial, sans-serif`;
+          popContext.font = ringFont(particleFontSize);
 
           if (
             popState.particles.some(
@@ -3496,8 +3511,7 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
           if (resized) {
             popCanvas.width = expectedWidth;
             popCanvas.height = expectedHeight;
-            popContext.font =
-              `400 ${circleSettings.fontSize * ringScale}px "Helvetica Neue", Helvetica, Arial, sans-serif`;
+            popContext.font = ringFont(circleSettings.fontSize * ringScale);
             popContext.textAlign = "center";
             popContext.textBaseline = "middle";
             popContext.fillStyle = getComputedStyle(document.documentElement)
@@ -3741,6 +3755,13 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
           );
           const size = baseSize * ringScale;
 
+          // Fit complete subject names by uniformly sizing the type, without
+          // squeezing the letters horizontally on smaller viewports.
+          context.font = ringFont(26);
+          const textWidth = Array.from(circleText).reduce((total, character) =>
+            total + context.measureText(character).width, 0);
+          circleSettings.fontSize = Math.min(26,
+            (Math.PI * 2 * baseSize * circleSettings.radius) / (textWidth / 26 + circleSettings.gap));
           ballSize = size;
           const renderedFontSize = circleSettings.fontSize * ringScale;
           const visibleRadius = Math.min(
@@ -4884,9 +4905,12 @@ import { readLeaderboard, saveScore } from "./leaderboard.mjs";
           return ringLayout.characters.flatMap((character, index) => {
             if (!ringLayout.visible[index]) return [];
             const pose = getContactRingPose(base + ringLayout.angles[index], index);
-            return [{ character, x: ballPosition.x + pose.x, y: ballPosition.y + pose.y,
+            return [{ character,
+              x: ballPosition.x + pose.x - Math.sin(pose.rotation) * ringLayout.centerOffset,
+              y: ballPosition.y + pose.y + Math.cos(pose.rotation) * ringLayout.centerOffset,
               rotation: pose.rotation, fontSize: circleSettings.fontSize * ringScale,
-              scale: ringLayout.horizontalScale, color }];
+              scale: ringLayout.horizontalScale,
+              color: (useHomeGlyphColors && ringLayout.colors[index]) || color }];
           });
         };
         window.addEventListener("message", (event) => {

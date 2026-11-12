@@ -315,8 +315,10 @@ El concepto generado con imagegen y las capturas de la implementación están en
 En la portada, una pulsación de **Espacio** abre un modo interactivo con el
 motor de [iansilber.com](https://iansilber.com/) adaptado al contenido de esta
 web. El círculo permite arrastrar, lanzar, deformar y jugar al hockey con doble
-clic o doble toque. Las letras se reúnen desde la portada conservando su color
-y fondo inicial, y vuelven a ella al cerrar, sin mostrar ayuda inferior.
+clic o doble toque. El círculo contiene los nombres completos de las seis
+asignaturas. Sus mismas letras se desplazan en orden desde la portada, sin
+cambiar de tipografía ni duplicarse, y vuelven a ella al cerrar. Conserva el
+color y fondo inicial y no muestra ayuda inferior.
 **Esc**, **Espacio** o el botón de cierre vuelven a la
 portada. Las flechas y **Intro** permiten moverlo y jugar con el teclado.
 La clasificación se guarda solo en este navegador. El modo se carga cuando

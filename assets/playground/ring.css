@@ -560,8 +560,8 @@ body.is-local .shader-controls {
 
 .artwork {
   position: relative;
-  width: min(100%, calc(100svh * 469 / 852));
-  aspect-ratio: 469 / 852;
+  width: min(100%, 76svh);
+  aspect-ratio: 1;
   flex: 0 0 auto;
   container-type: inline-size;
   background: transparent;

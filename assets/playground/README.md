@@ -16,16 +16,27 @@ El motor, los estilos del anillo y los sonidos se adaptan del código servido po
   en las mismas rutas bajo `https://iansilber.com/assets/`.
 
 La integración usa un diálogo con un marco independiente, cargado al solicitar
-el modo. El texto se obtiene del nombre, título y navegación de la portada.
-La ayuda inferior se ha eliminado. `transition.mjs` mide las letras visibles de
-la página con `Range`, las reúne en las posiciones exactas que dibuja el motor
-y las devuelve a la portada al cerrar. El motor espera a que termine la entrada
-antes de activar las físicas, para evitar saltos entre la animación y el anillo.
+el modo. El texto contiene exclusivamente los seis nombres completos de las
+asignaturas de la portada, con sus mayúsculas y tildes originales. Los espacios
+separan los nombres; no se añaden letras, signos ni texto introductorio.
+La ayuda inferior se ha eliminado. `transition.mjs` mide únicamente esas letras
+con `Range` y mantiene una correspondencia por posición: cada letra de cada
+asignatura pasa al mismo lugar de su nombre en el círculo, sin intercambiarlas
+por otras iguales de la página. Conserva su tipografía y peso; el tamaño se
+adapta de manera uniforme para no comprimir las letras en pantallas pequeñas.
+
+La entrada y la vuelta usan un elemento por letra animado con `transform` mediante
+Web Animations. No hay un lienzo a pantalla completa, bucle de JavaScript por
+fotograma, sustitución de caracteres ni dos versiones de una misma letra
+superpuestas. Los textos originales se ocultan solo mientras se muestran sus
+copias y se restauran al cerrar o cancelar. El motor espera a que acabe la entrada
+antes de activar las físicas. `glyph-atlas.mjs` rasteriza cada carácter diferente
+una sola vez por tamaño y color; los fotogramas del círculo reutilizan esos píxeles.
 La entrada conserva el color, el texto y el fondo con resplandor del tema activo.
 Los cambios de paleta de los rebotes se mantienen. Con movimiento reducido se
 omite el recorrido de letras. Durante una partida o explosión, la salida usa un
 fundido breve en lugar de reconstruir un anillo que ya no está completo.
-Los puntos de entrada llevan `?v=2` para no mezclar el marco, el motor y los
+Los puntos de entrada llevan `?v=3` para no mezclar el marco, el motor y los
 estilos nuevos con las copias anteriores de la caché de GitHub Pages.
 
 Los colores, eventos y sonidos del motor quedan dentro del marco; al cerrar se
@@ -42,5 +53,6 @@ resultados de la sesión mientras siga abierto el modo.
 La portada habitual sigue disponible sin JavaScript. El modo interactivo usa
 módulos y necesita HTTP; para probarlo, ejecutar `python3 scripts/preview.py`
 y abrir la dirección local que imprime. `npm test` comprueba también el orden,
-validación y funcionamiento sin almacenamiento de la clasificación, la
-correspondencia única de letras y la continuidad de los extremos del recorrido.
+validación y funcionamiento sin almacenamiento de la clasificación, la identidad
+y orden de las letras, la coincidencia de los seis nombres y la reutilización
+de los glifos en lugar de rasterizarlos en cada fotograma.

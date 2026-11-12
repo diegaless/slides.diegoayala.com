@@ -1,4 +1,4 @@
-import { captureLetters, animateLetters } from './transition.mjs';
+import { captureSubjects, animateLetters, MOTION_DURATION } from './transition.mjs?v=3';
 
 export function createPlayground() {
   const dialog = document.createElement('dialog');
@@ -16,6 +16,7 @@ export function createPlayground() {
   let timers = [];
   let effects = [];
   let generation = 0;
+  let subjectLabels = [];
   document.body.append(dialog);
 
   const fadeHome = (opacity, duration, delay = 0) => {
@@ -37,6 +38,8 @@ export function createPlayground() {
     effects = [];
     homeAnimations.forEach(animation => animation.cancel());
     homeAnimations = [];
+    subjectLabels.forEach(label => label.classList.remove('playground-source-hidden'));
+    subjectLabels = [];
     frame?.remove();
     frame = null;
     stage = 'idle';
@@ -68,19 +71,10 @@ export function createPlayground() {
       timers.push(setTimeout(fadeOut, 240));
     } else fadeOut();
   };
-  const reveal = async () => {
+  const reveal = () => {
     if (stage !== 'entering') return;
     stage = 'revealing';
-    const opened = generation;
     frame.classList.add('is-visible');
-    fadeHome(0, reducedMotion.matches ? 0 : 120);
-    if (motion) {
-      const effect = motion.canvas.animate([{ opacity: 1 }, { opacity: 0 }],
-        { duration: reducedMotion.matches ? 0 : 160, fill: 'forwards' });
-      effects.push(effect);
-      await effect.finished.catch(() => {});
-    }
-    if (generation !== opened || stage !== 'revealing') return;
     motion?.cancel();
     motion = null;
     stage = 'active';
@@ -91,9 +85,11 @@ export function createPlayground() {
     if (stage !== 'loading') return;
     stage = 'entering';
     dialog.classList.add('is-ready');
-    const sources = captureLetters();
+    const { labels, letters } = captureSubjects();
+    motion = animateLetters(dialog, letters, data.glyphs, { reduced: reducedMotion.matches });
+    subjectLabels = labels;
+    subjectLabels.forEach(label => label.classList.add('playground-source-hidden'));
     fadeHome(0, reducedMotion.matches ? 0 : 180);
-    motion = animateLetters(dialog, sources, data.glyphs, { reduced: reducedMotion.matches });
     motion.finished.then(reveal);
   };
   const returnLetters = data => {
@@ -101,12 +97,10 @@ export function createPlayground() {
     if (!data.glyphs) { fadeOut(); return; }
     stage = 'returning';
     const opened = generation;
-    motion = animateLetters(dialog, captureLetters(), data.glyphs, { reverse: true });
-    fadeHome(1, 270, 780);
+    motion = animateLetters(dialog, captureSubjects().letters, data.glyphs, { reverse: true });
+    fadeHome(1, 200, MOTION_DURATION - 200);
     effects.push(frame.animate([{ opacity: 1 }, { opacity: 0 }],
-      { duration: 850, fill: 'forwards', easing: 'ease-in-out' }));
-    effects.push(motion.canvas.animate([{ opacity: 1 }, { opacity: 0 }],
-      { delay: 780, duration: 270, fill: 'forwards' }));
+      { duration: MOTION_DURATION - 200, fill: 'forwards', easing: 'ease-in-out' }));
     motion.finished.then(() => { if (generation === opened && stage === 'returning') finishClose(); });
   };
   dialog.querySelector('button').addEventListener('click', close);
@@ -144,18 +138,20 @@ export function createPlayground() {
       previousFocus = document.activeElement;
       const appearance = getComputedStyle(document.body);
       dialog.style.setProperty('--play-ink', appearance.color);
-      const name = document.querySelector('.site-name').textContent.trim();
-      const title = document.querySelector('#page-title').textContent.trim();
-      const sections = [...document.querySelectorAll('.section-nav a')].map(link => link.textContent.trim());
+      const subjects = captureSubjects();
+      const typography = subjects.letters[0];
       frame = document.createElement('iframe');
       frame.className = 'playground-frame';
-      frame.title = 'Círculo interactivo del material de clase de Diego Ayala';
-      frame.dataset.circleText = `${name}. ${title}. ${sections.join(' · ')}.`;
+      frame.title = 'Círculo interactivo de las asignaturas';
+      frame.dataset.circleText = subjects.text;
+      frame.dataset.fontFamily = typography.fontFamily;
+      frame.dataset.fontWeight = typography.weight;
+      frame.dataset.glyphColors = JSON.stringify(subjects.letters.map(letter => letter.color));
       frame.dataset.morph = 'true';
       frame.dataset.background = appearance.backgroundColor;
-      frame.dataset.foreground = appearance.color;
+      frame.dataset.foreground = typography.color;
       frame.dataset.surface = appearance.background;
-      frame.src = new URL('./frame.html?v=2', import.meta.url).href;
+      frame.src = new URL('./frame.html?v=3', import.meta.url).href;
       dialog.prepend(frame);
       document.body.classList.add('playground-open');
       dialog.showModal();
