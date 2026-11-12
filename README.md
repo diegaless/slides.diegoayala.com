@@ -321,7 +321,9 @@ cambiar de tipografía ni duplicarse, y vuelven a ella al cerrar. Conserva el
 color y fondo inicial y no muestra ayuda inferior.
 **Esc**, **Espacio** o el botón de cierre vuelven a la
 portada. Las flechas y **Intro** permiten moverlo y jugar con el teclado.
-La clasificación se guarda solo en este navegador. El modo se carga cuando
+La clasificación general comparte las mejores marcas entre los jugadores de
+esta web. Al terminar la partida se puede firmar con tres iniciales; no requiere
+iniciar sesión con Google. El modo se carga cuando
 se solicita y necesita HTTP. Origen del motor y detalles de adaptación:
 [`assets/playground/README.md`](assets/playground/README.md).
 

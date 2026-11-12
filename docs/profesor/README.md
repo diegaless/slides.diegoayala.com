@@ -37,7 +37,8 @@ restricciones de contenido se conservan. Al cerrar el visor se libera el archivo
 ## Proyecto y coste
 
 Proyecto independiente `slides-profesor-diego`, plan **Spark**, sin cuenta de
-facturación. Solo utiliza Google Authentication y Firestore Standard, base
+facturación. Utiliza Google Authentication para el profesor, Auth anónimo
+para la clasificación del juego y Firestore Standard, base
 `(default)` en `europe-west1`, con cuota gratuita. No tiene Functions, Cloud Run,
 Storage, copias de seguridad de pago ni recuperación PITR. La web sigue en
 GitHub Pages. No vincular una cuenta de facturación ni actualizar a Blaze.
@@ -58,6 +59,10 @@ subir archivos o autorizar profesores.
   usa el reloj del servidor, sin tareas programadas ni servicios de pago.
 - Las descargas comprueban tamaño y SHA-256; no usan persistencia en disco del
   SDK. Cerrar el acceso impide nuevas lecturas, pero no borra copias descargadas.
+- `playgroundScores/{uid}` guarda los récords públicos del juego. Su app de
+  Auth es independiente de la sesión del profesor y un jugador anónimo no
+  obtiene acceso a archivos privados ni puede publicar soluciones. Configuración
+  y pruebas: [clasificación del juego](../../assets/playground/README.md).
 - Los originales de Drive y GitHub mantienen sus permisos privados. El panel
   conserva enlaces a esos originales; el alumnado recibe las copias protegidas.
 

@@ -36,7 +36,7 @@ La entrada conserva el color, el texto y el fondo con resplandor del tema activo
 Los cambios de paleta de los rebotes se mantienen. Con movimiento reducido se
 omite el recorrido de letras. Durante una partida o explosión, la salida usa un
 fundido breve en lugar de reconstruir un anillo que ya no está completo.
-Los puntos de entrada llevan `?v=3` para no mezclar el marco, el motor y los
+Los puntos de entrada llevan `?v=4` para no mezclar el marco, el motor y los
 estilos nuevos con las copias anteriores de la caché de GitHub Pages.
 
 Los colores, eventos y sonidos del motor quedan dentro del marco; al cerrar se
@@ -44,15 +44,60 @@ elimina para liberar las animaciones, temporizadores y audio y recuperar el
 foco. Los ajustes del motor solo aparecen con `?tweaks` en la URL del marco.
 
 Se han traducido los controles y resultados. Las flechas impulsan el círculo;
-Intro entra y sale del hockey. La clasificación usa `leaderboard.mjs` y la
-clave `slides-playground-leaderboard-v1` del almacenamiento del navegador.
-No se utiliza la API de la referencia ni se envían iniciales o resultados a
-ningún servidor. Si el almacenamiento está bloqueado, se mantienen los
-resultados de la sesión mientras siga abierto el modo.
+Intro entra y sale del hockey. Al terminar los 15 segundos se muestra la
+**clasificación general**, compartida entre los jugadores de esta web.
+Los tres campos de iniciales permiten guardar una marca que entra en el top 10.
+
+## Clasificación compartida
+
+`leaderboard.mjs` carga `score-client.mjs` únicamente al solicitar los resultados.
+Se utiliza Firestore Lite 12.19.0 y Auth anónimo en el proyecto existente
+`slides-profesor-diego`, base Standard `(default)`, `europe-west1`, plan Spark
+sin facturación. No usa la API ni las puntuaciones de iansilber.com.
+
+La app de Firebase `playground-scores` mantiene una identidad de juego separada
+de la app `soluciones` del profesor. No necesita Google ni datos de contacto.
+La identidad se recuerda en este navegador; otro dispositivo o borrar su
+almacenamiento crea otro jugador. No se importan automáticamente las antiguas
+marcas locales de `slides-playground-leaderboard-v1`.
+
+Cada documento `playgroundScores/{uid}` guarda exclusivamente `initials`
+(tres letras A–Z), `score` (entero 0–999) y `updatedAt` (reloj del servidor).
+Solo su propietario anónimo puede crearlo o mejorar su récord, con 15 segundos
+entre escrituras. Una transacción evita sustituir una marca mejor por otra peor.
+La consulta general requiere una identidad y un límite máximo de diez; se
+ordena por puntuación descendente y no necesita un índice compuesto. La interfaz
+solo presenta iniciales y goles. La lectura individual está limitada al propietario.
+
+El marcador es un juego casual: se validan esquema, identidad, límites e
+intervalo, pero la simulación y la puntuación se calculan en el cliente.
+Las reglas no pretenden constituir un sistema de competición con verificación
+completa de las jugadas en un servidor.
+
+Para habilitar únicamente el proveedor anónimo, conservando la configuración
+de Google y verificando antes que no hay facturación:
+
+```sh
+node scripts/configure-playground.mjs --enable-anonymous
+npx firebase deploy --only firestore:rules --project slides-profesor-diego
+```
+
+`npm run test:rules` ejecuta 17 pruebas en emuladores, incluidas las anteriores
+de las soluciones. Se comprueban consultas anónimas y sin límite (rechazadas),
+lectura individual ajena, escritura en otra identidad, asignación de roles,
+borrado, campos adicionales, campos ausentes, tipos incorrectos, cadenas grandes,
+fechas inventadas, puntuaciones fuera de rango, reducción del récord y escrituras
+demasiado próximas (rechazadas). Dos clientes con Auth anónimo y Firestore Lite
+comparten una marca y el segundo no puede modificar la del primero.
+
+Para probar la interfaz sin escribir en producción, arrancar los emuladores de
+Auth y Firestore del proyecto `demo-slides-profesor`, servir la web local y abrir
+`http://localhost:4173/?scores=emulator`. Esta opción solo se admite en localhost
+y utiliza otra app y el proyecto demo; no se publica ninguna configuración de prueba.
 
 La portada habitual sigue disponible sin JavaScript. El modo interactivo usa
 módulos y necesita HTTP; para probarlo, ejecutar `python3 scripts/preview.py`
 y abrir la dirección local que imprime. `npm test` comprueba también el orden,
-validación y funcionamiento sin almacenamiento de la clasificación, la identidad
-y orden de las letras, la coincidencia de los seis nombres y la reutilización
+validación y conservación de la mejor marca, la identidad y orden de las letras,
+la coincidencia de los seis nombres y la reutilización
 de los glifos en lugar de rasterizarlos en cada fotograma.

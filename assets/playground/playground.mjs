@@ -151,7 +151,9 @@ export function createPlayground() {
       frame.dataset.background = appearance.backgroundColor;
       frame.dataset.foreground = typography.color;
       frame.dataset.surface = appearance.background;
-      frame.src = new URL('./frame.html?v=3', import.meta.url).href;
+      if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) &&
+          new URLSearchParams(location.search).get('scores') === 'emulator') frame.dataset.scoreEmulator = 'true';
+      frame.src = new URL('./frame.html?v=4', import.meta.url).href;
       dialog.prepend(frame);
       document.body.classList.add('playground-open');
       dialog.showModal();

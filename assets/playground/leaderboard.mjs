@@ -1,33 +1,36 @@
-const key = 'slides-playground-leaderboard-v1';
-let sessionEntries = [];
+export const LEADERBOARD_LIMIT = 10;
+export const MAX_SCORE = 999;
 
-function normalize(entries) {
-  return (Array.isArray(entries) ? entries : [])
-    .filter(entry => entry && /^[A-Z]{3}$/.test(entry.initials) &&
-      Number.isSafeInteger(entry.score) && entry.score >= 0 && entry.score <= 1_000_000)
-    .map(({ initials, score }) => ({ initials, score }))
-    .sort((a, b) => b.score - a.score).slice(0, 10);
-}
-
-export function readLeaderboard(storage) {
-  try {
-    sessionEntries = normalize(JSON.parse(storage.getItem(key) || '[]'));
-  } catch { /* Retain this session's results when storage is unavailable. */ }
-  return sessionEntries.map(entry => ({ ...entry }));
-}
-
-export function saveScore(initials, score, storage) {
-  if (!/^[A-Z]{3}$/.test(initials) || !Number.isSafeInteger(score) || score < 0 || score > 1_000_000) {
+export function validateScore(initials, score) {
+  if (typeof initials !== 'string' || !/^[A-Z]{3}$/.test(initials) ||
+      !Number.isSafeInteger(score) || score < 0 || score > MAX_SCORE) {
     throw new Error('Introduce tres letras de la A a la Z y una puntuación válida.');
   }
-  const entries = readLeaderboard(storage);
-  const qualified = entries.length < 10 || score > entries.at(-1).score;
-  if (qualified) entries.push({ initials, score });
-  sessionEntries = normalize(entries);
-  let persisted = false;
+}
+
+export function replacementForScore(previous, initials, score) {
+  validateScore(initials, score);
+  return previous && previous.score >= score ? null : { initials, score };
+}
+
+// Load authentication and the database only when the results are requested.
+const client = () => import('./score-client.mjs?v=4');
+async function remote(operation, message) {
+  let timer;
   try {
-    storage.setItem(key, JSON.stringify(sessionEntries));
-    persisted = true;
-  } catch { /* The game also works without persistent browser storage. */ }
-  return { entries: sessionEntries.map(entry => ({ ...entry })), qualified, persisted };
+    return await Promise.race([operation(), new Promise((_resolve, reject) => {
+      timer = setTimeout(() => reject(new Error('timeout')), 12000);
+    })]);
+  } catch {
+    throw new Error(message);
+  } finally { clearTimeout(timer); }
+}
+export async function readLeaderboard() {
+  return remote(async () => (await client()).readSharedLeaderboard(),
+    'No se ha podido cargar la clasificación. Comprueba la conexión e inténtalo de nuevo.');
+}
+export async function saveScore(initials, score) {
+  validateScore(initials, score);
+  return remote(async () => (await client()).saveSharedScore(initials, score),
+    'No se ha podido guardar la marca. Comprueba la conexión e inténtalo de nuevo.');
 }

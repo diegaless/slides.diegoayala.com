@@ -6,7 +6,8 @@ import * as lite from 'firebase/firestore/lite';
 import {
   initializeTestEnvironment, assertFails, assertSucceeds,
 } from '@firebase/rules-unit-testing';
-import {doc,getDoc,getDocs,collection,setDoc,updateDoc,deleteDoc,Timestamp,serverTimestamp,Bytes} from 'firebase/firestore';
+import {doc,getDoc,getDocs,collection,setDoc,updateDoc,deleteDoc,Timestamp,serverTimestamp,Bytes,query,orderBy,limit} from 'firebase/firestore';
+import {initializeAuth,inMemoryPersistence,connectAuthEmulator,signInAnonymously} from 'firebase/auth';
 
 let env;
 const liteApps=[];
@@ -147,4 +148,85 @@ test('Firestore Lite conserva permisos, bytes y revocación sin reutilizar una c
   await assertSucceeds(lite.updateDoc(stateRef,{mode:'private',publishAt:null,updatedAt:lite.serverTimestamp()}));
   await assertFails(lite.getDoc(fileRef));
   await assertFails(lite.getDoc(partRef));
+});
+
+const playerDb=id=>env.authenticatedContext(id,{firebase:{sign_in_provider:'anonymous'}}).firestore();
+const scoreRef=(db,id)=>doc(db,'playgroundScores',id);
+const scoreData=(score=4,initials='DAM')=>({initials,score,updatedAt:serverTimestamp()});
+
+test('las marcas son compartidas mediante una consulta limitada y requieren una identidad',async()=>{
+  await assertSucceeds(setDoc(scoreRef(playerDb('player-a'),'player-a'),scoreData()));
+  const shared=query(collection(playerDb('player-b'),'playgroundScores'),orderBy('score','desc'),limit(10));
+  const result=await assertSucceeds(getDocs(shared));
+  assert.ok(result.docs.some(row=>row.data().initials==='DAM'&&row.data().score===4));
+  await assertFails(getDocs(query(collection(guest(),'playgroundScores'),orderBy('score','desc'),limit(10))));
+  await assertFails(getDocs(collection(playerDb('player-b'),'playgroundScores')));
+  await assertFails(getDocs(query(collection(playerDb('player-b'),'playgroundScores'),limit(11))));
+  await assertFails(getDoc(scoreRef(playerDb('player-b'),'player-a')));
+  await assertSucceeds(getDoc(scoreRef(playerDb('player-a'),'player-a')));
+});
+
+test('solo cada identidad anónima escribe su marca y no obtiene permisos de profesor',async()=>{
+  await assertFails(setDoc(scoreRef(guest(),'public-writer'),scoreData()));
+  await assertFails(setDoc(scoreRef(playerDb('player-attacker'),'player-a'),scoreData(999,'BAD')));
+  await assertFails(setDoc(scoreRef(playerDb('player-attacker'),'someone-else-new'),scoreData()));
+  await assertFails(setDoc(scoreRef(account(),'teacher-score'),scoreData()));
+  await assertFails(setDoc(scoreRef(account('student'),'student'),scoreData()));
+  await assertFails(getDoc(file(playerDb(uid),'di-private')));
+  await assertFails(setDoc(doc(playerDb('player-attacker'),'teacherAccounts','player-attacker'),{enabled:true}));
+  await assertFails(updateDoc(state(playerDb('player-attacker'),'di-private'),{mode:'public',publishAt:null,updatedAt:serverTimestamp()}));
+  await assertFails(deleteDoc(scoreRef(playerDb('player-a'),'player-a')));
+});
+
+test('las marcas rechazan campos, tipos, iniciales y fechas falsificadas al crear y actualizar',async()=>{
+  let index=0;
+  for(const invalid of [{initials:'AB'},{initials:'abc'},{initials:'<b>'},{initials:'A'.repeat(100000)},
+    {initials:['A','B','C']},{score:-1},{score:1000},
+    {score:2.5},{score:'2'},{extra:'injected'},{email:'private@example.test'},
+    {uid:'player-a'},{isAdmin:true},{updatedAt:Timestamp.fromMillis(0)},
+    {updatedAt:Timestamp.fromMillis(Date.now()+86400000)}]) {
+    const id=`bad-score-${index++}`, db=playerDb(id), ref=scoreRef(db,id);
+    await assertFails(setDoc(ref,{...scoreData(),...invalid}));
+    await env.withSecurityRulesDisabled(context=>setDoc(scoreRef(context.firestore(),id),{
+      initials:'DAM',score:1,updatedAt:Timestamp.fromMillis(Date.now()-60000),
+    }));
+    await assertFails(setDoc(ref,{...scoreData(8),...invalid}));
+  }
+  await assertFails(setDoc(scoreRef(playerDb('missing-fields'),'missing-fields'),{initials:'DAM',score:2}));
+  await assertFails(setDoc(scoreRef(playerDb('bad-score-0'),'bad-score-0'),{score:2,updatedAt:serverTimestamp()}));
+});
+
+test('solo se admite mejorar el récord tras el intervalo entre partidas',async()=>{
+  const id='improving-player', db=playerDb(id), ref=scoreRef(db,id);
+  await env.withSecurityRulesDisabled(context=>setDoc(scoreRef(context.firestore(),id),{
+    initials:'DAM',score:4,updatedAt:Timestamp.fromMillis(Date.now()-60000),
+  }));
+  await assertFails(setDoc(ref,scoreData(3)));
+  await assertFails(setDoc(ref,scoreData(4)));
+  await assertSucceeds(setDoc(ref,scoreData(5,'DAW')));
+  await assertFails(setDoc(ref,scoreData(6)));
+});
+
+test('dos clientes independientes con Auth anónimo y Firestore Lite comparten la clasificación',async()=>{
+  async function client(name) {
+    const app=initializeApp({projectId:'demo-slides-profesor',apiKey:'demo-key'},name);
+    liteApps.push(app);
+    const auth=initializeAuth(app,{persistence:inMemoryPersistence});
+    connectAuthEmulator(auth,'http://127.0.0.1:9099',{disableWarnings:true});
+    const db=lite.getFirestore(app);
+    lite.connectFirestoreEmulator(db,'127.0.0.1',8080);
+    const {user}=await signInAnonymously(auth);
+    return {db,user};
+  }
+  const a=await client('game-a'), b=await client('game-b');
+  assert.notEqual(a.user.uid,b.user.uid);
+  await assertSucceeds(lite.setDoc(lite.doc(a.db,'playgroundScores',a.user.uid),{
+    initials:'AAA',score:42,updatedAt:lite.serverTimestamp(),
+  }));
+  const fromB=await assertSucceeds(lite.getDocs(lite.query(lite.collection(b.db,'playgroundScores'),
+    lite.orderBy('score','desc'),lite.limit(10))));
+  assert.ok(fromB.docs.some(row=>row.data().initials==='AAA'&&row.data().score===42));
+  await assertFails(lite.setDoc(lite.doc(b.db,'playgroundScores',a.user.uid),{
+    initials:'BAD',score:999,updatedAt:lite.serverTimestamp(),
+  }));
 });

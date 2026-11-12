@@ -1,5 +1,5 @@
 // Interaction engine adapted from https://iansilber.com/ (2026-11-11). See README.md.
-import { readLeaderboard, saveScore } from "./leaderboard.mjs";
+import { readLeaderboard, saveScore } from "./leaderboard.mjs?v=4";
 import { createGlyphAtlas } from "./glyph-atlas.mjs";
 
       (() => {
@@ -2218,12 +2218,7 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
           airHockeyLeaderboardStatus.classList.toggle("is-error", isError);
         };
 
-        // The GitHub Pages site has no leaderboard API. Scores stay on this browser.
-        const scoreStorage = {
-          getItem: (key) => window.localStorage.getItem(key),
-          setItem: (key, value) => window.localStorage.setItem(key, value),
-        };
-        const fetchAirHockeyLeaderboard = async () => ({ entries: readLeaderboard(scoreStorage) });
+        const fetchAirHockeyLeaderboard = () => readLeaderboard();
 
         const loadAirHockeyLeaderboard = async (score) => {
           const round = airHockeyState;
@@ -2236,12 +2231,17 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
 
             const entries = Array.isArray(data.entries) ? data.entries : [];
             renderAirHockeyLeaderboard(entries);
+            if (data.bestScore !== null && score <= data.bestScore) {
+              setAirHockeyLeaderboardStatus(`Tu mejor marca: ${data.bestScore} ${data.bestScore === 1 ? "gol" : "goles"}`);
+              return;
+            }
             const qualifies =
               entries.length < 10 ||
               score > Number(entries[entries.length - 1]?.score ?? -1);
 
             airHockeyLeaderboardForm.hidden = !qualifies;
-            setAirHockeyLeaderboardStatus("");
+            setAirHockeyLeaderboardStatus(!entries.length ? "Aún no hay marcas. Estrena la clasificación." :
+              qualifies ? "" : "Esta marca no entra en el top 10.");
           } catch (error) {
             if (airHockeyState !== round || !round?.roundOver) return;
             renderAirHockeyLeaderboard();
@@ -2292,6 +2292,7 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
         airHockeyLeaderboardForm.addEventListener("submit", async (event) => {
           event.preventDefault();
           if (!airHockeyState?.roundOver) return;
+          const round = airHockeyState;
 
           const initials = airHockeyInitialInputs
             .map((input) => input.value)
@@ -2308,14 +2309,17 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
           setAirHockeyLeaderboardStatus("Guardando…");
 
           try {
-            const data = saveScore(initials, Number(airHockeyState.score || 0), scoreStorage);
+            const data = await saveScore(initials, Number(airHockeyState.score || 0));
+            if (airHockeyState !== round || !round.roundOver) return;
 
             renderAirHockeyLeaderboard(data.entries);
             airHockeyLeaderboardForm.hidden = true;
             setAirHockeyLeaderboardStatus(
-              data.qualified ? (data.persisted ? "Puntuación guardada en este navegador" : "Puntuación guardada solo durante esta sesión") : "La puntuación no entra en el top 10",
+              !data.improved ? `Tu mejor marca (${data.bestScore}) ya está guardada.` :
+                data.qualified ? "Marca guardada en la clasificación general." : "Marca guardada. Aún no entra en el top 10.",
             );
           } catch (error) {
+            if (airHockeyState !== round || !round.roundOver) return;
             setAirHockeyLeaderboardStatus(
               error.message || "No se ha podido guardar la puntuación",
               true,
