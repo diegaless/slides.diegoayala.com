@@ -5,6 +5,15 @@ Espacio o el botón de cierre regresan a ella. El atajo respeta los botones,
 desplegables, enlaces, formularios y otros diálogos; mantener la tecla pulsada
 no abre varias instancias ni cierra el modo recién abierto.
 
+La portada muestra la pista «psst… prueba [espacio]», un punto lavanda y un
+pequeño trazo, sin tarjeta exterior. Aparece por primera vez tras 12 segundos,
+dura 6,5 segundos y se repite con pausas aleatorias de 75–120 segundos. Entra y
+sale con un fundido de 700 ms y un desplazamiento de 4 px; con movimiento
+reducido solo usa un fundido corto. No toma el foco, no captura clics ni usa
+anuncios periódicos para lectores de pantalla. Solo se muestra con puntero
+preciso, en una pestaña visible y sin diálogo ni control interactivo enfocado.
+Al usar el atajo deja de aparecer durante esa visita, sin guardar preferencias.
+
 El motor, los estilos del anillo y los sonidos se adaptan del código servido por
 [iansilber.com](https://iansilber.com/) el 11 de noviembre de 2026:
 
@@ -36,8 +45,9 @@ La entrada conserva el color, el texto y el fondo con resplandor del tema activo
 Los cambios de paleta de los rebotes se mantienen. Con movimiento reducido se
 omite el recorrido de letras. Durante una partida o explosión, la salida usa un
 fundido breve en lugar de reconstruir un anillo que ya no está completo.
-El cargador y el diálogo llevan `?v=9`; el marco y el motor mantienen `?v=8`,
-el cliente de clasificación `?v=7`, los estilos exteriores `?v=5` y los estilos
+El cargador lleva `?v=10`, la pista `?v=1` y el diálogo `?v=9`;
+el marco y el motor mantienen `?v=8`,
+el cliente de clasificación `?v=7`, los estilos exteriores `?v=6` y los estilos
 del marco `?v=6`, para evitar mezclar archivos nuevos con
 copias anteriores de la caché de GitHub Pages. Las letras conservan sus colores
 originales y los controles y resultados usan la tinta del tema para asegurar contraste.

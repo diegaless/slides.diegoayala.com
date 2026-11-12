@@ -1,3 +1,6 @@
+import { createShortcutHint } from './hint.mjs?v=1';
+
+const hint = createShortcutHint();
 let playground;
 let loading = false;
 
@@ -10,6 +13,7 @@ document.addEventListener('keydown', async event => {
   event.preventDefault();
   if (loading) return;
   loading = true;
+  hint.stop();
   try {
     playground ??= (await import('./playground.mjs?v=9')).createPlayground();
     playground.open();

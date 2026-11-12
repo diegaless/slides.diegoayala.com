@@ -5,6 +5,82 @@ html.playground-open body {
   width: calc(100% - var(--playground-gutter, 0px));
 }
 
+.playground-hint {
+  position: fixed;
+  top: 104px;
+  right: 40px;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  pointer-events: none;
+  user-select: none;
+  transition:
+    opacity 700ms ease,
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 700ms;
+}
+.playground-hint::before {
+  width: 5px;
+  height: 5px;
+  flex: 0 0 auto;
+  content: '';
+  background: var(--accent);
+  border-radius: 50%;
+}
+.playground-hint::after {
+  position: absolute;
+  right: 0;
+  bottom: -9px;
+  width: 20px;
+  height: 1.5px;
+  content: '';
+  background: var(--accent);
+  opacity: 0.8;
+}
+.playground-hint kbd {
+  padding: 1px 9px;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+  font: inherit;
+  font-size: 11px;
+  border: 1px solid color-mix(in srgb, var(--ink) 50%, transparent);
+  border-radius: 5px;
+}
+.playground-hint.is-visible {
+  opacity: 0.92;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+.playground-open .playground-hint,
+:root:has(dialog[open]) .playground-hint {
+  opacity: 0;
+  visibility: hidden;
+  transition: none;
+}
+@media (max-width: 720px) {
+  .playground-hint { top: 130px; right: 24px; }
+}
+@media (hover: none), (pointer: coarse) {
+  .playground-hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .playground-hint {
+    transform: none;
+    transition: opacity 180ms ease, visibility 0s linear 180ms;
+  }
+}
+
 .circle-playground {
   position: fixed;
   inset: 0;
