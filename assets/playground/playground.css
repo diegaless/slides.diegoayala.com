@@ -1,5 +1,10 @@
 .playground-open { overflow: hidden; }
 
+html.playground-open { scrollbar-gutter: auto; }
+html.playground-open body {
+  width: calc(100% - var(--playground-gutter, 0px));
+}
+
 .circle-playground {
   position: fixed;
   inset: 0;

@@ -1,6 +1,7 @@
 import { captureSubjects, animateLetters, MOTION_DURATION } from './transition.mjs?v=3';
 
 export function createPlayground() {
+  const root = document.documentElement;
   const dialog = document.createElement('dialog');
   dialog.className = 'circle-playground';
   dialog.setAttribute('aria-label', 'Material de clase: modo interactivo');
@@ -51,6 +52,8 @@ export function createPlayground() {
     stage = 'idle';
     dialog.classList.remove('is-ready');
     document.body.classList.remove('playground-open');
+    root.classList.remove('playground-open');
+    root.style.removeProperty('--playground-gutter');
     if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
   };
   const finishClose = () => {
@@ -140,6 +143,11 @@ export function createPlayground() {
   return {
     open() {
       if (dialog.open) return;
+      // Release the root gutter so Chrome paints the modal to the right edge,
+      // while preserving the homepage's width and the original letter anchors.
+      const gutter = Math.max(0, window.innerWidth - root.getBoundingClientRect().width);
+      root.style.setProperty('--playground-gutter', `${gutter}px`);
+      root.classList.add('playground-open');
       fitViewport();
       generation++;
       stage = 'loading';
