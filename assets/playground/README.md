@@ -36,8 +36,10 @@ La entrada conserva el color, el texto y el fondo con resplandor del tema activo
 Los cambios de paleta de los rebotes se mantienen. Con movimiento reducido se
 omite el recorrido de letras. Durante una partida o explosión, la salida usa un
 fundido breve en lugar de reconstruir un anillo que ya no está completo.
-Los puntos de entrada llevan `?v=4` para no mezclar el marco, el motor y los
-estilos nuevos con las copias anteriores de la caché de GitHub Pages.
+El cargador y el marco llevan `?v=5`; el motor, el cliente de clasificación y
+los estilos del marco llevan `?v=4`, para evitar mezclar archivos nuevos con
+copias anteriores de la caché de GitHub Pages. Las letras conservan sus colores
+originales y los controles y resultados usan la tinta del tema para asegurar contraste.
 
 Los colores, eventos y sonidos del motor quedan dentro del marco; al cerrar se
 elimina para liberar las animaciones, temporizadores y audio y recuperar el

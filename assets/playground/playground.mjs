@@ -149,11 +149,11 @@ export function createPlayground() {
       frame.dataset.glyphColors = JSON.stringify(subjects.letters.map(letter => letter.color));
       frame.dataset.morph = 'true';
       frame.dataset.background = appearance.backgroundColor;
-      frame.dataset.foreground = typography.color;
+      frame.dataset.foreground = appearance.color;
       frame.dataset.surface = appearance.background;
       if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) &&
           new URLSearchParams(location.search).get('scores') === 'emulator') frame.dataset.scoreEmulator = 'true';
-      frame.src = new URL('./frame.html?v=4', import.meta.url).href;
+      frame.src = new URL('./frame.html?v=5', import.meta.url).href;
       dialog.prepend(frame);
       document.body.classList.add('playground-open');
       dialog.showModal();

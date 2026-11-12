@@ -11,7 +11,7 @@ document.addEventListener('keydown', async event => {
   if (loading) return;
   loading = true;
   try {
-    playground ??= (await import('./playground.mjs?v=4')).createPlayground();
+    playground ??= (await import('./playground.mjs?v=5')).createPlayground();
     playground.open();
   } catch (error) {
     console.error('No se ha podido abrir el modo interactivo.', error);
