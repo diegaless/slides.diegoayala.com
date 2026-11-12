@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#000000">
     <title>Material de clase · Modo interactivo</title>
-    <link rel="stylesheet" href="ring.css?v=4">
+    <link rel="stylesheet" href="ring.css?v=5">
     <link rel="preload" href="./assets/balloon-squeeze.b64" as="fetch" crossorigin>
     <link rel="preload" href="./assets/balloon-pop.b64" as="fetch" crossorigin>
   </head>
@@ -37,13 +37,9 @@
           </div>
           <ol class="air-hockey-leaderboard-list" aria-live="polite"></ol>
           <form class="air-hockey-leaderboard-form" hidden novalidate>
-            <label>Firma con tus iniciales</label>
-            <div class="air-hockey-initials-row">
-              <div class="air-hockey-initials" role="group" aria-label="Tres iniciales">
-                <input aria-label="Primera inicial" maxlength="1" pattern="[A-Za-z]" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false">
-                <input aria-label="Segunda inicial" maxlength="1" pattern="[A-Za-z]" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false">
-                <input aria-label="Tercera inicial" maxlength="1" pattern="[A-Za-z]" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false">
-              </div>
+            <label for="air-hockey-player-name">Tu nombre o apodo</label>
+            <div class="air-hockey-name-row">
+              <input id="air-hockey-player-name" class="air-hockey-name-input" name="nickname" placeholder="Hasta 24 caracteres" maxlength="24" required autocomplete="nickname" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="done">
               <button class="air-hockey-leaderboard-submit" type="submit">Guardar</button>
             </div>
           </form>
@@ -85,6 +81,6 @@
       Toca para activar el sonido
     </div>
     <output class="audio-debug" aria-hidden="true" hidden></output>
-    <script src="engine.mjs?v=6" type="module"></script>
+    <script src="engine.mjs?v=7" type="module"></script>
   </body>
 </html>

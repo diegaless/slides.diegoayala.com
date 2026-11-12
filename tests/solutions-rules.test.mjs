@@ -178,9 +178,10 @@ test('solo cada identidad anónima escribe su marca y no obtiene permisos de pro
   await assertFails(deleteDoc(scoreRef(playerDb('player-a'),'player-a')));
 });
 
-test('las marcas rechazan campos, tipos, iniciales y fechas falsificadas al crear y actualizar',async()=>{
+test('las marcas rechazan campos, tipos, nombres y fechas falsificadas al crear y actualizar',async()=>{
   let index=0;
-  for(const invalid of [{initials:'AB'},{initials:'abc'},{initials:'<b>'},{initials:'A'.repeat(100000)},
+  for(const invalid of [{initials:''},{initials:'   '},{initials:'<b>'},{initials:'Á'.repeat(25)},
+    {initials:'A'.repeat(100000)},{initials:'Ana\nMaría'},{initials:'Ana\u0000'},{initials:'Ana\u202e'},
     {initials:['A','B','C']},{score:-1},{score:Number.MAX_SAFE_INTEGER+1},
     {score:2.5},{score:'2'},{extra:'injected'},{email:'private@example.test'},
     {uid:'player-a'},{isAdmin:true},{updatedAt:Timestamp.fromMillis(0)},
@@ -194,6 +195,21 @@ test('las marcas rechazan campos, tipos, iniciales y fechas falsificadas al crea
   }
   await assertFails(setDoc(scoreRef(playerDb('missing-fields'),'missing-fields'),{initials:'DAM',score:2}));
   await assertFails(setDoc(scoreRef(playerDb('bad-score-0'),'bad-score-0'),{score:2,updatedAt:serverTimestamp()}));
+});
+
+test('los nombres largos conservan espacios, tildes y mayúsculas sin perder las marcas antiguas',async()=>{
+  let index=0;
+  for(const name of ['D','DAM','Diego Ayala','Álex Núñez','Ana-María',"O'Connor",'D’Angelo',
+    'Pepe_24','李明','Á'.repeat(24)]) {
+    const id=`named-player-${index++}`, db=playerDb(id), ref=scoreRef(db,id);
+    await assertSucceeds(setDoc(ref,scoreData(2,name)));
+    assert.equal((await getDoc(ref)).data().initials,name);
+    await env.withSecurityRulesDisabled(context=>setDoc(scoreRef(context.firestore(),id),{
+      initials:'DAM',score:2,updatedAt:Timestamp.fromMillis(Date.now()-60000),
+    }));
+    await assertSucceeds(setDoc(ref,scoreData(3,name)));
+    assert.equal((await getDoc(ref)).data().initials,name);
+  }
 });
 
 test('solo se admite mejorar el récord tras el intervalo entre partidas',async()=>{

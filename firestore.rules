@@ -1,7 +1,8 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // playgroundScores/{uid}: initials (3 letras A-Z), score (entero seguro de JavaScript),
+    // playgroundScores/{uid}: initials (nombre/apodo de 1-24 caracteres, campo histórico),
+    // score (entero seguro de JavaScript),
     // updatedAt (reloj del servidor). Un récord por identidad anónima; sin datos de contacto.
     function isPlayer(uid) {
       return request.auth != null && request.auth.uid == uid
@@ -11,7 +12,8 @@ service cloud.firestore {
       let value = request.resource.data;
       return value.keys().hasAll(['initials', 'score', 'updatedAt'])
         && value.keys().hasOnly(['initials', 'score', 'updatedAt'])
-        && value.initials is string && value.initials.size() == 3 && value.initials.matches('^[A-Z]{3}$')
+        && value.initials is string && value.initials.size() >= 1 && value.initials.size() <= 24
+        && value.initials.matches("^[\\p{L}\\p{N}][\\p{L}\\p{M}\\p{N} ._'’-]*$")
         && value.score is int && value.score >= 0 && value.score <= 9007199254740991
         && value.updatedAt is timestamp && value.updatedAt == request.time;
     }

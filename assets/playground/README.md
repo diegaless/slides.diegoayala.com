@@ -36,8 +36,8 @@ La entrada conserva el color, el texto y el fondo con resplandor del tema activo
 Los cambios de paleta de los rebotes se mantienen. Con movimiento reducido se
 omite el recorrido de letras. Durante una partida o explosión, la salida usa un
 fundido breve en lugar de reconstruir un anillo que ya no está completo.
-El cargador, el marco, el motor y el cliente de clasificación llevan `?v=6`;
-los estilos del marco llevan `?v=4`, para evitar mezclar archivos nuevos con
+El cargador, el marco, el motor y el cliente de clasificación llevan `?v=7`;
+los estilos del marco llevan `?v=5`, para evitar mezclar archivos nuevos con
 copias anteriores de la caché de GitHub Pages. Las letras conservan sus colores
 originales y los controles y resultados usan la tinta del tema para asegurar contraste.
 
@@ -64,17 +64,22 @@ almacenamiento crea otro jugador. No se importan automáticamente las antiguas
 marcas locales de `slides-playground-leaderboard-v1`.
 
 Cada documento `playgroundScores/{uid}` guarda exclusivamente `initials`
-(tres letras A–Z), `score` (entero seguro no negativo de JavaScript, hasta
+(nombre o apodo de 1–24 caracteres; se conserva el nombre histórico del campo
+para mantener las marcas existentes), `score` (entero seguro no negativo de JavaScript, hasta
 9.007.199.254.740.991) y `updatedAt` (reloj del servidor). El cliente y las reglas
 comparten ese límite de precisión; las bonificaciones no se recortan a 999.
 Cada rebote del disco duplica el valor del siguiente gol: `2 ** min(rebotes, 30)`.
 Por ejemplo, catorce rebotes dan 16.384 puntos. La clasificación conserva la
 suma de puntos de la partida, aunque la interfaz original utilice la etiqueta «goles».
+El formulario usa un campo único, conserva mayúsculas/minúsculas y permite
+letras Unicode, tildes, números, espacios, puntos, guiones y apóstrofos. Al guardar
+normaliza el nombre a NFC, elimina espacios exteriores y agrupa los repetidos.
+Los nombres largos se parten en varias líneas en la clasificación.
 Solo su propietario anónimo puede crearlo o mejorar su récord, con 15 segundos
 entre escrituras. Una transacción evita sustituir una marca mejor por otra peor.
 La consulta general requiere una identidad y un límite máximo de diez; se
 ordena por puntuación descendente y no necesita un índice compuesto. La interfaz
-solo presenta iniciales y goles. La lectura individual está limitada al propietario.
+solo presenta nombres y goles. La lectura individual está limitada al propietario.
 
 El marcador es un juego casual: se validan esquema, identidad, límites e
 intervalo, pero la simulación y la puntuación se calculan en el cliente.
@@ -89,14 +94,17 @@ node scripts/configure-playground.mjs --enable-anonymous
 npx firebase deploy --only firestore:rules --project slides-profesor-diego
 ```
 
-`npm run test:rules` ejecuta 18 pruebas en emuladores, incluidas las anteriores
+`npm run test:rules` ejecuta 19 pruebas en emuladores, incluidas las anteriores
 de las soluciones. Se comprueban consultas anónimas y sin límite (rechazadas),
 lectura individual ajena, escritura en otra identidad, asignación de roles,
-borrado, campos adicionales, campos ausentes, tipos incorrectos, cadenas grandes,
+borrado, campos adicionales, campos ausentes, tipos incorrectos, nombres vacíos,
+caracteres de control, cadenas grandes y nombres de más de 24 caracteres,
 fechas inventadas, puntuaciones fuera de rango, reducción del récord y escrituras
 demasiado próximas (rechazadas). También acepta marcas de 10.000 y 16.384 y
 comprueba el extremo superior seguro. Dos clientes con Auth anónimo y Firestore Lite
 comparten una marca y el segundo no puede modificar la del primero.
+Los nombres válidos se prueban al crear y al mejorar una marca, incluidos los de
+24 letras acentuadas y las iniciales de las versiones anteriores.
 
 Para probar la interfaz sin escribir en producción, arrancar los emuladores de
 Auth y Firestore del proyecto `demo-slides-profesor`, servir la web local y abrir

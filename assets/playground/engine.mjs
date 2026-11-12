@@ -1,5 +1,5 @@
 // Interaction engine adapted from https://iansilber.com/ (2026-11-11). See README.md.
-import { readLeaderboard, saveScore } from "./leaderboard.mjs?v=6";
+import { readLeaderboard, saveScore, validateScore } from "./leaderboard.mjs?v=7";
 import { createGlyphAtlas } from "./glyph-atlas.mjs";
 
       (() => {
@@ -241,9 +241,7 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
         const airHockeyLeaderboardSubmit = document.querySelector(
           ".air-hockey-leaderboard-submit",
         );
-        const airHockeyInitialInputs = [
-          ...document.querySelectorAll(".air-hockey-initials input"),
-        ];
+        const airHockeyNameInput = document.querySelector(".air-hockey-name-input");
         let airHockeyState = null;
         let primaryGoalTransit = false;
         let goalPulseTimer = 0;
@@ -2198,17 +2196,17 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
             const entry = entries[index];
             const item = document.createElement("li");
             const rank = document.createElement("span");
-            const initials = document.createElement("span");
+            const name = document.createElement("span");
             const score = document.createElement("span");
 
             rank.textContent = String(index + 1).padStart(2, "0");
             rank.className = "air-hockey-leaderboard-rank";
-            initials.textContent = entry?.initials || "—";
-            initials.className = "air-hockey-leaderboard-initials";
+            name.textContent = entry?.initials || "—";
+            name.className = "air-hockey-leaderboard-name";
             score.textContent = entry ? String(entry.score) : "—";
             score.className = "air-hockey-leaderboard-score";
 
-            item.append(rank, initials, score);
+            item.append(rank, name, score);
             airHockeyLeaderboardList.append(item);
           }
         };
@@ -2252,64 +2250,26 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
           }
         };
 
-        airHockeyInitialInputs.forEach((input, index) => {
-          input.addEventListener("input", () => {
-            input.value = input.value
-              .toUpperCase()
-              .replace(/[^A-Z]/g, "")
-              .slice(-1);
-            if (input.value && airHockeyInitialInputs[index + 1]) {
-              airHockeyInitialInputs[index + 1].focus();
-            }
-          });
-
-          input.addEventListener("keydown", (event) => {
-            if (
-              event.key === "Backspace" &&
-              !input.value &&
-              airHockeyInitialInputs[index - 1]
-            ) {
-              airHockeyInitialInputs[index - 1].focus();
-            }
-          });
-        });
-
-        airHockeyLeaderboardForm.addEventListener("paste", (event) => {
-          const letters = event.clipboardData
-            ?.getData("text")
-            .toUpperCase()
-            .replace(/[^A-Z]/g, "")
-            .slice(0, 3);
-          if (!letters) return;
-
-          event.preventDefault();
-          airHockeyInitialInputs.forEach((input, index) => {
-            input.value = letters[index] || "";
-          });
-          airHockeyInitialInputs[Math.min(letters.length, 3) - 1]?.focus();
-        });
-
         airHockeyLeaderboardForm.addEventListener("submit", async (event) => {
           event.preventDefault();
           if (!airHockeyState?.roundOver) return;
           const round = airHockeyState;
 
-          const initials = airHockeyInitialInputs
-            .map((input) => input.value)
-            .join("")
-            .toUpperCase();
-
-          if (!/^[A-Z]{3}$/.test(initials)) {
-            setAirHockeyLeaderboardStatus("Introduce tres letras de la A a la Z", true);
-            airHockeyInitialInputs.find((input) => !input.value)?.focus();
+          let name;
+          try {
+            name = validateScore(airHockeyNameInput.value, round.score);
+          } catch (error) {
+            setAirHockeyLeaderboardStatus(error.message, true);
+            airHockeyNameInput.focus();
             return;
           }
+          airHockeyNameInput.value = name;
 
           airHockeyLeaderboardSubmit.disabled = true;
           setAirHockeyLeaderboardStatus("Guardando…");
 
           try {
-            const data = await saveScore(initials, Number(airHockeyState.score || 0));
+            const data = await saveScore(name, Number(round.score || 0));
             if (airHockeyState !== round || !round.roundOver) return;
 
             renderAirHockeyLeaderboard(data.entries);

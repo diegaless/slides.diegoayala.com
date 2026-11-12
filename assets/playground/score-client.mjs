@@ -4,7 +4,7 @@ import { initializeAuth, browserLocalPersistence, browserSessionPersistence, inM
 import { getFirestore, connectFirestoreEmulator, collection, doc, query, orderBy, limit,
   getDoc, getDocs, runTransaction, serverTimestamp } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore-lite.js';
 import { firebaseConfig } from '../solutions/config.mjs';
-import { LEADERBOARD_LIMIT, replacementForScore } from './leaderboard.mjs?v=6';
+import { LEADERBOARD_LIMIT, replacementForScore } from './leaderboard.mjs?v=7';
 
 const local = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
 const emulated = local && window.frameElement?.dataset.scoreEmulator === 'true';
@@ -41,12 +41,12 @@ async function standings(user) {
 
 export async function readSharedLeaderboard() { return standings(await player()); }
 
-export async function saveSharedScore(initials, score) {
+export async function saveSharedScore(name, score) {
   const user = await player();
   const ref = doc(db, 'playgroundScores', user.uid);
   const improved = await runTransaction(db, async transaction => {
     const current = await transaction.get(ref);
-    const replacement = replacementForScore(current.exists() ? current.data() : null, initials, score);
+    const replacement = replacementForScore(current.exists() ? current.data() : null, name, score);
     if (!replacement) return false;
     transaction.set(ref, { ...replacement, updatedAt: serverTimestamp() });
     return true;
