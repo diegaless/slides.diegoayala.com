@@ -36,10 +36,24 @@ La entrada conserva el color, el texto y el fondo con resplandor del tema activo
 Los cambios de paleta de los rebotes se mantienen. Con movimiento reducido se
 omite el recorrido de letras. Durante una partida o explosión, la salida usa un
 fundido breve en lugar de reconstruir un anillo que ya no está completo.
-El cargador, el marco, el motor y el cliente de clasificación llevan `?v=7`;
-los estilos del marco llevan `?v=5`, para evitar mezclar archivos nuevos con
+El cargador, el marco y el motor llevan `?v=8`; el cliente de clasificación
+mantiene `?v=7` y los estilos del marco llevan `?v=6`, para evitar mezclar archivos nuevos con
 copias anteriores de la caché de GitHub Pages. Las letras conservan sus colores
 originales y los controles y resultados usan la tinta del tema para asegurar contraste.
+
+El área de referencia conserva las proporciones originales `469 / 852` y su
+anchura `min(100%, 100svh * 469 / 852)`. El radio relativo es `0.3125` hasta
+700 px de anchura y `0.425` a partir de ahí. El motor mantiene los 26 px del
+cálculo geométrico original: el ajuste de las letras vive en `ringLayout.fontSize`
+y nunca modifica `circleSettings.fontSize`. Así, el tamaño del disco, del aro,
+de las zonas de colisión y de la portería no depende de la longitud de las
+asignaturas. Al entrar al hockey se aplica la misma reducción a la mitad.
+La fricción del disco (4 % por fotograma normalizado), la restitución mínima
+del hockey (0.98), los impulsos, las colisiones y el cómputo del combo conservan
+los valores y funciones de la referencia. El diálogo mide el ancho y alto reales
+de la ventana al abrirse y redimensionarse, evitando que el espacio reservado
+por la barra de desplazamiento de la portada reduzca el campo o adelante el
+cambio de tamaño de móvil.
 
 Los colores, eventos y sonidos del motor quedan dentro del marco; al cerrar se
 elimina para liberar las animaciones, temporizadores y audio y recuperar el
@@ -48,7 +62,7 @@ foco. Los ajustes del motor solo aparecen con `?tweaks` en la URL del marco.
 Se han traducido los controles y resultados. Las flechas impulsan el círculo;
 Intro entra y sale del hockey. Al terminar los 15 segundos se muestra la
 **clasificación general**, compartida entre los jugadores de esta web.
-Los tres campos de iniciales permiten guardar una marca que entra en el top 10.
+El campo de nombre o apodo permite guardar una marca que entra en el top 10.
 
 ## Clasificación compartida
 

@@ -19,6 +19,12 @@ export function createPlayground() {
   let subjectLabels = [];
   document.body.append(dialog);
 
+  const fitViewport = () => {
+    // The homepage's stable scrollbar gutter must not shrink the game viewport.
+    dialog.style.width = `${window.innerWidth}px`;
+    dialog.style.height = `${window.innerHeight}px`;
+  };
+
   const fadeHome = (opacity, duration, delay = 0) => {
     const current = home.map(element => getComputedStyle(element).opacity);
     homeAnimations.forEach(animation => animation.cancel());
@@ -126,6 +132,7 @@ export function createPlayground() {
     if (event.data?.type === 'slides-playground-theme') dialog.style.setProperty('--play-ink', event.data.color);
   });
   window.addEventListener('resize', () => {
+    if (dialog.open) fitViewport();
     if (stage === 'entering') reveal();
     if (stage === 'returning') finishClose();
   });
@@ -133,6 +140,7 @@ export function createPlayground() {
   return {
     open() {
       if (dialog.open) return;
+      fitViewport();
       generation++;
       stage = 'loading';
       previousFocus = document.activeElement;
@@ -153,7 +161,7 @@ export function createPlayground() {
       frame.dataset.surface = appearance.background;
       if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) &&
           new URLSearchParams(location.search).get('scores') === 'emulator') frame.dataset.scoreEmulator = 'true';
-      frame.src = new URL('./frame.html?v=7', import.meta.url).href;
+      frame.src = new URL('./frame.html?v=8', import.meta.url).href;
       dialog.prepend(frame);
       document.body.classList.add('playground-open');
       dialog.showModal();

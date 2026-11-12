@@ -162,7 +162,8 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
         circularView.dataset.ballId = "0";
         const circleControls = document.querySelectorAll("[data-circle-control]");
         const circleTweaksStorageKey = "slides-circle-tweaks-v1";
-        const getResponsiveRingRadius = () => 0.425;
+        const getResponsiveRingRadius = () =>
+          window.matchMedia("(max-width: 700px)").matches ? 0.3125 : 0.425;
         const circleSettings = {
           spinDuration: 60,
           fontSize: 26,
@@ -1374,14 +1375,20 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
 
         const prepareRingLayout = () => {
           const size = ballSize;
-          const fontSize = circleSettings.fontSize * ringScale;
+          const physicalFontSize = circleSettings.fontSize * ringScale;
           const radius = Math.min(
             size * circleSettings.radius,
-            size / 2 - fontSize * 0.62 - 2,
+            size / 2 - physicalFontSize * 0.62 - 2,
           );
+          const characters = Array.from(circleText);
+          // Fit the subject letters without changing the original body geometry.
+          ringContext.font = ringFont(physicalFontSize);
+          const textWidth = characters.reduce((total, character) =>
+            total + ringContext.measureText(character).width, 0);
+          const fontSize = Math.min(physicalFontSize,
+            (Math.PI * 2 * radius) / (textWidth / physicalFontSize + circleSettings.gap));
           const gapLength = fontSize * circleSettings.gap;
           const availableLength = Math.PI * 2 * radius - gapLength;
-          const characters = Array.from(circleText);
 
           ringContext.setTransform(ringPixelRatio, 0, 0, ringPixelRatio, 0, 0);
           ringContext.font = ringFont(fontSize);
@@ -1419,6 +1426,7 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
           let colorIndex = 0;
           ringLayout = {
             characters,
+            fontSize,
             angles,
             radius,
             center: size / 2,
@@ -1609,8 +1617,8 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
             const color = (useHomeGlyphColors && ringLayout.colors[index]) || ringContext.fillStyle;
             let atlas = ringLayout.atlases.get(color);
             if (!atlas) {
-              atlas = createGlyphAtlas(characters, ringFont(circleSettings.fontSize * ringScale),
-                circleSettings.fontSize * ringScale, color, ratio);
+              atlas = createGlyphAtlas(characters, ringFont(ringLayout.fontSize),
+                ringLayout.fontSize, color, ratio);
               ringLayout.atlases.set(color, atlas);
             }
             const angle = baseRotation + angles[index];
@@ -1831,10 +1839,11 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
           });
           context.imageSmoothingEnabled = true;
           context.imageSmoothingQuality = "high";
-          context.font = ringFont(ball.fontSize);
+          const textFontSize = ball.isPassive ? ball.fontSize : ringLayout.fontSize * ball.scale / ringScale;
+          context.font = ringFont(textFontSize);
 
           const characters = Array.from(circleText);
-          const gapLength = ball.fontSize * circleSettings.gap;
+          const gapLength = textFontSize * circleSettings.gap;
           const availableLength = Math.PI * 2 * ball.radius - gapLength;
           const rawWidth = context.measureText(circleText).width;
           const horizontalScale = Math.min(1, availableLength / rawWidth);
@@ -1868,7 +1877,7 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
             angles,
             visible,
             horizontalScale,
-            fontSize: ball.fontSize,
+            fontSize: textFontSize,
             radius: ball.radius,
             center: ball.size / 2,
           };
@@ -3184,7 +3193,7 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
             alpha: true,
             desynchronized: true,
           });
-          popContext.font = ringFont(circleSettings.fontSize * ringScale);
+          popContext.font = ringFont(ringLayout.fontSize);
           popContext.textAlign = "center";
           popContext.textBaseline = "middle";
           popContext.fillStyle = getComputedStyle(document.documentElement)
@@ -3233,7 +3242,7 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
             }
           }
 
-          const particleFontSize = circleSettings.fontSize * ringScale;
+          const particleFontSize = ringLayout.fontSize;
           const particles = particleGroups.map(({ indices, text }) => {
             const middleIndex = indices[Math.floor(indices.length / 2)];
             const pose = getPopPose(middleIndex, rect, true);
@@ -3306,7 +3315,7 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
           constrainBall();
           positionBall();
           const rect = circularView.getBoundingClientRect();
-          const particleFontSize = circleSettings.fontSize * ringScale;
+          const particleFontSize = ringLayout.fontSize;
           popContext.font = ringFont(particleFontSize);
 
           if (
@@ -3475,7 +3484,7 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
           if (resized) {
             popCanvas.width = expectedWidth;
             popCanvas.height = expectedHeight;
-            popContext.font = ringFont(circleSettings.fontSize * ringScale);
+            popContext.font = ringFont(ringLayout.fontSize);
             popContext.textAlign = "center";
             popContext.textBaseline = "middle";
             popContext.fillStyle = getComputedStyle(document.documentElement)
@@ -3510,7 +3519,7 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
             0.0021,
             Math.max(0.00145, visibleHeight * 0.0000017),
           );
-          const fontSize = circleSettings.fontSize * ringScale;
+          const fontSize = ringLayout.fontSize;
           const sideMargin = Math.max(8, fontSize * 0.32);
           const ceiling = visibleTop + sideMargin;
           const leftWall = visibleLeft + sideMargin;
@@ -3719,13 +3728,6 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
           );
           const size = baseSize * ringScale;
 
-          // Fit complete subject names by uniformly sizing the type, without
-          // squeezing the letters horizontally on smaller viewports.
-          context.font = ringFont(26);
-          const textWidth = Array.from(circleText).reduce((total, character) =>
-            total + context.measureText(character).width, 0);
-          circleSettings.fontSize = Math.min(26,
-            (Math.PI * 2 * baseSize * circleSettings.radius) / (textWidth / 26 + circleSettings.gap));
           ballSize = size;
           const renderedFontSize = circleSettings.fontSize * ringScale;
           const visibleRadius = Math.min(
@@ -4872,7 +4874,7 @@ import { createGlyphAtlas } from "./glyph-atlas.mjs";
             return [{ character,
               x: ballPosition.x + pose.x - Math.sin(pose.rotation) * ringLayout.centerOffset,
               y: ballPosition.y + pose.y + Math.cos(pose.rotation) * ringLayout.centerOffset,
-              rotation: pose.rotation, fontSize: circleSettings.fontSize * ringScale,
+              rotation: pose.rotation, fontSize: ringLayout.fontSize,
               scale: ringLayout.horizontalScale,
               color: (useHomeGlyphColors && ringLayout.colors[index]) || color }];
           });
